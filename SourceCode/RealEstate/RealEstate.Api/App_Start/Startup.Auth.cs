@@ -9,7 +9,9 @@ using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using RealEstate.Api.Providers;
-using RealEstate.Api.Models;
+using static RealEstate.Api.ApplicationUserStore;
+using RealEstate.Entities.Entites;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace RealEstate.Api
 {
@@ -23,8 +25,13 @@ namespace RealEstate.Api
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(RealEstateDbContext.Create);
+
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+            app.CreatePerOwinContext<UserManager<AppUser>>(CreateManager);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -35,7 +42,7 @@ namespace RealEstate.Api
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/Token"),
+                TokenEndpointPath = new PathString("/api/oauth/token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
@@ -64,6 +71,13 @@ namespace RealEstate.Api
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        }
+        private static UserManager<AppUser> CreateManager(IdentityFactoryOptions<UserManager<AppUser>> options, IOwinContext context)
+        {
+            var userStore = new UserStore<AppUser>(context.Get<RealEstateDbContext>());
+            var owinManager = new UserManager<AppUser>(userStore);
+
+            return owinManager;
         }
     }
 }
