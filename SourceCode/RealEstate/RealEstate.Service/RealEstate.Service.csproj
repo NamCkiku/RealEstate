@@ -42,6 +42,24 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate.Common\RealEstate.Common.csproj">
+      <Project>{3f93bc56-cab2-4b62-831b-037f69caa307}</Project>
+      <Name>RealEstate.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealEstate.Entities\RealEstate.Entities.csproj">
+      <Project>{432cf0da-fc03-49e8-9b65-b87f82fafcab}</Project>
+      <Name>RealEstate.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealEstate.Repository\RealEstate.Repository.csproj">
+      <Project>{9e43fc54-4900-47eb-b9e3-ce73cddd8e8d}</Project>
+      <Name>RealEstate.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IService\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
