@@ -39,6 +39,13 @@ namespace RealEstate.Repository.Infrastructure
         {
             return dbSet.Add(entity);
         }
+        public virtual void AddRange(IEnumerable<T> entities)
+        {
+            foreach (var entity in entities)
+            {
+                Add(entity);
+            }
+        }
 
         public virtual void Update(T entity)
         {
@@ -104,7 +111,7 @@ namespace RealEstate.Repository.Infrastructure
             }
             return dataContext.Set<T>().FirstOrDefault(expression);
         }
-
+        public virtual T GetById(params object[] keyValues) { return dbSet.Find(keyValues); }
         public virtual IEnumerable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
         {
             //HANDLE INCLUDES FOR ASSOCIATED OBJECTS IF APPLICABLE

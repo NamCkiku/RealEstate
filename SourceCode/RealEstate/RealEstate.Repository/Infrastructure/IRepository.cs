@@ -8,7 +8,7 @@ namespace RealEstate.Repository.Infrastructure
     {
         // Marks an entity as new
         T Add(T entity);
-
+        void AddRange(IEnumerable<T> entities);
         // Marks an entity as modified
         void Update(T entity);
 
@@ -16,12 +16,12 @@ namespace RealEstate.Repository.Infrastructure
         T Delete(T entity);
 
         T Delete(int id);
-
         //Delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);
 
         // Get an entity by int id
         T GetSingleById(int id);
+        T GetById(params object[] keyValues);
 
         T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null);
 

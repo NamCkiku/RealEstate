@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RealEstate.Entities.Entites;
+using RealEstate.Service.IService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,19 +9,26 @@ using System.Web.Http;
 
 namespace RealEstate.Api.Controllers
 {
-    [Authorize]
+    [RoutePrefix("api/demo")]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        IUserService _userService;
+        public ValuesController(IUserService userService)
         {
-            return new string[] { "value1", "value2" };
+            this._userService = userService;
+        }
+        // GET api/values
+        [Route("get")]
+        public IEnumerable<AppUser> Get()
+        {
+            return _userService.GetAll();
         }
 
         // GET api/values/5
-        public string Get(int id)
+        [Route("getid/{id}")]
+        public AppUser Get(string id)
         {
-            return "value";
+            return _userService.GetById(id);
         }
 
         // POST api/values
