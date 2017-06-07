@@ -16,6 +16,10 @@ namespace RealEstate.Entities.Entites
         }
         public DbSet<AppRole> AppRoles { set; get; }
         public DbSet<IdentityUserRole> UserRoles { set; get; }
+        public DbSet<Country> Countrys { set; get; }
+        public DbSet<Province> Provinces { set; get; }
+        public DbSet<District> Districts { set; get; }
+        public DbSet<Ward> Wards { set; get; }
         public static RealEstateDbContext Create()
         {
             return new RealEstateDbContext();
