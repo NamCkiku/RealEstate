@@ -49,5 +49,9 @@ namespace RealEstate.Service.BaseService
         {
             return _repository.Delete(id);
         }
+        public virtual void SaveChanges()
+        {
+            _unitOfWork.Commit();
+        }
     }
 }

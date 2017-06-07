@@ -25,5 +25,7 @@ namespace RealEstate.Service.BaseService
         T Insert(T entity);
         void InsertRange(IEnumerable<T> entities);
         T Delete(int id);
+
+        void SaveChanges();
     }
 }

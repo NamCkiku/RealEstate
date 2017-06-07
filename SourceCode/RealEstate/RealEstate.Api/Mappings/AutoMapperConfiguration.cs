@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using RealEstate.Api.Models.ViewModel;
+using RealEstate.Entities.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,8 @@ namespace RealEstate.Api.Mappings
         {
             Mapper.Initialize(cfg =>
             {
-                //cfg.CreateMap<Post, PostViewModel>();
+                cfg.CreateMap<Country, CountryViewModel>();
+                cfg.CreateMap<Province, ProvinceViewModel>();
             });
         }
     }
