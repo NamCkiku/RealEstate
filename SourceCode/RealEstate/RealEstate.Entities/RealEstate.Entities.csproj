@@ -87,10 +87,18 @@
   <ItemGroup>
     <Compile Include="Entites\AppRole.cs" />
     <Compile Include="Entites\AppUser.cs" />
+    <Compile Include="Entites\Country.cs" />
+    <Compile Include="Entites\District.cs" />
+    <Compile Include="Entites\Province.cs" />
     <Compile Include="Entites\RealEstateDbContext.cs" />
+    <Compile Include="Entites\Ward.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.Designer.cs">
       <DependentUpon>201706051405369_addIdentityTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706070324445_addCountryDB.cs" />
+    <Compile Include="Migrations\201706070324445_addCountryDB.Designer.cs">
+      <DependentUpon>201706070324445_addCountryDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +110,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706051405369_addIdentityTable.resx">
       <DependentUpon>201706051405369_addIdentityTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070324445_addCountryDB.resx">
+      <DependentUpon>201706070324445_addCountryDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
