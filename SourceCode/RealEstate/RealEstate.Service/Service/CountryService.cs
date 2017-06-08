@@ -1,5 +1,6 @@
 ﻿using RealEstate.Entities.Entites;
 using RealEstate.Repository.Infrastructure;
+using RealEstate.Repository.IRepositories;
 using RealEstate.Service.BaseService;
 using RealEstate.Service.IService;
 using System;
@@ -12,8 +13,15 @@ namespace RealEstate.Service.Service
 {
     public class CountryService : BaseService<Country>, ICountryService
     {
-        public CountryService(IRepository<Country> repository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
+        private readonly ICountryRepository _countryRepository;
+        public CountryService(IRepository<Country> repository, ICountryRepository countryRepository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
         {
+            this._countryRepository = countryRepository;
+        }
+
+        public IEnumerable<Country> GetAllCountry()
+        {
+            return _countryRepository.GetAllCountry();
         }
     }
 }
