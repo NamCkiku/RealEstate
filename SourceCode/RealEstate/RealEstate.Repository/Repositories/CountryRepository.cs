@@ -1,4 +1,5 @@
-﻿using RealEstate.Entities.Entites;
+﻿using RealEstate.Common.Extensions.Data;
+using RealEstate.Entities.Entites;
 using RealEstate.Repository.Infrastructure;
 using RealEstate.Repository.IRepositories;
 using System;
@@ -13,6 +14,22 @@ namespace RealEstate.Repository.Repositories
     {
         public CountryRepository(IDbFactory dbFactory) : base(dbFactory)
         {
+        }
+
+        public IEnumerable<Country> GetAllCountry()
+        {
+            try
+            {
+                return DbContext.Database.ExecuteSqlStoredProcedure<Country>("[spGetAllCountry]", new
+                {
+                }).ToList();
+
+            }
+            catch (Exception ex)
+            {
+                //log.FatalFormat("{0} has an exception:{1}", MethodInfo.GetCurrentMethod().Name, ex);
+                return new List<Country>();
+            }
         }
     }
 }

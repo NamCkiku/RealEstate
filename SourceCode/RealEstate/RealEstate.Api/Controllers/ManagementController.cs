@@ -45,7 +45,7 @@ namespace RealEstate.Api.Controllers
         {
             return CreateHttpResponse(request, () =>
             {
-                var listCountry = _countryService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                var listCountry = _countryService.GetAllCountry().OrderByDescending(x => x.SortOrder).ToList();
 
                 var listCountryVm = Mapper.Map<List<CountryViewModel>>(listCountry);
 

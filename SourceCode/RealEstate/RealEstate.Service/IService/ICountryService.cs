@@ -10,5 +10,6 @@ namespace RealEstate.Service.IService
 {
     public interface ICountryService : IService<Country>
     {
+        IEnumerable<Country> GetAllCountry();
     }
 }
