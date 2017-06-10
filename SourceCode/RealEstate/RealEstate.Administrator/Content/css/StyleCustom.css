@@ -1,0 +1,227 @@
+﻿.no-padding {
+    padding: 0px;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+.margin-top-30{
+    margin-top:30px;
+}
+.margin-top-20{
+    margin-top:20px;
+}
+.line-style {
+    position: relative;
+    padding: 10px 5px !important;
+    border-bottom: 1px solid #000;
+    display: inline-block;
+}
+
+    .line-style:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 5px;
+        width: 100%;
+        height: 3px;
+        background: #000;
+    }
+
+.panel-title {
+    color: #d9534f;
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+.list-content {
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 5px #ddd;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.add-request {
+    position: absolute;
+    right: 10px;
+    top: -17px;
+    padding: 0;
+    list-style: none;
+}
+
+    .add-request > li {
+        float: left;
+        margin-right: 10px;
+    }
+
+        .add-request > li button {
+            text-transform: uppercase;
+            border-radius: 15px;
+            box-shadow: 2px 2px 5px #6d6d6d;
+            color:#fff;
+        }
+        .add-request > li button:hover{
+            color:#fff;
+        }
+        .add-request > li button:focus{
+            color:#fff;
+        }
+.bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body, .color1 {
+    background-color: #f39c12 !important;
+}
+
+.input-field > label {
+    color: #454545;
+    line-height: 20px;
+    margin-bottom: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin: 0 0 5px;
+}
+
+.taskbar-order-main .input-group {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.taskbar-order-main .input-group-checkbox {
+    border-radius: 0;
+    background: #fff;
+}
+
+.input-group-checkbox {
+    border-right: 0 none;
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1%;
+    background-color: #eee;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 0;
+    text-align: center;
+}
+
+    .input-group-checkbox > .c-checkbox {
+        margin-right: 0;
+    }
+
+    .input-group-checkbox > .checkbox {
+        display: block;
+        margin-bottom: 1px;
+        margin-top: 2px;
+        position: relative;
+        padding-right: 4px;
+    }
+
+.radio label, .checkbox label {
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+    min-height: 19px;
+    padding-left: 16px;
+}
+
+input[type="checkbox"]:checked + span, input[type="radio"]:checked + span {
+    background-color: #0094cb;
+    border-color: #0094cb;
+}
+
+.c-checkbox input, .c-radio input {
+    margin-left: 0 !important;
+    opacity: 0;
+    position: absolute;
+    float: left;
+}
+
+.c-checkbox span, .c-radio span {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    display: inline-block;
+    height: 20px;
+    margin-left: -20px;
+    margin-right: 5px;
+    position: relative;
+    vertical-align: top;
+    width: 20px;
+}
+
+.input-group .k-combobox, .input-group .k-datepicker, .input-group .k-dropdown {
+    background: #fff;
+    width: 100% !important;
+    box-sizing: inherit !important;
+}
+
+.form-control {
+    border-radius: 0px !important;
+}
+
+.c-checkbox span::before, .c-radio span::before {
+    bottom: 0;
+    font-size: 12px;
+    left: 0;
+    line-height: 18px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center !important;
+    top: 0;
+    vertical-align: middle;
+}
+
+input[type="checkbox"]:checked + span::before, input[type="radio"]:checked + span::before {
+    color: #fff;
+    opacity: 1;
+    transition: color 0.3s ease-out 0s;
+}
+
+.c-checkbox span::before, .c-radio span::before {
+    bottom: 0;
+    font-size: 12px;
+    left: 0;
+    line-height: 18px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center !important;
+    top: 0;
+    vertical-align: middle;
+}
+
+.taskbar-order-main .input-group .k-datepicker .k-picker-wrap {
+    border-radius: 0 !important;
+    background: #fff !important;
+}
+.k-combobox .k-input, .k-numeric-wrap .k-input, .k-picker-wrap .k-input{
+    width:99% !important
+}
+.input-group .k-combobox .k-dropdown-wrap, .input-group .k-datepicker .k-picker-wrap, .input-group .k-dropdown .k-dropdown-wrap {
+    padding-bottom: 2px !important;
+    padding-top: 2px !important;
+    background: none repeat scroll 0 0 #fff !important;
+    border-radius: 0 4px 4px 0 !important;
+    height: 28px;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #fff !important;
+    opacity: 1;
+}
+.modal {
+    background: rgba(0, 0, 0, 0.6);
+}
+.modal.in .modal-dialog {
+    transform: translate(0px, 0px) !important;
+}

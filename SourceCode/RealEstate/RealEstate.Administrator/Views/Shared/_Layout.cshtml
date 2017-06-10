@@ -1,44 +1,91 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <title>Trang Quan Tri</title>
+    <baseurl value='@Url.Content("~/")'></baseurl>
+    @*<dateformat value="@Var.sDateFormat"></dateformat>*@
+    <!-- Bootstrap core CSS -->
+    <link href="~/bower_components/boostrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/bower_components/toastr/toastr.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/style-responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/StyleCustom.css" rel="stylesheet" />
+    <link href="~/bower_components/kendo-ui/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/bower_components/kendo-ui/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/bower_components/kendo-ui/styles/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="~/bower_components/kendo-ui/styles/kendo.dataviz.default.min.css" rel="stylesheet" />
+    <link href="~/Content/css/formValidation.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <section id="container">
+        <!--header start-->
+        @RenderPage("_HeaderAdmin.cshtml")
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            @RenderPage("_Sidebar.cshtml")
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                @RenderBody()
+            </section>
+        </section>
+        <!--main content end-->
+        <!--footer start-->
+        @*<footer class="site-footer">
+                <div class="text-center">
+                    Trang Quản Trị Admin
+                </div>
+            </footer>*@
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/bower_components/boostrap/dist/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="~/Content/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Content/js/jquery.scrollTo.min.js"></script>
+    <script src="~/bower_components/toastr/toastr.js"></script>
+    <!--common script for all pages-->
+    <script src="~/Content/js/common-scripts.js"></script>
+    <script src="~/Content/js/formValidation.min.js"></script>
+    <script src="~/Content/js/bootstrapextend.min.js"></script>
+    <script src="~/bower_components/kendo-ui/js/kendo.core.min.js"></script>
+    <script src="~/bower_components/kendo-ui/js/kendo.all.min.js"></script>
+    <script src="~/bower_components/kendo-ui/js/kendo.aspnetmvc.min.js"></script>
+    <script src="~/bower_components/kendo-ui/js/kendo.modernizr.custom.js"></script>
+    <script src="~/bower_components/angular/angular.js"></script>
+    <script src="~/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="~/bower_components/kendo-ui/js/kendo.angular.min.js"></script>
+    @*@RenderSection("scripts", false)
+        {
+        }*@
+    @*<script type="text/ng-template" id="NotificationCommonModal.html">
+        <div class="modal-header" ng-class="{ 'panel-danger' : type == 1,'panel-warning' : type == 2 }">
+            <button type="button" ng-hide="showBtnCancel==false" class="close" ng-click="cancel();" aria-hidden="true">×</button>
+            <h3 class="modal-title" id="modal-title">{{title}}</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div ng-bind-html="message">
+
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        <div class="modal-footer">
+            <button ng-hide="showBtnOK==false" class="btn btn-success" ng-click="ok()" style="width:150px;"><i class="fa fa-save" style="padding-right: 10px !important;"></i>{{btnOK}}</button>
+            <button ng-hide="showBtnCancel==false" type="button" class="btn btn-danger" ng-click="cancel()" style="width:150px;"><i class="fa fa-ban" style="padding-right: 10px !important;"></i>{{btnCancel}}</button>
+        </div>
+    </script>*@
 </body>
+
 </html>
+

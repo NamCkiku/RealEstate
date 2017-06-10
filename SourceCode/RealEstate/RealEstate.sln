@@ -3,17 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{445C11AA-9CC7-4E09-9A75-8E5C93030232}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Kendo.Mvc.dll = ..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Kendo.Mvc.dll
-		..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Base.dll = ..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Base.dll
-		..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Controls.dll = ..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Controls.dll
-		..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Controls.Win.dll = ..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Controls.Win.dll
-		..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Report.dll = ..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Report.dll
-		..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Report.Mvc.dll = ..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Report.Mvc.dll
-		..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Report.Win.dll = ..\..\..\BoardingHouse\BoardingHouse.Administrator\App_Data\Stimulsoft.Report.Win.dll
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C4059A86-2E15-441B-9D1D-F07D0392CD53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{82342D62-C102-4D5B-98F8-83894032CA7F}"
