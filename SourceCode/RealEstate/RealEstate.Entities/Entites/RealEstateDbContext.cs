@@ -20,6 +20,9 @@ namespace RealEstate.Entities.Entites
         public DbSet<Province> Provinces { set; get; }
         public DbSet<District> Districts { set; get; }
         public DbSet<Ward> Wards { set; get; }
+        public DbSet<RoomType> RoomTypes { set; get; }
+        public DbSet<Room> Room { set; get; }
+        public DbSet<MoreInfomation> MoreInfomations { set; get; }
         public static RealEstateDbContext Create()
         {
             return new RealEstateDbContext();
