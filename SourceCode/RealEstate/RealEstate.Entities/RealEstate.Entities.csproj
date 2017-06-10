@@ -89,8 +89,11 @@
     <Compile Include="Entites\AppUser.cs" />
     <Compile Include="Entites\Country.cs" />
     <Compile Include="Entites\District.cs" />
+    <Compile Include="Entites\MoreInfomation.cs" />
     <Compile Include="Entites\Province.cs" />
     <Compile Include="Entites\RealEstateDbContext.cs" />
+    <Compile Include="Entites\Room.cs" />
+    <Compile Include="Entites\RoomType.cs" />
     <Compile Include="Entites\Ward.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.Designer.cs">
@@ -103,6 +106,10 @@
     <Compile Include="Migrations\201706080341074_createStoreProc.cs" />
     <Compile Include="Migrations\201706080341074_createStoreProc.Designer.cs">
       <DependentUpon>201706080341074_createStoreProc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706100818505_addTableRoom.cs" />
+    <Compile Include="Migrations\201706100818505_addTableRoom.Designer.cs">
+      <DependentUpon>201706100818505_addTableRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706080341074_createStoreProc.resx">
       <DependentUpon>201706080341074_createStoreProc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706100818505_addTableRoom.resx">
+      <DependentUpon>201706100818505_addTableRoom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
