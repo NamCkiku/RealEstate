@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html ng-app="myApp" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,18 +40,11 @@
                 @RenderBody()
             </section>
         </section>
-        <!--main content end-->
-        <!--footer start-->
-        @*<footer class="site-footer">
-                <div class="text-center">
-                    Trang Quản Trị Admin
-                </div>
-            </footer>*@
-        <!--footer end-->
     </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/moment.js"></script>
     <script src="~/bower_components/boostrap/dist/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="~/Content/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="~/Content/js/jquery.scrollTo.min.js"></script>
@@ -65,12 +58,21 @@
     <script src="~/bower_components/kendo-ui/js/kendo.aspnetmvc.min.js"></script>
     <script src="~/bower_components/kendo-ui/js/kendo.modernizr.custom.js"></script>
     <script src="~/bower_components/angular/angular.js"></script>
+    <script src="~/app/app.js"></script>
+    <script src="~/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="~/bower_components/angular-animate/angular-animate.js"></script>
     <script src="~/bower_components/kendo-ui/js/kendo.angular.min.js"></script>
+    <script src="~/Content/Plugins/Bootstrap/ui-bootstrap.js"></script>
+    <script src="~/Content/Plugins/Bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="~/Content/Plugins/Bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="~/app/shared/filters/dateFilter.js"></script>
+    <script src="~/app/shared/services/apiService.js"></script>
+    <script src="~/app/shared/services/BaseService.js"></script>
+    <script src="~/app/components/RoomType/roomTypeController.js"></script>
     @*@RenderSection("scripts", false)
         {
         }*@
-    @*<script type="text/ng-template" id="NotificationCommonModal.html">
+    <script type="text/ng-template" id="NotificationCommonModal.html">
         <div class="modal-header" ng-class="{ 'panel-danger' : type == 1,'panel-warning' : type == 2 }">
             <button type="button" ng-hide="showBtnCancel==false" class="close" ng-click="cancel();" aria-hidden="true">×</button>
             <h3 class="modal-title" id="modal-title">{{title}}</h3>
@@ -84,7 +86,7 @@
             <button ng-hide="showBtnOK==false" class="btn btn-success" ng-click="ok()" style="width:150px;"><i class="fa fa-save" style="padding-right: 10px !important;"></i>{{btnOK}}</button>
             <button ng-hide="showBtnCancel==false" type="button" class="btn btn-danger" ng-click="cancel()" style="width:150px;"><i class="fa fa-ban" style="padding-right: 10px !important;"></i>{{btnCancel}}</button>
         </div>
-    </script>*@
+    </script>
 </body>
 
 </html>

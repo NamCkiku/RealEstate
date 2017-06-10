@@ -12,5 +12,9 @@ namespace RealEstate.Administrator.Controllers
         {
             return View();
         }
+        public ActionResult RoomType()
+        {
+            return View();
+        }
     }
 }
