@@ -3,6 +3,100 @@
     ViewBag.Title = "RoomType";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div ng-controller="roomTypeController">
-    {{date|formatDate}}
+<div ng-controller="roomTypeController" block-ui="BlockUIRoomType">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 taskbar-order-main margin-top-15">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="input-field col-sm-6 col-lg-3 col-xs-12 ">
+                    <label class="form-details-title">Từ khóa</label>
+                    <input ng-model="filter.Keywords" class="form-control"
+                           type="text">
+                </div>
+                <div class="input-field col-sm-6 col-lg-3 col-xs-12 ">
+                    <label class="form-details-title">Từ ngày</label>
+                    <div class="input-group">
+                        <div class="input-group-checkbox">
+                            <div class="checkbox c-checkbox pull-left">
+                                <label>
+                                    <input type="checkbox" ng-model="filter.searchByStartDate">
+                                    <span class="fa fa-check"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <input kendo-date-picker
+                               k-ng-model="filter.StartDate"
+                               class="form-control"
+                               @*k-format="'@Var.sDateFormat'"*@
+                               ng-disabled="!filter.searchByStartDate" />
+                    </div>
+                </div>
+                <div class="input-field  col-sm-6 col-lg-3 col-xs-12 ">
+                    <label class="form-details-title">Đến ngày</label>
+                    <div class="input-group">
+                        <div class="input-group-checkbox">
+                            <div class="checkbox c-checkbox pull-left">
+                                <label>
+                                    <input type="checkbox" ng-model="filter.searchByEndDate">
+                                    <span class="fa fa-check"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <input kendo-date-picker
+                               k-ng-model="filter.EndDate"
+                               class="form-control"
+                               @*k-format="'@Var.sDateFormat'"*@
+                               ng-disabled="!filter.searchByEndDate" />
+                    </div>
+                </div>
+                @*<div class="input-field col-sm-6 col-lg-2 col-xs-12">
+                        <label class="form-details-title">Trạng Thái</label>
+                        <div class="clearfix"></div>
+                        <input bs-switch
+                               switch-on-text="Đã duyệt"
+                               switch-off-text="Khóa"
+                               ng-model="filter.Status"
+                               type="checkbox">
+                    </div>*@
+                <div class="input-field col-sm-6 col-lg-3 col-xs-12" style="padding-top:24px;">
+                    <button type="button" ng-click="Search()" class="btn btn-info"><i style="padding-right:10px;" class="fa fa-search"></i>Tìm Kiếm</button>
+                </div>
+            </div>
+            @*<div search-control></div>*@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0">
+            <div class="line-style col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-sm-12">
+            <div class="list-content">
+                <ul class="add-request ">
+                    <li><button ng-click="openModalRoomType();" class="btn label-warning">+ Thêm Mới</button></li>
+                </ul>
+                <div class="margin-top-15" kendo-grid
+                     k-options='mainGridOptions'
+                     k-data-source='mainGridOptions'
+                     k-columns="gridColumns"></div>
+            </div>
+        </div>
+    </div>
 </div>
+<script type="text/ng-template" id="ModalRoomType.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="messageDel">Loại phòng</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row" style="height:100%">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="ok();"><i class="fa fa-pencil-square-o" aria-hidden="true" style="padding-right:10px"></i>Lưu lại</button>
+        <button class="btn btn-info" ng-click="close();" type="button"><i class="fa fa-reply-all" aria-hidden="true" style="padding-right:10px"></i>Quay Lại</button>
+    </div>
+</script>

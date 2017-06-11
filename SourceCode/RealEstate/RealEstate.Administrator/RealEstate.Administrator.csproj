@@ -205,6 +205,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoomTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,9 +217,16 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\components\RoomType\roomTypeController.js" />
+    <Content Include="app\shared\filters\dateFilter.js" />
+    <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\BaseService.js" />
     <Content Include="bower_components\angular-animate\angular-animate.js" />
     <Content Include="bower_components\angular-animate\angular-animate.min.js" />
     <Content Include="bower_components\angular-animate\index.js" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.css" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.js" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.css" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.js" />
     <Content Include="bower_components\angular-ui-router\karma.conf.js" />
     <Content Include="bower_components\angular-ui-router\migrate\migratewarn.js" />
     <Content Include="bower_components\angular-ui-router\release\angular-ui-router.js" />
@@ -2445,12 +2453,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\shared\directives\" />
-    <Folder Include="app\shared\filters\" />
     <Folder Include="app\shared\modules\" />
-    <Folder Include="app\shared\services\" />
     <Folder Include="app\shared\views\" />
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\RoomType\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -2564,6 +2571,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\RoomType.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\angular-block-ui\.bower.json" />
+    <Content Include="bower_components\angular-block-ui\bower.json" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.css.map" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.js.map" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.js.map" />
+    <Content Include="bower_components\angular-block-ui\dist\LICENSE" />
+    <Content Include="bower_components\angular-block-ui\dist\README.md" />
+    <Content Include="bower_components\angular-block-ui\LICENSE" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
