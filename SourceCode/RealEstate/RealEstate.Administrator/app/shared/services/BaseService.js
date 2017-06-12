@@ -41,7 +41,9 @@
             $(form).formValidation({
                 framework: 'bootstrap',
                 icon: {
-
+                    valid: 'fa fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh'
                 },
                 excluded: ':disabled',
                 fields: {
@@ -212,6 +214,67 @@
             toastr.info(message);
         }
 
+
+        function getSeoTitle(input) {
+            if (input == undefined || input == '')
+                return '';
+            //Đổi chữ hoa thành chữ thường
+            var slug = input.toLowerCase();
+
+            //Đổi ký tự có dấu thành không dấu
+            slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+            slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+            slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+            slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+            slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+            slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+            slug = slug.replace(/đ/gi, 'd');
+            //Xóa các ký tự đặt biệt
+            slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+            //Đổi khoảng trắng thành ký tự gạch ngang
+            slug = slug.replace(/ /gi, "-");
+            //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+            //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+            slug = slug.replace(/\-\-\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-/gi, '-');
+            //Xóa các ký tự gạch ngang ở đầu và cuối
+            slug = '@' + slug + '@';
+            slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+            return slug;
+        }
+        function getTree(data, options) {
+            options = options || {};
+            var ID_KEY = options.idKey;
+            var PARENT_KEY = options.parentKey;
+            var CHILDREN_KEY = options.childrenKey || 'children';
+
+            var tree = [],
+                childrenOf = {};
+            var item, id, parentId;
+
+            for (var i = 0, length = data.length; i < length; i++) {
+                item = data[i];
+                id = item[ID_KEY];
+                parentId = item[PARENT_KEY] || null;
+                // every item may have children
+                childrenOf[id] = childrenOf[id] || [];
+                // init its children
+                item[CHILDREN_KEY] = childrenOf[id];
+                if (parentId != null) {
+                    // init its parent's children object
+                    childrenOf[parentId] = childrenOf[parentId] || [];
+                    // push it into its parent's children object
+                    childrenOf[parentId].push(item);
+                } else {
+                    tree.push(item);
+                }
+            };
+
+            return tree;
+        }
         return {
             postData: postData,
             ValidatorForm: ValidatorForm,
@@ -224,6 +287,8 @@
             displayError: displayError,
             displayWarning: displayWarning,
             displayInfo: displayInfo,
+            getSeoTitle: getSeoTitle,
+            getTree: getTree,
         };
     }
     BaseService.$inject = ['$rootScope', '$http', '$q', '$filter', '$modal'];

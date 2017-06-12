@@ -1,6 +1,6 @@
 ﻿var app;
 (function () {
-    app = angular.module("myApp", ['ui.router', 'kendo.directives', 'ui.bootstrap', 'ngAnimate', 'blockUI']);
+    app = angular.module("myApp", ['kendo.directives', 'ui.bootstrap', 'ngAnimate', 'blockUI']);
     app.run(['$rootScope', function ($rootScope) {
         var baseUrl = $('baseurl').attr('value');
         $rootScope.baseUrl = baseUrl;

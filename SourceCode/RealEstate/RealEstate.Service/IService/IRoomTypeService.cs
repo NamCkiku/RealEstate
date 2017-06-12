@@ -1,4 +1,5 @@
 ﻿using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Service.BaseService;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace RealEstate.Service.IService
 {
     public interface IRoomTypeService : IService<RoomType>
     {
-        IEnumerable<RoomType> GetAllRoomType();
+        IEnumerable<RoomType> GetAllRoomType(SearchRoomTypeEntity filter);
     }
 }
