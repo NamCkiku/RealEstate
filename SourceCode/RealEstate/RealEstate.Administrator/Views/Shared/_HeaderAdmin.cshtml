@@ -1,4 +1,5 @@
-﻿<header class="header white-bg">
+﻿@using Microsoft.AspNet.Identity
+<header class="header white-bg">
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
@@ -12,17 +13,24 @@
                 <input type="text" class="form-control search" placeholder="Search">
             </li>
             <!-- user login dropdown start-->
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <span class="username">NamCkiku</span>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu extended logout">
-                    <div class="log-arrow-up"></div>
-                    @*<li><a href="#"><i class="fa fa-bell-o"></i>Ra Trang Chủ</a></li>*@
-                    <li>@Html.ActionLink("Đăng Xuất", "Logout", "Account")</li>
-                </ul>
-            </li>
+            @if (Request.IsAuthenticated)
+            {
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="username">@User.Identity.Name</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <div class="log-arrow-up"></div>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+
             <!-- user login dropdown end -->
         </ul>
         <!--search & user info end-->

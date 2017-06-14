@@ -16,6 +16,10 @@ namespace RealEstate.Administrator
 {
     public class ApplicationUserStore : UserStore<AppUser>
     {
+        public ApplicationUserStore(RealEstateDbContext context)
+            : base(context)
+        {
+        }
         public class EmailService : IIdentityMessageService
         {
             public Task SendAsync(IdentityMessage message)
