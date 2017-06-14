@@ -203,6 +203,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoomTypeController.cs" />
@@ -1534,6 +1535,7 @@
     <Content Include="bower_components\ui-bootstrap\template\tooltip\tooltip-template-popup.html" />
     <Content Include="bower_components\ui-bootstrap\template\typeahead\typeahead-match.html" />
     <Content Include="bower_components\ui-bootstrap\template\typeahead\typeahead-popup.html" />
+    <Content Include="Content\css\account.css" />
     <Content Include="Content\css\bootstrap-reset.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\formValidation.min.css" />
@@ -1547,6 +1549,7 @@
     <Content Include="Content\img\input-spinner.gif" />
     <Content Include="Content\img\left-arrow.png" />
     <Content Include="Content\img\loader11.GIF" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\mask.png" />
     <Content Include="Content\img\mega_icon1.png" />
     <Content Include="Content\img\mega_icon2.png" />
@@ -2459,6 +2462,7 @@
     <Folder Include="app\shared\views\" />
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\RoomType\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,241 @@
+﻿body {
+    color: #212121;
+    background-size: 220px 220px;
+}
+
+#login-page-full {
+    background-color: #e7ebee;
+}
+
+@media (max-height: 605px) {
+    #login-full-wrapper {
+        position: relative;
+    }
+}
+
+#login-full-wrapper {
+    background: url(http://cube.adbee.technology/img/login-img.jpg) no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#login-page-full .container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+#login-full-wrapper #login-box {
+    border: none;
+}
+
+#login-box {
+    max-width: 350px;
+    min-width: 280px;
+    margin: 60px auto 20px;
+    overflow: hidden;
+    border-radius: 3px 3px 0 0;
+    background-clip: padding-box;
+}
+
+#login-logo {
+    background: none repeat scroll 0 0 #fff;
+    color: #fff;
+    display: block;
+    font-size: 2em;
+    font-weight: 400;
+    padding: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+    #login-logo > img {
+        display: block;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+#login-box-inner {
+    background: #fff;
+    border-radius: 0 0 3px 3px;
+    background-clip: padding-box;
+    border-bottom-width: 5px;
+    padding: 40px 25px;
+}
+
+.input-group-addon {
+    background: transparent;
+    border-color: #e7ebee;
+    border-width: 2px;
+}
+#login-box .input-group {
+    margin-bottom: 10px;
+}
+
+    #login-box .input-group .input-group-addon {
+        padding-left: 0;
+        padding-right: 0;
+        min-width: 50px;
+    }
+
+        #login-box .input-group .input-group-addon i {
+            color: #efefef;
+        }
+
+#login-box-inner .input-group > .form-control, #login-box-inner .input-group > .input-group-addon {
+    height: 46px;
+    line-height: 42px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.form-control {
+    border-radius: 3px;
+    background-clip: padding-box;
+    border-color: #e7ebee;
+    border-width: 2px;
+    box-shadow: none;
+    font-size: 13px;
+}
+#login-box-inner .input-group > .input-group-addon {
+    height: 44px;
+}
+
+#login-box .input-group input {
+    font-weight: 300;
+}
+
+#login-box #remember-me-wrapper {
+    padding: 10px 0;
+}
+
+.checkbox-nice {
+    position: relative;
+    padding-left: 15px;
+}
+
+    .checkbox-nice input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    .checkbox-nice label {
+        padding-top: 3px;
+    }
+
+label {
+    font-weight: 400;
+    font-size: 0.875em;
+}
+
+.checkbox-nice label:before {
+    cursor: pointer;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 1px;
+    top: 1px;
+    background: #ffffff;
+    content: "";
+    border: 2px solid #e7ebee;
+    border-radius: 3px;
+    background-clip: padding-box;
+}
+
+.checkbox-nice input[type=checkbox]:checked + label:after {
+    opacity: 1;
+}
+
+.checkbox-nice label:after {
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 7px;
+    background: transparent;
+    top: 7px;
+    left: 6px;
+    border: 3px solid #03a9f4;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+#login-box #login-forget-link {
+    display: block;
+    font-size: 0.875em;
+    text-align: right;
+    margin-top: 3px;
+}
+
+.theme-whbl a, .theme-whbl .fc-state-default, .theme-whbl .jvectormap-zoomin, .theme-whbl .jvectormap-zoomout, .theme-whbl #user-profile .profile-details ul > li > span {
+    color: #03a9f4;
+}
+
+#login-box .btn {
+    font-size: 1.125em;
+    font-weight: 600;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+.theme-whbl .btn-success {
+    background-color: #03a9f4;
+    border-color: #2980b9;
+}
+
+#login-box .social-text {
+    margin: 0;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.875em;
+}
+
+#login-box .btn-facebook, #login-box .btn-google {
+    text-transform: none;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.btn-google {
+    background-color: #DB4437 !important;
+    border-color: #CE574D !important;
+}
+
+    .btn-google:hover {
+        background-color: #e44436 !important;
+        border-color: #e44436 !important;
+    }
+
+#login-full-wrapper #login-box-footer {
+    color: #fff;
+}
+
+#login-box-footer {
+    text-align: center;
+    font-size: 0.875em;
+    margin-top: 10px;
+}
+
+#login-full-wrapper #login-box-footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 767px) {
+    #login-box {
+        margin-top: 20px;
+    }
+}
+
+@media (max-height: 621px) and (max-width: 767px) {
+    #login-full-wrapper {
+        position: relative;
+    }
+}
+
+@media (max-height: 605px) {
+}

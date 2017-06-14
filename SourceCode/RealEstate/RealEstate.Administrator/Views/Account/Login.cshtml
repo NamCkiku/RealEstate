@@ -2,62 +2,114 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Layout = null;
 }
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Đăng nhập</title>
+    <link href="~/bower_components/boostrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/css/account.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400" rel="stylesheet" type="text/css">
+    <link type="image/x-icon" href="favicon.png" rel="shortcut icon">
+    <style type="text/css">
+        .cf-hidden {
+            display: none;
+        }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+        .cf-invisible {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body id="login-page-full" class="theme-whbl">
+    <div id="login-full-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="login-box">
+                        <div id="login-box-holder">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <header id="login-header">
+                                        <div id="login-logo">
+                                            <img src="~/Content/img/logo.png" />
+                                        </div>
+                                    </header>
+                                    <div id="login-box-inner">
+                                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Tên tài khoản" })
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Mật khẩu" })
+                                            </div>
+                                            <div id="remember-me-wrapper">
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        @Html.CheckBoxFor(m => m.RememberMe, new { id = "remember-me" })
+                                                        <label for="remember-me">
+                                                            Nhớ tài khoản
+                                                        </label>
+                                                    </div>
+                                                    <a href="forgot-password-full.html" id="login-forget-link" class="col-xs-6">
+                                                        Quên mật khẩu?
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <button type="submit" class="btn btn-success col-xs-12">Đăng nhập</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <p class="social-text">hoăc đăng nhập với</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <button type="button" class="btn btn-primary col-xs-12 btn-facebook">
+                                                        <i class="fa fa-facebook"></i> Facebook
+                                                    </button>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <button type="button" class="btn btn-primary col-xs-12 btn-google">
+                                                        <i class="fa fa-google-plus"></i> Google
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="login-box-footer">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    Do not have an account?
+                                    <a href="registration-full.html">
+                                        Register now
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
-
-@*@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/bower_components/boostrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
