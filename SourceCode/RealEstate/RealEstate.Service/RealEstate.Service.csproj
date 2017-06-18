@@ -43,16 +43,22 @@
     <Compile Include="BaseService\BaseService.cs" />
     <Compile Include="BaseService\IService.cs" />
     <Compile Include="IService\ICountryService.cs" />
+    <Compile Include="IService\IDistrictService.cs" />
     <Compile Include="IService\IErrorService.cs" />
     <Compile Include="IService\IProvinceService.cs" />
+    <Compile Include="IService\IRoomService.cs" />
     <Compile Include="IService\IRoomTypeService.cs" />
     <Compile Include="IService\IUserService.cs" />
+    <Compile Include="IService\IWardService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CountryService.cs" />
+    <Compile Include="Service\DistrictService.cs" />
     <Compile Include="Service\ErrorService.cs" />
     <Compile Include="Service\ProvinceService.cs" />
+    <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\RoomTypeService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\WardService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Common\RealEstate.Common.csproj">

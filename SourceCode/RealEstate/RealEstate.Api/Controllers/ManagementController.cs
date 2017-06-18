@@ -24,12 +24,20 @@ namespace RealEstate.Api.Controllers
     {
         private readonly ICountryService _countryService;
         private readonly IProvinceService _provinceService;
-        public ManagementController(IErrorService errorService, ICountryService countryService, IProvinceService provinceService) : base(errorService)
+        private readonly IDistrictService _districtService;
+        private readonly IWardService _wardService;
+        public ManagementController(IErrorService errorService,
+            ICountryService countryService,
+            IProvinceService provinceService,
+            IDistrictService districtService,
+            IWardService wardService) : base(errorService)
         {
             this._countryService = countryService;
             this._provinceService = provinceService;
+            this._districtService = districtService;
+            this._wardService = wardService;
         }
-
+        #region Địa Chính Việt Nam
         /// <summary>
         /// Hàm API lấy ra danh sách các quốc gia trên thế giới.
         /// </summary>
@@ -46,7 +54,6 @@ namespace RealEstate.Api.Controllers
             HttpResponseMessage responeResult = new HttpResponseMessage();
             try
             {
-                Common.Logs.LogCommon.WriteLogError("Chạy đi cho tao nhờ");
                 responeResult = CreateHttpResponse(request, () =>
                  {
                      var listCountry = _countryService.GetAllCountry().OrderByDescending(x => x.SortOrder).ToList();
@@ -64,6 +71,8 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
+
+
         /// <summary>
         /// Hàm lấy ra danh sách các Tỉnh/Thành phố trên đất nước Việt Nam
         /// </summary>
@@ -94,5 +103,77 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
+
+
+        /// <summary>
+        /// Hàm API lấy ra danh sách các huyện.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/management/getalldistrict</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/7/2017   created
+        /// </Modified>
+        [Route("getalldistrict")]
+        [CacheOutput(ClientTimeSpan = 100)]
+        public HttpResponseMessage GetAllDistrict(HttpRequestMessage request)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var listDistrict = _districtService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+
+                    var listDistrictVm = Mapper.Map<List<DistrictViewModel>>(listDistrict);
+
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listDistrictVm);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+
+        /// <summary>
+        /// Hàm API lấy ra danh sách các xã phường.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/management/getallward</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/7/2017   created
+        /// </Modified>
+        [Route("getallward")]
+        [CacheOutput(ClientTimeSpan = 100)]
+        public HttpResponseMessage GetAllWard(HttpRequestMessage request)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var listWard = _wardService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+
+                    var listWardVm = Mapper.Map<List<WardViewModel>>(listWard);
+
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listWardVm);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+        #endregion
     }
 }
