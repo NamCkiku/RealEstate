@@ -1,1 +1,12 @@
 Logging Start2017-06-18 09:08:28,667 [8] ERROR RealEstate.Common.Logs.LogCommon - Ch?y di cho tao nh?
+Logging Start2017-06-18 09:21:15,205 [10] ERROR RealEstate.Common.Logs.LogCommon - Ch?y di cho tao nh?
+Logging Start2017-06-18 09:47:51,919 [10] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Ward, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.CountryViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-06-18 09:48:03,044 [10] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Ward, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.CountryViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
