@@ -93,12 +93,16 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="IRepositories\ICountryRepository.cs" />
+    <Compile Include="IRepositories\IErrorRepository.cs" />
     <Compile Include="IRepositories\IProvinceRepository.cs" />
+    <Compile Include="IRepositories\IRoomRepository.cs" />
     <Compile Include="IRepositories\IUserRepository.cs" />
     <Compile Include="IRepositories\IRoomTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CountryRepository.cs" />
+    <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\ProvinceRepository.cs" />
+    <Compile Include="Repositories\RoomRepository.cs" />
     <Compile Include="Repositories\RoomTypeRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>

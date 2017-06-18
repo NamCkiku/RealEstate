@@ -23,6 +23,7 @@ namespace RealEstate.Entities.Entites
         public DbSet<RoomType> RoomTypes { set; get; }
         public DbSet<Room> Room { set; get; }
         public DbSet<MoreInfomation> MoreInfomations { set; get; }
+        public DbSet<Error> Errors { set; get; }
         public static RealEstateDbContext Create()
         {
             return new RealEstateDbContext();
