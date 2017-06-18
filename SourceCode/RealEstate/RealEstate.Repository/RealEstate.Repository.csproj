@@ -97,6 +97,8 @@
     <Compile Include="IRepositories\IErrorRepository.cs" />
     <Compile Include="IRepositories\IProvinceRepository.cs" />
     <Compile Include="IRepositories\IRoomRepository.cs" />
+    <Compile Include="IRepositories\IRoomTagRepository.cs" />
+    <Compile Include="IRepositories\ITagRepository.cs" />
     <Compile Include="IRepositories\IUserRepository.cs" />
     <Compile Include="IRepositories\IRoomTypeRepository.cs" />
     <Compile Include="IRepositories\IWardRepository.cs" />
@@ -106,7 +108,9 @@
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\ProvinceRepository.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
+    <Compile Include="Repositories\RoomTagRepository.cs" />
     <Compile Include="Repositories\RoomTypeRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\WardRepository.cs" />
   </ItemGroup>

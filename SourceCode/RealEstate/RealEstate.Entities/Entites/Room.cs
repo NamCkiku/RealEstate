@@ -100,6 +100,15 @@ namespace RealEstate.Entities.Entites
         public string Tags { set; get; }
 
         public bool Published { get; set; }
+        public DateTime? CreatedDate { get; set; }
+
+        [StringLength(256)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? UpdatedDate { get; set; }
+
+        [StringLength(256)]
+        public string UpdatedBy { get; set; }
 
         public bool isDelete { get; set; }
 

@@ -61,6 +61,7 @@
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\ICacheProvider.cs" />
     <Compile Include="Cache\WebCacheProvider.cs" />
+    <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Extensions\Data\DatabaseExtensions.cs" />
     <Compile Include="Extensions\Data\DataReaderExtensions.cs" />
     <Compile Include="Helper\Converter\Converter.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Helper\ExcelHelper.cs" />
     <Compile Include="Helper\RegularExpressionsHelper.cs" />
     <Compile Include="Helper\StringExtensions.cs" />
+    <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\TypeHelper.cs" />
     <Compile Include="Logs\LogCommon.cs" />
     <Compile Include="Patterns\Singleton.cs" />

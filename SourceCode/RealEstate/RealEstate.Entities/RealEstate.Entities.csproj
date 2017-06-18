@@ -94,7 +94,9 @@
     <Compile Include="Entites\Province.cs" />
     <Compile Include="Entites\RealEstateDbContext.cs" />
     <Compile Include="Entites\Room.cs" />
+    <Compile Include="Entites\RoomTag.cs" />
     <Compile Include="Entites\RoomType.cs" />
+    <Compile Include="Entites\Tag.cs" />
     <Compile Include="Entites\Ward.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.Designer.cs">
@@ -116,7 +118,16 @@
     <Compile Include="Migrations\201706180124277_addtableError.Designer.cs">
       <DependentUpon>201706180124277_addtableError.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706181433298_updateTableRoom.cs" />
+    <Compile Include="Migrations\201706181433298_updateTableRoom.Designer.cs">
+      <DependentUpon>201706181433298_updateTableRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706181514250_addtableTags.cs" />
+    <Compile Include="Migrations\201706181514250_addtableTags.Designer.cs">
+      <DependentUpon>201706181514250_addtableTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelView\SearchRoomEntity.cs" />
     <Compile Include="ModelView\SearchRoomTypeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706180124277_addtableError.resx">
       <DependentUpon>201706180124277_addtableError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181433298_updateTableRoom.resx">
+      <DependentUpon>201706181433298_updateTableRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181514250_addtableTags.resx">
+      <DependentUpon>201706181514250_addtableTags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
