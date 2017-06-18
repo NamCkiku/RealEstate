@@ -24,6 +24,9 @@ namespace RealEstate.Entities.Entites
         public DbSet<Room> Room { set; get; }
         public DbSet<MoreInfomation> MoreInfomations { set; get; }
         public DbSet<Error> Errors { set; get; }
+
+        public DbSet<Tag> Tags { set; get; }
+        public DbSet<RoomTag> RoomTags { set; get; }
         public static RealEstateDbContext Create()
         {
             return new RealEstateDbContext();
