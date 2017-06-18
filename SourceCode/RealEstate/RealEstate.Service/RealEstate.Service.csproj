@@ -43,11 +43,13 @@
     <Compile Include="BaseService\BaseService.cs" />
     <Compile Include="BaseService\IService.cs" />
     <Compile Include="IService\ICountryService.cs" />
+    <Compile Include="IService\IErrorService.cs" />
     <Compile Include="IService\IProvinceService.cs" />
     <Compile Include="IService\IRoomTypeService.cs" />
     <Compile Include="IService\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CountryService.cs" />
+    <Compile Include="Service\ErrorService.cs" />
     <Compile Include="Service\ProvinceService.cs" />
     <Compile Include="Service\RoomTypeService.cs" />
     <Compile Include="Service\UserService.cs" />

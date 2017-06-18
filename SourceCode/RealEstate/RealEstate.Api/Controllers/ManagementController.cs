@@ -24,7 +24,7 @@ namespace RealEstate.Api.Controllers
     {
         private readonly ICountryService _countryService;
         private readonly IProvinceService _provinceService;
-        public ManagementController(ICountryService countryService, IProvinceService provinceService)
+        public ManagementController(IErrorService errorService, ICountryService countryService, IProvinceService provinceService) : base(errorService)
         {
             this._countryService = countryService;
             this._provinceService = provinceService;
@@ -43,16 +43,26 @@ namespace RealEstate.Api.Controllers
         [CacheOutput(ClientTimeSpan = 100)]
         public HttpResponseMessage GetAllCountry(HttpRequestMessage request)
         {
-            return CreateHttpResponse(request, () =>
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
             {
-                var listCountry = _countryService.GetAllCountry().OrderByDescending(x => x.SortOrder).ToList();
+                Common.Logs.LogCommon.WriteLogError("Chạy đi cho tao nhờ");
+                responeResult = CreateHttpResponse(request, () =>
+                 {
+                     var listCountry = _countryService.GetAllCountry().OrderByDescending(x => x.SortOrder).ToList();
 
-                var listCountryVm = Mapper.Map<List<CountryViewModel>>(listCountry);
+                     var listCountryVm = Mapper.Map<List<CountryViewModel>>(listCountry);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCountryVm);
+                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCountryVm);
 
-                return response;
-            });
+                     return response;
+                 });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
         }
         /// <summary>
         /// Hàm lấy ra danh sách các Tỉnh/Thành phố trên đất nước Việt Nam
@@ -67,13 +77,22 @@ namespace RealEstate.Api.Controllers
         [CacheOutput(ClientTimeSpan = 100)]
         public HttpResponseMessage GetAllProvince(HttpRequestMessage request)
         {
-            return CreateHttpResponse(request, () =>
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
             {
-                var listProvince = _provinceService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
-                var listProvinceVm = Mapper.Map<List<ProvinceViewModel>>(listProvince);
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProvinceVm);
-                return response;
-            });
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var listProvince = _provinceService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                    var listProvinceVm = Mapper.Map<List<ProvinceViewModel>>(listProvince);
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProvinceVm);
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
         }
     }
 }

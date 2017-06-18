@@ -38,6 +38,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="protobuf-net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.2.2.1\lib\net40\protobuf-net.dll</HintPath>
       <Private>True</Private>
@@ -67,6 +70,7 @@
     <Compile Include="Helper\RegularExpressionsHelper.cs" />
     <Compile Include="Helper\StringExtensions.cs" />
     <Compile Include="Helper\TypeHelper.cs" />
+    <Compile Include="Logs\LogCommon.cs" />
     <Compile Include="Patterns\Singleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

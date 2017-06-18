@@ -89,6 +89,7 @@
     <Compile Include="Entites\AppUser.cs" />
     <Compile Include="Entites\Country.cs" />
     <Compile Include="Entites\District.cs" />
+    <Compile Include="Entites\Error.cs" />
     <Compile Include="Entites\MoreInfomation.cs" />
     <Compile Include="Entites\Province.cs" />
     <Compile Include="Entites\RealEstateDbContext.cs" />
@@ -111,6 +112,10 @@
     <Compile Include="Migrations\201706100818505_addTableRoom.Designer.cs">
       <DependentUpon>201706100818505_addTableRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706180124277_addtableError.cs" />
+    <Compile Include="Migrations\201706180124277_addtableError.Designer.cs">
+      <DependentUpon>201706180124277_addtableError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\SearchRoomTypeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706100818505_addTableRoom.resx">
       <DependentUpon>201706100818505_addTableRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706180124277_addtableError.resx">
+      <DependentUpon>201706180124277_addtableError.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

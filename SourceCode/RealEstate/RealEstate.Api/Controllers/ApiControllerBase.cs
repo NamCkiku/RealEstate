@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RealEstate.Entities.Entites;
+using RealEstate.Service.IService;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
@@ -12,6 +14,11 @@ namespace RealEstate.Api.Controllers
 {
     public class ApiControllerBase : ApiController
     {
+        private readonly IErrorService _errorService;
+        public ApiControllerBase(IErrorService errorService)
+        {
+            this._errorService = errorService;
+        }
         protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> funtion)
         {
             HttpResponseMessage response = null;
@@ -29,17 +36,39 @@ namespace RealEstate.Api.Controllers
                         Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
                     }
                 }
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+                LogError(ex);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
             }
             catch (DbUpdateException dbEx)
             {
+                Common.Logs.LogCommon.WriteLogError(dbEx.Message);
+                LogError(dbEx);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.InnerException.Message);
             }
             catch (Exception ex)
             {
+                LogError(ex);
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
             return response;
+        }
+        private void LogError(Exception ex)
+        {
+            try
+            {
+                Error error = new Error();
+                error.CreatedDate = DateTime.Now;
+                error.Message = ex.Message;
+                error.StackTrace = ex.StackTrace;
+                _errorService.Insert(error);
+                _errorService.SaveChanges();
+            }
+            catch
+            {
+
+            }
         }
     }
 }
