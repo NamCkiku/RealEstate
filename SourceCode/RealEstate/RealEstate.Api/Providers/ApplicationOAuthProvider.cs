@@ -50,12 +50,14 @@ namespace RealEstate.Api.Providers
                 ClaimsIdentity identity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
                 string avatar = string.IsNullOrEmpty(user.Avatar) ? "" : user.Avatar;
                 string email = string.IsNullOrEmpty(user.Email) ? "" : user.Email;
+                identity.AddClaim(new Claim("userID", user.Id));
                 identity.AddClaim(new Claim("fullName", user.FullName));
                 identity.AddClaim(new Claim("avatar", avatar));
                 identity.AddClaim(new Claim("email", email));
                 identity.AddClaim(new Claim("username", user.UserName));
                 var props = new AuthenticationProperties(new Dictionary<string, string>
                     {
+                        {"userID", user.Id},
                         {"fullName", user.FullName},
                         {"avatar", avatar },
                         {"email", email},

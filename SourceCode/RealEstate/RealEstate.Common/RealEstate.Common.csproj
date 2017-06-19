@@ -62,6 +62,7 @@
     <Compile Include="Cache\ICacheProvider.cs" />
     <Compile Include="Cache\WebCacheProvider.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
+    <Compile Include="Core\PaginationSet.cs" />
     <Compile Include="Extensions\Data\DatabaseExtensions.cs" />
     <Compile Include="Extensions\Data\DataReaderExtensions.cs" />
     <Compile Include="Helper\Converter\Converter.cs" />
