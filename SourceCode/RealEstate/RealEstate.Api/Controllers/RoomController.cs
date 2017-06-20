@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using RealEstate.Api.Infrastructure.Extensions;
 using RealEstate.Api.Models.ViewModel;
 using RealEstate.Common.Core;
+using RealEstate.Entities.Entites;
 using RealEstate.Entities.ModelView;
 using RealEstate.Service.IService;
 using System;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using WebApi.OutputCache.V2;
 
 namespace RealEstate.Api.Controllers
@@ -43,6 +46,7 @@ namespace RealEstate.Api.Controllers
         /// </Modified>
         [Route("getallroom")]
         [CacheOutput(ClientTimeSpan = 100)]
+        [HttpGet]
         public HttpResponseMessage GetAllRoom(HttpRequestMessage request, int top = 10)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -78,6 +82,7 @@ namespace RealEstate.Api.Controllers
         [Route("getallroombyuser")]
         [CacheOutput(ClientTimeSpan = 100)]
         [Authorize]
+        [HttpGet]
         public HttpResponseMessage GetAllRoomByUser(HttpRequestMessage request, string userID, int page, int pageSize)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -119,6 +124,7 @@ namespace RealEstate.Api.Controllers
         /// </Modified>
         [Route("getallroomvip")]
         [CacheOutput(ClientTimeSpan = 100)]
+        [HttpGet]
         public HttpResponseMessage GetAllRoomVip(HttpRequestMessage request, int vipID, int top = 10)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -153,6 +159,7 @@ namespace RealEstate.Api.Controllers
         /// </Modified>
         [Route("getallroomfullsearch")]
         [CacheOutput(ClientTimeSpan = 100)]
+        [HttpGet]
         public HttpResponseMessage GetAllRoomFullSearch(HttpRequestMessage request, SearchRoomEntity filter, int page, int pageSize, string sort)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -183,6 +190,208 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
+
+
+        /// <summary>
+        /// Hàm thêm thông tin phòng.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/20/2017   created
+        /// </Modified>
+        [Route("insertroom")]
+        [HttpPost]
+        [Authorize]
+        public HttpResponseMessage InsertRoom(HttpRequestMessage request, RoomViewModel roomViewModel)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                 {
+                     HttpResponseMessage response = null;
+                     if (!ModelState.IsValid)
+                     {
+                         request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                     }
+                     else
+                     {
+                         if (roomViewModel != null)
+                         {
+                             var newRoom = new Room();
+                             newRoom.UpdateRoom(roomViewModel);
+                             newRoom.CreatedBy = User.Identity.Name;
+                             if (roomViewModel.MoreInfomationID != null)
+                             {
+
+                             }
+                             var room = _roomService.InsertRoom(newRoom);
+                             _roomService.SaveChanges();
+                             var responseData = Mapper.Map<Room, RoomViewModel>(room);
+                             response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                         }
+                         else
+                         {
+                             request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                         }
+                     }
+                     return response;
+                 });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+
+        /// <summary>
+        /// Hàm sửa thông tin phòng.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/20/2017   created
+        /// </Modified>
+        [Route("updateroom")]
+        [HttpPut]
+        [Authorize]
+        public HttpResponseMessage UpdateRoom(HttpRequestMessage request, RoomViewModel roomViewModel)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                 {
+                     HttpResponseMessage response = null;
+                     if (!ModelState.IsValid)
+                     {
+                         request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                     }
+                     else
+                     {
+                         if (roomViewModel != null)
+                         {
+                             var dbRoom = _roomService.GetById(roomViewModel.ID);
+                             dbRoom.UpdateRoom(roomViewModel);
+                             dbRoom.UpdatedBy = User.Identity.Name;
+                             dbRoom.UpdatedDate = DateTime.Now;
+                             if (roomViewModel.MoreInfomationID != null)
+                             {
+
+                             }
+                             _roomService.UpdateRoom(dbRoom);
+                             _roomService.SaveChanges();
+                             var responseData = Mapper.Map<Room, RoomViewModel>(dbRoom);
+                             response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                         }
+                         else
+                         {
+                             request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                         }
+                     }
+                     return response;
+                 });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
         #endregion
+
+        /// <summary>
+        /// Hàm xóa thông tin phòng.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/20/2017   created
+        [Route("deleteroom")]
+        [HttpDelete]
+        [Authorize]
+        public HttpResponseMessage DeleteRoom(HttpRequestMessage request, int id)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                 {
+                     HttpResponseMessage response = null;
+                     if (!ModelState.IsValid)
+                     {
+                         response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                     }
+                     else
+                     {
+                         var oldroom = _roomService.Delete(id);
+                         _roomService.SaveChanges();
+
+                         var responseData = Mapper.Map<Room, RoomViewModel>(oldroom);
+                         response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                     }
+
+                     return response;
+                 });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+        /// <summary>
+        /// Hàm xóa nhiều thông tin phòng.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/20/2017   created
+        [Route("deletemultiroom")]
+        [HttpDelete]
+        [Authorize]
+        public HttpResponseMessage DeleteMultiRoom(HttpRequestMessage request, string checkedrooms)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                 {
+                     HttpResponseMessage response = null;
+                     if (!ModelState.IsValid)
+                     {
+                         response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                     }
+                     else
+                     {
+                         var listRoom = new JavaScriptSerializer().Deserialize<List<int>>(checkedrooms);
+                         foreach (var item in listRoom)
+                         {
+                             _roomService.Delete(item);
+                         }
+
+                         _roomService.SaveChanges();
+
+                         response = request.CreateResponse(HttpStatusCode.OK, listRoom.Count);
+                     }
+
+                     return response;
+                 });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
     }
 }
