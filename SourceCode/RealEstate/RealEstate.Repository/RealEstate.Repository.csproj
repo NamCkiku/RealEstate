@@ -95,6 +95,7 @@
     <Compile Include="IRepositories\ICountryRepository.cs" />
     <Compile Include="IRepositories\IDistrictRepository.cs" />
     <Compile Include="IRepositories\IErrorRepository.cs" />
+    <Compile Include="IRepositories\IMoreInfomationRepository.cs" />
     <Compile Include="IRepositories\IProvinceRepository.cs" />
     <Compile Include="IRepositories\IRoomRepository.cs" />
     <Compile Include="IRepositories\IRoomTagRepository.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\DistrictRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\MoreInfomationRepository.cs" />
     <Compile Include="Repositories\ProvinceRepository.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
     <Compile Include="Repositories\RoomTagRepository.cs" />
