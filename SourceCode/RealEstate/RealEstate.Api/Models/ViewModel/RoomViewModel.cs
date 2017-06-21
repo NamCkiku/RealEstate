@@ -109,5 +109,8 @@ namespace RealEstate.Api.Models.ViewModel
         public bool isDelete { get; set; }
 
         public bool Status { get; set; }
+
+
+        public virtual MoreInfomationViewModel MoreInfomations { get; set; }
     }
 }
