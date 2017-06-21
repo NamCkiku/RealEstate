@@ -29,9 +29,11 @@ namespace RealEstate.Api.Controllers
     public class RoomController : ApiControllerBase
     {
         private readonly IRoomService _roomService;
-        public RoomController(IErrorService errorService, IRoomService roomService) : base(errorService)
+        private readonly IMoreInfomationService _moreInfomationService;
+        public RoomController(IErrorService errorService, IRoomService roomService, IMoreInfomationService moreInfomationService) : base(errorService)
         {
             this._roomService = roomService;
+            this._moreInfomationService = moreInfomationService;
         }
         #region Phòng
 
@@ -223,9 +225,19 @@ namespace RealEstate.Api.Controllers
                              var newRoom = new Room();
                              newRoom.UpdateRoom(roomViewModel);
                              newRoom.CreatedBy = User.Identity.Name;
-                             if (roomViewModel.MoreInfomationID != null)
+                             if (roomViewModel.MoreInfomations != null)
                              {
-
+                                 var moreInfomation = new MoreInfomation();
+                                 moreInfomation.BedroomNumber = roomViewModel.MoreInfomations.BedroomNumber;
+                                 moreInfomation.Compass = roomViewModel.MoreInfomations.Compass;
+                                 moreInfomation.Convenient = roomViewModel.MoreInfomations.Convenient;
+                                 moreInfomation.ElectricPrice = roomViewModel.MoreInfomations.ElectricPrice;
+                                 moreInfomation.WaterPrice = roomViewModel.MoreInfomations.WaterPrice;
+                                 moreInfomation.ToiletNumber = roomViewModel.MoreInfomations.ToiletNumber;
+                                 moreInfomation.FloorNumber = roomViewModel.MoreInfomations.FloorNumber;
+                                 var moreIfResult = _moreInfomationService.Insert(moreInfomation);
+                                 _moreInfomationService.SaveChanges();
+                                 newRoom.MoreInfomationID = moreIfResult.MoreInfomationID;
                              }
                              var room = _roomService.InsertRoom(newRoom);
                              _roomService.SaveChanges();
@@ -280,9 +292,18 @@ namespace RealEstate.Api.Controllers
                              dbRoom.UpdateRoom(roomViewModel);
                              dbRoom.UpdatedBy = User.Identity.Name;
                              dbRoom.UpdatedDate = DateTime.Now;
-                             if (roomViewModel.MoreInfomationID != null)
+                             if (dbRoom.MoreInfomationID != null)
                              {
-
+                                 var moreInfomation = _moreInfomationService.GetById(dbRoom.MoreInfomationID.GetValueOrDefault());
+                                 moreInfomation.BedroomNumber = roomViewModel.MoreInfomations.BedroomNumber;
+                                 moreInfomation.Compass = roomViewModel.MoreInfomations.Compass;
+                                 moreInfomation.Convenient = roomViewModel.MoreInfomations.Convenient;
+                                 moreInfomation.ElectricPrice = roomViewModel.MoreInfomations.ElectricPrice;
+                                 moreInfomation.WaterPrice = roomViewModel.MoreInfomations.WaterPrice;
+                                 moreInfomation.ToiletNumber = roomViewModel.MoreInfomations.ToiletNumber;
+                                 moreInfomation.FloorNumber = roomViewModel.MoreInfomations.FloorNumber;
+                                 _moreInfomationService.Update(moreInfomation);
+                                 _moreInfomationService.SaveChanges();
                              }
                              _roomService.UpdateRoom(dbRoom);
                              _roomService.SaveChanges();
@@ -331,6 +352,11 @@ namespace RealEstate.Api.Controllers
                      else
                      {
                          var oldroom = _roomService.Delete(id);
+                         if (oldroom != null && oldroom.MoreInfomationID != null)
+                         {
+                             _moreInfomationService.Delete(oldroom.MoreInfomationID.GetValueOrDefault());
+                             _moreInfomationService.SaveChanges();
+                         }
                          _roomService.SaveChanges();
 
                          var responseData = Mapper.Map<Room, RoomViewModel>(oldroom);
@@ -375,9 +401,13 @@ namespace RealEstate.Api.Controllers
                          var listRoom = new JavaScriptSerializer().Deserialize<List<int>>(checkedrooms);
                          foreach (var item in listRoom)
                          {
-                             _roomService.Delete(item);
+                             var result = _roomService.Delete(item);
+                             if (result != null && result.MoreInfomationID != null)
+                             {
+                                 _moreInfomationService.Delete(result.MoreInfomationID.GetValueOrDefault());
+                                 _moreInfomationService.SaveChanges();
+                             }
                          }
-
                          _roomService.SaveChanges();
 
                          response = request.CreateResponse(HttpStatusCode.OK, listRoom.Count);
