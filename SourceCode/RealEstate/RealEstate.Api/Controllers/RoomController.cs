@@ -324,8 +324,7 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
-        #endregion
-
+        
         /// <summary>
         /// Hàm xóa thông tin phòng.
         /// </summary>
@@ -422,6 +421,8 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
+
+        #endregion
 
     }
 }

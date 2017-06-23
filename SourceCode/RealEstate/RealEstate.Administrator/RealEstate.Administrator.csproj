@@ -206,6 +206,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RoomTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,6 +221,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\components\RoomType\roomTypeController.js" />
+    <Content Include="app\components\Room\roomController.js" />
     <Content Include="app\shared\filters\dateFilter.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\BaseService.js" />
@@ -2464,6 +2466,7 @@
     <Folder Include="Scripts\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\RoomType\" />
+    <Folder Include="Views\Room\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -2587,6 +2590,9 @@
     <Content Include="bower_components\angular-block-ui\dist\LICENSE" />
     <Content Include="bower_components\angular-block-ui\dist\README.md" />
     <Content Include="bower_components\angular-block-ui\LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Room.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

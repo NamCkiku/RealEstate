@@ -6,17 +6,10 @@ using System.Web.Mvc;
 
 namespace RealEstate.Administrator.Controllers
 {
-    public class HomeController : BaseController
+    public class RoomController : Controller
     {
+        // GET: Room
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult RoomType()
-        {
-            return View();
-        }
-        public ActionResult Room()
         {
             return View();
         }
