@@ -11,6 +11,6 @@ namespace RealEstate.Service.IService
 {
     public interface IRoomTypeService : IService<RoomType>
     {
-        IEnumerable<RoomType> GetAllRoomType(SearchRoomTypeEntity filter);
+        IEnumerable<RoomType> GetAllRoomTypePaging(SearchRoomTypeEntity filter);
     }
 }

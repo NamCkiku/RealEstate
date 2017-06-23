@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RealEstate.Entities.Entites;
+using RealEstate.Service.IService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,12 +13,17 @@ namespace RealEstate.Administrator.Controllers
 {
     public class BaseController : Controller
     {
+        private readonly IErrorService _errorService;
+        public BaseController(IErrorService errorService)
+        {
+            this._errorService = errorService;
+        }
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Account", action = "Login"}));
+                    RouteValueDictionary(new { controller = "Account", action = "Login" }));
             }
             base.OnActionExecuting(filterContext);
         }
@@ -114,6 +121,23 @@ namespace RealEstate.Administrator.Controllers
 
 
             return visitorIPAddress;
+        }
+
+        public void LogError(Exception ex)
+        {
+            try
+            {
+                Error error = new Error();
+                error.CreatedDate = DateTime.Now;
+                error.Message = ex.Message;
+                error.StackTrace = ex.StackTrace;
+                _errorService.Insert(error);
+                _errorService.SaveChanges();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

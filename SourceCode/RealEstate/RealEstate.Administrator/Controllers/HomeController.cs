@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstate.Service.IService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,9 @@ namespace RealEstate.Administrator.Controllers
 {
     public class HomeController : BaseController
     {
+        public HomeController(IErrorService errorService) : base(errorService)
+        {
+        }
         public ActionResult Index()
         {
             return View();
