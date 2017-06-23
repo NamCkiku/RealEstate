@@ -55,7 +55,7 @@
                             EndDate: endDate,
                             Status: $scope.filter.Status
                         }
-                        apiService.post('RoomType/LoadAllRoomType', false, filter, function (respone) {
+                        apiService.post('RoomType/LoadAllRoomTypePaging', false, filter, function (respone) {
                             if (respone.data.success) {
                                 options.success(respone.data);
                                 console.log(respone.data)

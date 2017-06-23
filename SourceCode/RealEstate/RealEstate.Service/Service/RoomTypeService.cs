@@ -17,7 +17,7 @@ namespace RealEstate.Service.Service
         {
         }
 
-        public IEnumerable<RoomType> GetAllRoomType(SearchRoomTypeEntity filter)
+        public IEnumerable<RoomType> GetAllRoomTypePaging(SearchRoomTypeEntity filter)
         {
             List<RoomType> lstroomType = new List<RoomType>();
             DateTime st = filter.StartDate == null ? DateTime.MinValue : filter.StartDate.Value.Date;

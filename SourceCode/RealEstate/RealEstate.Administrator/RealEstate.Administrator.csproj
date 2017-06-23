@@ -52,8 +52,14 @@
       <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=6.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Kendo.Mvc">
       <HintPath>..\Library\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -206,15 +212,24 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RoomTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
+    <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModel\CountryViewModel.cs" />
+    <Compile Include="Models\ViewModel\DistrictViewModel.cs" />
+    <Compile Include="Models\ViewModel\MoreInfomationViewModel.cs" />
+    <Compile Include="Models\ViewModel\NotificationViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProvinceViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomTypeViewModel.cs" />
+    <Compile Include="Models\ViewModel\RoomViewModel.cs" />
+    <Compile Include="Models\ViewModel\WardViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
@@ -2465,6 +2480,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Management\" />
     <Folder Include="Views\RoomType\" />
     <Folder Include="Views\Room\" />
   </ItemGroup>

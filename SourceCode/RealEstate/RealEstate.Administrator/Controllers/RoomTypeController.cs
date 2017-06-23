@@ -1,4 +1,5 @@
-﻿using RealEstate.Administrator.Infrastructure.Extensions;
+﻿using AutoMapper;
+using RealEstate.Administrator.Infrastructure.Extensions;
 using RealEstate.Administrator.Models.ViewModel;
 using RealEstate.Entities.Entites;
 using RealEstate.Entities.ModelView;
@@ -11,10 +12,10 @@ using System.Web.Mvc;
 
 namespace RealEstate.Administrator.Controllers
 {
-    public class RoomTypeController : Controller
+    public class RoomTypeController : BaseController
     {
         private readonly IRoomTypeService _roomTypeService;
-        public RoomTypeController(IRoomTypeService roomTypeService)
+        public RoomTypeController(IErrorService errorService, IRoomTypeService roomTypeService) : base(errorService)
         {
             this._roomTypeService = roomTypeService;
         }
@@ -22,19 +23,39 @@ namespace RealEstate.Administrator.Controllers
         {
             return View();
         }
-        public JsonResult LoadAllRoomType(SearchRoomTypeEntity filter)
+        public JsonResult LoadAllRoomTypePaging(SearchRoomTypeEntity filter)
         {
             JsonResult jsonResult = new JsonResult();
             try
             {
                 HttpRequestBase request = this.HttpContext.Request;
-                var data = _roomTypeService.GetAllRoomType(filter);
-                jsonResult = Json(new { success = true, lstData = data }, JsonRequestBehavior.AllowGet);
+                var data = _roomTypeService.GetAllRoomTypePaging(filter);
+                var listRoomTypeVm = Mapper.Map<List<RoomTypeViewModel>>(data);
+                jsonResult = Json(new { success = true, lstData = listRoomTypeVm }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
                 jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
-                throw ex;
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+                LogError(ex);
+            }
+            return jsonResult;
+        }
+        public JsonResult LoadAllRoomType()
+        {
+            JsonResult jsonResult = new JsonResult();
+            try
+            {
+                HttpRequestBase request = this.HttpContext.Request;
+                var data = _roomTypeService.GetAll().OrderByDescending(x => x.DisplayOrder);
+                var listRoomTypeVm = Mapper.Map<List<RoomTypeViewModel>>(data);
+                jsonResult = Json(new { success = true, lstData = listRoomTypeVm }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+                LogError(ex);
             }
             return jsonResult;
         }
@@ -53,7 +74,8 @@ namespace RealEstate.Administrator.Controllers
                     _roomTypeService.SaveChanges();
                     if (result != null)
                     {
-                        jsonResult = Json(new { success = true, objData = result }, JsonRequestBehavior.AllowGet);
+                        var responseData = Mapper.Map<RoomType, RoomTypeViewModel>(result);
+                        jsonResult = Json(new { success = true, objData = responseData }, JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
@@ -68,7 +90,8 @@ namespace RealEstate.Administrator.Controllers
             catch (Exception ex)
             {
                 jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
-                throw ex;
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+                LogError(ex);
             }
             return jsonResult;
         }
@@ -95,7 +118,8 @@ namespace RealEstate.Administrator.Controllers
             catch (Exception ex)
             {
                 jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
-                throw ex;
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+                LogError(ex);
             }
             return jsonResult;
         }

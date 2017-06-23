@@ -13,7 +13,7 @@
                     <input ng-model="filter.Keywords" class="form-control"
                            type="text">
                 </div>
-                <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
+                <div class="input-field col-sm-6 col-lg-3 col-xs-12 ">
                     <label class="form-details-title">Từ ngày</label>
                     <div class="input-group">
                         <div class="input-group-checkbox">
@@ -31,7 +31,7 @@
                                ng-disabled="!filter.searchByStartDate" />
                     </div>
                 </div>
-                <div class="input-field  col-sm-6 col-lg-2 col-xs-12 ">
+                <div class="input-field  col-sm-6 col-lg-3 col-xs-12 ">
                     <label class="form-details-title">Đến ngày</label>
                     <div class="input-group">
                         <div class="input-group-checkbox">
@@ -49,7 +49,7 @@
                                ng-disabled="!filter.searchByEndDate" />
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-2 col-xs-12">
+                <div class="col-sm-6 col-lg-3 col-xs-12">
                     <label class="form-details-title">Trạng Thái</label>
                     <div class="clearfix"></div>
                     <label class="switch" style="margin-top:8px;">
@@ -58,12 +58,80 @@
                         <span class="switch-handle"></span>
                     </label>
                 </div>
-                <div class="input-field col-sm-6 col-lg-3 col-xs-12" style="padding-top:24px;">
-                    <button type="button" ng-click="Search()" class="btn btn-info"><i style="padding-right:10px;" class="fa fa-search"></i>Tìm Kiếm</button>
+
+
+                @*<div search-control></div>*@
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="input-field col-sm-6 col-lg-3 col-xs-12">
+                    <label class="form-details-title">Loại phòng</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Loại Phòng'"
+                            k-data-text-field="'Name'"
+                            k-data-value-field="'ID'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstRoomType"
+                            k-ng-model="filter.RoomTypeID"
+                            style="width: 100%"></select>
+                </div>
+                <div class="input-field col-sm-6 col-lg-3 col-xs-12 ">
+                    <label class="form-details-title">Tỉnh/Thành Phố</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Tỉnh/Thành Phố'"
+                            k-data-text-field="'Name'"
+                            k-data-value-field="'Id'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstProvince"
+                            k-on-change="GetAllDistrict(filter.ProvinceID)"
+                            k-ng-model="filter.ProvinceID"
+                            style="width: 100%"></select>
+                </div>
+                <div class="input-field col-sm-6 col-lg-3 col-xs-12 ">
+                    <label class="form-details-title">Quận/Huyện</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Quận/Huyện'"
+                            k-data-text-field="'Name'"
+                            k-data-value-field="'Id'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            ng-disabled="isDistrict"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstDistrict"
+                            k-on-change="GetAllWard(filter.DistrictID)"
+                            k-ng-model="filter.DistrictID"
+                            style="width: 100%"></select>
+                </div>
+                <div class="input-field  col-sm-6 col-lg-3 col-xs-12 ">
+                    <label class="form-details-title">Xã/Phường</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Xã/Phường'"
+                            k-data-text-field="'Name'"
+                            k-data-value-field="'Id'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            ng-disabled="isWard"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstWard"
+                            k-ng-model="filter.WardID"
+                            style="width: 100%"></select>
                 </div>
             </div>
-            @*<div search-control></div>*@
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="input-field col-sm-6 col-lg-offset-4 col-lg-3 col-xs-12" style="padding-top:24px;">
+                    <button style="width:100%" type="button" ng-click="Search()" class="btn btn-info"><i style="padding-right:10px;" class="fa fa-search"></i>Tìm Kiếm</button>
+                </div>
+            </div>
+           
         </div>
+
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0">
