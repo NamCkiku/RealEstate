@@ -49,6 +49,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,6 +63,11 @@
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\ICacheProvider.cs" />
     <Compile Include="Cache\WebCacheProvider.cs" />
+    <Compile Include="CachingProvider\CachingProviderBase.cs" />
+    <Compile Include="CachingProvider\GlobalCachingProvider.cs" />
+    <Compile Include="CachingProvider\IGlobalCachingProvider.cs" />
+    <Compile Include="CachingProvider\MemoryCacheHelper.cs" />
+    <Compile Include="CachingProvider\MemoryCacheKey.cs" />
     <Compile Include="Config\Config.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Core\PaginationSet.cs" />
