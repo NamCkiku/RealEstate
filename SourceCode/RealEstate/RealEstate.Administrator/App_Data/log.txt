@@ -1,1 +1,2 @@
 Logging Start2017-06-23 22:20:20,111 [10] ERROR RealEstate.Common.Logs.LogCommon - dâsdas
+Logging StartLogging End

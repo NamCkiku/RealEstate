@@ -58,9 +58,6 @@
                         <span class="switch-handle"></span>
                     </label>
                 </div>
-
-
-                @*<div search-control></div>*@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="input-field col-sm-6 col-lg-3 col-xs-12">
@@ -129,9 +126,7 @@
                     <button style="width:100%" type="button" ng-click="Search()" class="btn btn-info"><i style="padding-right:10px;" class="fa fa-search"></i>Tìm Kiếm</button>
                 </div>
             </div>
-           
         </div>
-
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0">
@@ -145,12 +140,26 @@
                 <ul class="add-request ">
                     <li><button ng-click="openModalRoom('',false);" class="btn label-warning">+ Thêm Mới</button></li>
                 </ul>
-                <div class="margin-top-15" kendo-grid
+                <div class="margin-top-15" kendo-grid="grid"
                      k-options='mainGridOptions'
-                     k-data-source='mainGridOptions'
                      k-columns="gridColumns"></div>
             </div>
         </div>
     </div>
 </div>
-
+<script type="text/ng-template" id="ModalRoom.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="messageDel">Phòng</h4>
+    </div>
+    <div class="modal-body" block-ui="BlockUIFrmRoomType">
+        <div class="container-fluid">
+            <div class="row" id="frmRoom" style="height:100%">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="ok();"><i class="fa fa-pencil-square-o" aria-hidden="true" style="padding-right:10px"></i>Lưu lại</button>
+        <button class="btn btn-info" ng-click="close();" type="button"><i class="fa fa-reply-all" aria-hidden="true" style="padding-right:10px"></i>Quay Lại</button>
+    </div>
+</script>

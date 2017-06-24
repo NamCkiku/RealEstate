@@ -148,9 +148,9 @@
                        },
         ];
         $scope.Search = function () {
-            $scope.filterData();
+            $scope.grid.dataSource.read();
         }
-        $scope.Search();
+        $scope.filterData();
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
             $scope.roomType.Alias = BaseService.getSeoTitle($scope.roomType.RoomTypeName);
@@ -172,7 +172,6 @@
                 $scope.roomType.UpdatedDate = BaseService.formatDate($scope.roomType.UpdatedDate);
             }
             else {
-                $scope.ModuleType = {};
             }
             $scope.ok = function () {
                 var myBlockUI = blockUI.instances.get('BlockUIFrmRoomType');
