@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RealEstate.Api.Models.ViewModel;
+using RealEstate.Common.CachingProvider;
 using RealEstate.Service.IService;
 using System;
 using System.Collections.Generic;
@@ -52,15 +53,24 @@ namespace RealEstate.Api.Controllers
         public HttpResponseMessage GetAllCountry(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
+            List<CountryViewModel> lstCountryCache = null;
             try
             {
                 responeResult = CreateHttpResponse(request, () =>
                  {
-                     var listCountry = _countryService.GetAllCountry().OrderByDescending(x => x.SortOrder).ToList();
+                     var temp = MemoryCacheHelper.GetValue(MemoryCacheKey.Provinces);
+                     if (temp != null)
+                     {
+                         lstCountryCache = (List<CountryViewModel>)temp;
+                     }
+                     else
+                     {
+                         var listCountry = _countryService.GetAllCountry().OrderByDescending(x => x.SortOrder).ToList();
+                         lstCountryCache = Mapper.Map<List<CountryViewModel>>(listCountry);
+                         MemoryCacheHelper.Add(MemoryCacheKey.Countries, lstCountryCache, DateTimeOffset.MaxValue);
+                     }
 
-                     var listCountryVm = Mapper.Map<List<CountryViewModel>>(listCountry);
-
-                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCountryVm);
+                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, lstCountryCache);
 
                      return response;
                  });
@@ -87,13 +97,23 @@ namespace RealEstate.Api.Controllers
         public HttpResponseMessage GetAllProvince(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
+            List<ProvinceViewModel> lstProvinceCache = null;
             try
             {
                 responeResult = CreateHttpResponse(request, () =>
                 {
-                    var listProvince = _provinceService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
-                    var listProvinceVm = Mapper.Map<List<ProvinceViewModel>>(listProvince);
-                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProvinceVm);
+                    var temp = MemoryCacheHelper.GetValue(MemoryCacheKey.Provinces);
+                    if (temp != null)
+                    {
+                        lstProvinceCache = (List<ProvinceViewModel>)temp;
+                    }
+                    else
+                    {
+                        var listProvince = _provinceService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                        lstProvinceCache = Mapper.Map<List<ProvinceViewModel>>(listProvince);
+                        MemoryCacheHelper.Add(MemoryCacheKey.Provinces, lstProvinceCache, DateTimeOffset.MaxValue);
+                    }
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, lstProvinceCache);
                     return response;
                 });
             }
@@ -119,15 +139,23 @@ namespace RealEstate.Api.Controllers
         public HttpResponseMessage GetAllDistrict(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
+            List<DistrictViewModel> lstDistrictCache = null;
             try
             {
                 responeResult = CreateHttpResponse(request, () =>
                 {
-                    var listDistrict = _districtService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
-
-                    var listDistrictVm = Mapper.Map<List<DistrictViewModel>>(listDistrict);
-
-                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listDistrictVm);
+                    var temp = MemoryCacheHelper.GetValue(MemoryCacheKey.Districts);
+                    if (temp != null)
+                    {
+                        lstDistrictCache = (List<DistrictViewModel>)temp;
+                    }
+                    else
+                    {
+                        var listDistrict = _districtService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                        lstDistrictCache = Mapper.Map<List<DistrictViewModel>>(listDistrict);
+                        MemoryCacheHelper.Add(MemoryCacheKey.Districts, lstDistrictCache, DateTimeOffset.MaxValue);
+                    }
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, lstDistrictCache);
 
                     return response;
                 });
@@ -154,15 +182,23 @@ namespace RealEstate.Api.Controllers
         public HttpResponseMessage GetAllWard(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
+            List<WardViewModel> lstWardCache = null;
             try
             {
                 responeResult = CreateHttpResponse(request, () =>
                 {
-                    var listWard = _wardService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
-
-                    var listWardVm = Mapper.Map<List<WardViewModel>>(listWard);
-
-                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listWardVm);
+                    var temp = MemoryCacheHelper.GetValue(MemoryCacheKey.Wards);
+                    if (temp != null)
+                    {
+                        lstWardCache = (List<WardViewModel>)temp;
+                    }
+                    else
+                    {
+                        var listWard = _wardService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                        lstWardCache = Mapper.Map<List<WardViewModel>>(listWard);
+                        MemoryCacheHelper.Add(MemoryCacheKey.Wards, lstWardCache, DateTimeOffset.MaxValue);
+                    }
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, lstWardCache);
 
                     return response;
                 });
