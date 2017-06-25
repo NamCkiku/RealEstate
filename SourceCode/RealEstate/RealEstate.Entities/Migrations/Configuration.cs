@@ -3,7 +3,9 @@
     using Entites;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using RealEstate.Common.Helper;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -18,6 +20,13 @@
         protected override void Seed(RealEstate.Entities.Entites.RealEstateDbContext context)
         {
             CreateUser(context);
+            if (context.Clients.Count() > 0)
+            {
+                return;
+            }
+
+            context.Clients.AddRange(BuildClientsList());
+            context.SaveChanges();
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -64,6 +73,34 @@
                     manager.AddToRoles(adminUser.Id, new string[] { "Admin", "Member" });
                 }
             }
+        }
+
+        private static List<Client> BuildClientsList()
+        {
+
+            List<Client> ClientsList = new List<Client>
+            {
+                new Client
+                { Id = "ngAuthApp",
+                    Secret= StringHelper.GetHash("abc@123"),
+                    Name="AngularJS front-end Application",
+                    ApplicationType =  Entites.ApplicationTypes.JavaScript,
+                    Active = true,
+                    RefreshTokenLifeTime = 7200,
+                    AllowedOrigin = "http://ngauthenticationweb.azurewebsites.net"
+                },
+                new Client
+                { Id = "consoleApp",
+                    Secret=StringHelper.GetHash("123@abc"),
+                    Name="Console Application",
+                    ApplicationType =Entites.ApplicationTypes.NativeConfidential,
+                    Active = true,
+                    RefreshTokenLifeTime = 14400,
+                    AllowedOrigin = "*"
+                }
+            };
+
+            return ClientsList;
         }
     }
 }

@@ -75,6 +75,10 @@ namespace RealEstate.Repository.Infrastructure
         {
             return dbSet.Find(id);
         }
+        public virtual T GetSingleById(string id)
+        {
+            return dbSet.Find(id);
+        }
 
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where, string includes)
         {
