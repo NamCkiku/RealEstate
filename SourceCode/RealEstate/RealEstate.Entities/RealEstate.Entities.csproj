@@ -85,14 +85,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entites\ApplicationTypes.cs" />
     <Compile Include="Entites\AppRole.cs" />
     <Compile Include="Entites\AppUser.cs" />
+    <Compile Include="Entites\Client.cs" />
     <Compile Include="Entites\Country.cs" />
     <Compile Include="Entites\District.cs" />
     <Compile Include="Entites\Error.cs" />
     <Compile Include="Entites\MoreInfomation.cs" />
     <Compile Include="Entites\Province.cs" />
     <Compile Include="Entites\RealEstateDbContext.cs" />
+    <Compile Include="Entites\RefreshToken.cs" />
     <Compile Include="Entites\Room.cs" />
     <Compile Include="Entites\RoomTag.cs" />
     <Compile Include="Entites\RoomType.cs" />
@@ -126,6 +129,14 @@
     <Compile Include="Migrations\201706181514250_addtableTags.Designer.cs">
       <DependentUpon>201706181514250_addtableTags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706250053267_addClientandRefestTokenTable.cs" />
+    <Compile Include="Migrations\201706250053267_addClientandRefestTokenTable.Designer.cs">
+      <DependentUpon>201706250053267_addClientandRefestTokenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706250056055_addClientandRefestTokenTable1.cs" />
+    <Compile Include="Migrations\201706250056055_addClientandRefestTokenTable1.Designer.cs">
+      <DependentUpon>201706250056055_addClientandRefestTokenTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\SearchRoomEntity.cs" />
     <Compile Include="ModelView\SearchRoomTypeEntity.cs" />
@@ -157,6 +168,18 @@
     <EmbeddedResource Include="Migrations\201706181514250_addtableTags.resx">
       <DependentUpon>201706181514250_addtableTags.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706250053267_addClientandRefestTokenTable.resx">
+      <DependentUpon>201706250053267_addClientandRefestTokenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706250056055_addClientandRefestTokenTable1.resx">
+      <DependentUpon>201706250056055_addClientandRefestTokenTable1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate.Common\RealEstate.Common.csproj">
+      <Project>{3f93bc56-cab2-4b62-831b-037f69caa307}</Project>
+      <Name>RealEstate.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
