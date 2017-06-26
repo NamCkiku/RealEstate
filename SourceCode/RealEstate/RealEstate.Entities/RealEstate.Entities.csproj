@@ -88,6 +88,7 @@
     <Compile Include="Entites\ApplicationTypes.cs" />
     <Compile Include="Entites\AppRole.cs" />
     <Compile Include="Entites\AppUser.cs" />
+    <Compile Include="Entites\AuditLog.cs" />
     <Compile Include="Entites\Client.cs" />
     <Compile Include="Entites\Country.cs" />
     <Compile Include="Entites\District.cs" />
@@ -137,6 +138,10 @@
     <Compile Include="Migrations\201706250056055_addClientandRefestTokenTable1.Designer.cs">
       <DependentUpon>201706250056055_addClientandRefestTokenTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706261353457_addTableAudilog.cs" />
+    <Compile Include="Migrations\201706261353457_addTableAudilog.Designer.cs">
+      <DependentUpon>201706261353457_addTableAudilog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\SearchRoomEntity.cs" />
     <Compile Include="ModelView\SearchRoomTypeEntity.cs" />
@@ -173,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706250056055_addClientandRefestTokenTable1.resx">
       <DependentUpon>201706250056055_addClientandRefestTokenTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706261353457_addTableAudilog.resx">
+      <DependentUpon>201706261353457_addTableAudilog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

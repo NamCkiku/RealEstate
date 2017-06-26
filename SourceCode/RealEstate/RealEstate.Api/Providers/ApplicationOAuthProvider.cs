@@ -7,20 +7,21 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using RealEstate.Entities.Entites;
+using RealEstate.Service.IService;
+using RealEstate.Api.Infrastructure.Core;
+using System.Web;
 
 namespace RealEstate.Api.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
-
         public ApplicationOAuthProvider(string publicClientId)
         {
             if (publicClientId == null)
             {
                 throw new ArgumentNullException("publicClientId");
             }
-
             _publicClientId = publicClientId;
         }
 
@@ -32,6 +33,7 @@ namespace RealEstate.Api.Providers
             try
             {
                 user = await userManager.FindAsync(context.UserName, context.Password);
+
             }
             catch
             {
@@ -65,6 +67,20 @@ namespace RealEstate.Api.Providers
 
                     });
                 context.Validated(new AuthenticationTicket(identity, props));
+                //Lưu lại lịch sử đăng nhập
+                var auditlog = new AuditLog();
+                auditlog.CreatedDate = DateTime.Now;
+                auditlog.UserID = user.Id;
+                auditlog.CreatedBy = user.UserName;
+                auditlog.IPAddress = HttpContext.Current.Request.UserHostAddress;
+                auditlog.LogType = 2;
+                auditlog.Description = "Đăng nhập thành công tại IP" + auditlog.IPAddress;
+                var service = ServiceFactory.Get<IAuditLogService>();
+                if (service != null)
+                {
+                    service.Insert(auditlog);
+                    service.SaveChanges();
+                }
             }
             //ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
             //   OAuthDefaults.AuthenticationType);
