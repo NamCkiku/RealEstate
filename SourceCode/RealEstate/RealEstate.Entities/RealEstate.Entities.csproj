@@ -143,6 +143,7 @@
       <DependentUpon>201706261353457_addTableAudilog.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelView\RoomEntity.cs" />
     <Compile Include="ModelView\SearchRoomEntity.cs" />
     <Compile Include="ModelView\SearchRoomTypeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

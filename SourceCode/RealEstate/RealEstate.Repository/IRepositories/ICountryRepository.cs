@@ -11,5 +11,6 @@ namespace RealEstate.Repository.IRepositories
     public interface ICountryRepository : IRepository<Country>
     {
         IEnumerable<Country> GetAllCountry();
+        IEnumerable<Country> GetAllCountryDapper();
     }
 }

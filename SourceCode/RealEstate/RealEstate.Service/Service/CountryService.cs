@@ -21,7 +21,7 @@ namespace RealEstate.Service.Service
 
         public IEnumerable<Country> GetAllCountry()
         {
-            return _countryRepository.GetAllCountry();
+            return _countryRepository.GetAllCountryDapper();
         }
     }
 }
