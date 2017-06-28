@@ -30,6 +30,9 @@ namespace RealEstate.Entities.Entites
         public DbSet<Tag> Tags { set; get; }
         public DbSet<RoomTag> RoomTags { set; get; }
         public DbSet<AuditLog> AuditLogs { set; get; }
+
+        public DbSet<Announcement> Announcements { set; get; }
+        public DbSet<AnnouncementUser> AnnouncementUsers { set; get; }
         public static RealEstateDbContext Create()
         {
             return new RealEstateDbContext();
