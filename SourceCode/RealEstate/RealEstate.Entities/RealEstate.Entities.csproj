@@ -85,6 +85,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entites\Announcement.cs" />
+    <Compile Include="Entites\AnnouncementUser.cs" />
     <Compile Include="Entites\ApplicationTypes.cs" />
     <Compile Include="Entites\AppRole.cs" />
     <Compile Include="Entites\AppUser.cs" />
@@ -142,6 +144,10 @@
     <Compile Include="Migrations\201706261353457_addTableAudilog.Designer.cs">
       <DependentUpon>201706261353457_addTableAudilog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706280805227_addAnnouncementTable.cs" />
+    <Compile Include="Migrations\201706280805227_addAnnouncementTable.Designer.cs">
+      <DependentUpon>201706280805227_addAnnouncementTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\RoomEntity.cs" />
     <Compile Include="ModelView\SearchRoomEntity.cs" />
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706261353457_addTableAudilog.resx">
       <DependentUpon>201706261353457_addTableAudilog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706280805227_addAnnouncementTable.resx">
+      <DependentUpon>201706280805227_addAnnouncementTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
