@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,16 +32,22 @@ namespace RealEstate.Repository.Repositories
             }
             catch (Exception ex)
             {
-                //log.FatalFormat("{0} has an exception:{1}", MethodInfo.GetCurrentMethod().Name, ex);
+                Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
                 return new List<Country>();
             }
         }
 
         public IEnumerable<Country> GetAllCountryDapper()
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["RealEstateConnection"].ConnectionString))
+            try
             {
-                return db.Query<Country>("SELECT * FROM COUNTRY");
+                return DapperExtensions.QueryDapperStoreProc<Country>("spGetAllCountry").ToList();
+
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
+                return new List<Country>();
             }
         }
     }
