@@ -109,7 +109,7 @@ namespace RealEstate.Api.Controllers
                     }
                     else
                     {
-                        var listProvince = _provinceService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                        var listProvince = _provinceService.GetAllProvince().OrderByDescending(x => x.SortOrder).ToList();
                         lstProvinceCache = Mapper.Map<List<ProvinceViewModel>>(listProvince);
                         MemoryCacheHelper.Add(MemoryCacheKey.Provinces, lstProvinceCache, DateTimeOffset.MaxValue);
                     }
@@ -151,7 +151,7 @@ namespace RealEstate.Api.Controllers
                     }
                     else
                     {
-                        var listDistrict = _districtService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                        var listDistrict = _districtService.GetAllDistrict().OrderByDescending(x => x.SortOrder).ToList();
                         lstDistrictCache = Mapper.Map<List<DistrictViewModel>>(listDistrict);
                         MemoryCacheHelper.Add(MemoryCacheKey.Districts, lstDistrictCache, DateTimeOffset.MaxValue);
                     }
@@ -194,7 +194,7 @@ namespace RealEstate.Api.Controllers
                     }
                     else
                     {
-                        var listWard = _wardService.GetAll().OrderByDescending(x => x.SortOrder).ToList();
+                        var listWard = _wardService.GetAllWard().OrderByDescending(x => x.SortOrder).ToList();
                         lstWardCache = Mapper.Map<List<WardViewModel>>(listWard);
                         MemoryCacheHelper.Add(MemoryCacheKey.Wards, lstWardCache, DateTimeOffset.MaxValue);
                     }

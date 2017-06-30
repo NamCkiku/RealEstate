@@ -10,5 +10,6 @@ namespace RealEstate.Repository.IRepositories
 {
     public interface IProvinceRepository : IRepository<Province>
     {
+        IEnumerable<Province> GetAllProvince();
     }
 }
