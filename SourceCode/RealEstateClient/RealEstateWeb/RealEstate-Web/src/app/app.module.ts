@@ -12,6 +12,7 @@ import { OwlModule } from 'ng2-owl-carousel';
   ],
   imports: [
     BrowserModule,
+    OwlModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
