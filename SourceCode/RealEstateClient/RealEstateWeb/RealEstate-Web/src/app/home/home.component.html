@@ -1,0 +1,879 @@
+<header id="header" class="header-top">
+  <nav class="navbar horizontal-navbar header-nav ng-scope">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed sb-toggle-left" data-toggle="offcanvas" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+        <a class="navbar-brand" href="/">
+                        <img class="img-responsive" style="height:40px" src="/assets/img/logo.png">
+                    </a>
+      </div>
+      <div class="collapse navbar-collapse nav-menu">
+        <ul class="nav navbar-nav navbar-left hidden-sm">
+          <li>
+            <a href="">Tất Cả Phòng Trọ</a>
+          </li>
+          <li>
+            <a target="_blank" href="#">Nạp Coin</a>
+          </li>
+          <li>
+            <a href="">Bản đồ</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right nav-menu">
+          <li>
+            <a href="javascript: void(0);" class="alert-notifications notifications dd" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-bell-o" style="font-size:18px"></i>
+                                <span class="badge number">2</span>
+                            </a>
+            <ul class="dropdown-menu dropdown-notifications">
+              <li>
+                <a href="#">
+                                        <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                        Có 18 vị trí mới hấp dẫn cho bạn
+                                        <span class="small italic">(34 phút)</span>
+                                    </a>
+              </li>
+              <li>
+                <a href="#">
+                                        <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                        Có 18 vị trí mới hấp dẫn cho bạn
+                                        <span class="small italic">(34 phút)</span>
+                                    </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true">
+                                Tài khoản
+                                <span class="caret"></span>
+                            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <a href="javascript:;" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
+                                    </a>
+
+              </li>
+              <li>
+                <a href="javascript:;" data-toggle="modal" data-target="#myModal1">Đăng Ký</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true" style="margin-top:5px;">
+                                <img class="avatar agentAvatarImg" style="width:50px;" src="/assets/img/boy-512.png" />
+                                NamCkiku
+                                <span class="caret"></span>
+                            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <a href="#"><i class="fa fa-fw fa-lg fa-user"></i>Tài Khoản</a>
+              </li>
+              <li>
+                <a href=""><i class="fa fa-lg fa-sign-out fa-fw"></i>Thoát</a>
+              </li>
+            </ul>
+          </li>
+          <li class="horizontal-navbar-create-room">
+            <a class="btn-addroom" href="javascript: void(0);"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="sb-slidebar sb-left sb-style-overlay hidden-sm hidden-md hidden-lg" style="margin-left: -20%;">
+        <div id="box-action-mobile">
+          <div id="box-tgnavbotton" class="navbar navbar-default hidden-sm hidden-md hidden-lg">
+            <button aria-controls="navbar-collapse-btp" class="navbar-toggle sb-toggle-left" data-toggle="offcanvas" data-target=".navmenu">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+          </div>
+        </div>
+        <div class="nav-menumobile">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="">Tất Cả Phòng Trọ</a>
+            </li>
+            <li>
+              <a target="_blank" href="#">Nạp Coin</a>
+            </li>
+            <li>
+              <a href="">Bản đồ</a>
+            </li>
+            <li>
+              <a class="alert-notifications notifications dd" href="#" data-original-title="" title="">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span style="display: none" class="number">2</span>
+                                </a>
+            </li>
+            <li>
+              <a href=""><i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Nhập</a>
+            </li>
+            <li>
+              <a href="javascript: void(0);">Đăng Ký</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="clearfix"></div>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header popup_header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title popup_title" id="messageDel">
+            <img src="/assets/img/logo.png" />
+          </h4>
+        </div>
+        <div class="line_orn"></div>
+        <div class="modal-body login">
+          <div class="box">
+            <form class="content" id="user_menu_open">
+              <div class="form loginBox" style="margin-top:10px;">
+                <div id="formLogin" class="">
+                  <div class="login-alert">Tài khoản mật khẩu không chính xác</div>
+                  <div class="form-group no-padding">
+                    <input id="email" data-fv-notempty="true" data-fv-notempty-message="Vui lòng nhập Email" data-fv-emailaddress="true" data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                      class="form-control" type="email" placeholder="Tên tài khoản" name="email">
+                  </div>
+                  <div class="form-group no-padding">
+                    <input id="password" data-fv-notempty="true" data-fv-notempty-message="Vui lòng nhập mật khẩu" data-fv-stringlength="true"
+                      data-fv-stringlength-min="6" data-fv-stringlength-message="Mật khẩu phải ít nhất 6 kí tự" class="form-control"
+                      type="password" placeholder="Mật khẩu" name="password">
+
+                  </div>
+                </div>
+                <button type="submit" class="wpresidence_button" style="width:100%">Đăng nhập</button>
+              </div>
+              <div class="login-links">
+                <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
+                <div class="division">
+                  <div class="line l"></div>
+                  <span>Hoặc</span>
+                  <div class="line r"></div>
+                </div>
+                <div id="facebookloginsidebar_topbar" href="" data-social="facebook">Đăng nhập với Facebook</div>
+                <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
+                <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer login">
+          <div class="forgot login-footer" style="display: block;">
+            <span>
+                                <a href="">Bạn chưa có tài khoản?</a>
+                            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header popup_header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title popup_title" id="messageDel">
+            <img src="/assets/img/logo.png" />
+          </h4>
+        </div>
+        <div class="line_orn"></div>
+        <div class="modal-body login">
+          <div class="box">
+            <form class="content" id="user_menu_open">
+              <div class="form loginBox" style="margin-top:10px;">
+                <div id="formRegister" class="">
+                  <div class="login-alert">Không đúng định dạng</div>
+                  <div class="form-group no-padding">
+                    <input id="email" data-fv-notempty="true" data-fv-notempty-message="Vui lòng nhập tên của bạn" ng-model="accountRegister.FullName"
+                      class="form-control" type="text" placeholder="Tên hiển thị" name="FullName">
+                  </div>
+                  <div class="form-group no-padding">
+                    <input data-fv-notempty="true" id="file-upload" data-fv-notempty-message="Chọn ảnh đại diện của bạn" ng-model="accountRegister.Avatar"
+                      class="form-control" type="file" placeholder="Tên hiển thị" name="Avatar">
+                  </div>
+                  <div class="form-group no-padding">
+                    <input id="email" data-fv-notempty="true" data-fv-notempty-message="Vui lòng nhập Email" data-fv-emailaddress="true" data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                      ng-model="accountRegister.Email" class="form-control" type="text" placeholder="Email" name="Email">
+                  </div>
+                  <div class="form-group no-padding">
+                    <input id="password" data-fv-notempty="true" data-fv-notempty-message="Vui lòng nhập mật khẩu" ng-model="accountRegister.Password"
+                      class="form-control" type="password" placeholder="Mật khẩu" name="Password">
+
+                  </div>
+                  <div class="form-group no-padding">
+                    <input id="ConfirmPassword" data-fv-notempty="true" data-fv-notempty-message="Vui lòng nhập mật khẩu" ng-model="accountRegister.ConfirmPassword"
+                      class="form-control" type="password" placeholder="Nhập lại mật khẩu" name="ConfirmPassword">
+
+                  </div>
+                  <div class="form-group no-padding">
+                    <input type="checkbox" ng-model="accountRegister.Terms" name="terms" data-fv-notempty="true" data-fv-notempty-message="Bạn phải đồng ý với điều khoản của chúng tôi"
+                      id="user_terms_register_topbar">
+                    <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
+                  </div>
+                  <button type="submit" class="wpresidence_button" style="width:100%">Đăng ký</button>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer login">
+          <div class="forgot login-footer" style="display: block;">
+            <a href="">Bạn đã có tài khoản?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+<div class="clearfix"></div>
+<div class="search-form">
+  <div class="slide-home">
+    <div class="diy-slideshow">
+      <div id="owl-search" class="owl-carousel owl-theme">
+        <div class="item">
+          <div class="new-item">
+            <a href="#"><img class="img-responsive img-slider" style="width:100%;" src="http://bizweb.dktcdn.net/100/174/202/themes/228417/assets/slider_1.jpg?1496653339413" alt="Thẻ alt của ảnh"></a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#"><img class="img-responsive img-slider" style="width:100%;" src="http://bizweb.dktcdn.net/100/174/202/themes/228417/assets/slider_3.jpg?1496653339413" alt="Thẻ alt của ảnh"></a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#"><img class="img-responsive img-slider" style="width:100%;" src="http://bizweb.dktcdn.net/100/174/202/themes/228417/assets/slider_2.jpg?1496653339413" alt="Thẻ alt của ảnh"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero" id="search-room-hero">
+      <div class="container">
+        <div class="box-search-room box">
+          <form method="get" id="frm-search-room" onsubmit="return false;">
+            <div class="row">
+              <div class="col-xs-12">
+                <h1>Tìm kiếm <strong>ngôi nhà mơ ước</strong> của bạn cùng <strong>Phòng Tốt</strong></h1>
+              </div>
+              <div class="col-sm-10 search-input">
+                <div class="form-group col-sm-4">
+                  <input class="form-control" placeholder="Địa chỉ của bạn" id="keyword" value="">
+                </div>
+                <div class="form-group col-sm-4">
+                  <input class="form-control" placeholder="Tất cả loại phòng" id="keyword" value="">
+                </div>
+                <div class="form-group col-sm-4">
+                  <input class="form-control" placeholder="Gía tiền" id="keyword" value="">
+                </div>
+                <div class="col-xs-12 common-searches text-white">
+                  <a href="#">Phòng trọ</a>,
+                  <a href="#">Văn phòng</a>,
+                  <a href="#">Nhà ở</a>,
+                  <a href="#">Bất động sản</a>,
+                  <a href="#">tư vấn</a>,
+                  <a href="#">hành chính</a>,
+                  <a href="#">nhân sự</a>,
+                  <a href="#">ngân hàng</a>,
+                  <a href="#">lập trình</a>,
+                  <a href="#">seo</a>,
+                  <a href="#">tester</a>,
+                  <a href="#">fpt</a>
+                </div>
+              </div>
+              <div class="col-sm-2 search-submit">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <button class="form-control btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="main-content">
+  <div class="container">
+    <div class="row top-companies">
+      <div id="owl-brand" class="owl-carousel owl-theme">
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_2.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_2.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_3.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_2.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_2.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_3.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_2.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_2.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <a href="#">
+                                <img src="//bizweb.dktcdn.net/100/213/729/themes/539320/assets/brand_3.png?1496109062186" alt="brand">
+                            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row box-room-info">
+      <div class="section-title a-center">
+        <h2>
+          <a href="/collections">Tin nổi bật</a>
+        </h2>
+        <p>Những tin tức hót nhất mùa hè này</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                        <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+        <a href="#" class="card" id="card-309">
+          <div class="figure">
+            <div class="featured-label">
+              <div class="featured-label-left"></div>
+              <div class="featured-label-content"><span class="fa fa-star"></span></div>
+              <div class="featured-label-right"></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+            <div class="figCaption">
+              <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+              <span><span class="fa fa-eye"></span> 9999+</span>
+              <span><span class="fa fa-heart-o"></span> 2</span>
+            </div>
+            <div class="figView"><span class="fa fa-eye"></span></div>
+            <div class="figType">1,900,000 Đ/tháng</div>
+          </div>
+          <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+          <div class="cardAddress">
+            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+          </div>
+          <ul class="cardFeat">
+            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+            <!--@*
+                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+          </ul>
+          <div class="clearfix"></div>
+        </a>
+      </div>
+      <div class="a-center clearfix" style="clear: left;">
+        <a class="view-more-room" href="javascript:;">Xem thêm</a>
+      </div>
+    </div>
+    <div class="row box-new-info">
+      <div class="section-title a-center">
+        <h2>
+          <a href="/collections">Tin tức</a>
+        </h2>
+        <p>Những tin tức chứng khoán,bất động sản nhanh nhất</p>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="article-item">
+          <div class="article-item__thumb">
+            <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
+
+                                <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
+
+                            </a>
+          </div>
+          <div class="article-item__content">
+            <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
+            <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
+            <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên
+              chính gian hàng online của Apple,...</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="article-item">
+          <div class="article-item__thumb">
+            <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
+
+                                <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
+
+                            </a>
+          </div>
+          <div class="article-item__content">
+            <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
+            <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
+            <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên
+              chính gian hàng online của Apple,...</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="article-item">
+          <div class="article-item__thumb">
+            <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
+
+                                <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
+
+                            </a>
+          </div>
+          <div class="article-item__content">
+            <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
+            <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
+            <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên
+              chính gian hàng online của Apple,...</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="article-item">
+          <div class="article-item__thumb">
+            <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
+
+                                <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
+
+                            </a>
+          </div>
+          <div class="article-item__content">
+            <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
+            <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
+            <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên
+              chính gian hàng online của Apple,...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="a-center clearfix">
+      <a class="view-more-room" href="javascript:;">Xem thêm</a>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<section class="people_say">
+  <div class="container">
+    <div class="row ">
+      <h2 class="people_say_title text-center">Khách hàng nói gì về Phòng Tốt ?</h2>
+      <p class="people_say_description text-center">Hơn 20.000 khách hàng của Phòng Tốt đã, đang và sẽ đồng hành cùng chúng tôi trong suốt hơn 8 năm qua sẽ nói cho bạn
+        biết tại sao họ chọn và luôn tin tưởng GreenSpace.</p>
+      <div id="owl-demo-people-say" class="owl-carousel owl-theme">
+        <div class="item">
+          <div class="new-item">
+            <div class="col-xs-12">
+              <div class="people-say-content">
+                <div class="people-img">
+                  <a href="#Nguyễn Thái Hà" title="Nguyễn Thái Hà"><img src="//bizweb.dktcdn.net/thumb/small/100/052/640/themes/517823/assets/people-ava-2.jpg?1493885669766" alt="Nguyễn Thái Hà"></a>
+                </div>
+                <div class="people-right">
+                  <h3 class="people-name">Nguyễn Thái Hà</h3>
+                  <p class="people-info">Kỹ sư</p>
+                  <p class="people-description">
+                    Thật tuyệt khi mua hàng tại Rengar, tôi cảm thấy mình được phục vụ vô cùng chu đáo và tận tình. Chắc chắn tôi sẽ quay lại
+                    mua hàng tại Rengar nhiều lần nữa. Chúc Rengar phát triển mạnh mẽ hơn nữa.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <div class="col-xs-12">
+              <div class="people-say-content">
+                <div class="people-img">
+                  <a href="#Vũ Thu Huyền" title="Vũ Thu Huyền"><img src="//bizweb.dktcdn.net/thumb/small/100/052/640/themes/517823/assets/people-ava-3.jpg?1493885669766" alt="Vũ Thu Huyền"></a>
+                </div>
+                <div class="people-right">
+                  <h3 class="people-name">Vũ Thu Huyền</h3>
+                  <p class="people-info">Ngân hàng</p>
+                  <p class="people-description">
+                    Tôi đã mua sản phẩm tại Rengar, điều tôi nhận thấy là phong cách phục vụ thân thiệt, tư vấn nhiệt tình khi chat của anh chị
+                    quản lý. Giá rất tốt vì Rengar luôn có chương trình giảm giá từ 10% đến 20%.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="new-item">
+            <div class="col-xs-12">
+              <div class="people-say-content">
+                <div class="people-img">
+                  <a href="#Vũ Thu Huyền" title="Vũ Thu Huyền"><img src="//bizweb.dktcdn.net/thumb/small/100/052/640/themes/517823/assets/people-ava-3.jpg?1493885669766" alt="Vũ Thu Huyền"></a>
+                </div>
+                <div class="people-right">
+                  <h3 class="people-name">Vũ Thu Huyền</h3>
+                  <p class="people-info">Ngân hàng</p>
+                  <p class="people-description">
+                    Tôi đã mua sản phẩm tại Rengar, điều tôi nhận thấy là phong cách phục vụ thân thiệt, tư vấn nhiệt tình khi chat của anh chị
+                    quản lý. Giá rất tốt vì Rengar luôn có chương trình giảm giá từ 10% đến 20%.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+        <h4 class="footer__col--title">Thông tin công ty</h4>
+        <ul class="footer__col--list">
+
+          <li><a href="/thong-tin-cong-ty">Thông tin công ty</a></li>
+
+          <li><a href="/gioi-thieu">Giới thiệu công ty</a></li>
+
+          <li><a href="/he-thong-cac-sieu-thi">Hệ thống các siêu thị</a></li>
+
+          <li><a href="/tuyen-dung">Tuyển dụng</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+        <h4 class="footer__col--title">Hỗ trợ khách hàng</h4>
+        <ul class="footer__col--list">
+
+          <li><a href="/lien-he">Liên hệ và góp ý</a></li>
+
+          <li><a href="/huong-dan-mua-hang-online">Hướng dẫn mua hàng online</a></li>
+
+          <li><a href="/huong-dan-mua-tra-gop">Hướng dẫn mua trả góp</a></li>
+
+          <li><a href="/quy-che-quan-ly-hoat-dong">Quy chế quản lý hoạt động</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+        <h4 class="footer__col--title">Chính sách mua hàng</h4>
+        <ul class="footer__col--list">
+
+          <li><a href="/quy-dinh-chinh-sach">Quy định, chính sách</a></li>
+
+          <li><a href="/chinh-sach-bao-hang-doi-tra">Chính sách bảo hàng - đổi trả</a></li>
+
+          <li><a href="/chinh-sach-hoi-vien">Chính sách hội viên</a></li>
+
+          <li><a href="/giao-hang-va-lap-dat">Giao hàng và lắp đặt</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+        <h4 class="footer__col--title">Liên hệ với chúng tôi</h4>
+        <div class="item-info">
+          <div class="item-info__icon">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+          </div>
+          <address>Địa chỉ: Tầng 4, Tòa Hà Nội Group 442 Đội Cấn, Ba Đình, HN</address>
+        </div>
+        <div class="item-info">
+          <div class="item-info__icon">
+            <i class="fa fa-mobile" aria-hidden="true"></i>
+          </div>
+          <p>Hotline 1: <a href="tel:">(04) 6674 2332</a></p>
+          <p class="visible-xs">Hotline 2: <a href="tel:1900 6750">1900 6750</a></p>
+        </div>
+        <div class="item-info visible-xs">
+          <div class="item-info__icon">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </div>
+          <p>Email: <a href="mailto:support@mobile.com">support@mobile.com</a></p>
+        </div>
+
+        <div class="cer-bct hidden-xs">
+          <a href="http://www.moit.gov.vn/vn/Pages/Trangchu.aspx">
+                            <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/bct.png?1496308470726" alt="Đã đăng ký bộ công thương">
+                        </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <div class="container text-center">
+      © Bản quyền thuộc về <a href="javascript:;" rel="nofollow">TT Team</a> - Cung cấp bởi <a href="">NamCkiku</a>
+    </div>
+  </div>
+</footer>
