@@ -10,5 +10,6 @@ namespace RealEstate.Service.IService
 {
     public interface IDistrictService : IService<District>
     {
+        IEnumerable<District> GetAllDistrict();
     }
 }

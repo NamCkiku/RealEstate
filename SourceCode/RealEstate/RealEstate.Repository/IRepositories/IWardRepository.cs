@@ -10,5 +10,6 @@ namespace RealEstate.Repository.IRepositories
 {
     public interface IWardRepository : IRepository<Ward>
     {
+        IEnumerable<Ward> GetAllWard();
     }
 }

@@ -10,5 +10,6 @@ namespace RealEstate.Service.IService
 {
     public interface IWardService : IService<Ward>
     {
+        IEnumerable<Ward> GetAllWard();
     }
 }

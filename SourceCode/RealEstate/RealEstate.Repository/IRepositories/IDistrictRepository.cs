@@ -10,5 +10,6 @@ namespace RealEstate.Repository.IRepositories
 {
     public interface IDistrictRepository : IRepository<District>
     {
+        IEnumerable<District> GetAllDistrict();
     }
 }
