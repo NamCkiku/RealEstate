@@ -804,6 +804,7 @@ html ul, html ol {
     left: 0;
     right: 0;
     top: 200px;
+    z-index:1;
 }
 
 .hero .box-search-room {

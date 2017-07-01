@@ -12,18 +12,6 @@
         itemsTablet: [767, 1], //2 items between 600 and 0
         itemsMobile: [640, 1] // itemsMobile disabled - inherit from itemsTablet option
     });
-    $("#owl-brand").owlCarousel({
-        navigation: false,
-        items: 6,
-        slideSpeed: 200,
-        paginationSpeed: 800,
-        rewindSpeed: 1000,
-        pagination: false,
-        autoPlay: 6000,
-        itemsCustom: [[480, 2], [320, 2], [768, 3], [767, 3], [991, 4], [1200, 6]],
-        responsive: true,
-        navigationText: false
-    });
     $("#owl-demo-people-say").owlCarousel({
         pagination: true,
         paginationNumbers: false,
