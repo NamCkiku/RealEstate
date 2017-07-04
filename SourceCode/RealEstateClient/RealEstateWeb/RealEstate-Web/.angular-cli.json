@@ -22,6 +22,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+        "../node_modules/alertifyjs/build/css/alertify.css",
         "../src/assets/Plugins/slidebar/slidebars.css",
         "../src/assets/css/RealEstate.css"
       ],
@@ -29,6 +30,7 @@
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/owl.carousel/dist/owl.carousel.min.js",
+        "../node_modules/alertifyjs/build/alertify.js",
         "../src/assets/Plugins/slidebar/slidebars.min.js",
         "../src/assets/js/common.js"
       ],
