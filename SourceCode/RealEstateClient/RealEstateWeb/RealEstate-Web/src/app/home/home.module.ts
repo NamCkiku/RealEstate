@@ -6,6 +6,7 @@ import { SearchComponent } from './search/search.component';
 import { RoomComponent } from './room/room.component';
 import { PostComponent } from './post/post.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
 export const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -37,7 +38,8 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ModalModule.forRoot(),
   ],
   declarations: [
     HomeComponent,
