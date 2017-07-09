@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace RealEstate.Api.Models.ViewModel
+namespace RealEstate.Entities.ModelView
 {
-    public class ProvinceViewModel
+    public class WardEntity
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public int CountryId { get; set; }
+        public int DistrictID { get; set; }
 
     }
 }

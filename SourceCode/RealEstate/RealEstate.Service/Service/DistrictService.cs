@@ -1,4 +1,5 @@
 ﻿using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Repository.Infrastructure;
 using RealEstate.Repository.IRepositories;
 using RealEstate.Service.BaseService;
@@ -20,9 +21,9 @@ namespace RealEstate.Service.Service
             this._districtRepository = districtRepository;
         }
 
-        public IEnumerable<District> GetAllDistrict()
+        public IEnumerable<DistrictEntity> GetAllDistrict()
         {
-            List<District> lstdistrict = new List<District>();
+            List<DistrictEntity> lstdistrict = new List<DistrictEntity>();
             try
             {
                 lstdistrict = _districtRepository.GetAllDistrict().ToList();

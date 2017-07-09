@@ -19,5 +19,8 @@ namespace RealEstate.Common.CachingProvider
 
         ///<summary>The Wards.</summary>
         public const string Wards = "Wards";
+
+        ///<summary>The Wards.</summary>
+        public const string WardsByDistrict = "WardsByDistrict";
     }
 }

@@ -1,4 +1,5 @@
 ﻿using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Repository.Infrastructure;
 using RealEstate.Repository.IRepositories;
 using RealEstate.Service.BaseService;
@@ -20,12 +21,26 @@ namespace RealEstate.Service.Service
             this._wardRepository = wardRepository;
         }
 
-        public IEnumerable<Ward> GetAllWard()
+        public IEnumerable<WardEntity> GetAllWard()
         {
-            List<Ward> lstward = new List<Ward>();
+            List<WardEntity> lstward = new List<WardEntity>();
             try
             {
                 lstward = _wardRepository.GetAllWard().ToList();
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
+            }
+            return lstward;
+        }
+
+        public IEnumerable<WardEntity> GetAllWardByDistrictId(int id)
+        {
+            List<WardEntity> lstward = new List<WardEntity>();
+            try
+            {
+                lstward = _wardRepository.GetAllWardByDistrictId(id).ToList();
             }
             catch (Exception ex)
             {

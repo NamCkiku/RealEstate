@@ -1,4 +1,5 @@
 ﻿using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Repository.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace RealEstate.Repository.IRepositories
 {
     public interface IDistrictRepository : IRepository<District>
     {
-        IEnumerable<District> GetAllDistrict();
+        IEnumerable<DistrictEntity> GetAllDistrict();
     }
 }

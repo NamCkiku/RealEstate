@@ -1,5 +1,6 @@
 ﻿using RealEstate.Common.Extensions.Data;
 using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Repository.Infrastructure;
 using RealEstate.Repository.IRepositories;
 using System;
@@ -17,17 +18,17 @@ namespace RealEstate.Repository.Repositories
         {
         }
 
-        public IEnumerable<Province> GetAllProvince()
+        public IEnumerable<ProvinceEntity> GetAllProvince()
         {
             try
             {
-                return DapperExtensions.QueryDapper<Province>("SELECT * FROM PROVINCE").ToList();
+                return DapperExtensions.QueryDapperStoreProc<ProvinceEntity>("sp_GetAllProvince").ToList();
 
             }
             catch (Exception ex)
             {
                 Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
-                return new List<Province>();
+                return new List<ProvinceEntity>();
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Service.BaseService;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace RealEstate.Service.IService
 {
     public interface IWardService : IService<Ward>
     {
-        IEnumerable<Ward> GetAllWard();
+        IEnumerable<WardEntity> GetAllWard();
+
+        IEnumerable<WardEntity> GetAllWardByDistrictId(int id);
     }
 }

@@ -10,3 +10,8 @@ System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Ward, RealEstate.
 Mapping types:
 List`1 -> List`1
 System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Ward, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.CountryViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+Logging Start2017-07-09 10:14:05,466 [13] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.ProvinceEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.ProvinceViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
