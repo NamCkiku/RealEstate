@@ -1,4 +1,5 @@
 ﻿using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Repository.Infrastructure;
 using RealEstate.Repository.IRepositories;
 using RealEstate.Service.BaseService;
@@ -20,9 +21,9 @@ namespace RealEstate.Service.Service
             this._provinceRepository = provinceRepository;
         }
 
-        public IEnumerable<Province> GetAllProvince()
+        public IEnumerable<ProvinceEntity> GetAllProvince()
         {
-            List<Province> lstprovince = new List<Province>();
+            List<ProvinceEntity> lstprovince = new List<ProvinceEntity>();
             try
             {
                 lstprovince = _provinceRepository.GetAllProvince().ToList();

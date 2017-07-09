@@ -109,7 +109,7 @@ namespace RealEstate.Api.Controllers
                     }
                     else
                     {
-                        var listProvince = _provinceService.GetAllProvince().OrderByDescending(x => x.SortOrder).ToList();
+                        var listProvince = _provinceService.GetAllProvince().ToList();
                         lstProvinceCache = Mapper.Map<List<ProvinceViewModel>>(listProvince);
                         MemoryCacheHelper.Add(MemoryCacheKey.Provinces, lstProvinceCache, DateTimeOffset.MaxValue);
                     }
@@ -151,7 +151,7 @@ namespace RealEstate.Api.Controllers
                     }
                     else
                     {
-                        var listDistrict = _districtService.GetAllDistrict().OrderByDescending(x => x.SortOrder).ToList();
+                        var listDistrict = _districtService.GetAllDistrict().ToList();
                         lstDistrictCache = Mapper.Map<List<DistrictViewModel>>(listDistrict);
                         MemoryCacheHelper.Add(MemoryCacheKey.Districts, lstDistrictCache, DateTimeOffset.MaxValue);
                     }
@@ -194,11 +194,45 @@ namespace RealEstate.Api.Controllers
                     }
                     else
                     {
-                        var listWard = _wardService.GetAllWard().OrderByDescending(x => x.SortOrder).ToList();
+                        var listWard = _wardService.GetAllWard().ToList();
                         lstWardCache = Mapper.Map<List<WardViewModel>>(listWard);
                         MemoryCacheHelper.Add(MemoryCacheKey.Wards, lstWardCache, DateTimeOffset.MaxValue);
                     }
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, lstWardCache);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+
+        /// <summary>
+        /// Hàm API lấy ra danh sách các xã phường theo district id.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/management/getallward</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/7/2017   created
+        /// </Modified>
+        [Route("getallwardbydistrictid/{id:int}")]
+        [CacheOutput(ClientTimeSpan = 100)]
+        public HttpResponseMessage GetAllWardByDistricId(HttpRequestMessage request, int id)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            List<WardViewModel> lstWardVM = null;
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var listWard = _wardService.GetAllWardByDistrictId(id).ToList();
+                    lstWardVM = Mapper.Map<List<WardViewModel>>(listWard);
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, lstWardVM);
 
                     return response;
                 });
