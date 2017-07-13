@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IRoomService : IService<Room>
+    public interface IRoomService : IBaseService<Room>
     {
         IEnumerable<Room> GetAllListRoom(int top);
 

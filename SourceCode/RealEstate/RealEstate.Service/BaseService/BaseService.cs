@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.BaseService
 {
-    public abstract class BaseService<T> : IService<T> where T : class
+    public abstract class BaseService<T> : IBaseService<T> where T : class
     {
         protected IRepository<T> _repository;
         protected IUnitOfWork _unitOfWork;

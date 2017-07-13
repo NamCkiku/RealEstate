@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IAnnouncementService : IService<Announcement>
+    public interface IAnnouncementService : IBaseService<Announcement>
     {
         Announcement Create(Announcement announcement);
 

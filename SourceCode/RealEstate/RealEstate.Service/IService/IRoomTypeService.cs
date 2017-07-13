@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IRoomTypeService : IService<RoomType>
+    public interface IRoomTypeService : IBaseService<RoomType>
     {
         IEnumerable<RoomType> GetAllRoomTypePaging(SearchRoomTypeEntity filter);
     }

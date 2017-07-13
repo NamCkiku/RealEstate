@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IProvinceService : IService<Province>
+    public interface IProvinceService : IBaseService<Province>
     {
         IEnumerable<ProvinceEntity> GetAllProvince();
     }

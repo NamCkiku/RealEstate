@@ -34,7 +34,7 @@ namespace RealEstate.Administrator.Controllers
             try
             {
                 HttpRequestBase request = this.HttpContext.Request;
-                var data = _provinceService.GetAllProvince().OrderByDescending(x => x.SortOrder);
+                var data = _provinceService.GetAllProvince();
                 var listProvinceVm = Mapper.Map<List<ProvinceViewModel>>(data);
                 jsonResult = Json(new { success = true, lstData = listProvinceVm }, JsonRequestBehavior.AllowGet);
             }
@@ -54,7 +54,7 @@ namespace RealEstate.Administrator.Controllers
             try
             {
                 HttpRequestBase request = this.HttpContext.Request;
-                var data = _districtService.GetAllDistrict().OrderByDescending(x => x.SortOrder);
+                var data = _districtService.GetAllDistrict();
                 var listDistrictVm = Mapper.Map<List<DistrictViewModel>>(data);
                 jsonResult = Json(new { success = true, lstData = listDistrictVm }, JsonRequestBehavior.AllowGet);
             }
@@ -74,7 +74,7 @@ namespace RealEstate.Administrator.Controllers
             try
             {
                 HttpRequestBase request = this.HttpContext.Request;
-                var data = _wardService.GetAllWard().OrderByDescending(x => x.SortOrder);
+                var data = _wardService.GetAllWard();
                 var listWardVm = Mapper.Map<List<WardViewModel>>(data);
                 jsonResult = Json(new { success = true, lstData = listWardVm }, JsonRequestBehavior.AllowGet);
             }

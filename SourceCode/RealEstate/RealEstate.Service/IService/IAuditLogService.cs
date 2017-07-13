@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IAuditLogService : IService<AuditLog>
+    public interface IAuditLogService : IBaseService<AuditLog>
     {
     }
 }

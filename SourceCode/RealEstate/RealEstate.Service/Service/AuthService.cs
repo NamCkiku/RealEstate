@@ -1,6 +1,7 @@
 ﻿using RealEstate.Entities.Entites;
 using RealEstate.Repository.Infrastructure;
 using RealEstate.Repository.IRepositories;
+using RealEstate.Service.BaseService;
 using RealEstate.Service.IService;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.Service
 {
-    public class AuthService : IAuthService
+    public class AuthService : BaseService<AuditLog>, IAuthService
     {
         private readonly IClientRepository _clientRepository;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        public AuthService(IClientRepository clientRepository, IRefreshTokenRepository refreshTokenRepository, IUnitOfWork unitOfWork)
+        public AuthService(IRepository<AuditLog> repository, IClientRepository clientRepository, IRefreshTokenRepository refreshTokenRepository, IUnitOfWork unitOfWork)
+            : base(repository, unitOfWork)
         {
             this._clientRepository = clientRepository;
             this._refreshTokenRepository = refreshTokenRepository;

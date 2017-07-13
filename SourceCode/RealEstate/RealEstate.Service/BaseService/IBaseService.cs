@@ -15,7 +15,7 @@ namespace RealEstate.Service.BaseService
     /// Name     Date         Comments
     /// namth  6/6/2017   created
     /// </Modified>
-    public interface IService<T> where T : class
+    public interface IBaseService<T> where T : class
     {
         IEnumerable<T> GetAll();
         T GetById(int id);

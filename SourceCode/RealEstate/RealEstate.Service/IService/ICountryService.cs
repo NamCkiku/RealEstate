@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface ICountryService : IService<Country>
+    public interface ICountryService : IBaseService<Country>
     {
         IEnumerable<Country> GetAllCountry();
     }
