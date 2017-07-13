@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService\BaseService.cs" />
-    <Compile Include="BaseService\IService.cs" />
+    <Compile Include="BaseService\IBaseService.cs" />
     <Compile Include="IService\IAnnouncementService.cs" />
     <Compile Include="IService\IAuditLogService.cs" />
     <Compile Include="IService\IAuthService.cs" />

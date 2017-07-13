@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IMoreInfomationService : IService<MoreInfomation>
+    public interface IMoreInfomationService : IBaseService<MoreInfomation>
     {
     }
 }

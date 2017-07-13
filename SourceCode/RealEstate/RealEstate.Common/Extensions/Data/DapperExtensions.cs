@@ -18,7 +18,9 @@ namespace RealEstate.Common.Extensions.Data
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                return conn.Query<T>(sql, param);
+                var result = conn.Query<T>(sql, param);
+                conn.Close();
+                return result;
             }
         }
         public static T QueryFirstOrDefault<T>(string sql, object parameters = null)
@@ -26,7 +28,9 @@ namespace RealEstate.Common.Extensions.Data
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                return conn.QueryFirstOrDefault<T>(sql, parameters);
+                var result = conn.QueryFirstOrDefault<T>(sql, parameters);
+                conn.Close();
+                return result;
             }
         }
         public static IEnumerable<T> QueryDapperStoreProc<T>(string store, object param = null)
@@ -34,7 +38,9 @@ namespace RealEstate.Common.Extensions.Data
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                return conn.Query<T>(store, param, commandType: CommandType.StoredProcedure);
+                var result = conn.Query<T>(store, param, commandType: CommandType.StoredProcedure);
+                conn.Close();
+                return result;
             }
         }
 
@@ -43,7 +49,42 @@ namespace RealEstate.Common.Extensions.Data
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                return conn.Execute(sql, param);
+                var result = conn.Execute(sql, param);
+                conn.Close();
+                return result;
+            }
+        }
+
+
+        public static async Task<IEnumerable<T>> QueryDapperAsync<T>(string sql, object param = null)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                var result = await conn.QueryAsync<T>(sql, param);
+                conn.Close();
+                return result;
+            }
+        }
+        public static async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object parameters = null)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                var result = await conn.QueryFirstOrDefaultAsync<T>(sql, parameters);
+                conn.Close();
+                return result;
+            }
+        }
+
+        public static async Task<int> ExecuteDapperAsync(string sql, object param = null)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                var result = await conn.ExecuteAsync(sql, param);
+                conn.Close();
+                return result;
             }
         }
     }

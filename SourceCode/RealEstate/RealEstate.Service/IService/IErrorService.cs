@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IErrorService : IService<Error>
+    public interface IErrorService : IBaseService<Error>
     {
     }
 }

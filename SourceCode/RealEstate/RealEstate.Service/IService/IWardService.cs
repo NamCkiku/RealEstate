@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.Service.IService
 {
-    public interface IWardService : IService<Ward>
+    public interface IWardService : IBaseService<Ward>
     {
         IEnumerable<WardEntity> GetAllWard();
 
