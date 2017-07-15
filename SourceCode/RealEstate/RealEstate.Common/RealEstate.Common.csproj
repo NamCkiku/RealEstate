@@ -75,6 +75,7 @@
     <Compile Include="Config\Config.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Core\PaginationSet.cs" />
+    <Compile Include="Enumerations\AuditLogType.cs" />
     <Compile Include="Extensions\Data\DapperExtensions.cs" />
     <Compile Include="Extensions\Data\DatabaseExtensions.cs" />
     <Compile Include="Extensions\Data\DataReaderExtensions.cs" />
