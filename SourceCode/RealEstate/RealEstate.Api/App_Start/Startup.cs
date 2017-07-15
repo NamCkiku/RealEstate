@@ -16,6 +16,8 @@ using System.Web.Http;
 using RealEstate.Repository.Infrastructure;
 using RealEstate.Repository.Repositories;
 using RealEstate.Service.Service;
+using System.Web.Mvc;
+using Autofac.Integration.Mvc;
 
 [assembly: OwinStartup(typeof(RealEstate.Api.Startup))]
 
@@ -58,6 +60,7 @@ namespace RealEstate.Api
                .AsImplementedInterfaces().InstancePerRequest();
 
             Autofac.IContainer container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
         }
     }

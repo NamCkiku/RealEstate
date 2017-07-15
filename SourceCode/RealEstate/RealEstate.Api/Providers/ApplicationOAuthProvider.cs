@@ -10,6 +10,7 @@ using RealEstate.Entities.Entites;
 using RealEstate.Service.IService;
 using RealEstate.Api.Infrastructure.Core;
 using System.Web;
+using RealEstate.Common.Enumerations;
 
 namespace RealEstate.Api.Providers
 {
@@ -73,7 +74,7 @@ namespace RealEstate.Api.Providers
                 auditlog.UserID = user.Id;
                 auditlog.CreatedBy = user.UserName;
                 auditlog.IPAddress = HttpContext.Current.Request.UserHostAddress;
-                auditlog.LogType = 2;
+                auditlog.LogType = (int)AuditLogType.Login;
                 auditlog.Description = "Đăng nhập thành công tại IP" + auditlog.IPAddress;
                 var service = ServiceFactory.Get<IAuditLogService>();
                 if (service != null)
