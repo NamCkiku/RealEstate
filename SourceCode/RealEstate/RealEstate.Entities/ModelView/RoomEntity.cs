@@ -76,5 +76,24 @@ namespace RealEstate.Entities.ModelView
         public bool isDelete { get; set; }
 
         public bool Status { get; set; }
+
+
+        public string FloorNumber { get; set; }
+
+        public string ToiletNumber { get; set; }
+
+        public string BedroomNumber { get; set; }
+
+        public string Compass { get; set; }
+
+        public decimal? ElectricPrice { get; set; }
+
+        public decimal? WaterPrice { get; set; }
+
+        public string Convenient { get; set; }
+
+        public string ProvinceName { get; set; }
+
+        public string Avatar { get; set; }
     }
 }
