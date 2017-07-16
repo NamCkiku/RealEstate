@@ -27,6 +27,7 @@ namespace RealEstate.Api.Mappings
                 cfg.CreateMap<WardEntity, WardViewModel>();
                 cfg.CreateMap<DistrictEntity, DistrictViewModel>();
                 cfg.CreateMap<ProvinceEntity, ProvinceViewModel>();
+                cfg.CreateMap<RoomEntity, RoomViewModel>();
             });
         }
     }
