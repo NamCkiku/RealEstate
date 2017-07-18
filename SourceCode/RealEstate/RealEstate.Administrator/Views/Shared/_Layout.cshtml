@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html ng-app="myApp" lang="en">
+@using RealEstate.Administrator.AntiForgeryToken
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +28,7 @@
     <link href="~/Content/css/formValidation.min.css" rel="stylesheet" />
 </head>
 <body>
+    <input id="antiForgeryToken" value="@AntiForgeryExtension.GetTokenHeaderValue()" type="hidden" />
     <section id="container">
         <!--header start-->
         @RenderPage("_HeaderAdmin.cshtml")

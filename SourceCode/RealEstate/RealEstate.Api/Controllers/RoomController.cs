@@ -162,7 +162,7 @@ namespace RealEstate.Api.Controllers
         [Route("getallroomfullsearch")]
         [CacheOutput(ClientTimeSpan = 100)]
         [HttpGet]
-        public HttpResponseMessage GetAllRoomFullSearch(HttpRequestMessage request, SearchRoomEntity filter, int page, int pageSize, string sort)
+        public HttpResponseMessage GetAllRoomFullSearch(HttpRequestMessage request, [FromUri] SearchRoomEntity filter, int page, int pageSize, string sort)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
             try
@@ -170,7 +170,7 @@ namespace RealEstate.Api.Controllers
                 responeResult = CreateHttpResponse(request, () =>
                 {
                     int totalRow = 0;
-                    var listRoom = _roomService.GetAllListRoomFullSearch(filter, page, pageSize, out totalRow, sort).OrderByDescending(x => x.DisplayOrder).ToList();
+                    var listRoom = _roomService.GetAllListRoomFullSearchStoreProc(filter, page, pageSize, out totalRow, sort).OrderByDescending(x => x.DisplayOrder).ToList();
 
                     var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
 
@@ -324,7 +324,7 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
-        
+
         /// <summary>
         /// Hàm xóa thông tin phòng.
         /// </summary>

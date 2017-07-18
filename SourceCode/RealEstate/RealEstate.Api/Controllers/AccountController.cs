@@ -63,6 +63,50 @@ namespace RealEstate.Api.Controllers
         {
             get { return Request.GetOwinContext().Authentication; }
         }
+
+
+        [Route("user/{id:guid}", Name = "GetUserById")]
+        public HttpResponseMessage GetUser(HttpRequestMessage request, string Id)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var result = UserManager.FindByIdAsync(Id);
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, result);
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+
+        }
+
+        [Route("user/{username}")]
+        public HttpResponseMessage GetUserByName(HttpRequestMessage request, string username)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var result = UserManager.FindByNameAsync(username);
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, result);
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+
+        }
+
         //
         // POST: /Account/Register
         [HttpPost]

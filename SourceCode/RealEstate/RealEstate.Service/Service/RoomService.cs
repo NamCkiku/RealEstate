@@ -11,6 +11,7 @@ using RealEstate.Entities.ModelView;
 using RealEstate.Repository.IRepositories;
 using RealEstate.Common.Helper;
 using RealEstate.Common.Constants;
+using System.Reflection;
 
 namespace RealEstate.Service.Service
 {
@@ -242,6 +243,24 @@ namespace RealEstate.Service.Service
                 string FunctionName = string.Format("UpdateRoom('{0}')", "");
                 Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
             }
+        }
+
+        public IEnumerable<RoomEntity> GetAllListRoomFullSearchStoreProc(SearchRoomEntity filter, int page, int pageSize, out int totalRow, string sort)
+        {
+            List<RoomEntity> lstroom = new List<RoomEntity>();
+            try
+            {
+                totalRow = 0;
+                lstroom = _roomRepository.GetAllRoomPagingFullSearch(filter, page, pageSize, out totalRow, sort).ToList();
+            }
+            catch (Exception ex)
+            {
+                string FunctionName = MethodInfo.GetCurrentMethod().Name;
+                Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
+                totalRow = 0;
+                return null;
+            }
+            return lstroom;
         }
     }
 }
