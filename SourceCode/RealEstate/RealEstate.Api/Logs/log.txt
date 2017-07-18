@@ -15,3 +15,4 @@ Logging Start2017-07-09 10:14:05,466 [13] ERROR RealEstate.Common.Logs.LogCommon
 Mapping types:
 List`1 -> List`1
 System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.ProvinceEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.ProvinceViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+Logging Start2017-07-18 09:14:00,901 [9] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetAllRoomPagingFullSearch' expects parameter '@RoomType', which was not supplied.GetAllRoomPagingFullSearch

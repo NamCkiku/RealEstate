@@ -13,10 +13,13 @@ namespace RealEstate.Api.Models.ViewModel
 
         [Required]
         [MaxLength(256)]
+        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Nhập tên phòng")]
         public string RoomName { set; get; }
 
         [Required]
         [MaxLength(256)]
+        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string Alias { set; get; }
 
         [Required]
@@ -37,6 +40,8 @@ namespace RealEstate.Api.Models.ViewModel
 
         [Required]
         [MaxLength(256)]
+        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.ImageUrl)]
         public string ThumbnailImage { set; get; }
 
         [Column(TypeName = "xml")]
@@ -50,6 +55,7 @@ namespace RealEstate.Api.Models.ViewModel
 
         [Required]
         [StringLength(20)]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
         [Required]
@@ -65,6 +71,7 @@ namespace RealEstate.Api.Models.ViewModel
 
         [Required]
         [StringLength(256)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]

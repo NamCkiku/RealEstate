@@ -83,6 +83,8 @@
     <Compile Include="Helper\Converter\TConverter.cs" />
     <Compile Include="Helper\DateTimeHelper.cs" />
     <Compile Include="Helper\ExcelHelper.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\GeneralHelper.cs" />
     <Compile Include="Helper\RegularExpressionsHelper.cs" />
     <Compile Include="Helper\StringExtensions.cs" />
     <Compile Include="Helper\StringHelper.cs" />
@@ -92,6 +94,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource\MsgResource.cs" />
     <Compile Include="SendMail\SendEmail.cs" />
+    <Compile Include="Validate\RegularExpressionsHelper.cs" />
+    <Compile Include="Validate\ValidationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

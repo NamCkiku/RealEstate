@@ -12,5 +12,6 @@ namespace RealEstate.Repository.IRepositories
     public interface IRoomRepository : IRepository<Room>
     {
         IEnumerable<RoomEntity> GetAllRoom();
+        IEnumerable<RoomEntity> GetAllRoomPagingFullSearch(SearchRoomEntity filter, int page, int pageSize, out int totalRow, string sort);
     }
 }
