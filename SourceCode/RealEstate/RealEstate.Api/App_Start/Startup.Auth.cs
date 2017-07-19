@@ -22,6 +22,10 @@ namespace RealEstate.Api
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+        public static GoogleOAuth2AuthenticationOptions googleAuthOptions { get; private set; }
+        public static FacebookAuthenticationOptions facebookAuthOptions { get; private set; }
+
         public static string PublicClientId { get; private set; }
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
@@ -70,6 +74,7 @@ namespace RealEstate.Api
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
 
             // Configure the application for OAuth based flow
             PublicClientId = "self";
@@ -77,7 +82,7 @@ namespace RealEstate.Api
             {
                 TokenEndpointPath = new PathString("/api/oauth/token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                //AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
@@ -85,6 +90,25 @@ namespace RealEstate.Api
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+
+            //Configure Google External Login
+            googleAuthOptions = new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "472411283152-cgt90mm2odl7jfdthq79kd7pk82enteq.apps.googleusercontent.com",
+                ClientSecret = "BI1J3VxMv4fQQG7suDCOfMBd",
+                Provider = new GoogleAuthProvider()
+            };
+            app.UseGoogleAuthentication(googleAuthOptions);
+
+            //Configure Facebook External Login
+            facebookAuthOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "596145737253141",
+                AppSecret = "ceca5ea262238393f4a9c0bb7c503b64",
+                Provider = new FacebookAuthProvider()
+            };
+            app.UseFacebookAuthentication(facebookAuthOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
@@ -112,9 +136,5 @@ namespace RealEstate.Api
 
             return owinManager;
         }
-
-        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
-        public static GoogleOAuth2AuthenticationOptions googleAuthOptions { get; private set; }
-        public static FacebookAuthenticationOptions facebookAuthOptions { get; private set; }
     }
 }
