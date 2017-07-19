@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C4059A86-2E15-441B-9D1D-F07D0392CD53}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Administrator", "RealEstate.Administrator\RealEstate.Administrator.csproj", "{89156B38-815A-4E22-9A01-B40C3820E403}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Test", "RealEstate.Test\RealEstate.Test.csproj", "{5A0FF374-51A5-4B96-B260-28A0CACB35FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Utilities", "RealEstate.Utilities\RealEstate.Utilities.csproj", "{C8F2A6BF-521C-4235-8836-412ED9FEF88C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{5A0FF374-51A5-4B96-B260-28A0CACB35FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A0FF374-51A5-4B96-B260-28A0CACB35FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A0FF374-51A5-4B96-B260-28A0CACB35FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F2A6BF-521C-4235-8836-412ED9FEF88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F2A6BF-521C-4235-8836-412ED9FEF88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F2A6BF-521C-4235-8836-412ED9FEF88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F2A6BF-521C-4235-8836-412ED9FEF88C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{0B429B99-AD8A-4FEA-BDD3-2223F537F380} = {C4059A86-2E15-441B-9D1D-F07D0392CD53}
 		{89156B38-815A-4E22-9A01-B40C3820E403} = {C4059A86-2E15-441B-9D1D-F07D0392CD53}
 		{5A0FF374-51A5-4B96-B260-28A0CACB35FC} = {82342D62-C102-4D5B-98F8-83894032CA7F}
+		{C8F2A6BF-521C-4235-8836-412ED9FEF88C} = {4C462DF4-186C-49E8-B838-37E6641E4870}
 	EndGlobalSection
 EndGlobal
