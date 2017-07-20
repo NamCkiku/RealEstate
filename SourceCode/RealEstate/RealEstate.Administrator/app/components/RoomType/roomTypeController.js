@@ -172,6 +172,7 @@
                 $scope.roomType.UpdatedDate = BaseService.formatDate($scope.roomType.UpdatedDate);
             }
             else {
+                $scope.roomType = {}
             }
             $scope.ok = function () {
                 var myBlockUI = blockUI.instances.get('BlockUIFrmRoomType');

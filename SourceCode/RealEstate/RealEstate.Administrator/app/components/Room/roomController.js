@@ -84,6 +84,7 @@
                 if (respone.data.success == true) {
                     $scope.data.lstDistrict = $filter('filter')(respone.data.lstData, { ProvinceId: id }, true);
                     $scope.isDistrict = false;
+                    $scope.data.lstWard = [];
                     myBlockUI.stop();
                 } else {
                     myBlockUI.stop();

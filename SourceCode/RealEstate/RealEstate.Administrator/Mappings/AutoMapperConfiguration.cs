@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RealEstate.Administrator.Models.ViewModel;
 using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,12 @@ namespace RealEstate.Administrator.Mappings
                 cfg.CreateMap<Ward, WardViewModel>();
                 cfg.CreateMap<RoomType, RoomTypeViewModel>();
                 cfg.CreateMap<Room, RoomViewModel>();
+
+
+                cfg.CreateMap<WardEntity, WardViewModel>();
+                cfg.CreateMap<DistrictEntity, DistrictViewModel>();
+                cfg.CreateMap<ProvinceEntity, ProvinceViewModel>();
+                cfg.CreateMap<RoomEntity, RoomViewModel>();
             });
         }
     }

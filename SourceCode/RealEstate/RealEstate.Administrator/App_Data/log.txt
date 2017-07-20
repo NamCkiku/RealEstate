@@ -1,2 +1,11 @@
 Logging Start2017-06-23 22:20:20,111 [10] ERROR RealEstate.Common.Logs.LogCommon - dâsdas
-Logging StartLogging End
+Logging StartLogging EndLogging Start2017-07-20 16:33:22,290 [20] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.ProvinceEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Administrator.Models.ViewModel.ProvinceViewModel, RealEstate.Administrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-07-20 16:33:29,828 [19] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.DistrictEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Administrator.Models.ViewModel.DistrictViewModel, RealEstate.Administrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
