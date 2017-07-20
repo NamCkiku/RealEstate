@@ -205,12 +205,12 @@ namespace RealEstate.Common.Html.CodeFormatter
 
 			sb = new StringBuilder();
 			
-			if (embedStyleSheet)
-			{
-				sb.AppendFormat("<style type=\"{0}\">\n",MimeTypes.TextCss);
-				sb.Append(GetCssString());
-				sb.Append("</style>\n");
-			}
+			//if (embedStyleSheet)
+			//{
+			//	sb.AppendFormat("<style type=\"{0}\">\n",MimeTypes.TextCss);
+			//	sb.Append(GetCssString());
+			//	sb.Append("</style>\n");
+			//}
 
 			if (lineNumbers || alternate) //we have to process the code line by line
 			{

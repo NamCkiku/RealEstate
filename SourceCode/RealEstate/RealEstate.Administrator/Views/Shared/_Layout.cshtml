@@ -26,6 +26,8 @@
     <link href="~/bower_components/kendo-ui/styles/kendo.dataviz.min.css" rel="stylesheet" />
     <link href="~/bower_components/kendo-ui/styles/kendo.dataviz.default.min.css" rel="stylesheet" />
     <link href="~/Content/css/formValidation.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/stimulsoft/stimulsoft.designer.office2013.whiteblue.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/stimulsoft/stimulsoft.viewer.office2013.whiteblue.css" rel="stylesheet" />
 </head>
 <body>
     <input id="antiForgeryToken" value="@AntiForgeryExtension.GetTokenHeaderValue()" type="hidden" />
@@ -53,6 +55,9 @@
     <script class="include" type="text/javascript" src="~/Content/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="~/Content/js/jquery.scrollTo.min.js"></script>
     <script src="~/bower_components/toastr/toastr.js"></script>
+    <script src="~/Content/Plugins/stimulsoft/stimulsoft.reports.js"></script>
+    <script src="~/Content/Plugins/stimulsoft/stimulsoft.viewer.js"></script>
+    <script src="~/Content/Plugins/stimulsoft/stimulsoft.designer.js"></script>
     <!--common script for all pages-->
     <script src="~/Content/js/common-scripts.js"></script>
     <script src="~/Content/js/formValidation.min.js"></script>
@@ -75,6 +80,8 @@
     <script src="~/app/shared/services/BaseService.js"></script>
     <script src="~/app/components/Room/roomController.js"></script>
     <script src="~/app/components/RoomType/roomTypeController.js"></script>
+    <script src="~/app/components/Reports/viewerController.js"></script>
+    <script src="~/app/components/Reports/designerController.js"></script>
     @*@RenderSection("scripts", false)
         {
         }*@

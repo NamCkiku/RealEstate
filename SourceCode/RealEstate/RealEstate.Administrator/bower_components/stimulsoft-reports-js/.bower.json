@@ -1,0 +1,33 @@
+{
+  "name": "stimulsoft-reports-js",
+  "version": "2017.1.10",
+  "description": "Stimulsoft Reports.JS is a reporting tool for Node.js",
+  "main": "index.js",
+  "authors": [
+    "Stimulsoft"
+  ],
+  "license": "Closed Source",
+  "keywords": [
+    "Stimulsoft",
+    "Reports",
+    "Stimulsoft.Reports.JS",
+    "Reporting tool"
+  ],
+  "homepage": "https://github.com/stimulsoft/Reports.JS",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "2017.1.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2017.1.10",
+    "commit": "f1b2d0c73a153bba7b3cc776ff6191a125eef222"
+  },
+  "_source": "https://github.com/stimulsoft/Reports.JS.git",
+  "_target": "~2017.1.10",
+  "_originalSource": "stimulsoft-reports-js"
+}

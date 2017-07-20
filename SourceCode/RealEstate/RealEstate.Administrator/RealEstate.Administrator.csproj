@@ -214,6 +214,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RoomTypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -238,6 +239,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\components\Reports\designerController.js" />
+    <Content Include="app\components\Reports\viewerController.js" />
     <Content Include="app\components\RoomType\roomTypeController.js" />
     <Content Include="app\components\Room\roomController.js" />
     <Content Include="app\shared\filters\dateFilter.js" />
@@ -1355,6 +1358,8 @@
     <Content Include="bower_components\kendo-ui\styles\Uniform\sprite_2x.png" />
     <Content Include="bower_components\kendo-ui\styles\Uniform\sprite_kpi.png" />
     <Content Include="bower_components\kendo-ui\styles\Uniform\sprite_kpi_2x.png" />
+    <Content Include="bower_components\stimulsoft-reports-js\index.js" />
+    <Content Include="bower_components\stimulsoft-reports-js\stimulsoft.reports.js" />
     <Content Include="bower_components\toastr\toastr.css" />
     <Content Include="bower_components\toastr\toastr.js" />
     <Content Include="bower_components\toastr\toastr.min.css" />
@@ -1595,6 +1600,11 @@
     <Content Include="Content\Plugins\Bootstrap\ui-bootstrap-tpls.min.js" />
     <Content Include="Content\Plugins\Bootstrap\ui-bootstrap.js" />
     <Content Include="Content\Plugins\Bootstrap\ui-bootstrap.min.js" />
+    <Content Include="Content\Plugins\stimulsoft\stimulsoft.designer.js" />
+    <Content Include="Content\Plugins\stimulsoft\stimulsoft.designer.office2013.whiteblue.css" />
+    <Content Include="Content\Plugins\stimulsoft\stimulsoft.reports.js" />
+    <Content Include="Content\Plugins\stimulsoft\stimulsoft.viewer.js" />
+    <Content Include="Content\Plugins\stimulsoft\stimulsoft.viewer.office2013.whiteblue.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2613,6 +2623,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Room.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\stimulsoft-reports-js\.bower.json" />
+    <Content Include="bower_components\stimulsoft-reports-js\bower.json" />
+    <Content Include="bower_components\stimulsoft-reports-js\LICENSE.md" />
+    <Content Include="bower_components\stimulsoft-reports-js\package.json" />
+    <Content Include="bower_components\stimulsoft-reports-js\README.md" />
+    <Content Include="bower_components\stimulsoft-reports-js\THIRD-PARTY.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportTemplates\Report.mrt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportTemplates\Demo.json" />
+    <Content Include="ReportTemplates\SimpleList.mrt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Designer.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
