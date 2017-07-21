@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C4059A86-2E15-441B-9D1D-F07D0392CD53}"
 EndProject
@@ -28,6 +28,24 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Test", "RealEstate.Test\RealEstate.Test.csproj", "{5A0FF374-51A5-4B96-B260-28A0CACB35FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Utilities", "RealEstate.Utilities\RealEstate.Utilities.csproj", "{C8F2A6BF-521C-4235-8836-412ED9FEF88C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{16224C39-4E11-4AC5-B211-F5C221AC613B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\NamCkiku\BA_XeChieuVe_Web\SourceCode\BA_WebXCV\.nuget\NuGet.Config = ..\..\..\..\NamCkiku\BA_XeChieuVe_Web\SourceCode\BA_WebXCV\.nuget\NuGet.Config
+		..\..\..\..\NamCkiku\BA_XeChieuVe_Web\SourceCode\BA_WebXCV\.nuget\NuGet.exe = ..\..\..\..\NamCkiku\BA_XeChieuVe_Web\SourceCode\BA_WebXCV\.nuget\NuGet.exe
+		..\..\..\..\NamCkiku\BA_XeChieuVe_Web\SourceCode\BA_WebXCV\.nuget\NuGet.targets = ..\..\..\..\NamCkiku\BA_XeChieuVe_Web\SourceCode\BA_WebXCV\.nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{51801627-9B12-4191-86CA-77EEFA16E257}"
+	ProjectSection(SolutionItems) = preProject
+		Library\Kendo.Mvc.dll = Library\Kendo.Mvc.dll
+		Library\Stimulsoft.Base.dll = Library\Stimulsoft.Base.dll
+		Library\Stimulsoft.Controls.dll = Library\Stimulsoft.Controls.dll
+		Library\Stimulsoft.Controls.Win.dll = Library\Stimulsoft.Controls.Win.dll
+		Library\Stimulsoft.Report.dll = Library\Stimulsoft.Report.dll
+		Library\Stimulsoft.Report.Mvc.dll = Library\Stimulsoft.Report.Mvc.dll
+		Library\Stimulsoft.Report.Win.dll = Library\Stimulsoft.Report.Win.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
