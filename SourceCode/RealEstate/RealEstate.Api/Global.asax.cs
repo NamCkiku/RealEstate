@@ -1,4 +1,5 @@
 ﻿using RealEstate.Api.Mappings;
+using RealEstate.Api.Quartz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace RealEstate.Api
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MvcHandler.DisableMvcResponseHeader = true;
+            JobScheduler.Start();
         }
         protected void Application_PreSendRequestHeaders()
 
