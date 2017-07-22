@@ -33,7 +33,27 @@
                 <div class="collapse navbar-collapse nav-menu">
                     <ul class="nav navbar-nav navbar-left hidden-sm">
                         <li>
-                            <a href="">Tất Cả Phòng Trọ</a>
+                            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true">
+                                Tất Cả Phòng Trọ
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="javascript:;">Phòng trọ</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Văn Phòng</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Ở ghép</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Chung cư</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Mặt đường</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a target="_blank" href="#">Nạp Coin</a>
@@ -929,6 +949,33 @@
 
                 </div>
             </div>
+            <div class="row">
+                <div class="ads_payment">
+                    <div class="b_footer_ads">
+                        <a title="Google Play" href="#"><img src="img/google_play.png" alt="google_play"></a>
+                        <a title="App Store" href="#"><img src="img/app_store.png" alt="app_store"></a>
+                    </div>
+                    <div class="payment">
+                        <ul>
+                            <li>
+                                <a class="visa active" href="#" title="Visa"><img src="img/ads_visa.png" alt="Visa"></a>
+                            </li>
+                            <li>
+                                <a class="masterCard active" href="#" title="MasterCard"><img src="img/ads_meastro.png" alt="MasterCard"></a>
+                            </li>
+                            <li>
+                                <a class="cirrus active" href="#" title="Cirrus"><img src="img/ads_cirrus.png" alt="Cirrus"></a>
+                            </li>
+                            <li>
+                                <a class="discover active" href="#" title="Discover"><img src="img/ads_discover.png" alt="Discover"></a>
+                            </li>
+                            <li>
+                                <a class="bank active" href="#" title="Bank"><img src="img/ads_bank.png" alt="Bank"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="copyright">
             <div class="container text-center">
@@ -936,5 +983,27 @@
             </div>
         </div>
     </footer>
+    <style>
+        .ads_payment {
+            clear: both;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .b_footer_ads {
+            display: inline-block;
+            float: left;
+        }
+            .b_footer_ads > a {
+                margin-right: 15px;
+            }
+        .payment {
+            float: left;
+            margin-top: 11px;
+        }
+            .payment > ul li {
+                display: inline-block;
+                margin: 0 2px;
+            }
+    </style>
 </body>
 </html>
