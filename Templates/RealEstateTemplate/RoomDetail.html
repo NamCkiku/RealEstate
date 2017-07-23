@@ -1,0 +1,1452 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Phòng Tốt</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="Plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="Plugins/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="Plugins/slidebar/slidebars.css" rel="stylesheet" />
+    <link href="Plugins/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="Plugins/PhotoSwipe/dist/photoswipe.css" rel="stylesheet" />
+    <link href="Plugins/PhotoSwipe/dist/default-skin/default-skin.css" rel="stylesheet" />
+    <link href="css/RealEstate.css" rel="stylesheet" />
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="Plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="Plugins/slidebar/slidebars.min.js"></script>
+    <script src="Plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+    <script src="Plugins/PhotoSwipe/dist/photoswipe.min.js"></script>
+    <script src="Plugins/PhotoSwipe/dist/photoswipe-ui-default.min.js"></script>
+    <script src="js/common.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeERa22t2lASaDOgxzPMZe1Fkm3ePJ7ok&libraries=places"
+            type="text/javascript"></script>
+</head>
+<body>
+    <header id="header" class="header-top">
+        <nav class="navbar horizontal-navbar header-nav ng-scope">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed sb-toggle-left" data-toggle="offcanvas" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img class="img-responsive" style="height:40px" src="img/logo.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse nav-menu">
+                    <ul class="nav navbar-nav navbar-left hidden-sm">
+                        <li>
+                            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true">
+                                Tất Cả Phòng Trọ
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="javascript:;">Phòng trọ</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Văn Phòng</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Ở ghép</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Chung cư</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Mặt đường</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a target="_blank" href="#">Nạp Coin</a>
+                        </li>
+                        <li>
+                            <a href="">Bản đồ</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right nav-menu">
+                        <li>
+                            <a href="javascript: void(0);" class="alert-notifications notifications dd" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-bell-o" style="font-size:18px"></i>
+                                <span class="badge number">2</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-notifications">
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                        Có 18 vị trí mới hấp dẫn cho bạn
+                                        <span class="small italic">(34 phút)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                        Có 18 vị trí mới hấp dẫn cho bạn
+                                        <span class="small italic">(34 phút)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true">
+                                Tài khoản
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="javascript:;" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-toggle="modal" data-target="#myModal1">Đăng Ký</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true" style="margin-top:5px;">
+                                <img class="avatar agentAvatarImg" style="width:50px;" src="/img/boy-512.png" />
+                                NamCkiku
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-lg fa-user"></i>Tài Khoản</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa fa-lg fa-sign-out fa-fw"></i>Thoát</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="horizontal-navbar-create-room">
+                            <a class="btn-addroom" href="javascript: void(0);"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="sb-slidebar sb-left sb-style-overlay hidden-sm hidden-md hidden-lg" style="margin-left: -20%;">
+                    <div id="box-action-mobile">
+                        <div id="box-tgnavbotton" class="navbar navbar-default hidden-sm hidden-md hidden-lg">
+                            <button aria-controls="navbar-collapse-btp" class="navbar-toggle sb-toggle-left" data-toggle="offcanvas" data-target=".navmenu">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="nav-menumobile">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="">Tất Cả Phòng Trọ</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">Nạp Coin</a>
+                            </li>
+                            <li>
+                                <a href="">Bản đồ</a>
+                            </li>
+                            <li>
+                                <a class="alert-notifications notifications dd" href="#" data-original-title="" title="">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span style="display: none" class="number">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Nhập</a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">Đăng Ký</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="clearfix"></div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header popup_header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title popup_title" id="messageDel">
+                            <img src="img/logo.png" />
+                        </h4>
+                    </div>
+                    <div class="line_orn"></div>
+                    <div class="modal-body login">
+                        <div class="box">
+                            <form class="content" id="user_menu_open">
+                                <div class="form loginBox" style="margin-top:10px;">
+                                    <div id="formLogin" class="">
+                                        <div class="login-alert">Tài khoản mật khẩu không chính xác</div>
+                                        <div class="form-group no-padding">
+                                            <input id="email"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                                   data-fv-emailaddress="true"
+                                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                                   class="form-control"
+                                                   type="email"
+                                                   placeholder="Tên tài khoản"
+                                                   name="email">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="password"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                                   data-fv-stringlength="true"
+                                                   data-fv-stringlength-min="6"
+                                                   data-fv-stringlength-message="Mật khẩu phải ít nhất 6 kí tự"
+                                                   class="form-control"
+                                                   type="password"
+                                                   placeholder="Mật khẩu"
+                                                   name="password">
+
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="wpresidence_button" style="width:100%">Đăng nhập</button>
+                                </div>
+                                <div class="login-links">
+                                    <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
+                                    <div class="division">
+                                        <div class="line l"></div>
+                                        <span>Hoặc</span>
+                                        <div class="line r"></div>
+                                    </div>
+                                    <div id="facebookloginsidebar_topbar" href="" data-social="facebook">Đăng nhập với Facebook</div>
+                                    <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
+                                    <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer login">
+                        <div class="forgot login-footer" style="display: block;">
+                            <span>
+                                <a href="">Bạn chưa có tài khoản?</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header popup_header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title popup_title" id="messageDel">
+                            <img src="img/logo.png" />
+                        </h4>
+                    </div>
+                    <div class="line_orn"></div>
+                    <div class="modal-body login">
+                        <div class="box">
+                            <form class="content" id="user_menu_open">
+                                <div class="form loginBox" style="margin-top:10px;">
+                                    <div id="formRegister" class="">
+                                        <div class="login-alert">Không đúng định dạng</div>
+                                        <div class="form-group no-padding">
+                                            <input id="email"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập tên của bạn"
+                                                   ng-model="accountRegister.FullName"
+                                                   class="form-control"
+                                                   type="text"
+                                                   placeholder="Tên hiển thị"
+                                                   name="FullName">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input data-fv-notempty="true"
+                                                   id="file-upload"
+                                                   data-fv-notempty-message="Chọn ảnh đại diện của bạn"
+                                                   ng-model="accountRegister.Avatar"
+                                                   class="form-control"
+                                                   type="file"
+                                                   placeholder="Tên hiển thị"
+                                                   name="Avatar">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="email"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                                   data-fv-emailaddress="true"
+                                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                                   ng-model="accountRegister.Email"
+                                                   class="form-control"
+                                                   type="text"
+                                                   placeholder="Email"
+                                                   name="Email">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="password"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                                   ng-model="accountRegister.Password"
+                                                   class="form-control"
+                                                   type="password"
+                                                   placeholder="Mật khẩu"
+                                                   name="Password">
+
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="ConfirmPassword"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                                   ng-model="accountRegister.ConfirmPassword"
+                                                   class="form-control"
+                                                   type="password"
+                                                   placeholder="Nhập lại mật khẩu"
+                                                   name="ConfirmPassword">
+
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input type="checkbox"
+                                                   ng-model="accountRegister.Terms"
+                                                   name="terms"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Bạn phải đồng ý với điều khoản của chúng tôi"
+                                                   id="user_terms_register_topbar">
+                                            <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
+                                        </div>
+                                        <button type="submit" class="wpresidence_button" style="width:100%">Đăng ký</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer login">
+                        <div class="forgot login-footer" style="display: block;">
+                            <a href="">Bạn đã có tài khoản?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="clearfix"></div>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="breadcrumbs">
+                        <ul class="breadcrumb">
+                            <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+                            <li><a href="/">Phòng</a> <span class="divider"></span></li>
+                            <li>Cho thuê phòng trọ tại Thái Thịnh Đống Đa Hà Nội</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <div class="real-estate">
+                        <div class="real-estate-detail">
+                            <h1 class="title">Cho thuê phòng trọ tại Thái Thịnh Đống Đa Hà Nội</h1>
+                            <div class="main-info">
+                                <div class="col-md-8 left-info nopadding-xs no-padding-left">
+                                    <div id="carousel-listing" class="carousel slide post-carusel" data-ride="carousel" data-interval="false">
+                                        <div class="carousel-inner my-gallery">
+                                            <div class="item videoitem active">
+                                                <div style="max-width:100%;" class="video">
+                                                    <iframe id="player_2" title="YouTube video player" src="http://www.youtube.com/embed/FjU_x1106pg?wmode=transparent&amp;rel=0" allowfullscreen=""></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <a href="http://wpresidence.net/wp-content/uploads/2017/01/open-plan-living-room-decor-ideas-2015-design-white-sofa-large-glass-windows-with-amazing-view-stainless-table-lamp-2015-living-room-design-ideas-cream-fur-rug-beautiful-living-room-furniture.jpg" rel="prettyPhoto" class="prettygalery">
+                                                    <img src="http://wpresidence.net/wp-content/uploads/2017/01/open-plan-living-room-decor-ideas-2015-design-white-sofa-large-glass-windows-with-amazing-view-stainless-table-lamp-2015-living-room-design-ideas-cream-fur-rug-beautiful-living-room-furniture-835x467.jpg" data-slider-no="1" alt="" class="img-responsive">
+                                                </a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="http://wpresidence.net/wp-content/uploads/2014/06/demo21.jpg" title="Close to business center." rel="prettyPhoto" class="prettygalery">
+                                                    <img src="http://wpresidence.net/wp-content/uploads/2014/06/demo21-810x467.jpg" data-slider-no="2" alt="" class="img-responsive">
+                                                </a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="http://wpresidence.net/wp-content/uploads/2014/06/file1051278879900.jpg" title="Apartment building view." rel="prettyPhoto" class="prettygalery">
+                                                    <img src="http://wpresidence.net/wp-content/uploads/2014/06/file1051278879900-810x467.jpg" data-slider-no="3" alt="" class="img-responsive">
+                                                </a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="http://wpresidence.net/wp-content/uploads/2014/06/white.jpg" title="" rel="prettyPhoto" class="prettygalery">
+                                                    <img src="http://wpresidence.net/wp-content/uploads/2014/06/white-810x467.jpg" data-slider-no="4" alt="" class="img-responsive  ">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                            <!-- Background of PhotoSwipe.
+                                            It's a separate element, as animating opacity is faster than rgba(). -->
+                                            <div class="pswp__bg"></div>
+
+                                            <!-- Slides wrapper with overflow:hidden. -->
+                                            <div class="pswp__scroll-wrap">
+
+                                                <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+                                                <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+                                                <div class="pswp__container">
+                                                    <div class="pswp__item"></div>
+                                                    <div class="pswp__item"></div>
+                                                    <div class="pswp__item"></div>
+                                                </div>
+
+                                                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                                                <div class="pswp__ui pswp__ui--hidden">
+
+                                                    <div class="pswp__top-bar">
+
+                                                        <!--  Controls are self-explanatory. Order can be changed. -->
+
+                                                        <div class="pswp__counter"></div>
+
+                                                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                                                        <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                                                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                                                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                                                        <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                                                        <!-- element will get class pswp__preloader--active when preloader is running -->
+                                                        <div class="pswp__preloader">
+                                                            <div class="pswp__preloader__icn">
+                                                                <div class="pswp__preloader__cut">
+                                                                    <div class="pswp__preloader__donut"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                                        <div class="pswp__share-tooltip"></div>
+                                                    </div>
+
+                                                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+                                                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+                                                    <div class="pswp__caption">
+                                                        <div class="pswp__caption__center"></div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="carusel-back"></div>
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel-listing" data-video_data="youtube" data-video_id="FjU_x1106pg" data-slide-to="0" class="video_thumb_force">
+                                                <img src="http://img.youtube.com/vi/FjU_x1106pg/0.jpg" alt="video_thumb" class="img-responsive active">
+                                                <span class="estate_video_control"><i class="fa fa-play"></i> </span>
+                                            </li>
+                                            <li data-target="#carousel-listing" data-slide-to="1">
+                                                <img src="http://wpresidence.net/wp-content/uploads/2017/01/open-plan-living-room-decor-ideas-2015-design-white-sofa-large-glass-windows-with-amazing-view-stainless-table-lamp-2015-living-room-design-ideas-cream-fur-rug-beautiful-living-room-furniture-143x83.jpg" alt="slider">
+                                            </li>
+                                            <li data-target="#carousel-listing" data-slide-to="2" class="">
+                                                <img src="http://wpresidence.net/wp-content/uploads/2014/06/demo21-143x83.jpg" alt="slider">
+                                            </li>
+                                            <li data-target="#carousel-listing" data-slide-to="3" class="">
+                                                <img src="http://wpresidence.net/wp-content/uploads/2014/06/file1051278879900-143x83.jpg" alt="slider">
+                                            </li>
+                                            <li data-target="#carousel-listing" data-slide-to="4" class=" ">
+                                                <img src="http://wpresidence.net/wp-content/uploads/2014/06/white-143x83.jpg" alt="slider">
+                                            </li>
+                                        </ol>
+                                        <ol class="carousel-round-indicators">
+                                            <li data-target="#carousel-listing" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carousel-listing" data-slide-to="1" class=""></li>
+                                            <li data-target="#carousel-listing" data-slide-to="2" class=""></li>
+                                            <li data-target="#carousel-listing" data-slide-to="3" class=""></li>
+                                            <li data-target="#carousel-listing" data-slide-to="4" class=""></li>
+                                        </ol>
+                                        <div class="caption-wrapper">
+                                            <span data-slide-to="0" class="">Video</span><span data-slide-to="1" class="active"></span><span data-slide-to="2" class=""> Close to business center.</span><span data-slide-to="3" class=""> Apartment building view.</span><span data-slide-to="4" class=""> </span> <div class="caption_control"></div>
+                                        </div>
+
+                                        <a class="left carousel-control" href="#carousel-listing" data-slide="prev">
+                                            <i cla
+                                            <i class="fa fa-angle-left"></i>
+                                        </a>
+                                        <a class="right carousel-control" href="#carousel-listing" data-slide="next">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="room-detail-info margin-bottom-15">
+                                        <div class="address">
+                                            <span class="btn info-label">Địa chỉ</span>
+                                            <a class="" href="">Thái Thịnh Đống Đa Hà Nội</a>
+                                        </div>
+                                        <div class="size">
+                                            <span class="btn info-label">Diện tích</span>
+                                            <a href="" class="btn info-data">20m<sup>2</sup></a>
+                                            <span class="btn info-label">Loại phòng</span>
+                                            <a href="">Phòng trọ</a>
+                                        </div>
+                                        <div class="vs">
+                                            <span class="btn info-label">Vệ sinh</span>
+                                            <a href="" class="btn info-data">Khép kín</a>
+                                            <span class="btn info-label">Số người ở</span>
+                                            <a href="">2 người</a>
+                                        </div>
+                                        <div class="type">
+                                            <span class="btn info-label">Giá điện</span>
+                                            <a href="" class="btn info-data">30,000 Nghìn/số</a>
+                                            <span class="btn info-label">Giá nước</span>
+                                            <a href="">30,000 Nghìn/số</a>
+                                        </div>
+                                        <div class="type">
+                                            <span class="btn info-label">Tầng</span>
+                                            <a href="" class="btn info-data">Tầng 3</a>
+                                            <span class="btn info-label">Số người ở</span>
+                                            <a href="">3 người</a>
+                                        </div>
+                                        <div class="Compass">
+                                            <span class="btn info-label">Tiện ích</span>
+                                            <a class="" href="">Điều hòa,thang máy,internet,chỗ để xe</a>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-md-4 no-padding margin-bottom-10">
+                                    <div class="info-contact">
+                                        <div class="agentAvatar">
+                                            <a href="#">
+                                                <img class="avatar agentAvatarImg" src="img/boy-512.png" alt="Rust Cohle">
+                                            </a>
+                                        </div>
+                                        <div class="info-boss">
+                                            <div class="info-boss-name" style="padding-bottom: 5px;">
+                                                <a href="#"><strong class="info-strong-name">Trần Hoàng Nam</strong></a>
+                                            </div>
+                                            <div class="info-boss-address">
+                                                <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-adress">Ngọc Lịch Trưng Trắc Văn Lâm Hưng Yên</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-price">
+                                            <span>3,000,000 Đ/Tháng</span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="info-help" style="padding: 10px 10px 0;">
+                                        <div class="info-help-phone" style="margin-bottom: 10px;">
+                                            <a id="show_phone_bnt" class="btn btn-primary btn-block">
+                                                <i style="margin-right: 10px;" class="fa fa-phone"></i><span>Nhấn để hiện số điện thoại</span>
+                                            </a>
+                                            <h4 style="text-align: center;padding: 12.5px;"><strong>0976207749</strong></h4>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                    <div class="quick-fill hidden-xs">
+                                        <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="font-weight:bold">Thuê phòng an toàn</span></div>
+                                        <ul style="padding-left:15px" class="text-justify">
+                                            <li>
+                                                <em>KHÔNG trả tiền trước khi nhận hàng.</em>
+                                            </li>
+                                            <li><em>Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</em></li>
+                                            <li><em>Hẹn gặp ở nơi công cộng.</em></li>
+                                            <li><em>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</em></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix padding-top-10"></div>
+                            <!-- Light Slider -->
+                            <!-- Product Single - Gallery
+                            ============================================= -->
+                            <!--<div class="product-image product-main-image margin-bottom-15" ng-if="moreImages != null">
+                                <ul id="product_gallery">
+                                    <li ng-repeat="img in moreImages" data-thumb="http://localhost:6568/Content/images/{{img}}">
+                                        <img style="height:100%;width:100%" ng-src="http://localhost:6568/Content/images/{{img}}" />
+                                    </li>
+                                </ul>
+                                <div class="clearfix padB10"></div>
+                            </div>-->
+                            <!-- Product Single - Gallery End -->
+                            <!-- End Light Slider -->
+                            <div class="room-info-des">
+                                <div class="dis-content">
+                                    <ul role="tablist" class="nav nav-tabs clearfix">
+                                        <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">NỘI DUNG</a></li>
+                                        <li role="presentation"><a href="#tab-2" aria-controls="tab-1" role="tab" data-toggle="tab">BẢN ĐỒ</a></li>
+                                        <li role="tablist" class=""><a href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab">BÌNH LUẬN / ĐÁNH GIÁ</a></li>
+                                        <li role="tablist" class=""><a href="#tab-4" aria-controls="tab-4" role="tab" data-toggle="tab">CHÍNH SÁCH ĐỔI TRẢ</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" id="tab-1" class="tab-pane active">
+                                            <p><strong>Điểm nổi bật</strong></p> <ul><li>Đầm công sở xòe nhấn eo sát nách thiết kế thanh lịch, mang đến phong cách trẻ trung, sang trọng cho chị em phụ nữ.</li> <li>Kiểu dáng form hơi xòe nhẹ tôn lên vóc dáng cân đối, cổ tròn tay sát nách, ở phần thân chít eo tạo điểm nhấn nổi bật cho trang phục.</li> <li>Khóa kéo nổi sau lưng được thiết kế chắc chắn, cho bạn nữ thoải mái vận động khi diện đầm nơi công sở hoặc lúc dạo phố.</li> <li>Chất liệu thun nhũ mát mẻ, tạo cảm giác dễ chịu khi mặc.</li> <li>Xuất xứ: Việt Nam</li></ul> <p><strong>Kích thước (cm):</strong></p> <ul><li>Size M: Dài 93; Vai 35; Ngực 80; Eo nhún 50</li> <li>Size L: Dài 94; Vai 36; Ngực 82; Eo nhún 52</li> <li>Size XL: Dài 95; Vai 37; Ngực 84; Eo nhún 54</li></ul> <p><strong>Lưu ý khi mua</strong></p> <ul><li>Chúng tôi giao sản phẩm trực tiếp đến khách hàng.</li> <li>Được đổi trả trong vòng 07 ngày.</li></ul> <p>Cùng với những thiết kế tinh tế mang đến vẻ ngoài trẻ trung, duyên dáng và hiện đại cho các bạn gái mỗi khi xuống phố. Chất liệu vải thông thoáng, thấm hút mồ hôi tạo cảm giác dễ chịu cho người mặc. Hãy nhanh tay mua ngay để nhận được những giá trị hấp dẫn bạn nhé!</p>
+                                        </div>
+                                        <div role="tabpanel" id="tab-2" class="tab-pane">
+                                            <div id="map"></div>
+                                        </div>
+                                        <div role="tabpanel" id="tab-3" class="tab-pane">
+                                            <div data-href="https://developers.facebook.com/docs/plugins" data-width="100%" data-numposts="1" class="fb-comments fb_iframe_widget fb_iframe_widget_fluid" fb-xfbml-state="rendered">
+                                                <span style="height: 436px;">
+                                                    <iframe id="f1de98f06b604fc" name="f196e2a775eb24" scrolling="no" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=&amp;channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FXBwzv5Yrm_1.js%3Fversion%3D42%23cb%3Df34faefffacbba8%26domain%3Dega-fashion-magazine.bizwebvietnam.net%26origin%3Dhttps%253A%252F%252Fega-fashion-magazine.bizwebvietnam.net%252Ff256c7428bd01f4%26relation%3Dparent.parent&amp;href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins&amp;locale=en_US&amp;numposts=1&amp;sdk=joey&amp;version=v2.8&amp;width=100%25" style="border: none; overflow: hidden; height: 436px; width: 100%;"></iframe>
+                                                </span>
+                                            </div>
+                                        </div> <div role="tabpanel" id="tab-4" class="tab-pane">
+                                            <p>EGA Underwear sẽ thực hiện việc đổi/trả hàng và hoàn tiền cho khách hàng trong những trường hợp sau.</p> <p>
+                                                <strong>Sản phẩm EGA Underwear giao không đúng đơn đặt hàng</strong><br>
+                                                Bạn nghĩ rằng sản phẩm giao cho bạn không đúng với đơn đặt hàng? Hãy liên hệ với chúng tôi càng sớm càng tốt, hệ thống của chúng tôi sẽ kiểm tra nếu hàng của bạn bị gửi nhầm. Trong trường hợp đó, chúng tôi sẽ thay thế đúng mặt hàng bạn yêu cầu (khi có hàng).
+                                            </p> <p>
+                                                <strong>Sản phẩm mua rồi nhưng không ưng ý</strong><br>
+                                                Người mua có thể trả hàng khi không vừa ý trong vòng 7 ngày kể từ ngày nhận hàng, EGA Underwear.vn sẽ đổi sản phẩm cho khách. Sản phẩm muốn đổi hoặc trả yêu cầu phải là sản phẩm không có dấu hiệu đã qua sử dụng và còn nguyên tem, mác, nguyên đai kiện ban đầu
+                                            </p> <p>
+                                                <strong>Sản phẩm mua bị lỗi</strong><br>
+                                                Quý khách vui lòng kiểm tra sản phẩm trước khi thanh toán. Trong trường hợp sản phẩm bị hư hại trong quá trình vận chuyển, quý khách vui lòng từ chối và gửi lại sản phẩm cho EGA Underwear.vn. Đồng thời thông báo cho Trung tâm hỗ trợ khách hàng 0123456789, EGA Underwear.vn sẽ gửi cho quý khách mặt hàng thay thế.
+                                            </p> <p><strong>Điều kiện đổi trả hàng</strong></p> <p>Điều kiện về thời gian đổi trả: trong vòng 7 ngày kể từ khi nhận được hàng.</p> <p>Điều kiện về sản phẩm:</p> <p>- Hàng hóa còn đầy đủ các bộ phận, không có dấu hiệu sử dụng quá nhiều hoặc hỏng hóc.</p> <p>- Có đầy đủ các giấy tờ kèm theo (hóa đơn mua hàng, catalogue...) và các linh kiện, tặng phẩm kèm theo (nếu có).</p> <p>- Khách hàng chịu chi phí vận chuyển cho việc đổi, trả hàng.</p> <p>- Trường hợp không đủ các điều kiện trên thì quyền quyết định đổi, trả hàng thuộc về EGA Underwear.vn</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-12">
+                    <div class="box-search-sidebar dqdt-sidebar">
+                        <div class="title_st">
+                            <h2>
+                                <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
+                               Tin liên quan
+                            </h2>
+                        </div>
+                    </div>
+                    <div id="open-filters" class="open-filters hidden-lg hidden-md">
+                        <i class="fa fa-filter"></i>
+                        <span>Lọc</span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="sidebar-ads nopadding-xs hidden-xs hidden-sm margin-top-20" style="margin-top:20px;">
+                        <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Thông tin công ty</h4>
+                    <ul class="footer__col--list">
+
+                        <li><a href="/thong-tin-cong-ty">Thông tin công ty</a></li>
+
+                        <li><a href="/gioi-thieu">Giới thiệu công ty</a></li>
+
+                        <li><a href="/he-thong-cac-sieu-thi">Hệ thống các siêu thị</a></li>
+
+                        <li><a href="/tuyen-dung">Tuyển dụng</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Hỗ trợ khách hàng</h4>
+                    <ul class="footer__col--list">
+
+                        <li><a href="/lien-he">Liên hệ và gópý</a><</a></li>
+
+                        <li><a href="/huong-dan-mua-hang-online">Hướng dẫn mua hàng online</a></li>
+
+                        <li><a href="/huong-dan-mua-tra-gop">Hướng dẫn mua trả góp</a></li>
+
+                        <li><a href="/quy-che-quan-ly-hoat-dong">Quy chế quản lý hoạt động</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Chính sách mua hàng</h4>
+                    <ul class="footer__col--list">
+
+                        <li><a href="/quy-dinh-chinh-sach">Quy định, chính sách</a></li>
+
+                        <li><a href="/chinh-sach-bao-hang-doi-tra">Chính sách bảo hàng - đổi trả</a></li>
+
+                        <li><a href="/chinh-sach-hoi-vien">Chính sách hội viên</a></li>
+
+                        <li><a href="/giao-hang-va-lap-dat">Giao hàng và lắp đặt</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Liên hệ với chúng tôi</h4>
+                    <div class="item-info">
+                        <div class="item-info__icon">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <address>Địa chỉ: Tầng 4, Tòa Hà Nội Group 442 Đội Cấn, Ba Đình, HN</address>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-info__icon">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                        </div>
+                        <p>Hotline 1: <a href="tel:">(04) 6674 2332</a></p>
+                        <p class="visible-xs">Hotline 2: <a href="tel:1900 6750">1900 6750</a></p>
+                    </div>
+                    <div class="item-info visible-xs">
+                        <div class="item-info__icon">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <p>Email: <a href="mailto:support@mobile.com">support@mobile.com</a></p>
+                    </div>
+
+                    <div class="cer-bct hidden-xs">
+                        <a href="http://www.moit.gov.vn/vn/Pages/Trangchu.aspx">
+                            <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/bct.png?1496308470726" alt="Đã đăng ký bộ công thương">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="ads_payment">
+                    <div class="b_footer_ads">
+                        <a title="Google Play" href="#"><img src="img/google_play.png" alt="google_play"></a>
+                        <a title="App Store" href="#"><img src="img/app_store.png" alt="app_store"></a>
+                    </div>
+                    <div class="payment">
+                        <ul>
+                            <li>
+                                <a class="visa active" href="#" title="Visa"><img src="img/ads_visa.png" alt="Visa"></a>
+                            </li>
+                            <li>
+                                <a class="masterCard active" href="#" title="MasterCard"><img src="img/ads_meastro.png" alt="MasterCard"></a>
+                            </li>
+                            <li>
+                                <a class="cirrus active" href="#" title="Cirrus"><img src="img/ads_cirrus.png" alt="Cirrus"></a>
+                            </li>
+                            <li>
+                                <a class="discover active" href="#" title="Discover"><img src="img/ads_discover.png" alt="Discover"></a>
+                            </li>
+                            <li>
+                                <a class="bank active" href="#" title="Bank"><img src="img/ads_bank.png" alt="Bank"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container text-center">
+                © Bản quyền thuộc về <a href="javascript:;" rel="nofollow">TT Team</a> - Cung cấp bởi <a href="">NamCkiku</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<style>
+    #map {
+        height: 300px;
+        width: 100%;
+    }
+
+    .dis-content .nav-tabs {
+        border-top: 2px solid #00c5bb;
+        background: #eee;
+    }
+
+        .dis-content .nav-tabs > li.active a {
+            border-top: 3px solid #00c5bb;
+        }
+
+        .dis-content .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-bottom-color: transparent;
+            cursor: default;
+        }
+
+        .dis-content .nav-tabs > li a {
+            border-radius: 0;
+        }
+
+    .dis-content .tab-content {
+        border: 1px solid #e7e7e7;
+        border-top: 0;
+        padding: 20px;
+    }
+</style>
+<style>
+    /*Detail-Room*/
+    .real-estate .real-estate-detail h2.title, .real-estate .real-estate-detail h1.title {
+        margin-top: 0px;
+        padding-bottom: 10px;
+        color: rgb(1, 30, 43);
+        font-size: 24px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgb(204, 204, 204);
+    }
+
+    .product-image {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lSSlideOuter .lSPager.lSGallery img {
+        display: block;
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    .main-info .left-info a {
+        text-decoration: none;
+        color: #2e3339;
+        margin-left: 5px;
+    }
+
+        .main-info .left-info a:hover {
+            color: #FF0047;
+        }
+
+    .room-detail-info {
+        border: 1px solid #ecf0f1;
+    }
+
+    .main-info .address {
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .main-info .tang {
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .main-info .size {
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .main-info .bed-room {
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .main-info .vs {
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .main-info .type {
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .main-info .info-label {
+        /*cursor: inherit;*/
+        border-radius: 0px;
+        border: none;
+        width: 100px;
+        height: 36px;
+        background-color: #ecf0f1;
+        padding: 6px 12px;
+        text-align: left;
+        font-weight: 600;
+    }
+
+    .main-info .info-data {
+        border-radius: 0px;
+        border: none;
+        width: 150px;
+        height: 36px;
+        padding: 6px 0px;
+        text-align: left;
+    }
+
+    .main-info .info-contact .contact-label a {
+        font-size: 18px;
+        padding-left: 12px;
+        color: #2e3339;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+
+
+    .room-detail-des {
+        margin-top: 20px;
+    }
+
+        .room-detail-des .des-label .pull-left a h3, .room-detail-map .map-label .pull-left a h3 {
+            margin-bottom: 5px;
+        }
+
+        .room-detail-des .dis-content {
+            font-family: 'Arial';
+            font-size: 15px;
+            text-align: justify;
+            background-color: #ecf0f1;
+            padding: 10px 5px;
+            margin-top: -10px;
+        }
+
+    .main-info {
+        float: left;
+        width: 100%;
+    }
+
+        .main-info .info-contact {
+            position: relative;
+            float: left;
+            border-bottom: 1px solid #e5e5e5;
+            width: 100%;
+        }
+
+            .main-info .info-contact:after {
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: -6px;
+                left: calc(50% - 5px);
+                width: 10px;
+                height: 10px;
+                -webkit-transform: rotate(-135deg);
+                transform: rotate(-135deg);
+                background: #fff;
+                border-left: 1px solid #e5e5e5;
+                border-top: 1px solid #e5e5e5;
+            }
+
+            .main-info .info-contact .chr {
+                padding: 0;
+            }
+
+                .main-info .info-contact .chr hr {
+                    border-color: #33cc66;
+                    margin-top: 0px;
+                    margin-bottom: 10px;
+                }
+
+    .agentAvatar {
+        text-align: center;
+        float: left;
+        padding-left: 10px;
+    }
+
+    .agentAvatarImg {
+        width: 60px;
+        height: auto;
+        border: 1px solid #e8e8e8;
+        padding: 3px;
+        border-radius: 50%;
+    }
+
+    .main-info .info-contact .info-boss {
+        float: right;
+        vertical-align: middle;
+        width: calc(100% - 80px);
+        margin-bottom: 15px;
+    }
+
+    .info-boss .info-boss-name .info-strong-name {
+        color: #000;
+        font-weight: 400;
+        font-size: 16px;
+        max-width: 88%;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        -webkit-transition: color .1s ease-in-out;
+        transition: color .1s ease-in-out;
+    }
+
+        .info-boss .info-boss-name .info-strong-name:hover {
+            color: #c90927;
+        }
+
+    .info-boss .info-boss-address .info-span-adress {
+        font-size: 12px;
+        display: table-cell;
+        padding-left: 5px;
+        color: #979797;
+    }
+
+    .info-contact .info-price {
+        float: left;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+        .info-contact .info-price span {
+            font-size: 20px;
+            color: red;
+            margin-bottom: 10px;
+            font-weight: 700;
+            line-height: 25px;
+        }
+
+    .quick-fill {
+        border: 1px dashed #ffbf00;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+
+        .quick-fill .quick-fill-infor {
+            padding: 5px 20px 8px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ffbf00;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .quick-fill div.title-input {
+            margin-bottom: 10px;
+        }
+
+            .quick-fill div.title-input i {
+                margin-right: 5px;
+                font-size: 30px;
+                color: #ffbf00;
+            }
+</style>
+<style>
+    .post-carusel {
+        border-radius: 3px;
+        margin-bottom: 26px;
+        overflow: hidden;
+        background: #2b2937;
+    }
+
+    .videoitem iframe {
+        cursor: pointer;
+    }
+
+    .post-carusel iframe {
+        width: 100%;
+        min-height: 340px;
+    }
+
+    #carousel-listing {
+        background-color: #000;
+        width: 100%;
+        position: relative;
+    }
+
+        #carousel-listing .carousel-inner > .item {
+            -webkit-transition: all 0.6s ease;
+            transition: all 0.6s ease;
+            width: 100%;
+        }
+
+            #carousel-listing .carousel-inner > .item a {
+                margin: 0px;
+            }
+
+        #carousel-listing .carusel-back {
+            background-color: #000;
+            opacity: 0.95;
+        }
+
+        #carousel-listing .carusel-back, #carousel-listing .carousel-indicators {
+            width: 100%;
+            position: absolute;
+            float: left;
+            display: inline;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            margin: 1px 0px 0px 0px;
+            left: 0px;
+            bottom: auto;
+            height: 83px;
+            bottom: 39px;
+            padding-top: 1px;
+            z-index: 10;
+            transition: all .4s ease-in-out;
+            -webkit-transition: all .8s ease-in-out;
+            -moz-transition: all .8s ease-in-out;
+            -ms-transition: all .8s ease-in-out;
+            -o-transition: all .8s ease-in-out;
+            white-space: nowrap;
+            text-align: left;
+        }
+
+            #carousel-listing .carousel-indicators li {
+                width: 143px;
+                height: 83px;
+                margin: 0px 1px 0px 0px;
+                border: none;
+                border-radius: 0px;
+                position: relative;
+            }
+
+                #carousel-listing .carousel-indicators li img {
+                    float: left;
+                    opacity: 0.4;
+                    -webkit-transition: all .4s ease-in-out;
+                    -moz-transition: all .4s ease-in-out;
+                    -ms-transition: all .4s ease-in-out;
+                    -o-transition: all .4s ease-in-out;
+                }
+
+                #carousel-listing .carousel-indicators li:hover img {
+                    opacity: 0.6;
+                }
+
+        #carousel-listing .estate_video_control {
+            position: absolute;
+            color: #fff;
+            top: 50%;
+            left: 50%;
+            float: left;
+            font-size: 30px;
+            text-indent: 0px;
+            margin: -10px 0px 0px -10px;
+            opacity: 0.7;
+        }
+
+        #carousel-listing .carousel-round-indicators {
+            position: absolute;
+            right: 40px;
+            bottom: 15px;
+            z-index: 99;
+        }
+
+            #carousel-listing .carousel-round-indicators li {
+                display: inline;
+                border-radius: 50%;
+                width: 8px;
+                height: 8px;
+                float: left;
+                color: #fff;
+                background-color: #8F9EB6;
+                margin-left: 13px;
+                cursor: pointer;
+            }
+
+                #carousel-listing .carousel-round-indicators li.active {
+                    background: #fff;
+                }
+
+        #carousel-listing .carousel-control {
+            width: 52px;
+            height: 140px;
+            top: 50%;
+            margin-top: -70px;
+        }
+
+        #carousel-listing .caption-wrapper {
+            width: 100%;
+            height: 40px;
+            color: #fff;
+            float: left;
+            padding: 9px 0px 0px 13px;
+            font-size: 15px;
+            background: #2b2937;
+            z-index: 20;
+            position: relative;
+            cursor: pointer;
+        }
+
+            #carousel-listing .caption-wrapper span {
+                display: none;
+            }
+
+        #carousel-listing .carousel-control.right, .carousel-control.left {
+            background: none;
+            background-image: none;
+        }
+
+        #carousel-listing .carousel-control .fa {
+            font-size: 65px;
+            text-shadow: none;
+        }
+
+        #carousel-listing .carousel-control.right, .carousel-control.left {
+            background: none;
+            background-image: none;
+        }
+
+        #carousel-listing .carousel-control:hover, .carousel-control:focus {
+            color: #fff !important;
+            text-decoration: none;
+            filter: alpha(opacity=90);
+            outline: 0;
+            opacity: .9;
+        }
+
+        #carousel-listing .post-carusel .item img {
+            max-height: 100%;
+        }
+
+        #carousel-listing .caption_control {
+            width: 20px;
+            height: 20px;
+            float: right;
+        }
+
+            #carousel-listing .caption_control:after {
+                font-family: FontAwesome;
+                padding: 12px 13px 0px 5px;
+                color: #fff;
+                content: "\f107";
+                margin: 0px;
+                position: absolute;
+                bottom: 5px;
+                right: 0px;
+                font-size: 20px;
+            }
+
+    .rowclosed {
+        bottom: -42px !important;
+    }
+
+    .closed .caption_control:after {
+        content: "\f106";
+    }
+</style>
+<script>
+    $('.caption-wrapper').click(function () {
+        $(this).toggleClass('closed');
+        $('.carusel-back').toggleClass('rowclosed');
+        $('.post-carusel .carousel-indicators').toggleClass('rowclosed');
+    });
+    var initPhotoSwipeFromDOM = function (gallerySelector) {
+
+        // parse slide data (url, title, size ...) from DOM elements
+        // (children of gallerySelector)
+        var parseThumbnailElements = function (el) {
+            var thumbElements = el.childNodes,
+                numNodes = thumbElements.length,
+                items = [],
+                figureEl,
+                linkEl,
+                size,
+                item;
+
+            for (var i = 0; i < numNodes; i++) {
+
+                figureEl = thumbElements[i]; // <figure> element
+
+                // include only element nodes
+                if (figureEl.nodeType !== 1) {
+                    continue;
+                }
+
+                linkEl = figureEl.children[0]; // <a> element
+
+                // create slide object
+                item = {
+                    src: linkEl.getAttribute('href'),
+                    w: 900,
+                    h: 600
+                };
+
+
+
+                if (figureEl.children.length > 1) {
+                    // <figcaption> content
+                    item.title = figureEl.children[1].innerHTML;
+                }
+
+                if (linkEl.children.length > 0) {
+                    // <img> thumbnail element, retrieving thumbnail url
+                    item.msrc = linkEl.children[0].getAttribute('src');
+                }
+
+                item.el = figureEl; // save link to element for getThumbBoundsFn
+                items.push(item);
+            }
+
+            return items;
+        };
+
+        // find nearest parent element
+        var closest = function closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        };
+
+        // triggers when user clicks on thumbnail
+        var onThumbnailsClick = function (e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+
+            // find root element of slide
+            var clickedListItem = closest(eTarget, function (el) {
+                return (el.tagName && el.tagName.toUpperCase() === 'DIV');
+            });
+
+            if (!clickedListItem) {
+                return;
+            }
+
+            // find index of clicked item by looping through all child nodes
+            // alternatively, you may define index via data- attribute
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
+                numChildNodes = childNodes.length,
+                nodeIndex = 0,
+                index;
+
+            for (var i = 0; i < numChildNodes; i++) {
+                if (childNodes[i].nodeType !== 1) {
+                    continue;
+                }
+
+                if (childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                }
+                nodeIndex++;
+            }
+
+
+
+            if (index >= 0) {
+                // open PhotoSwipe if valid index found
+                openPhotoSwipe(index, clickedGallery);
+            }
+            return false;
+        };
+
+        // parse picture index and gallery index from URL (#&pid=1&gid=2)
+        var photoswipeParseHash = function () {
+            var hash = window.location.hash.substring(1),
+                params = {};
+
+            if (hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                options,
+                items;
+
+            items = parseThumbnailElements(galleryElement);
+
+            // define options (if needed)
+            options = {
+
+                // define gallery index (for URL)
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                getThumbBoundsFn: function (index) {
+                    // See Options -> getThumbBoundsFn section of documentation for more info
+                    var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect();
+
+                    return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+                }
+
+            };
+
+            // PhotoSwipe opened from URL
+            if (fromURL) {
+                if (options.galleryPIDs) {
+                    // parse real index when custom PIDs are used
+                    // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    // in URL indexes start from 1
+                    options.index = parseInt(index, 10) - 1;
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            // exit if index not found
+            if (isNaN(options.index)) {
+                return;
+            }
+
+            if (disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            // Pass data to PhotoSwipe and initialize it
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        };
+
+        // loop through all gallery elements and bind events
+        var galleryElements = document.querySelectorAll(gallerySelector);
+
+        for (var i = 0, l = galleryElements.length; i < l; i++) {
+            galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+            galleryElements[i].onclick = onThumbnailsClick;
+        }
+
+        // Parse URL and open gallery if it contains #&pid=3&gid=1
+        var hashData = photoswipeParseHash();
+        if (hashData.pid && hashData.gid) {
+            openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+        }
+    };
+    // execute above function
+    initPhotoSwipeFromDOM('.my-gallery');
+
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            var myLatlng = new google.maps.LatLng(pos.lat, pos.lng);
+            var mapOptions = {
+                zoom: 14,
+                center: myLatlng
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                title: "Hello World!"
+            });
+            var populationOptions = {
+                strokeColor: '#67cfd8',
+                strokeOpacity: 0.6,
+                strokeWeight: 1,
+                fillColor: '#67cfd8',
+                fillOpacity: 0.2,
+                center: myLatlng,
+                map: map,
+                radius: Math.sqrt(2500000)
+            };
+            var cityCircle = new google.maps.Circle(populationOptions);
+            // To add the marker to the map, call setMap();
+            marker.setMap(map);
+
+        }, function () {
+        });
+    }
+</script>
