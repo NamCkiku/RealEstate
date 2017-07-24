@@ -355,6 +355,95 @@
                             <div class="text">Bản đồ</div>
                         </div>
                     </div>
+                    <form class="form-step" id="formStep1">
+                        <div class="steps_header">Thông tin liên hệ&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-8">
+                            <div class="form-group clearfix">
+                                <label class="col-lg-3 control-label " for="userName">Họ và tên<i class="required">*</i> :</label>
+                                <div class="col-lg-9 no-padding">
+                                    <input class="form-control"
+                                           id="userName"
+                                           placeholder="Tên của tôi là:"
+                                           name="userName" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-3 control-label " for="password"> Email<i class="required">*</i> :</label>
+                                <div class="col-lg-9 no-padding">
+                                    <input id="password"
+                                           placeholder="Email của tôi là:"
+                                           name="password" type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-3 control-label " for="confirm">Số điện thoại<i class="required">*</i> :</label>
+                                <div class="col-lg-9 no-padding">
+                                    <input id="phone"
+                                           name="phone"
+                                           type="text"
+                                           placeholder="Số điện thoại của tôi là:"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-3 control-label " for="confirm">Địa chỉ<i class="required">*</i> :</label>
+                                <div class="col-lg-9 no-padding">
+                                    <input id="adress"
+                                           name="adress"
+                                           type="text"
+                                           placeholder="ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="quick-fill">
+                                <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span>Tôi đã từng đăng tin trên phongtot.vn, hãy giúp tôi</span></div>
+                                <div class="input">
+                                    <button class="quick-fill-infor btn" ng-click="GetUserLogin();"><i class="fa fa-pencil" style="margin-right:10px;" aria-hidden="true"></i>Điền nhanh thông tin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-step" id="formStep1">
+                        <div class="steps_header">Thông tin cơ bản <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-8">
+                            <div class="form-group clearfix">
+                                <label class="col-lg-3 control-label " for="userName">Danh Mục</label>
+                                <div class="col-lg-9 no-padding">
+                                    <select id="search_room_type"
+                                            ng-model="rooms.RoomTypeID"
+                                            ng-options="option.RoomTypeID as option.RoomTypeName for option in data.lstRoomType"
+                                            class="form-control"
+                                            data-fv-notempty="true"
+                                            data-fv-notempty-message="Vui lòng chọn danh mục"
+                                            name="Roomtype">
+                                        <option value="">--Chọn danh mục--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-3 control-label " for="userName">Tiêu đề:</label>
+                                <div class="col-lg-9  no-padding">
+                                    <input class="form-control"
+                                           data-fv-stringlength="true"
+                                           data-fv-stringlength-min="20"
+                                           data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
+                                           data-fv-stringlength-max="250"
+                                           ng-model="rooms.RoomName"
+                                           ng-change="GetSeoTitle();"
+                                           data-fv-notempty="true"
+                                           data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
+                                           placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                           name="title" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-md-3 col-lg-3 col-xs-12">
                     <div class="title_st">
@@ -484,101 +573,106 @@
 </body>
 </html>
 <style>
-     .steps {
-  border-radius: 100px;
-  height: 50px;
-  margin-left: 3%;
-  position: relative;
-  width: 100%;
-}
+    .steps {
+        border-radius: 100px;
+        height: 50px;
+        margin-left: 3%;
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+    }
 
-.steps .step {
-  float: left;
-  margin-top: -3px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 3px;
-  color: #a8a191;
-  background: #e4e0d4;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
-  border-left: 3px solid #EEEBE4;
-  border-top: 3px solid #EEEBE4;
-  border-bottom: 3px solid #EEEBE4;
-  position:absolute;
-}
+        .steps .step {
+            float: left;
+            margin-top: -3px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 3px;
+            color: #a8a191;
+            background: #e4e0d4;
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+            border-left: 3px solid #EEEBE4;
+            border-top: 3px solid #EEEBE4;
+            border-bottom: 3px solid #EEEBE4;
+            position: absolute;
+        }
 
-.steps .step.first {
-  left: 0;
-  width: 30%;
-  margin-left: -3%;
-}
-.steps .step.second {
-	left:25%;
-	width: 30%;
-	margin-left: -3%;
-}
-.steps .step.third {
-	left:50%;
-	width: 30%;
-	margin-left: -3%;
-}
-.steps .step.fourth {
-  left: 73%;
-  width: 28%;
-  margin-left: -3%;
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
-}
+            .steps .step.first {
+                left: 0;
+                width: 30%;
+                margin-left: -3%;
+            }
 
-.steps .step.done {
-  background: #8cc751;
-  color: #FFF;
-}
+            .steps .step.second {
+                left: 25%;
+                width: 30%;
+                margin-left: -3%;
+            }
 
-.steps .step.current {
-  background: #f9b023;
-  color: #FFF;
-}
+            .steps .step.third {
+                left: 50%;
+                width: 30%;
+                margin-left: -3%;
+            }
 
-.steps .step .circle {
-  border-radius: 100%;
-  height: 40px;
-  width: 40px;
-  background: #FFF;
-  float: left;
-  text-align: center;
-  line-height: 40px;
-  font-size: 24px;
-  font-weight: 600;
-  color: #f9b023;
-}
+            .steps .step.fourth {
+                left: 73%;
+                width: 28%;
+                margin-left: -3%;
+                border-top-right-radius: 100px;
+                border-bottom-right-radius: 100px;
+            }
 
-.steps .step.done .circle {
-	font-size:0;
-	position:relative;
-}
+            .steps .step.done {
+                background: #8cc751;
+                color: #FFF;
+            }
 
-.steps .step.done .circle:after {
-	content:"";
-	width:36px;
-	height:36px;
-	background:url(images/check.png) no-repeat center;
-	position:absolute;
-	top:50%;
-	left:50%;
-	margin-top:-18px;
-	margin-left:-18px;
-}
+            .steps .step.current {
+                background: #f9b023;
+                color: #FFF;
+            }
 
-.steps .step .text {
-  line-height: 40px;
-  text-transform: uppercase;
-  font-size: 13px;
-  float: left;
-  margin-left: 5px;
-}
- @media only screen and (max-width:500px) {
+            .steps .step .circle {
+                border-radius: 100%;
+                height: 40px;
+                width: 40px;
+                background: #FFF;
+                float: left;
+                text-align: center;
+                line-height: 40px;
+                font-size: 24px;
+                font-weight: 600;
+                color: #f9b023;
+            }
+
+            .steps .step.done .circle {
+                font-size: 0;
+                position: relative;
+            }
+
+                .steps .step.done .circle:after {
+                    content: "";
+                    width: 36px;
+                    height: 36px;
+                    background: url(images/check.png) no-repeat center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin-top: -18px;
+                    margin-left: -18px;
+                }
+
+            .steps .step .text {
+                line-height: 40px;
+                text-transform: uppercase;
+                font-size: 13px;
+                float: left;
+                margin-left: 5px;
+            }
+
+    @media only screen and (max-width:500px) {
         .steps {
             height: 46px;
         }
@@ -614,7 +708,77 @@
                 font-size: 13px;
             }
     }
+
     @media only screen and (max-width:600px) {
-        .steps .step .text{display:none}
+        .steps .step .text {
+            display: none
+        }
+    }
+
+
+
+    .form-step {
+        border: 1px dashed #f9b023;
+        background: #f9f9f9;
+        float: left;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+        .form-step .steps_header {
+            border-bottom: solid 3px #f9b023;
+            color: #f9b023;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 25px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding-left: 5px;
+        }
+
+        .form-step .steps_header_notice {
+            color: #00648f;
+            font-size: 12px;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .form-step label {
+            font-weight: normal;
+        }
+
+        .form-step .form-control {
+            height: 30px;
+            font-size: 12px;
+            border-radius: 0px;
+            outline: none;
+            -webkit-appearance: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-color: rgba(0,0,0,0.1);
+            padding: 10px 10px;
+            color: rgba(0,0,0,0.87);
+        }
+
+        .form-step ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            font-style: italic;
+        }
+
+        .form-step ::-moz-placeholder { /* Firefox 19+ */
+            font-style: italic;
+        }
+
+        .form-step :-ms-input-placeholder { /* IE 10+ */
+            font-style: italic;
+        }
+
+        .form-step :-moz-placeholder { /* Firefox 18- */
+            font-style: italic;
+        }
+
+    .required {
+        color: red;
+        margin-left: 5px;
     }
 </style>
