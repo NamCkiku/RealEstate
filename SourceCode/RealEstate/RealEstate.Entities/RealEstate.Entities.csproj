@@ -149,6 +149,7 @@
       <DependentUpon>201706280805227_addAnnouncementTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelView\AppUserEntity.cs" />
     <Compile Include="ModelView\DistrictEntity.cs" />
     <Compile Include="ModelView\ProvinceEntity.cs" />
     <Compile Include="ModelView\RoomEntity.cs" />

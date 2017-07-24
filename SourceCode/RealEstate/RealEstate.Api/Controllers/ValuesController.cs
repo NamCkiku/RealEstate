@@ -1,10 +1,12 @@
 ﻿using RealEstate.Entities.Entites;
+using RealEstate.Entities.ModelView;
 using RealEstate.Service.IService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace RealEstate.Api.Controllers
@@ -19,9 +21,9 @@ namespace RealEstate.Api.Controllers
         }
         // GET api/values
         [Route("get")]
-        public IEnumerable<AppUser> Get()
+        public async Task<IEnumerable<AppUserEntity>> Get()
         {
-            return _userService.GetAll();
+            return await _userService.GetAllUserIsBirthDay();
         }
 
         // GET api/values/5

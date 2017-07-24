@@ -12,16 +12,23 @@ namespace RealEstate.Api.Quartz
     {
 
         public static void Start()
-
         {
 
             IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();
 
             scheduler.Start();
+            if (!scheduler.IsStarted)
+                scheduler.Start();
+            // Define the Job to be scheduled
+            var job = JobBuilder.Create<EmailJob>()
+                .WithIdentity("JobMonthSchedulerSeventhDay", "IT")
+                .RequestRecovery()
+                .Build();
+            var job2 = JobBuilder.Create<SendMailBirthDayJob>()
+                .WithIdentity("JobSendMailBirthDay", "IT")
+                .RequestRecovery()
+                .Build();
 
-
-
-            IJobDetail job = JobBuilder.Create<EmailJob>().Build();
 
 
 
@@ -41,9 +48,33 @@ namespace RealEstate.Api.Quartz
 
                 .Build();
 
+            ITrigger trigger2 = TriggerBuilder.Create()
 
+                .WithDailyTimeIntervalSchedule
 
+                  (s =>
+
+                     s.WithIntervalInMinutes(2)
+
+                    .OnEveryDay()
+
+                    .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
+
+                  )
+
+                .Build();
+            // Validate that the job doesn't already exists
+            if (scheduler.CheckExists(new JobKey("JobMonthSchedulerSeventhDay", "IT")))
+            {
+                scheduler.DeleteJob(new JobKey("JobMonthSchedulerSeventhDay", "IT"));
+            }
+            if (scheduler.CheckExists(new JobKey("JobSendMailBirthDay", "IT")))
+            {
+                scheduler.DeleteJob(new JobKey("JobSendMailBirthDay", "IT"));
+            }
             scheduler.ScheduleJob(job, trigger);
+
+            scheduler.ScheduleJob(job2, trigger2);
 
         }
 
