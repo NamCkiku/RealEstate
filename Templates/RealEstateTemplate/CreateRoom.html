@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Phòng Tốt</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="Plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/RealEstate.css" rel="stylesheet" />
+    <link href="Plugins/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="Plugins/slidebar/slidebars.css" rel="stylesheet" />
+    <link href="Plugins/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="Plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="Plugins/slidebar/slidebars.min.js"></script>
+    <script src="Plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+    <script src="js/common.js"></script>
+</head>
+<body>
+    <header id="header" class="header-top">
+        <nav class="navbar horizontal-navbar header-nav ng-scope">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed sb-toggle-left" data-toggle="offcanvas" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img class="img-responsive" style="height:40px" src="img/logo.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse nav-menu">
+                    <ul class="nav navbar-nav navbar-left hidden-sm">
+                        <li>
+                            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true">
+                                Tất Cả Phòng Trọ
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="javascript:;">Phòng trọ</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Văn Phòng</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Ở ghép</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Chung cư</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Mặt đường</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a target="_blank" href="#">Nạp Coin</a>
+                        </li>
+                        <li>
+                            <a href="">Bản đồ</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right nav-menu">
+                        <li>
+                            <a href="javascript: void(0);" class="alert-notifications notifications dd" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-bell-o" style="font-size:18px"></i>
+                                <span class="badge number">2</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-notifications">
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                        Có 18 vị trí mới hấp dẫn cho bạn
+                                        <span class="small italic">(34 phút)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                        Có 18 vị trí mới hấp dẫn cho bạn
+                                        <span class="small italic">(34 phút)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true">
+                                Tài khoản
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="javascript:;" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-toggle="modal" data-target="#myModal1">Đăng Ký</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true" style="margin-top:5px;">
+                                <img class="avatar agentAvatarImg" style="width:50px;" src="/img/boy-512.png" />
+                                NamCkiku
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-lg fa-user"></i>Tài Khoản</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="fa fa-lg fa-sign-out fa-fw"></i>Thoát</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="horizontal-navbar-create-room">
+                            <a class="btn-addroom" href="javascript: void(0);"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="sb-slidebar sb-left sb-style-overlay hidden-sm hidden-md hidden-lg" style="margin-left: -20%;">
+                    <div id="box-action-mobile">
+                        <div id="box-tgnavbotton" class="navbar navbar-default hidden-sm hidden-md hidden-lg">
+                            <button aria-controls="navbar-collapse-btp" class="navbar-toggle sb-toggle-left" data-toggle="offcanvas" data-target=".navmenu">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="nav-menumobile">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="">Tất Cả Phòng Trọ</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">Nạp Coin</a>
+                            </li>
+                            <li>
+                                <a href="">Bản đồ</a>
+                            </li>
+                            <li>
+                                <a class="alert-notifications notifications dd" href="#" data-original-title="" title="">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span style="display: none" class="number">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Nhập</a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">Đăng Ký</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="clearfix"></div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header popup_header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title popup_title" id="messageDel">
+                            <img src="img/logo.png" />
+                        </h4>
+                    </div>
+                    <div class="line_orn"></div>
+                    <div class="modal-body login">
+                        <div class="box">
+                            <form class="content" id="user_menu_open">
+                                <div class="form loginBox" style="margin-top:10px;">
+                                    <div id="formLogin" class="">
+                                        <div class="login-alert">Tài khoản mật khẩu không chính xác</div>
+                                        <div class="form-group no-padding">
+                                            <input id="email"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                                   data-fv-emailaddress="true"
+                                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                                   class="form-control"
+                                                   type="email"
+                                                   placeholder="Tên tài khoản"
+                                                   name="email">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="password"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                                   data-fv-stringlength="true"
+                                                   data-fv-stringlength-min="6"
+                                                   data-fv-stringlength-message="Mật khẩu phải ít nhất 6 kí tự"
+                                                   class="form-control"
+                                                   type="password"
+                                                   placeholder="Mật khẩu"
+                                                   name="password">
+
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="wpresidence_button" style="width:100%">Đăng nhập</button>
+                                </div>
+                                <div class="login-links">
+                                    <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
+                                    <div class="division">
+                                        <div class="line l"></div>
+                                        <span>Hoặc</span>
+                                        <div class="line r"></div>
+                                    </div>
+                                    <div id="facebookloginsidebar_topbar" href="" data-social="facebook">Đăng nhập với Facebook</div>
+                                    <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
+                                    <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer login">
+                        <div class="forgot login-footer" style="display: block;">
+                            <span>
+                                <a href="">Bạn chưa có tài khoản?</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header popup_header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title popup_title" id="messageDel">
+                            <img src="img/logo.png" />
+                        </h4>
+                    </div>
+                    <div class="line_orn"></div>
+                    <div class="modal-body login">
+                        <div class="box">
+                            <form class="content" id="user_menu_open">
+                                <div class="form loginBox" style="margin-top:10px;">
+                                    <div id="formRegister" class="">
+                                        <div class="login-alert">Không đúng định dạng</div>
+                                        <div class="form-group no-padding">
+                                            <input id="email"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập tên của bạn"
+                                                   ng-model="accountRegister.FullName"
+                                                   class="form-control"
+                                                   type="text"
+                                                   placeholder="Tên hiển thị"
+                                                   name="FullName">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input data-fv-notempty="true"
+                                                   id="file-upload"
+                                                   data-fv-notempty-message="Chọn ảnh đại diện của bạn"
+                                                   ng-model="accountRegister.Avatar"
+                                                   class="form-control"
+                                                   type="file"
+                                                   placeholder="Tên hiển thị"
+                                                   name="Avatar">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="email"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                                   data-fv-emailaddress="true"
+                                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                                   ng-model="accountRegister.Email"
+                                                   class="form-control"
+                                                   type="text"
+                                                   placeholder="Email"
+                                                   name="Email">
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="password"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                                   ng-model="accountRegister.Password"
+                                                   class="form-control"
+                                                   type="password"
+                                                   placeholder="Mật khẩu"
+                                                   name="Password">
+
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input id="ConfirmPassword"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                                   ng-model="accountRegister.ConfirmPassword"
+                                                   class="form-control"
+                                                   type="password"
+                                                   placeholder="Nhập lại mật khẩu"
+                                                   name="ConfirmPassword">
+
+                                        </div>
+                                        <div class="form-group no-padding">
+                                            <input type="checkbox"
+                                                   ng-model="accountRegister.Terms"
+                                                   name="terms"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Bạn phải đồng ý với điều khoản của chúng tôi"
+                                                   id="user_terms_register_topbar">
+                                            <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
+                                        </div>
+                                        <button type="submit" class="wpresidence_button" style="width:100%">Đăng ký</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer login">
+                        <div class="forgot login-footer" style="display: block;">
+                            <a href="">Bạn đã có tài khoản?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="clearfix"></div>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="breadcrumbs">
+                        <ul class="breadcrumb">
+                            <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+                            <li>Thêm thông tin</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-9 col-xs-12" id="second">
+                    <div class="steps fl100">
+                        <div class="step first current">
+                            <div class="circle">1</div>
+                            <div class="text">Thông tin liên hệ</div>
+                        </div>
+                        <div class="step second">
+                            <div class="circle">2</div>
+                            <div class="text">Thông tin cơ bản</div>
+                        </div>
+                        <div class="step third">
+                            <div class="circle">3</div>
+                            <div class="text">Thông tin bổ sung</div>
+                        </div>
+                        <div class="step fourth">
+                            <div class="circle">4</div>
+                            <div class="text">Bản đồ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-12">
+                    <div class="title_st">
+                        <h2>
+                            <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
+                            Hướng dẫn
+                        </h2>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="sidebar-ads nopadding-xs hidden-xs hidden-sm margin-top-20" style="margin-top:20px;">
+                        <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Thông tin công ty</h4>
+                    <ul class="footer__col--list">
+
+                        <li><a href="/thong-tin-cong-ty">Thông tin công ty</a></li>
+
+                        <li><a href="/gioi-thieu">Giới thiệu công ty</a></li>
+
+                        <li><a href="/he-thong-cac-sieu-thi">Hệ thống các siêu thị</a></li>
+
+                        <li><a href="/tuyen-dung">Tuyển dụng</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Hỗ trợ khách hàng</h4>
+                    <ul class="footer__col--list">
+
+                        <li><a href="/lien-he">Liên hệ và góp ý</a></li>
+
+                        <li><a href="/huong-dan-mua-hang-online">Hướng dẫn mua hàng online</a></li>
+
+                        <li><a href="/huong-dan-mua-tra-gop">Hướng dẫn mua trả góp</a></li>
+
+                        <li><a href="/quy-che-quan-ly-hoat-dong">Quy chế quản lý hoạt động</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Chính sách mua hàng</h4>
+                    <ul class="footer__col--list">
+
+                        <li><a href="/quy-dinh-chinh-sach">Quy định, chính sách</a></li>
+
+                        <li><a href="/chinh-sach-bao-hang-doi-tra">Chính sách bảo hàng - đổi trả</a></li>
+
+                        <li><a href="/chinh-sach-hoi-vien">Chính sách hội viên</a></li>
+
+                        <li><a href="/giao-hang-va-lap-dat">Giao hàng và lắp đặt</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 footer__col">
+                    <h4 class="footer__col--title">Liên hệ với chúng tôi</h4>
+                    <div class="item-info">
+                        <div class="item-info__icon">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <address>Địa chỉ: Tầng 4, Tòa Hà Nội Group 442 Đội Cấn, Ba Đình, HN</address>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-info__icon">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                        </div>
+                        <p>Hotline 1: <a href="tel:">(04) 6674 2332</a></p>
+                        <p class="visible-xs">Hotline 2: <a href="tel:1900 6750">1900 6750</a></p>
+                    </div>
+                    <div class="item-info visible-xs">
+                        <div class="item-info__icon">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <p>Email: <a href="mailto:support@mobile.com">support@mobile.com</a></p>
+                    </div>
+
+                    <div class="cer-bct hidden-xs">
+                        <a href="http://www.moit.gov.vn/vn/Pages/Trangchu.aspx">
+                            <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/bct.png?1496308470726" alt="Đã đăng ký bộ công thương">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="ads_payment">
+                    <div class="b_footer_ads">
+                        <a title="Google Play" href="#"><img src="img/google_play.png" alt="google_play"></a>
+                        <a title="App Store" href="#"><img src="img/app_store.png" alt="app_store"></a>
+                    </div>
+                    <div class="payment">
+                        <ul>
+                            <li>
+                                <a class="visa active" href="#" title="Visa"><img src="img/ads_visa.png" alt="Visa"></a>
+                            </li>
+                            <li>
+                                <a class="masterCard active" href="#" title="MasterCard"><img src="img/ads_meastro.png" alt="MasterCard"></a>
+                            </li>
+                            <li>
+                                <a class="cirrus active" href="#" title="Cirrus"><img src="img/ads_cirrus.png" alt="Cirrus"></a>
+                            </li>
+                            <li>
+                                <a class="discover active" href="#" title="Discover"><img src="img/ads_discover.png" alt="Discover"></a>
+                            </li>
+                            <li>
+                                <a class="bank active" href="#" title="Bank"><img src="img/ads_bank.png" alt="Bank"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container text-center">
+                © Bản quyền thuộc về <a href="javascript:;" rel="nofollow">TT Team</a> - Cung cấp bởi <a href="">NamCkiku</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<style>
+     .steps {
+  border-radius: 100px;
+  height: 50px;
+  margin-left: 3%;
+  position: relative;
+  width: 100%;
+}
+
+.steps .step {
+  float: left;
+  margin-top: -3px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  color: #a8a191;
+  background: #e4e0d4;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-left: 3px solid #EEEBE4;
+  border-top: 3px solid #EEEBE4;
+  border-bottom: 3px solid #EEEBE4;
+  position:absolute;
+}
+
+.steps .step.first {
+  left: 0;
+  width: 30%;
+  margin-left: -3%;
+}
+.steps .step.second {
+	left:25%;
+	width: 30%;
+	margin-left: -3%;
+}
+.steps .step.third {
+	left:50%;
+	width: 30%;
+	margin-left: -3%;
+}
+.steps .step.fourth {
+  left: 73%;
+  width: 28%;
+  margin-left: -3%;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.steps .step.done {
+  background: #8cc751;
+  color: #FFF;
+}
+
+.steps .step.current {
+  background: #f9b023;
+  color: #FFF;
+}
+
+.steps .step .circle {
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  background: #FFF;
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #f9b023;
+}
+
+.steps .step.done .circle {
+	font-size:0;
+	position:relative;
+}
+
+.steps .step.done .circle:after {
+	content:"";
+	width:36px;
+	height:36px;
+	background:url(images/check.png) no-repeat center;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-18px;
+	margin-left:-18px;
+}
+
+.steps .step .text {
+  line-height: 40px;
+  text-transform: uppercase;
+  font-size: 13px;
+  float: left;
+  margin-left: 5px;
+}
+ @media only screen and (max-width:500px) {
+        .steps {
+            height: 46px;
+        }
+
+            .steps .step .circle {
+                height: 30px;
+                width: 30px;
+                line-height: 40px;
+                font-size: 18px;
+            }
+    }
+
+    @media only screen and (max-width:1100px) {
+        .steps {
+            width: calc(100% - 3%);
+        }
+    }
+
+    @media only screen and (max-width:700px) {
+        .steps {
+            height: 40px;
+        }
+
+            .steps .step .circle {
+                height: 30px;
+                width: 30px;
+                line-height: 30px;
+                font-size: 18px;
+            }
+
+            .steps .step .text {
+                line-height: 30px;
+                font-size: 13px;
+            }
+    }
+    @media only screen and (max-width:600px) {
+        .steps .step .text{display:none}
+    }
+</style>
