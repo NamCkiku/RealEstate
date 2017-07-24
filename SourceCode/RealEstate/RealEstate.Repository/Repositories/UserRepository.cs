@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RealEstate.Common.Extensions.Data;
+using System.Reflection;
+using RealEstate.Entities.ModelView;
 
 namespace RealEstate.Repository.Repositories
 {
@@ -16,6 +19,20 @@ namespace RealEstate.Repository.Repositories
         private UserManager<IdentityUser> _userManager;
         public UserRepository(IDbFactory dbFactory) : base(dbFactory)
         {
+        }
+
+        public async Task<IEnumerable<AppUserEntity>> GetAllUserIsBirthDay()
+        {
+            try
+            {
+                var result= await DapperExtensions.QueryDapperStoreProcAsync<AppUserEntity>("GetBirthdayBuddiesEmails");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
+                return new List<AppUserEntity>();
+            }
         }
 
         public async Task<IdentityResult> RegisterUser(AppUser userModel)

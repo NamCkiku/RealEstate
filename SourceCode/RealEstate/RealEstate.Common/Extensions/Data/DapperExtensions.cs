@@ -66,6 +66,16 @@ namespace RealEstate.Common.Extensions.Data
                 return result;
             }
         }
+        public static async Task<IEnumerable<T>> QueryDapperStoreProcAsync<T>(string store, object param = null)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                var result = await conn.QueryAsync<T>(store, param, commandType: CommandType.StoredProcedure);
+                conn.Close();
+                return result;
+            }
+        }
         public static async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object parameters = null)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))

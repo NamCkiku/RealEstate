@@ -305,6 +305,7 @@
     <Compile Include="Providers\QueryStringOAuthBearerProvider.cs" />
     <Compile Include="Quartz\EmailJob.cs" />
     <Compile Include="Quartz\JobScheduler.cs" />
+    <Compile Include="Quartz\SendMailBirthDayJob.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="SignalR\ConnectionMapping.cs" />
