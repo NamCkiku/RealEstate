@@ -5,15 +5,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link href="Plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="css/RealEstate.css" rel="stylesheet" />
     <link href="Plugins/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
     <link href="Plugins/slidebar/slidebars.css" rel="stylesheet" />
     <link href="Plugins/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="Plugins/dropzone/dist/dropzone.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css" />
+    <link href="css/RealEstate.css" rel="stylesheet" />
     <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
     <script src="Plugins/bootstrap/js/bootstrap.js"></script>
     <script src="Plugins/slidebar/slidebars.min.js"></script>
     <script src="Plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+    <script src="Plugins/dropzone/dist/dropzone.js"></script>
     <script src="js/common.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeERa22t2lASaDOgxzPMZe1Fkm3ePJ7ok&libraries=places"
+            type="text/javascript"></script>
 </head>
 <body>
     <header id="header" class="header-top">
@@ -336,8 +344,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-9 col-lg-9 col-xs-12" id="second">
-                    <div class="steps fl100">
+                <div class="col-md-9 col-lg-9 col-xs-12">
+                    <div class="steps">
                         <div class="step first current">
                             <div class="circle">1</div>
                             <div class="text">Thông tin liên hệ</div>
@@ -357,12 +365,12 @@
                     </div>
                     <div class="up-note hidden-xs">
                         <div class="col-md-6 up-left">
-                            <div class="title3 orange">Lợi ích Sharecode.vn đem lại</div>
+                            <div class="title3 orange">Lợi ích PhongTot.vn đem lại</div>
                             <ul class="introduce-list">
                                 <li>Tiếp cận <span class="green">trăm nghìn khách hàng</span> tiềm năng mỗi ngày</li>
-                                <li>Code được marketting đưa lên <span class="green">top 5 google</span></li>
-                                <li>Hưởng <span class="green">70% doanh thu</span> trên mỗi code được bán</li>
-                                <li>Bạn <span class="green">tự đặt phí</span> cho source code của mình</li>
+                                <li>Tin được marketting đưa lên <span class="green">top 5 google</span></li>
+                                <li>Hưởng <span class="green">70% doanh thu</span> trên mỗi tin được bán</li>
+                                <li>Bạn <span class="green">tự đặt phí</span> cho phòng trọ của mình</li>
                             </ul>
                         </div>
                         <div class="col-md-6 up-right">
@@ -371,7 +379,7 @@
                                 <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-nhap-thong-tin">Cách nhập thông tin đầy đủ, rõ ràng và hữu ích</a></li>
                                 <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-gia-hop-ly">Đưa ra mức phí hợp lý và có sức thu hút</a></li>
                                 <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-gioi-thieu">Tạo chiến lược quảng bá, giới thiệu</a></li>
-                                <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-tham-gia-event">Tham gia đầy đủ các sự kiện của Sharecode.vn</a></li>
+                                <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-tham-gia-event">Tham gia đầy đủ các sự kiện của PhongTot.vn</a></li>
                             </ul>
                         </div>
                     </div>
@@ -450,7 +458,7 @@
                                         <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
                                     </div>
                                     <div class="alignleft room_avatar_image_txt">
-                                        <div class="true-ic">Ảnh đẹp sẽ giúp code có nhiều lượt xem</div>
+                                        <div class="true-ic">Ảnh đẹp sẽ giúp tin có nhiều lượt xem</div>
                                         <div class="true-ic">Dung lượng tối đa 2MB</div>
                                     </div>
                                 </div>
@@ -583,7 +591,7 @@
                                 </div>
                                 <div class="col-md-4 note-col">
                                     <div class="up-idea hidden-xs">
-                                        Hoàn thành đầy đủ thông tin giúp code của bạn được nhiều người biết đến và  có thứ hạng cao trên kết quả tìm kiếm
+                                        Hoàn thành đầy đủ thông tin giúp tin của bạn được nhiều người biết đến và  có thứ hạng cao trên kết quả tìm kiếm
                                     </div>
                                 </div>
                             </div>
@@ -601,6 +609,64 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </form>
+                    <form class="form-step" id="formStep1">
+                        <div class="steps_header">Thông tin bổ sung <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12">
+                            <div class="form-group clearfix">
+                                <label class="col-lg-2 control-label " for="userName">Ảnh<i class="required">*</i> :</label>
+                                <div class="col-lg-6">
+                                    <input name="files" id="files" type="file" />
+
+                                    <script type="text/x-kendo-template" id="template">
+                                        <div class="product">
+                                            <img src="../content/web/foods/#= name #" alt="#: name # image" />
+                                        </div>
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-2 control-label " for="userName">Số người<i class="required">*</i> :</label>
+                                <div class="col-lg-6">
+                                    <input class="form-control"
+                                           placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                           name="title" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-2 control-label " for="userName">Vệ sinh<i class="required">*</i> :</label>
+                                <div class="col-lg-6">
+                                    <input class="form-control"
+                                           placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                           name="title" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-2 control-label " for="userName">Hướng nhà<i class="required">*</i> :</label>
+                                <div class="col-lg-6">
+                                    <input class="form-control"
+                                           placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                           name="title" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="col-lg-2 control-label " for="userName">Hướng nhà<i class="required">*</i> :</label>
+                                <div class="col-lg-6">
+                                    <input class="form-control"
+                                           placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                           name="title" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-step" id="formStep1">
+                        <div class="steps_header">Bản đồ <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12">
+                            <input id="pac-input" class="form-control" type="text" placeholder="Tìm kiếm địa chỉ....">
+                            <div id="map-canvas" style="width:100%;height:300px"></div>
                         </div>
                     </form>
                 </div>
@@ -732,6 +798,19 @@
 </body>
 </html>
 <style>
+    #pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 300px;
+}
+    #pac-input:focus {
+        border-color: #4d90fe;
+      }
     .up-note {
         margin: 10px 0px;
         overflow: hidden;
@@ -1069,3 +1148,101 @@
         color: #ff8401;
     }
 </style>
+<script>
+        $(function () {
+            $("#files").kendoUpload({
+                async: {
+                    saveUrl: "save",
+                    removeUrl: "remove",
+                    autoUpload: true
+                },
+                validation: {
+                    allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif"]
+                },
+                success: onSuccess,
+                showFileList: false,
+                dropZone: ".dropZoneElement"
+            });
+
+            function onSuccess(e) {
+                if (e.operation == "upload") {
+                    for (var i = 0; i < e.files.length; i++) {
+                        var file = e.files[i].rawFile;
+                        if (file) {
+                        }
+                    }
+                }
+            }
+        });
+</script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<script>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            var myLatlng = new google.maps.LatLng(pos.lat, pos.lng);
+            var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                zoom: 14,
+                center: myLatlng
+            });
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                draggable: true,
+            });
+            marker.setMap(map);
+            google.maps.event.addListener(marker, 'dragend', function () {
+                geocodePosition(marker.getPosition());
+            });
+
+            function geocodePosition(pos) {
+                geocoder = new google.maps.Geocoder();
+                geocoder.geocode
+                 ({
+                     latLng: pos
+                 },
+                     function (results, status) {
+                         if (status == google.maps.GeocoderStatus.OK) {
+                             console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                         }
+                         else {
+                             alert("error");
+                         }
+                     }
+                 );
+            }
+
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('pac-input'));
+            map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('pac-input'));
+            google.maps.event.addListener(searchBox, 'places_changed', function () {
+                searchBox.set('map', null);
+                var places = searchBox.getPlaces();
+                var bounds = new google.maps.LatLngBounds();
+                var i, place;
+                for (i = 0; place = places[i]; i++) {
+                    (function (place) {
+                        marker.setPosition(place.geometry.location);
+                        google.maps.event.addListener(marker, 'map_changed', function () {
+                            if (!this.getMap()) {
+                                this.unbindAll();
+                            }
+                        });
+                        bounds.extend(place.geometry.location);
+                    }(place));
+                }
+                map.fitBounds(bounds);
+                searchBox.set('map', map);
+                map.setZoom(Math.min(map.getZoom(), 12));
+
+            });
+
+        }, function () {
+        });
+    }
+</script>
