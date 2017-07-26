@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16FB9625-6CA9-451E-881A-FA775874C7DC}</ProjectGuid>
+    <ProjectGuid>{06219887-9342-4485-AFF1-834F69A0C524}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RealEstate.RepositoryTest</RootNamespace>
-    <AssemblyName>RealEstate.RepositoryTest</AssemblyName>
+    <RootNamespace>RealEstate.ControllerTest</RootNamespace>
+    <AssemblyName>RealEstate.ControllerTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -38,14 +38,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.99.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.99\lib\net45\Moq.dll</HintPath>
     </Reference>
     <Reference Include="RealEstate.Utilities">
       <HintPath>..\RealEstate.Utilities\bin\Debug\RealEstate.Utilities.dll</HintPath>
@@ -54,19 +57,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnnouncementRepositoryTest.cs" />
-    <Compile Include="CountryRepositoryTest.cs" />
-    <Compile Include="DistrictRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProvinceRepositoryTest.cs" />
-    <Compile Include="RoomRepositoryTest.cs" />
-    <Compile Include="UserRepositoryTest.cs" />
-    <Compile Include="WardRepositoryTest.cs" />
+    <Compile Include="RoomControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RealEstate.Administrator\RealEstate.Administrator.csproj">
+      <Project>{89156b38-815a-4e22-9a01-b40c3820e403}</Project>
+      <Name>RealEstate.Administrator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RealEstate.Common\RealEstate.Common.csproj">
       <Project>{3f93bc56-cab2-4b62-831b-037f69caa307}</Project>
       <Name>RealEstate.Common</Name>
@@ -78,6 +79,10 @@
     <ProjectReference Include="..\RealEstate.Repository\RealEstate.Repository.csproj">
       <Project>{9e43fc54-4900-47eb-b9e3-ce73cddd8e8d}</Project>
       <Name>RealEstate.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealEstate.Service\RealEstate.Service.csproj">
+      <Project>{3567e448-6952-4492-b990-95a28279b1fa}</Project>
+      <Name>RealEstate.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
