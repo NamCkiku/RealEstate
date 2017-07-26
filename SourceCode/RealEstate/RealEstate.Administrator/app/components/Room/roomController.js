@@ -259,8 +259,8 @@
             //},
             //{ field: "RoomTypeName", title: "Loại phòng" },
             {
-                field: "CreateDate", title: "Ngày đăng",
-                template: "#=CreateDate == null ? '' : kendo.toString(kendo.parseDate(CreateDate, 'yyyy-MM-dd'), '" + $rootScope.RootScopeDateFormat + "') #"
+                field: "CreatedDate", title: "Ngày đăng",
+                template: "#=CreatedDate == null ? '' : kendo.toString(kendo.parseDate(CreatedDate, 'yyyy-MM-dd'), '" + $rootScope.RootScopeDateFormat + "') #"
             },
 
             //{ field: "ProvinceName", title: "Tỉnh/Thành phố" },
