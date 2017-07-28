@@ -12,6 +12,7 @@ using RealEstate.Repository.IRepositories;
 using RealEstate.Common.Helper;
 using RealEstate.Common.Constants;
 using System.Reflection;
+using RealEstate.Common.Enumerations;
 
 namespace RealEstate.Service.Service
 {
@@ -46,17 +47,13 @@ namespace RealEstate.Service.Service
             return lstroom;
         }
 
-        public IEnumerable<Room> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow)
+        public IEnumerable<RoomEntity> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow)
         {
-            List<Room> lstroom = new List<Room>();
+            List<RoomEntity> lstroom = new List<RoomEntity>();
             try
             {
-                lstroom = _roomRepository.GetMulti(x => x.UserID == userID && x.isDelete == false).ToList();
-                totalRow = lstroom.Count();
-                if (lstroom != null)
-                {
-                    lstroom.Skip(page * pageSize).Take(pageSize);
-                }
+                totalRow = 0;
+                lstroom = _roomRepository.GetAllRoomByUser(userID, page, pageSize, out totalRow).ToList();
             }
             catch (Exception ex)
             {
@@ -178,6 +175,26 @@ namespace RealEstate.Service.Service
             Room roomResult = new Room();
             try
             {
+                if (room.VipID == (int)VipTypeEnum.Vip1)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip1;
+                }
+                else if (room.VipID == (int)VipTypeEnum.Vip2)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip1;
+                }
+                else if (room.VipID == (int)VipTypeEnum.Vip3)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip3;
+                }
+                else if (room.VipID == (int)VipTypeEnum.Vip4)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip4;
+                }
+                else
+                {
+                    room.RoomStar = 0;
+                }
                 roomResult = _roomRepository.Add(room);
                 _unitOfWork.Commit();
                 if (!string.IsNullOrEmpty(room.Tags))
@@ -215,6 +232,26 @@ namespace RealEstate.Service.Service
         {
             try
             {
+                if (room.VipID == (int)VipTypeEnum.Vip1)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip1;
+                }
+                else if (room.VipID == (int)VipTypeEnum.Vip2)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip1;
+                }
+                else if (room.VipID == (int)VipTypeEnum.Vip3)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip3;
+                }
+                else if (room.VipID == (int)VipTypeEnum.Vip4)
+                {
+                    room.RoomStar = (int)VipTypeEnum.Vip4;
+                }
+                else
+                {
+                    room.RoomStar = 0;
+                }
                 _roomRepository.Update(room);
                 if (!string.IsNullOrEmpty(room.Tags))
                 {

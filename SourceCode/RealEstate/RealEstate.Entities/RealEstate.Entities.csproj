@@ -148,6 +148,10 @@
     <Compile Include="Migrations\201706280805227_addAnnouncementTable.Designer.cs">
       <DependentUpon>201706280805227_addAnnouncementTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707280736293_addColumsRoomStart.cs" />
+    <Compile Include="Migrations\201707280736293_addColumsRoomStart.Designer.cs">
+      <DependentUpon>201707280736293_addColumsRoomStart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\AppUserEntity.cs" />
     <Compile Include="ModelView\DistrictEntity.cs" />
@@ -195,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706280805227_addAnnouncementTable.resx">
       <DependentUpon>201706280805227_addAnnouncementTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707280736293_addColumsRoomStart.resx">
+      <DependentUpon>201707280736293_addColumsRoomStart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,8 @@ namespace RealEstate.Entities.Entites
 
         public decimal? WaterPrice { get; set; }
 
+        public int? Facade { get; set; }
+
         [Column(TypeName = "xml")]
         public string Convenient { get; set; }
     }

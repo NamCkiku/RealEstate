@@ -235,6 +235,7 @@ namespace RealEstate.Api.Controllers
                                  moreInfomation.WaterPrice = roomViewModel.MoreInfomations.WaterPrice;
                                  moreInfomation.ToiletNumber = roomViewModel.MoreInfomations.ToiletNumber;
                                  moreInfomation.FloorNumber = roomViewModel.MoreInfomations.FloorNumber;
+                                 moreInfomation.Facade = roomViewModel.MoreInfomations.Facade;
                                  var moreIfResult = _moreInfomationService.Insert(moreInfomation);
                                  _moreInfomationService.SaveChanges();
                                  newRoom.MoreInfomationID = moreIfResult.MoreInfomationID;
@@ -302,6 +303,7 @@ namespace RealEstate.Api.Controllers
                                  moreInfomation.WaterPrice = roomViewModel.MoreInfomations.WaterPrice;
                                  moreInfomation.ToiletNumber = roomViewModel.MoreInfomations.ToiletNumber;
                                  moreInfomation.FloorNumber = roomViewModel.MoreInfomations.FloorNumber;
+                                 moreInfomation.Facade = roomViewModel.MoreInfomations.Facade;
                                  _moreInfomationService.Update(moreInfomation);
                                  _moreInfomationService.SaveChanges();
                              }

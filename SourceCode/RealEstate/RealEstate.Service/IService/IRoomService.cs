@@ -17,7 +17,7 @@ namespace RealEstate.Service.IService
 
         IEnumerable<Room> GetAllListRoomPaging(SearchRoomEntity filter, int page, int pageSize, out int totalRow);
 
-        IEnumerable<Room> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow);
+        IEnumerable<RoomEntity> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow);
 
         IEnumerable<Room> GetAllListRoomFullSearch(SearchRoomEntity filter, int page, int pageSize, out int totalRow, string sort);
 
