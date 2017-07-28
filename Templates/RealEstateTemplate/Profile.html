@@ -143,7 +143,8 @@
                             </li>
                             <li>
                                 <a href="javascript:;" data-toggle="modal" data-target="#myModal1">
-                                    <i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Ký</a>
+                                    <i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Ký
+                                </a>
                             </li>
                         </ul>
                         <h3>Tất Cả Phòng Trọ</h3>
@@ -163,7 +164,7 @@
                             <li>
                                 <a href="javascript:;"><i class="fa fa-bullhorn" style="margin-right:10px;" aria-hidden="true"></i>Mặt đường</a>
                             </li>
-                            
+
                         </ul>
                         <h3>Menu</h3>
                         <ul>
@@ -344,6 +345,44 @@
     </header>
     <div class="clearfix"></div>
     <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="breadcrumbs">
+                        <ul class="breadcrumb">
+                            <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+                            <li>Tất cả sản phẩm</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-xs-12">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object dp img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" style="width: 100px;height:100px;">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">Hardik Sondagar <small> India</small></h4>
+                            <h5>Software Developer at <a href="http://gridle.in">Gridle.in</a></h5>
+                            <hr style="margin:8px auto">
+                            <span class="label label-default">HTML5/CSS3</span>
+                            <span class="label label-default">jQuery</span>
+                            <span class="label label-info">CakePHP</span>
+                            <span class="label label-default">Android</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-8 col-xs-12" id="box-profile">
+                    <div class="tab" role="tabpanel">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active" id="cuocchoghep"><a href="#tabcuocchoghep" role="tab" data-toggle="tab">Cuốc chờ ghép<i class="badge badge-danger pull-right">0 chưa làm</i></a></li>
+                            <li role="presentation" id="cuocdaghep"><a href="#tabcuocdaghep" role="tab" data-toggle="tab">Cuốc đã ghép<i class="badge badge-danger pull-right">0</i></a></li>
+                            <li role="presentation" id="cuocketthuc"><a href="#tabcuocdaghep" role="tab" data-toggle="tab">Cuốc kết thúc<i class="badge badge-danger pull-right">0</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="clearfix"></div>
     <footer class="footer" id="footer">
@@ -460,5 +499,105 @@
 </body>
 </html>
 <style>
-    
+    #box-profile .tab .nav-tabs {
+        border-bottom: 0 none;
+    }
+
+        #box-profile .tab .nav-tabs li {
+            margin-right: 15px;
+        }
+
+            #box-profile .tab .nav-tabs li a {
+                position: relative;
+                padding: 7px;
+                color: #fff;
+                font-size: 13px;
+                z-index: 1;
+            }
+
+                #box-profile .tab .nav-tabs li a:hover {
+                    background: transparent;
+                    border: 1px solid transparent;
+                }
+
+                #box-profile .tab .nav-tabs li a:before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    bottom: 3px;
+                    left: -1px;
+                    font-size: 17px;
+                    background: #2672ec;
+                    border: 1px solid #d3d3d3;
+                    border-bottom: 0px none;
+                    border-radius: 10px 10px 0 0;
+                    transform-origin: left center 0;
+                    transform: perspective(4px) rotateX(2deg);
+                    z-index: -1;
+                }
+
+            #box-profile .tab .nav-tabs li.active a:before {
+                background: #fff;
+            }
+
+            #box-profile .tab .nav-tabs li.active a,
+            #box-profile .tab .nav-tabs li.active a:focus,
+            #box-profile .tab .nav-tabs li.active a:hover {
+                border: 1px solid transparent;
+                background: transparent;
+                color: #444;
+                z-index: 2;
+            }
+
+    .nav .badge {
+        top: -10px;
+        left: 68px;
+        position: absolute;
+        background-color: #e73c3c;
+    }
+
+    @media only screen and (max-width: 767px) {
+        #box-profile .tab .nav-tabs li a {
+            padding: 15px 10px;
+            font-size: 14px;
+        }
+
+            #box-profile .tab .nav-tabs li a:before {
+                bottom: 6px;
+            }
+    }
+
+    @media only screen and (max-width: 480px) {
+        #box-profile .tab .nav-tabs li {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+            #box-profile .tab .nav-tabs li a:before {
+                bottom: 0;
+                transform: none;
+                border-bottom: 1px solid #d3d3d3;
+            }
+    }
+</style>
+<style>
+    .media {
+        /*box-shadow:0px 0px 4px -2px #000;*/
+        margin: 20px 0;
+        padding: 30px;
+    }
+
+    .dp {
+        border: 10px solid #eee;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .dp:hover {
+            border: 2px solid #eee;
+            transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            /*-webkit-font-smoothing:antialiased;*/
+        }
 </style>
