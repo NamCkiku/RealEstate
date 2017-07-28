@@ -97,6 +97,8 @@ namespace RealEstate.Entities.Entites
         [StringLength(400)]
         public string MetaTitle { get; set; }
 
+        public int  RoomStar { set; get; }
+
         public string Tags { set; get; }
 
         public bool Published { get; set; }

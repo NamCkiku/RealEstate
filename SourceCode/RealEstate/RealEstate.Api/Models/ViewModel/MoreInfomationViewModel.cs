@@ -22,5 +22,6 @@ namespace RealEstate.Api.Models.ViewModel
         public int? WaterPrice { get; set; }
 
         public string Convenient { get; set; }
+        public int? Facade { get; set; }
     }
 }
