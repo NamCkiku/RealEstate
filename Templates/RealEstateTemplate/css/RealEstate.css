@@ -338,45 +338,97 @@ html ul, html ol {
         background-color: transparent;
     }
 
-#box-action-mobile {
-    background-color: #34495e;
-    border-bottom: 1px solid #fff;
-    padding: 7px 10px;
-}
-
-    #box-action-mobile .navbar-default {
-        background: #34495e;
-        border: none;
-        margin-bottom: 0;
-        min-height: 30px !important;
-    }
-
-        #box-action-mobile .navbar-default .navbar-toggle {
-            border-color: transparent;
-        }
-
-            #box-action-mobile .navbar-default .navbar-toggle i {
-                color: #fff;
-                float: right;
-                font-size: 18px;
-            }
-
-            #box-action-mobile .navbar-default .navbar-toggle:hover {
-                background: black;
-            }
-
-            #box-action-mobile .navbar-default .navbar-toggle:focus {
-                background: #333;
-            }
-
 .sb-slidebar {
     height: 100%;
-    overflow-y: auto;
+    overflow-y: auto; /* Enable vertical scrolling on Slidebars when needed. */
     position: fixed;
     top: 0;
-    z-index: 0;
-    visibility: hidden;
-    background-color: #34495e;
+    z-index: 0; /* Slidebars sit behind sb-site. */
+    visibility: hidden; /* Initially hide the Slidebars. */
+    background-color: #262C3A !important; /* Default Slidebars background colour, overwrite this with your own css. */
+}
+
+.slidemenu {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 100%;
+    background-color: #262C3A;
+    -webkit-box-shadow: 3px 0px 5px -2px #32394A;
+    box-shadow: 3px 0px 5px -2px #32394A;
+    z-index: 2147483647;
+    display: none;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+    .slidemenu h3 {
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #8C919F;
+        text-shadow: 0 1px 0 #272D39;
+        margin: 0;
+        padding: 4px 0 4px 10px;
+        background: rgb(67,74,94); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(67,74,94,1) 0%, rgba(57,64,82,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(67,74,94,1)), color-stop(100%,rgba(57,64,82,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(67,74,94,1) 0%,rgba(57,64,82,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(67,74,94,1) 0%,rgba(57,64,82,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(67,74,94,1) 0%,rgba(57,64,82,1) 100%); /* IE10+ */
+        background: linear-gradient(top, rgba(67,74,94,1) 0%,rgba(57,64,82,1) 100%); /* W3C */
+        border-top: solid #4E5567 1px;
+        border-bottom: solid #242A37 1px;
+    }
+
+    .slidemenu ul {
+        margin: 0;
+        padding: 0;
+        width: inherit;
+    }
+
+        .slidemenu ul li {
+            list-style-type: none;
+            margin: 0px 0;
+        }
+
+            .slidemenu ul li a:link, .slidemenu ul li a:visited {
+                border-top: 1px #3E4555 solid;
+                border-bottom: 1px #191D27 solid;
+                color: #DBE0E8;
+                font-size: 14px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-decoration: none;
+                width: 230px;
+                display: block;
+                padding: 10px 0px 10px 10px;
+                text-shadow: 0px 1px 1px #212631;
+            }
+
+            .slidemenu ul li img {
+                margin-right: 8px;
+            }
+
+            .slidemenu ul li a:hover, .slidemenu ul li a:active {
+                background-color: #32394A;
+            }
+/* THESE ARE JUST EXAMPLE STYLES BELOW */
+
+#profile {
+    background-color: #32394A;
+    border-bottom: 1px solid #242A37;
+    overflow: hidden;
+    height: 58px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile_info {
+    position: relative;
+    left: 68px;
+    top: -49px;
+    font-size: 14px;
+    color: #C4CCDA;
+    text-shadow: 0 0px 0 black;
 }
 
 
