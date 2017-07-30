@@ -886,7 +886,7 @@ html ul, html ol {
     line-height: 18px;
 }
 
-.form-control {
+.box-search-room .form-control {
     height: 40px;
     font-size: 12px;
     border-radius: 2px;
