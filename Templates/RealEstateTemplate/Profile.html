@@ -371,18 +371,74 @@
                                 <i style="display: table-cell;" class="glyphicon glyphicon-gift"></i><span class="info-span-user ">30/04/1995</span>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-xs btn-block btn-success margin-top-10">
-                            <i class="fa fa-plus-circle"></i> <span>Add as a friend</span>
-                        </a>
-                        <a href="#" class="btn btn-xs btn-block btn-warning margin-top-10">
-                            <i class="fa fa-plus-circle"></i> <span>Add as a friend</span>
-                        </a>
-                    </div>
+                        <div class="profile-userbuttons">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-success  btn-sm btn-block" type="button"><i class="fa fa-envelope"></i> Gửi tin nhắn</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-warning btn-sm btn-block" type="button"><i class="fa fa-coffee"></i> Nạp tiền</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover no-margin">
+                            <tbody>
+                                <tr>
+                                    <td>Trạng thái</td>
+                                    <td><span class="notice notice-danger">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Hạng</td>
+                                    <td><i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày đăng ký</td>
+                                    <td>20/04/2017</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="widget" style="margin-top:25px;">
+                            <div class="widget-body">
+                                <div class="streamline sl-style-2">
+                                    <div class="sl-item sl-primary">
+                                        <div class="sl-content">
+                                            <small class="text-muted">5 mins ago</small>
+                                            <p>Williams has just joined Project X</p>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item sl-danger">
+                                        <div class="sl-content">
+                                            <small class="text-muted">25 mins ago</small>
+                                            <p>Jane sent you a request to grant access to the project folder</p>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item sl-success">
+                                        <div class="sl-content">
+                                            <small class="text-muted">40 mins ago</small>
+                                            <p>Kate added you to her team</p>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-content">
+                                            <small class="text-muted">55</small>
+                                            <p>John has finished his task</p>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item sl-warning">
+                                        <div class="sl-content">
+                                            <small class="text-muted">60 mins ago</small>
+                                            <p>Jim shared a folder with you</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
                 </div>
                 <div class="col-md-8 col-lg-8 col-xs-12">
                     <div class="card tab-profile">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>Home</span></a></li>
+                            <li role="presentation" class="active"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>Tài khoản</span></a></li>
                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>Profile</span></a></li>
                             <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>  <span>Messages</span></a></li>
                             <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-cog"></i>  <span>Settings</span></a></li>
@@ -391,7 +447,50 @@
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                            <div role="tabpanel" class="tab-pane active" id="account">
+                                <form id="update-profile-form" action="/thay-doi-thong-tin" method="post" class="zn-form form-horizontal" role="form" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
+                                    <div class="form-group">
+                                        <label for="user_name" class="col-sm-3 control-label">Tên đăng nhập <span class="required-text">*</span></label>
+                                        <div class="col-sm-8">
+                                            <input name="user_name" maxlength="255" placeholder="" disabled="disabled" type="text" class="form-control" id="user_name" value="namckiku">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-3 control-label">E-mail <span class="required-text">*</span></label>
+                                        <div class="col-sm-8">
+                                            <input id="email" type="text" class="required form-control" name="email" maxlength="255" value="tranhoangnam11373@gmail.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name" class="col-sm-3 control-label">Tên hiển thị</label>
+                                        <div class="col-sm-8">
+                                            <input id="display-name" type="text" class="form-control" name="display_name" maxlength="255" value="Nam Ckiku">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="school-search-input" class="col-sm-3 control-label">Trường THPT</label>
+                                        <div class="col-sm-8">
+                                            <div id="school-search-box" class="item-search-box" style="">
+                                                <input type="text" class="form-control item-search-input" name="item-search-input" placeholder="Nhập tên trường cần tìm" data-type="school">
+                                                <input id="school-id" type="hidden" name="school_id" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="biography" class="col-sm-3 control-label">Giới thiệu về bản thân</label>
+                                        <div class="col-sm-8">
+                                            <textarea class="form-control" style="height: 100px;" id="biography" rows="10" cols="40" name="biography"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-8 col-sm-offset-3">
+                                            <input class="zn-btn btn-success btn-save" type="submit" value="Lưu">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
                             <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
                             <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
@@ -557,6 +656,125 @@
     </script>
 </body>
 </html>
+<style>
+    .text-warning {
+        color: #fbbc05 !important;
+    }
+    .required-text {
+        color: #ff0000;
+    }
+    .tab-profile .form-control {
+        display: inline-block;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    .tab-profile .control-label {
+        font-weight: normal;
+        font-size:12px;
+    }
+    .profile-userbuttons {
+        text-align: center;
+        margin-top: 20px;
+    }
+        .profile-userbuttons .btn {
+            margin-bottom: 5px;
+        }
+        .profile-userbuttons button {
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 15px;
+        }
+    .btn.aqua:not(.btn-outline) {
+        color: #FFF;
+        background-color: #49b6d6;
+        border-color: #49b6d6;
+    }
+
+    
+    .streamline .sl-item {
+        position: relative;
+        padding-bottom: 12px;
+        border-left: 1px solid #ccc;
+    } 
+    .streamline.sl-style-2 .sl-item:before {
+        top: 6px;
+        background-color: #fff;
+        width: 11px;
+        height: 11px;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+    }
+    .streamline .sl-item:before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: 0;
+        background-color: #ccc;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+    }
+    .streamline .sl-item .sl-content {
+        margin-left: 24px;
+    }
+    .streamline .sl-item .text-muted {
+        color: rgba(0,0,0,.38) !important;
+        opacity: .6;
+    }
+    .streamline .sl-item p {
+        margin-bottom: 10px;
+    }
+    .streamline .sl-primary:before, .streamline .sl-primary:last-child:after {
+        background-color: #188ae2;
+    }
+
+    .streamline.sl-style-2 .sl-primary:before, .streamline.sl-style-2 .sl-primary:last-child:after {
+        border-color: #188ae2;
+    }
+
+    .streamline .sl-primary {
+        border-left-color: #188ae2;
+    }
+    .streamline .sl-danger {
+        border-left-color: #ff5b5b;
+    }
+    .streamline.sl-style-2 .sl-danger:before, .streamline.sl-style-2 .sl-danger:last-child:after {
+        border-color: #ff5b5b;
+    }
+    .streamline .sl-danger:before, .streamline .sl-danger:last-child:after {
+        background-color: #ff5b5b;
+    }
+    .streamline .sl-success {
+        border-left-color: #10c469;
+    }
+    .streamline.sl-style-2 .sl-success:before, .streamline.sl-style-2 .sl-success:last-child:after {
+        border-color: #10c469;
+    }
+    .streamline .sl-success:before, .streamline .sl-success:last-child:after {
+        background-color: #10c469;
+    }
+    .streamline .sl-warning {
+        border-left-color: #f9c851;
+    }
+    .streamline.sl-style-2 .sl-warning:before, .streamline.sl-style-2 .sl-warning:last-child:after {
+        border-color: #f9c851;
+    }
+    .streamline .sl-warning:before, .streamline .sl-warning:last-child:after {
+        background-color: #f9c851;
+    }
+
+
+
+
+    .element-box, .invoice-w, .big-error-w {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+    }
+</style>
 <style>
     #box-profile .tab .nav-tabs {
         border-bottom: 0 none;

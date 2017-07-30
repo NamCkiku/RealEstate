@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-
+using RealEstate.Common.Helper;
 namespace RealEstate.Api.Controllers
 {
     [RoutePrefix("api/upload")]
@@ -98,7 +98,9 @@ namespace RealEstate.Api.Controllers
 
                             string path = Path.Combine(HttpContext.Current.Server.MapPath(directory), postedFile.FileName);
                             //Userimage myfolder name where i want to save my image
-                            postedFile.SaveAs(path);
+                            string pathLogo = Path.Combine(HttpContext.Current.Server.MapPath("/UploadedFiles/Rooms/logo.png"), postedFile.FileName);
+                            ImageHelper.Images(pathLogo, path, 50, 50, postedFile.FileName);
+                            //postedFile.SaveAs(path);
                             return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, postedFile.FileName));
                         }
                     }
