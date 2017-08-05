@@ -54,11 +54,11 @@ namespace RealEstate.Api.Quartz
 
                   (s =>
 
-                     s.WithIntervalInMinutes(2)
+                     s.WithIntervalInHours(2)
 
                     .OnEveryDay()
 
-                    .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
+                   .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(19, 0))
 
                   )
 
