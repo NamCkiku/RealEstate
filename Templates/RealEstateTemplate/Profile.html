@@ -484,6 +484,18 @@
                                             <textarea class="form-control" style="height: 100px;" id="biography" rows="10" cols="40" name="biography"></textarea>
                                         </div>
                                     </div>
+                                    <div class="form-group clearfix">
+                                        <label class="col-md-3 control-label">Ảnh đại diện<i class="required">*</i> :</label>
+                                        <div class="col-md-8">
+                                            <div class="room_avatar_image">
+                                                <canvas id="canvas" height="5" width="5"></canvas>
+                                                <img class="room_avatar_image_edit">
+                                                <div class="img_edit"></div>
+                                                <input type="file" id="FileUpload1" class="img_upload" accept=".jpg,.png,.gif">
+                                                <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-8 col-sm-offset-3">
                                             <input class="zn-btn btn-success btn-save" type="submit" value="Lưu">
@@ -955,6 +967,54 @@
         padding-bottom: 3px;
         color: #979797;
     }
+
+
+    .room_avatar_image {
+        width: 200px;
+        height: 150px;
+        background: url(https://sharecode.vn/assets/images/img_code.jpg) no-repeat;
+        border: 1px solid #d5c6ae;
+        border-radius: 3px;
+        float: left;
+        position: relative;
+        overflow: hidden;
+        margin-right: 40px;
+    }
+
+        .room_avatar_image .room_avatar_image_edit {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 148px;
+        }
+
+        .room_avatar_image .img_edit {
+            position: absolute;
+            top: 0;
+            width: 200px;
+            height: 150px;
+        }
+
+        .room_avatar_image:hover .img_edit {
+            background: url(https://sharecode.vn/assets/images/img_edit.png) no-repeat;
+        }
+
+        .room_avatar_image:focus .img_edit {
+            background: url(https://sharecode.vn/assets/images/img_edit.png) no-repeat;
+        }
+
+        .room_avatar_image input.img_upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 150px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
 
 </style>
 <style>
