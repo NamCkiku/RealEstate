@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C4059A86-2E15-441B-9D1D-F07D0392CD53}"
 EndProject
@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.ServiceTest", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.ControllerTest", "RealEstate.ControllerTest\RealEstate.ControllerTest.csproj", "{06219887-9342-4485-AFF1-834F69A0C524}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Web", "RealEstate.Web\RealEstate.Web.csproj", "{62DA4134-DD9E-440B-96BE-29200694BB80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{06219887-9342-4485-AFF1-834F69A0C524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06219887-9342-4485-AFF1-834F69A0C524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06219887-9342-4485-AFF1-834F69A0C524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62DA4134-DD9E-440B-96BE-29200694BB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DA4134-DD9E-440B-96BE-29200694BB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DA4134-DD9E-440B-96BE-29200694BB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DA4134-DD9E-440B-96BE-29200694BB80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,5 +118,6 @@ Global
 		{16FB9625-6CA9-451E-881A-FA775874C7DC} = {82342D62-C102-4D5B-98F8-83894032CA7F}
 		{31BDB5E2-A227-4D33-878A-96AB002FFDF5} = {82342D62-C102-4D5B-98F8-83894032CA7F}
 		{06219887-9342-4485-AFF1-834F69A0C524} = {82342D62-C102-4D5B-98F8-83894032CA7F}
+		{62DA4134-DD9E-440B-96BE-29200694BB80} = {C4059A86-2E15-441B-9D1D-F07D0392CD53}
 	EndGlobalSection
 EndGlobal

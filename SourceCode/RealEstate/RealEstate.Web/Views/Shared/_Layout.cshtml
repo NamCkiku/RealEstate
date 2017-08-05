@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Phòng Tốt</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/select2/select2.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/slidebar/slidebars.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/css/RealEstate.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Content/Plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Content/Plugins/slidebar/slidebars.min.js"></script>
+    <script src="~/Content/Plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+    <script src="~/Content/Plugins/select2/select2.min.js"></script>
+    <script src="~/Content/Plugins/select2/select2_locale_vi.js"></script>
+    <script src="~/Content/js/common.js"></script>
+</head>
+<body>
+    @{Html.RenderAction("_HeaderPatialView", "Home");}
+    <div class="clearfix"></div>
+    @RenderBody()
+    <div class="clearfix"></div>
+    @{Html.RenderAction("_FooterPatialView", "Home");}
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $(".js-example-basic-single").select2({
+            language: "vi"
+        });
+        // CATEGORY FILTER
+        $('.slider-range-price').each(function () {
+            var min = $(this).data('min');
+            var max = $(this).data('max');
+            var unit = $(this).data('unit');
+            var value_min = $(this).data('value-min');
+            var value_max = $(this).data('value-max');
+            var label_reasult = $(this).data('label-reasult');
+            var t = $(this);
+            $(this).slider({
+                range: true,
+                min: min,
+                max: max,
+                values: [value_min, value_max],
+                slide: function (event, ui) {
+                    var result = label_reasult + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
+                    t.closest('.slider-range').find('.amount-range-price').html(result);
+                }
+            });
+        })
+    });
+</script>

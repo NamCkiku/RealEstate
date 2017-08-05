@@ -1,0 +1,461 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+                        <li>Thêm thông tin</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9 col-xs-12">
+                <div class="steps">
+                    <div class="step first current">
+                        <div class="circle">1</div>
+                        <div class="text">Thông tin liên hệ</div>
+                    </div>
+                    <div class="step second">
+                        <div class="circle">2</div>
+                        <div class="text">Thông tin cơ bản</div>
+                    </div>
+                    <div class="step third">
+                        <div class="circle">3</div>
+                        <div class="text">Thông tin bổ sung</div>
+                    </div>
+                    <div class="step fourth">
+                        <div class="circle">4</div>
+                        <div class="text">Bản đồ</div>
+                    </div>
+                </div>
+                <div class="up-note hidden-xs">
+                    <div class="col-md-6 up-left">
+                        <div class="title3 orange">Lợi ích PhongTot.vn đem lại</div>
+                        <ul class="introduce-list">
+                            <li>Tiếp cận <span class="green">trăm nghìn khách hàng</span> tiềm năng mỗi ngày</li>
+                            <li>Tin được marketting đưa lên <span class="green">top 5 google</span></li>
+                            <li>Hưởng <span class="green">70% doanh thu</span> trên mỗi tin được bán</li>
+                            <li>Bạn <span class="green">tự đặt phí</span> cho phòng trọ của mình</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 up-right">
+                        <div class="title3 orange">Mẹo giúp bạn tăng doanh thu</div>
+                        <ul class="introduce-list">
+                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-nhap-thong-tin">Cách nhập thông tin đầy đủ, rõ ràng và hữu ích</a></li>
+                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-gia-hop-ly">Đưa ra mức phí hợp lý và có sức thu hút</a></li>
+                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-gioi-thieu">Tạo chiến lược quảng bá, giới thiệu</a></li>
+                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-tham-gia-event">Tham gia đầy đủ các sự kiện của PhongTot.vn</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <form class="form-step" id="formStep1">
+                    <div class="steps_header">Thông tin liên hệ&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-8">
+                        <div class="form-group clearfix">
+                            <label class="col-lg-3 control-label " for="userName">Họ và tên<i class="required">*</i> :</label>
+                            <div class="col-lg-9 no-padding">
+                                <input class="form-control"
+                                       id="userName"
+                                       placeholder="Tên của tôi là:"
+                                       name="userName" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-3 control-label " for="password"> Email<i class="required">*</i> :</label>
+                            <div class="col-lg-9 no-padding">
+                                <input id="password"
+                                       placeholder="Email của tôi là:"
+                                       name="password" type="text"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-3 control-label " for="confirm">Số điện thoại<i class="required">*</i> :</label>
+                            <div class="col-lg-9 no-padding">
+                                <input id="phone"
+                                       name="phone"
+                                       type="text"
+                                       placeholder="Số điện thoại của tôi là:"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-3 control-label " for="confirm">Địa chỉ<i class="required">*</i> :</label>
+                            <div class="col-lg-9 no-padding">
+                                <input id="adress"
+                                       name="adress"
+                                       type="text"
+                                       placeholder="ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="quick-fill">
+                            <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span>Tôi đã từng đăng tin trên phongtot.vn, hãy giúp tôi</span></div>
+                            <div class="input">
+                                <button class="quick-fill-infor btn" ng-click="GetUserLogin();"><i class="fa fa-pencil" style="margin-right:10px;" aria-hidden="true"></i>Điền nhanh thông tin</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-step" id="formStep1">
+                    <div class="steps_header">Thông tin cơ bản <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12">
+                        <div class="form-group clearfix">
+                            <div class="col-md-offset-3 col-md-9">
+                                <div class="orange">Tặng thưởng ngay 5 Point cho mỗi upload được duyệt (5 Point = 1 XU). </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group clearfix">
+                            <label class="col-md-2 control-label">Ảnh đại diện<i class="required">*</i> :</label>
+                            <div class="col-md-10">
+                                <div class="room_avatar_image">
+                                    <canvas id="canvas" height="5" width="5"></canvas>
+                                    <img class="room_avatar_image_edit">
+                                    <div class="img_edit"></div>
+                                    <input type="file" id="FileUpload1" class="img_upload" accept=".jpg,.png,.gif">
+                                    <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
+                                </div>
+                                <div class="alignleft room_avatar_image_txt">
+                                    <div class="true-ic">Ảnh đẹp sẽ giúp tin có nhiều lượt xem</div>
+                                    <div class="true-ic">Dung lượng tối đa 2MB</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Danh mục<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-min="20"
+                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
+                                       data-fv-stringlength-max="250"
+                                       ng-model="rooms.RoomName"
+                                       ng-change="GetSeoTitle();"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Tiêu đề<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-min="20"
+                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
+                                       data-fv-stringlength-max="250"
+                                       ng-model="rooms.RoomName"
+                                       ng-change="GetSeoTitle();"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                            <div class="col-md-4 note-col">
+                                <div class="form-control-static">
+                                    <span id="title_error" class="text-error "></span>
+                                    <span class="text-nowrap title5">Quyết định 80% SEO <span data-toggle="tooltip" data-placement="top" title="Tiêu đề tối thiểu 20 kí tự, Tiêu đề cần chứa 'Từ khóa' trọng tâm, tiêu đề càng hấp dẫn sẽ thu hút nhiều lượt xem."><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Tỉnh Thành<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-min="20"
+                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
+                                       data-fv-stringlength-max="250"
+                                       ng-model="rooms.RoomName"
+                                       ng-change="GetSeoTitle();"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                            <div class="col-md-4 note-col">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Quận/huyện<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-min="20"
+                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
+                                       data-fv-stringlength-max="250"
+                                       ng-model="rooms.RoomName"
+                                       ng-change="GetSeoTitle();"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                            <div class="col-md-4 note-col">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Phường/xã<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-min="20"
+                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
+                                       data-fv-stringlength-max="250"
+                                       ng-model="rooms.RoomName"
+                                       ng-change="GetSeoTitle();"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                            <div class="col-md-4 note-col">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 col-xs-12" for="userName">Gía tiền<i class="required">*</i> :</label>
+                            <div class="col-lg-3 col-xs-6">
+                                <input class="form-control"
+                                       name="title" type="text">
+                            </div>
+                            <div class="col-md-4 col-xs-6 note-col">
+                                <div class="form-control-static">
+                                    <span id="title_error" class="text-error "></span>
+                                    <span class="text-nowrap title5">Quyết định 80% SEO <span data-toggle="tooltip" data-placement="top" title="Tiêu đề tối thiểu 20 kí tự, Tiêu đề cần chứa 'Từ khóa' trọng tâm, tiêu đề càng hấp dẫn sẽ thu hút nhiều lượt xem."><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 col-xs-12 control-label " for="userName">Diện tích<i class="required">*</i> :</label>
+                            <div class="col-lg-3 col-xs-6">
+                                <input class="form-control"
+                                       name="title" type="text">
+                            </div>
+                            <div class="col-md-4 col-xs-6 note-col">
+                                <div class="form-control-static">
+                                    <span id="title_error" class="text-error "></span>
+                                    <span class="text-nowrap title5">Quyết định 80% SEO <span data-toggle="tooltip" data-placement="top" title="Tiêu đề tối thiểu 20 kí tự, Tiêu đề cần chứa 'Từ khóa' trọng tâm, tiêu đề càng hấp dẫn sẽ thu hút nhiều lượt xem."><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Nội dung<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <textarea style="width:100%"
+                                          name="title" type="text"></textarea>
+                            </div>
+                            <div class="col-md-4 note-col">
+                                <div class="up-idea hidden-xs">
+                                    Hoàn thành đầy đủ thông tin giúp tin của bạn được nhiều người biết đến và  có thứ hạng cao trên kết quả tìm kiếm
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Từ khóa SEO<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       name="title" type="text">
+                            </div>
+                            <div class="col-md-4 note-col">
+                                <div class="form-control-static">
+                                    <span class="text-nowrap title5">Tối đa 6 từ khóa <span data-toggle="tooltip" data-placement="top" title="Tiêu đề tối thiểu 20 kí tự, Tiêu đề cần chứa 'Từ khóa' trọng tâm, tiêu đề càng hấp dẫn sẽ thu hút nhiều lượt xem."><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-step" id="formStep1">
+                    <div class="steps_header">Thông tin bổ sung <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12">
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Ảnh<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input name="files" id="files" type="file" />
+
+                                <script type="text/x-kendo-template" id="template">
+                                    <div class="product">
+                                        <img src="../content/web/foods/#= name #" alt="#: name # image" />
+                                    </div>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Số người<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Vệ sinh<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Hướng nhà<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Hướng nhà<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <input class="form-control"
+                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
+                                       name="title" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-step" id="formStep1">
+                    <div class="steps_header">Bản đồ <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12">
+                        <input id="pac-input" class="form-control" type="text" placeholder="Tìm kiếm địa chỉ....">
+                        <div id="map-canvas" style="width:100%;height:300px"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xs-12">
+                <div class="title_st">
+                    <h2>
+                        <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
+                        Hướng dẫn
+                    </h2>
+                </div>
+                <div class="clearfix"></div>
+                <div class="sidebar-ads nopadding-xs hidden-xs hidden-sm margin-top-20" style="margin-top:20px;">
+                    <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common-material.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css" />
+<script src="https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeERa22t2lASaDOgxzPMZe1Fkm3ePJ7ok&libraries=places"
+        type="text/javascript"></script>
+<script>
+    $(function () {
+        $("#files").kendoUpload({
+            async: {
+                saveUrl: "save",
+                removeUrl: "remove",
+                autoUpload: true
+            },
+            validation: {
+                allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif"]
+            },
+            success: onSuccess,
+            showFileList: false,
+            dropZone: ".dropZoneElement"
+        });
+
+        function onSuccess(e) {
+            if (e.operation == "upload") {
+                for (var i = 0; i < e.files.length; i++) {
+                    var file = e.files[i].rawFile;
+                    if (file) {
+                    }
+                }
+            }
+        }
+    });
+</script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<script>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            var myLatlng = new google.maps.LatLng(pos.lat, pos.lng);
+            var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                zoom: 14,
+                center: myLatlng
+            });
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                draggable: true,
+            });
+            marker.setMap(map);
+            google.maps.event.addListener(marker, 'dragend', function () {
+                geocodePosition(marker.getPosition());
+            });
+
+            function geocodePosition(pos) {
+                geocoder = new google.maps.Geocoder();
+                geocoder.geocode
+                    ({
+                        latLng: pos
+                    },
+                    function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                        }
+                        else {
+                            alert("error");
+                        }
+                    }
+                    );
+            }
+
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('pac-input'));
+            map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('pac-input'));
+            google.maps.event.addListener(searchBox, 'places_changed', function () {
+                searchBox.set('map', null);
+                var places = searchBox.getPlaces();
+                var bounds = new google.maps.LatLngBounds();
+                var i, place;
+                for (i = 0; place = places[i]; i++) {
+                    (function (place) {
+                        marker.setPosition(place.geometry.location);
+                        google.maps.event.addListener(marker, 'map_changed', function () {
+                            if (!this.getMap()) {
+                                this.unbindAll();
+                            }
+                        });
+                        bounds.extend(place.geometry.location);
+                    }(place));
+                }
+                map.fitBounds(bounds);
+                searchBox.set('map', map);
+                map.setZoom(Math.min(map.getZoom(), 12));
+
+            });
+
+        }, function () {
+        });
+    }
+</script>
