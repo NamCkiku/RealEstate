@@ -16,19 +16,19 @@
             </div>
             <div class="col-md-9 col-lg-9 col-xs-12" ng-controller="CreateRoomController" block-ui="BlockUIRoom">
                 <div class="steps">
-                    <div class="step first current">
+                    <div class="step first" ng-class="{'current' : isActive=='1'}">
                         <div class="circle">1</div>
                         <div class="text">Thông tin liên hệ</div>
                     </div>
-                    <div class="step second">
+                    <div class="step second" ng-class="{'current' : isActive=='2'}">
                         <div class="circle">2</div>
                         <div class="text">Thông tin cơ bản</div>
                     </div>
-                    <div class="step third">
+                    <div class="step third" ng-class="{'current' : isActive=='3'}">
                         <div class="circle">3</div>
                         <div class="text">Thông tin bổ sung</div>
                     </div>
-                    <div class="step fourth">
+                    <div class="step fourth" ng-class="{'current' : isActive=='4'}">
                         <div class="circle">4</div>
                         <div class="text">Bản đồ</div>
                     </div>
@@ -53,7 +53,7 @@
                         </ul>
                     </div>
                 </div>
-                <form class="form-step" id="formStep1">
+                <div class="form-step" id="formStep1" name="formStep1" ng-show="isActive=='1'">
                     <div class="steps_header">Thông tin liên hệ&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
                     <div class="clearfix"></div>
                     <div class="col-lg-8">
@@ -62,6 +62,11 @@
                             <div class="col-lg-9 no-padding">
                                 <input class="form-control"
                                        id="userName"
+                                       ng-maxlength="256"
+                                       required
+                                       ng-model="room.username"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy nhập tên của bạn"
                                        placeholder="Tên của tôi là:"
                                        name="userName" type="text">
                             </div>
@@ -69,9 +74,12 @@
                         <div class="form-group clearfix">
                             <label class="col-lg-3 control-label " for="password"> Email<i class="required">*</i> :</label>
                             <div class="col-lg-9 no-padding">
-                                <input id="password"
+                                <input id="email"
                                        placeholder="Email của tôi là:"
-                                       name="password" type="text"
+                                       ng-model="room.email"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy nhập email của bạn"
+                                       name="email" type="email"
                                        class="form-control">
                             </div>
                         </div>
@@ -80,6 +88,7 @@
                             <div class="col-lg-9 no-padding">
                                 <input id="phone"
                                        name="phone"
+                                       ng-model="room.phone"
                                        type="text"
                                        placeholder="Số điện thoại của tôi là:"
                                        class="form-control">
@@ -91,7 +100,8 @@
                                 <input id="adress"
                                        name="adress"
                                        type="text"
-                                       placeholder="ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy"
+                                       ng-model="room.address"
+                                       placeholder="Ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy"
                                        class="form-control">
                             </div>
                         </div>
@@ -105,8 +115,12 @@
                             </div>
                         </div>
                     </div>
-                </form>
-                <form class="form-step" id="formStep1">
+                    <div class="col-lg-12 margin-bottom-15 margin-top-15">
+                        <button type="button" class="btn btn-sm btn-success">Quay lại</button>
+                        <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(1)">Tiếp theo</button>
+                    </div>
+                </div>
+                <form class="form-step" id="formStep2" ng-show="isActive=='2'">
                     <div class="steps_header">Thông tin cơ bản <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12">
@@ -280,8 +294,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-12 margin-bottom-15 margin-top-15">
+                        <button type="button" class="btn btn-sm btn-success" ng-click="previousStep(1)">Quay lại</button>
+                        <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(2)">Tiếp theo</button>
+                    </div>
                 </form>
-                <form class="form-step" id="formStep1">
+                <form class="form-step" id="formStep3" ng-show="isActive=='3'">
                     <div class="steps_header">Thông tin bổ sung <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12">
@@ -331,7 +349,7 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-step" id="formStep1">
+                <form class="form-step" id="formStep4" ng-show="isActive=='4'">
                     <div class="steps_header">Bản đồ <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12">
@@ -355,10 +373,9 @@
         </div>
     </div>
 </div>
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common-material.min.css" />
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css" />
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css" />
-<script src="https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
+@*<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css" />*@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeERa22t2lASaDOgxzPMZe1Fkm3ePJ7ok&libraries=places"
         type="text/javascript"></script>
 <script>

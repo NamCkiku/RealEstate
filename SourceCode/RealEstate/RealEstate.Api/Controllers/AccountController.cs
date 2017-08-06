@@ -65,7 +65,7 @@ namespace RealEstate.Api.Controllers
         }
 
 
-        [Route("user/{id:guid}", Name = "GetUserById")]
+        [Route("user", Name = "GetUserById")]
         public HttpResponseMessage GetUser(HttpRequestMessage request, string Id)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -227,6 +227,15 @@ namespace RealEstate.Api.Controllers
             var accessTokenResponse = GenerateLocalAccessTokenResponse(model.UserName);
 
             return Ok(accessTokenResponse);
+        }
+
+        [HttpPost]
+        [Route("logout")]
+        public HttpResponseMessage Logout(HttpRequestMessage request)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            return request.CreateResponse(HttpStatusCode.OK, new { success = true });
         }
 
 

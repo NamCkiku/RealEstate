@@ -1,6 +1,6 @@
 ﻿
 <header id="header" class="header-top">
-    <nav class="navbar horizontal-navbar header-nav ng-scope">
+    <nav class="navbar horizontal-navbar header-nav" ng-controller="AuthenticationController">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed sb-toggle-left" data-toggle="offcanvas" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -68,27 +68,27 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li ng-if="!userInfo.IsAuthenticated">
                         <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true">
                             Tài khoản
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="javascript:;" data-toggle="modal" data-target="#myModal">
+                                <a href="javascript:;" ng-click="showPopupLogin();">
                                     <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
                                 </a>
 
                             </li>
                             <li>
-                                <a href="javascript:;" data-toggle="modal" data-target="#myModal1">Đăng Ký</a>
+                                <a href="javascript:;" ng-click="showPopupRegister();">Đăng Ký</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li ng-if="userInfo.IsAuthenticated">
                         <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true" style="margin-top:5px;">
-                            <img class="avatar agentAvatarImg" style="width:50px;" src="~/Content/img/boy-512.png" />
-                            NamCkiku
+                            <img class="avatar agentAvatarImg" style="width:50px;" ng-src="{{userInfo.avatar}}" src="{{userInfo.avatar}}" />
+                            {{userInfo.fullName}}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
@@ -96,14 +96,16 @@
                                 <a href="#"><i class="fa fa-fw fa-lg fa-user"></i>Tài Khoản</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-lg fa-sign-out fa-fw"></i>Thoát</a>
+                                <a href="" ng-click="logOut();"><i class="fa fa-lg fa-sign-out fa-fw"></i>Thoát</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="horizontal-navbar-create-room">
-                        <a class="btn-addroom" href="javascript: void(0);"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                    <li class="horizontal-navbar-create-room" ng-if="userInfo.IsAuthenticated">
+                        <a class="btn-addroom" href="/RoomManage/Create"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
                     </li>
-
+                    <li class="horizontal-navbar-create-room" ng-if="!userInfo.IsAuthenticated">
+                        <a class="btn-addroom" href="javascript: void(0);" ng-click="showPopupLogin();"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                    </li>
                 </ul>
             </div>
 
@@ -161,166 +163,4 @@
         </div>
     </nav>
     <div class="clearfix"></div>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header popup_header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title popup_title" id="messageDel">
-                        <img src="img/logo.png" />
-                    </h4>
-                </div>
-                <div class="line_orn"></div>
-                <div class="modal-body login">
-                    <div class="box">
-                        <form class="content" id="user_menu_open">
-                            <div class="form loginBox" style="margin-top:10px;">
-                                <div id="formLogin" class="">
-                                    <div class="login-alert">Tài khoản mật khẩu không chính xác</div>
-                                    <div class="form-group no-padding">
-                                        <input id="email"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập Email"
-                                               data-fv-emailaddress="true"
-                                               data-fv-emailaddress-message="Bạn phải nhập đúng Email"
-                                               class="form-control"
-                                               type="email"
-                                               placeholder="Tên tài khoản"
-                                               name="email">
-                                    </div>
-                                    <div class="form-group no-padding">
-                                        <input id="password"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập mật khẩu"
-                                               data-fv-stringlength="true"
-                                               data-fv-stringlength-min="6"
-                                               data-fv-stringlength-message="Mật khẩu phải ít nhất 6 kí tự"
-                                               class="form-control"
-                                               type="password"
-                                               placeholder="Mật khẩu"
-                                               name="password">
-
-                                    </div>
-                                </div>
-                                <button type="submit" class="wpresidence_button" style="width:100%">Đăng nhập</button>
-                            </div>
-                            <div class="login-links">
-                                <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
-                                <div class="division">
-                                    <div class="line l"></div>
-                                    <span>Hoặc</span>
-                                    <div class="line r"></div>
-                                </div>
-                                <div id="facebookloginsidebar_topbar" href="" data-social="facebook">Đăng nhập với Facebook</div>
-                                <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
-                                <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer login">
-                    <div class="forgot login-footer" style="display: block;">
-                        <span>
-                            <a href="">Bạn chưa có tài khoản?</a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header popup_header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title popup_title" id="messageDel">
-                        <img src="img/logo.png" />
-                    </h4>
-                </div>
-                <div class="line_orn"></div>
-                <div class="modal-body login">
-                    <div class="box">
-                        <form class="content" id="user_menu_open">
-                            <div class="form loginBox" style="margin-top:10px;">
-                                <div id="formRegister" class="">
-                                    <div class="login-alert">Không đúng định dạng</div>
-                                    <div class="form-group no-padding">
-                                        <input id="email"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập tên của bạn"
-                                               ng-model="accountRegister.FullName"
-                                               class="form-control"
-                                               type="text"
-                                               placeholder="Tên hiển thị"
-                                               name="FullName">
-                                    </div>
-                                    <div class="form-group no-padding">
-                                        <input data-fv-notempty="true"
-                                               id="file-upload"
-                                               data-fv-notempty-message="Chọn ảnh đại diện của bạn"
-                                               ng-model="accountRegister.Avatar"
-                                               class="form-control"
-                                               type="file"
-                                               placeholder="Tên hiển thị"
-                                               name="Avatar">
-                                    </div>
-                                    <div class="form-group no-padding">
-                                        <input id="email"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập Email"
-                                               data-fv-emailaddress="true"
-                                               data-fv-emailaddress-message="Bạn phải nhập đúng Email"
-                                               ng-model="accountRegister.Email"
-                                               class="form-control"
-                                               type="text"
-                                               placeholder="Email"
-                                               name="Email">
-                                    </div>
-                                    <div class="form-group no-padding">
-                                        <input id="password"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập mật khẩu"
-                                               ng-model="accountRegister.Password"
-                                               class="form-control"
-                                               type="password"
-                                               placeholder="Mật khẩu"
-                                               name="Password">
-
-                                    </div>
-                                    <div class="form-group no-padding">
-                                        <input id="ConfirmPassword"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập mật khẩu"
-                                               ng-model="accountRegister.ConfirmPassword"
-                                               class="form-control"
-                                               type="password"
-                                               placeholder="Nhập lại mật khẩu"
-                                               name="ConfirmPassword">
-
-                                    </div>
-                                    <div class="form-group no-padding">
-                                        <input type="checkbox"
-                                               ng-model="accountRegister.Terms"
-                                               name="terms"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Bạn phải đồng ý với điều khoản của chúng tôi"
-                                               id="user_terms_register_topbar">
-                                        <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
-                                    </div>
-                                    <button type="submit" class="wpresidence_button" style="width:100%">Đăng ký</button>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer login">
-                    <div class="forgot login-footer" style="display: block;">
-                        <a href="">Bạn đã có tài khoản?</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </header>

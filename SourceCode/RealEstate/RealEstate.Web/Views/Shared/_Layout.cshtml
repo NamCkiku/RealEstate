@@ -12,6 +12,11 @@
     <link href="~/Content/Plugins/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
     <link href="~/bower_components/angular-block-ui/dist/angular-block-ui.min.css" rel="stylesheet" />
     <link href="~/bower_components/toastr/toastr.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/kendo-ui/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/kendo-ui/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/kendo-ui/styles/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/kendo-ui/styles/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/kendo-ui/styles//kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/RealEstate.css" rel="stylesheet" />
     <script src="~/Content/js/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Plugins/bootstrap/js/bootstrap.js"></script>
@@ -21,7 +26,17 @@
     <script src="~/Content/Plugins/select2/select2.min.js"></script>
     <script src="~/Content/Plugins/select2/select2_locale_vi.js"></script>
     <script src="~/bower_components/toastr/toastr.js"></script>
+    <script src="~/Content/js/formValidation.min.js"></script>
+    <script src="~/Content/js/bootstrapextend.min.js"></script>
     <script src="~/Content/js/common.js"></script>
+
+    @*//Kendo Ui*@
+    <script src="~/Content/Plugins/kendo-ui/js/jszip.min.js"></script>
+    <script src="~/Content/Plugins/kendo-ui/js/kendo.core.min.js"></script>
+    <script src="~/Content/Plugins/kendo-ui/js/kendo.all.min.js"></script>
+    <script src="~/Content/Plugins/kendo-ui/js/kendo.aspnetmvc.min.js"></script>
+    <script src="~/Content/Plugins/kendo-ui/js/kendo.modernizr.custom.js"></script>
+    <script src="~/Content/Plugins/kendo-ui/js/cultures/kendo.culture.vi-VN.min.js"></script>
 
     @*//Angularjs*@
     <script src="~/Scripts/angular.js"></script>
@@ -30,8 +45,19 @@
     <script src="~/Scripts/angular-animate.min.js"></script>
     <script src="~/Scripts/angular-sanitize.min.js"></script>
     <script src="~/bower_components/angular-block-ui/dist/angular-block-ui.min.js"></script>
+    <script src="~/Content/Plugins/bootstrap-ui/ui-bootstrap.js"></script>
+    <script src="~/Content/Plugins/bootstrap-ui/ui-bootstrap-tpls.js"></script>
+    <script src="~/Content/Plugins/bootstrap-ui/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="~/Content/Plugins/kendo-ui/js/kendo.angular.min.js"></script>
+    <script src="~/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <script src="~/app/shared/services/apiService.js"></script>
     <script src="~/app/shared/services/BaseService.js"></script>
+    <script src="~/app/shared/services/loginService.js"></script>
+    <script src="~/app/shared/services/authenticationService.js"></script>
+    <script src="~/app/shared/services/authData.js"></script>
+    <script src="~/app/components/authentication/RealEstate.AuthenticationController.js"></script>
+    <script src="~/app/components/base/RealEstate.ModalLoginController.js"></script>
+    <script src="~/app/components/base/RealEstate.ModalRegisterController.js"></script>
     <script src="~/app/components/createRoom/RealEstate.CreateRoomController.js"></script>
 </head>
 <body>
@@ -40,6 +66,7 @@
     @RenderBody()
     <div class="clearfix"></div>
     @{Html.RenderAction("_FooterPatialView", "Home");}
+    @{Html.RenderAction("_BasePatialView", "Home");}
 </body>
 </html>
 <script>
