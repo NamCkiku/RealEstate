@@ -24,5 +24,11 @@ namespace RealEstate.Web.Controllers
         {
             return PartialView();
         }
+
+        [ChildActionOnly]
+        public ActionResult _BasePatialView()
+        {
+            return PartialView();
+        }
     }
 }

@@ -1,0 +1,171 @@
+﻿<script type="text/ng-template" id="NotificationCommonModal.html">
+    <div class="modal-header" ng-class="{ 'panel-danger' : type == 1,'panel-warning' : type == 2 }">
+        <button type="button" ng-hide="showBtnCancel==false" class="close" ng-click="cancel();" aria-hidden="true">×</button>
+        <h3 class="modal-title" id="modal-title">{{title}}</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div ng-bind-html="message">
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-hide="showBtnOK==false" class="btn btn-success" ng-click="ok()" style="width:150px;"><i class="fa fa-save" style="padding-right: 10px !important;"></i>{{btnOK}}</button>
+        <button ng-hide="showBtnCancel==false" type="button" class="btn btn-danger" ng-click="cancel()" style="width:150px;"><i class="fa fa-ban" style="padding-right: 10px !important;"></i>{{btnCancel}}</button>
+    </div>
+</script>
+<script type="text/ng-template" id="ModalLogin.html">
+    <div class="modal-header popup_header">
+        <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title popup_title" id="messageDel">
+            <img src="/Content/img/logo.png" />
+        </h4>
+    </div>
+    <div class="line_orn"></div>
+    <div class="modal-body login">
+        <div class="box">
+            <form class="content" id="user_menu_open">
+                <div class="form loginBox" style="margin-top:10px;">
+                    <div id="formLogin" class="">
+                        <div class="login-alert" ng-if="messageError!=null">{{messageError}} </div>
+                        <div class="form-group no-padding">
+                            <input id="UserName"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                   data-fv-emailaddress="true"
+                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                   ng-model="account.UserName"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="Tên tài khoản"
+                                   name="UserName">
+                        </div>
+                        <div class="form-group no-padding">
+                            <input id="password"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                   data-fv-stringlength="true"
+                                   data-fv-stringlength-min="6"
+                                   data-fv-stringlength-message="Mật khẩu phải ít nhất 6 kí tự"
+                                   ng-model="account.Password"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Mật khẩu"
+                                   name="password">
+
+                        </div>
+                    </div>
+                    <button type="submit" class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng nhập</button>
+                </div>
+                <div class="login-links">
+                    <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
+                    <div class="division">
+                        <div class="line l"></div>
+                        <span>Hoặc</span>
+                        <div class="line r"></div>
+                    </div>
+                    <div id="facebookloginsidebar_topbar" href="" ng-click="LoginWithFacebook();" data-social="facebook">Đăng nhập với Facebook</div>
+                    <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
+                    <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer login">
+        <div class="forgot login-footer" style="display: block;">
+            <span>
+                <a href="" ng-click="showPopupRegister();">Bạn chưa có tài khoản?</a>
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="ModalRegister.html">
+    <div class="modal-header popup_header">
+        <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title popup_title" id="messageDel">
+            <img src="/Content/img/logo.png" />
+        </h4>
+    </div>
+    <div class="line_orn"></div>
+    <div class="modal-body login">
+        <div class="box">
+            <form class="content" id="user_menu_open">
+                <div class="form loginBox" style="margin-top:10px;">
+                    <div id="formRegister" class="">
+                        <div class="login-alert" ng-if="messageRegisterError!=null">{{messageRegisterError}} </div>
+                        <div class="form-group no-padding">
+                            <input id="email"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập tên của bạn"
+                                   ng-model="accountRegister.FullName"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="Tên hiển thị"
+                                   name="FullName">
+                        </div>
+                        <div class="form-group no-padding">
+                            <input data-fv-notempty="true"
+                                   id="file-upload"
+                                   data-fv-notempty-message="Chọn ảnh đại diện của bạn"
+                                   ng-model="accountRegister.Avatar"
+                                   class="form-control"
+                                   type="file"
+                                   placeholder="Tên hiển thị"
+                                   name="Avatar">
+                        </div>
+                        <div class="form-group no-padding">
+                            <input id="email"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                   data-fv-emailaddress="true"
+                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                   ng-model="accountRegister.Email"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="Email"
+                                   name="Email">
+                        </div>
+                        <div class="form-group no-padding">
+                            <input id="password"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                   ng-model="accountRegister.Password"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Mật khẩu"
+                                   name="Password">
+
+                        </div>
+                        <div class="form-group no-padding">
+                            <input id="ConfirmPassword"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                   ng-model="accountRegister.ConfirmPassword"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Nhập lại mật khẩu"
+                                   name="ConfirmPassword">
+
+                        </div>
+                        <div class="form-group no-padding">
+                            <input type="checkbox"
+                                   ng-model="accountRegister.Terms"
+                                   name="terms"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Bạn phải đồng ý với điều khoản của chúng tôi"
+                                   id="user_terms_register_topbar">
+                            <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
+                        </div>
+                        <button type="submit" class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng ký</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer login">
+        <div class="forgot login-footer" style="display: block;">
+            <a href="" ng-click="showPopupLogin();">Bạn đã có tài khoản?</a>
+        </div>
+    </div>
+</script>
+

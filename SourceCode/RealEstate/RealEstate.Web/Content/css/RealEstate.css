@@ -937,11 +937,6 @@ html ul, html ol {
         color: white;
     }
 
-.btn {
-    padding: 10px 20px;
-    font-weight: bold;
-}
-
 .btn-border-thin {
     border-width: 1px;
 }
@@ -2698,6 +2693,11 @@ sort-theme .sort-by li:first-child {
         border-color: rgba(0,0,0,0.1);
         padding: 10px 10px;
         color: rgba(0,0,0,0.87);
+    }
+
+    .form-step .form-control-feedback {
+        top:7px;
+        height: 30px;
     }
 
     .form-step ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
