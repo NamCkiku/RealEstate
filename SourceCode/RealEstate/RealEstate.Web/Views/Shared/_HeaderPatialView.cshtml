@@ -87,7 +87,8 @@
                     </li>
                     <li ng-if="userInfo.IsAuthenticated">
                         <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true" style="margin-top:5px;">
-                            <img class="avatar agentAvatarImg" style="width:50px;" ng-src="{{userInfo.avatar}}" src="{{userInfo.avatar}}" />
+                            <img class="avatar agentAvatarImg" ng-if="userInfo.avatar !=null && userInfo.avatar !=''" style="width:50px;" ng-src="{{userInfo.avatar}}" />
+                            <img class="avatar agentAvatarImg" ng-if="userInfo.avatar == null || userInfo.avatar == ''" style="width:50px;" src="~/Content/img/boy-512.png" />
                             {{userInfo.fullName}}
                             <span class="caret"></span>
                         </a>
@@ -111,21 +112,21 @@
 
             <div class="sb-slidebar sb-left sb-style-overlay hidden-sm hidden-md hidden-lg" style="margin-left: -20%;">
                 <div id="slidemenu" class="slidemenu" style="height: 490px; display: block; transition-property: all; transition-duration: 0s; transition-timing-function: ease; width: 240px; top: 0px;">
-
-                    <div id="profile">
-                        <img src="~/Content/img/boy-512.png" style="width:58px;height:58px;" />
-                        <div class="profile_info"><strong>Nam</strong><br><small>Web &amp;Lập trình Mobile</small></div>
+                    <div id="profile" ng-if="userInfo.IsAuthenticated">
+                        <img  ng-if="userInfo.avatar !=null && userInfo.avatar !=''" style="width:58px;height:58px;" ng-src="{{userInfo.avatar}}" />
+                        <img  ng-if="userInfo.avatar == null || userInfo.avatar == ''" style="width:58px;height:58px;" src="~/Content/img/boy-512.png" />
+                        <div class="profile_info"><strong>{{userInfo.fullName}}</strong>@*<br><small>Web &amp;Lập trình Mobile</small>*@</div>
                     </div>
-                    <h3>Tài khoản</h3>
-                    <ul>
+                    <h3 ng-if="!userInfo.IsAuthenticated">Tài khoản</h3>
+                    <ul ng-if="!userInfo.IsAuthenticated">
                         <li>
-                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">
+                            <a href="javascript:;" ng-click="showPopupLogin();">
                                 <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
                             </a>
 
                         </li>
                         <li>
-                            <a href="javascript:;" data-toggle="modal" data-target="#myModal1">
+                            <a href="javascript:;" ng-click="showPopupRegister();">
                                 <i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Ký
                             </a>
                         </li>

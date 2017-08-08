@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
 using RealEstate.Api.Models;
 using RealEstate.Api.Results;
+using RealEstate.Common.Enumerations;
 using RealEstate.Entities.Entites;
 using RealEstate.Service.IService;
 using System;
@@ -28,12 +29,14 @@ namespace RealEstate.Api.Controllers
         private ApplicationUserManager _userManager;
 
         private readonly IAuthService _authService;
+        private readonly IAuditLogService _audilogService;
 
-        public AccountController(IErrorService errorService, IAuthService authService, ApplicationUserManager userManager, ApplicationSignInManager signInManager) : base(errorService)
+        public AccountController(IErrorService errorService, IAuditLogService audilogService, IAuthService authService, ApplicationUserManager userManager, ApplicationSignInManager signInManager) : base(errorService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             this._authService = authService;
+            this._audilogService = audilogService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -118,8 +121,33 @@ namespace RealEstate.Api.Controllers
             {
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            var user = new AppUser { UserName = model.Email, Email = model.Email };
+            var user = new AppUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address,
+            };
             var result = await UserManager.CreateAsync(user, model.Password);
+            var auditlog = new AuditLog();
+            auditlog.CreatedDate = DateTime.Now;
+            auditlog.CreatedBy = model.Email;
+            auditlog.IPAddress = HttpContext.Current.Request.UserHostAddress;
+            auditlog.LogType = (int)AuditLogType.Register;
+            if (result.Succeeded)
+            {
+                auditlog.UserID = user.Id;
+                auditlog.Description = "Đăng ký thành công tại IP" + auditlog.IPAddress;
+
+            }
+            else
+            {
+                auditlog.UserID = model.Email;
+                auditlog.Description = "Đăng ký không thành công tại IP" + auditlog.IPAddress;
+            }
+            _audilogService.Insert(auditlog);
+            _audilogService.SaveChanges();
             return request.CreateResponse(HttpStatusCode.OK, result);
         }
 

@@ -39,13 +39,13 @@ namespace RealEstate.Api.Providers
             catch
             {
                 // Could not retrieve the user due to error.
-                context.SetError("server_error", "Lỗi trong quá trình xử lý.");
+                context.SetError("Lỗi trong quá trình xử lý.", "Lỗi trong quá trình xử lý.");
                 context.Rejected();
                 return;
             }
             if (user == null)
             {
-                context.SetError("invalid_grant", "Tài khoản hoặc mật khẩu không đúng.");
+                context.SetError("Tài khoản hoặc mật khẩu không đúng.", "Tài khoản hoặc mật khẩu không đúng.");
                 context.Rejected();
             }
             else
