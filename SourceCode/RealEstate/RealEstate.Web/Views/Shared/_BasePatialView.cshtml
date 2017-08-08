@@ -13,6 +13,27 @@
         <button ng-hide="showBtnCancel==false" type="button" class="btn btn-danger" ng-click="cancel()" style="width:150px;"><i class="fa fa-ban" style="padding-right: 10px !important;"></i>{{btnCancel}}</button>
     </div>
 </script>
+<style>
+    #formLogin .has-error .form-control-feedback {
+        color: #a94442;
+        top: 12px;
+    }
+
+    #formLogin .has-success .form-control-feedback {
+        color: #3c763d;
+        top: 12px;
+    }
+
+    #formRegister .has-error .form-control-feedback {
+        color: #a94442;
+        top: 12px;
+    }
+
+    #formRegister .has-success .form-control-feedback {
+        color: #3c763d;
+        top: 12px;
+    }
+</style>
 <script type="text/ng-template" id="ModalLogin.html">
     <div class="modal-header popup_header">
         <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
@@ -63,9 +84,8 @@
                         <span>Hoặc</span>
                         <div class="line r"></div>
                     </div>
-                    <div id="facebookloginsidebar_topbar" href="" ng-click="LoginWithFacebook();" data-social="facebook">Đăng nhập với Facebook</div>
-                    <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
-                    <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+                    <div id="facebookloginsidebar_topbar" href="" ng-click="authExternalProvider('Facebook');" data-social="facebook">Đăng nhập với Facebook</div>
+                    <div id="googleloginsidebar_topbar" href="" ng-click="authExternalProvider('Google');" data-social="google">Đăng nhập với Google</div>
                 </div>
             </form>
         </div>
@@ -93,24 +113,34 @@
                     <div id="formRegister" class="">
                         <div class="login-alert" ng-if="messageRegisterError!=null">{{messageRegisterError}} </div>
                         <div class="form-group no-padding">
-                            <input id="email"
+                            <input id="fullname"
                                    data-fv-notempty="true"
                                    data-fv-notempty-message="Vui lòng nhập tên của bạn"
                                    ng-model="accountRegister.FullName"
                                    class="form-control"
                                    type="text"
-                                   placeholder="Tên hiển thị"
+                                   placeholder="Tên hiển thị của bạn là:"
                                    name="FullName">
                         </div>
                         <div class="form-group no-padding">
-                            <input data-fv-notempty="true"
-                                   id="file-upload"
-                                   data-fv-notempty-message="Chọn ảnh đại diện của bạn"
-                                   ng-model="accountRegister.Avatar"
+                            <input id="phone"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập số điện thoại của bạn"
+                                   ng-model="accountRegister.PhoneNumber"
                                    class="form-control"
-                                   type="file"
-                                   placeholder="Tên hiển thị"
-                                   name="Avatar">
+                                   type="text"
+                                   placeholder="Số điện thoại của bạn là :"
+                                   name="phone">
+                        </div>
+                        <div class="form-group no-padding">
+                            <input id="phone"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập số địa chỉ của bạn"
+                                   ng-model="accountRegister.Address"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="Địa chỉ của bạn là:"
+                                   name="phone">
                         </div>
                         <div class="form-group no-padding">
                             <input id="email"
@@ -121,7 +151,7 @@
                                    ng-model="accountRegister.Email"
                                    class="form-control"
                                    type="text"
-                                   placeholder="Email"
+                                   placeholder="Email cũng là tên tài khoản đăng nhập của bạn"
                                    name="Email">
                         </div>
                         <div class="form-group no-padding">
@@ -131,7 +161,7 @@
                                    ng-model="accountRegister.Password"
                                    class="form-control"
                                    type="password"
-                                   placeholder="Mật khẩu"
+                                   placeholder="Mật khẩu của bạn là"
                                    name="Password">
 
                         </div>
@@ -142,7 +172,7 @@
                                    ng-model="accountRegister.ConfirmPassword"
                                    class="form-control"
                                    type="password"
-                                   placeholder="Nhập lại mật khẩu"
+                                   placeholder="Nhập lại mật khẩu của bạn"
                                    name="ConfirmPassword">
 
                         </div>

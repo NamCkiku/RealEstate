@@ -9,6 +9,7 @@ namespace RealEstate.Common.Enumerations
     public enum AuditLogType
     {
         Create = 1,
-        Login = 2
+        Login = 2,
+        Register = 3
     }
 }
