@@ -21,12 +21,15 @@
             var formLogin = angular.element(document.querySelector('#formLogin'));
             var formValidation = formLogin.data('formValidation').validate();
             if (formValidation.isValid()) {
+                var myBlockUI = blockUI.instances.get('BlockUILogin');
+                myBlockUI.start();
                 loginService.login($scope.account.UserName, $scope.account.Password).then(function (response) {
-                    console.log(response);
                     if (response != null && response.data.error == "invalid_grant") {
+                        myBlockUI.stop();
                         $scope.messageError = "Tài khoản hoặc mật khẩu không chính xác";
                     }
                     else {
+                        myBlockUI.stop();
                         $modalInstance.close(response);
                     }
                 });
