@@ -11,6 +11,9 @@
             authenticationService.init();
             $scope.userInfo = authData.authenticationData;
             $rootScope.userInfomation = authData.authenticationData;
+            if (!$scope.userInfo.IsAuthenticated) {
+                //$window.location.href = "/";
+            }
         };
         $scope.init();
 

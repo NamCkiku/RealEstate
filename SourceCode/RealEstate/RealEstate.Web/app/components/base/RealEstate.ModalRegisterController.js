@@ -25,14 +25,19 @@
             var formRegister = angular.element(document.querySelector('#formRegister'));
             var formValidation = formRegister.data('formValidation').validate();
             if (formValidation.isValid()) {
+                var myBlockUI = blockUI.instances.get('BlockUIRegister');
+                myBlockUI.start();
                 apiService.post('api/account/register', $scope.accountRegister, function (respone) {
                     console.log(respone);
                     if (respone.data.succeeded) {
+                        myBlockUI.stop();
                         $modalInstance.close(response);
                     } else {
+                        myBlockUI.stop();
                         $scope.messageRegisterError = respone.data.message;
                     }
                 }, function (respone) {
+                    myBlockUI.stop();
                 });
             }
         };

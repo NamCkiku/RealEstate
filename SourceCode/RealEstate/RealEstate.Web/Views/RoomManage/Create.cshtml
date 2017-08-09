@@ -61,7 +61,7 @@
                             <label class="col-lg-3 control-label " for="userName">Họ và tên<i class="required">*</i> :</label>
                             <div class="col-lg-9 no-padding">
                                 <input class="form-control"
-                                       id="userName"
+                                       id="txtuserName"
                                        ng-maxlength="256"
                                        required
                                        ng-model="room.username"
@@ -131,36 +131,30 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
+                        {{room |json}}
                         <div class="form-group clearfix">
                             <label class="col-md-2 control-label">Ảnh đại diện<i class="required">*</i> :</label>
                             <div class="col-md-10">
-                                <div class="room_avatar_image">
+                                <div class="room_avatar_image" ng-click="uploadImage();">
                                     <canvas id="canvas" height="5" width="5"></canvas>
                                     <img class="room_avatar_image_edit">
                                     <div class="img_edit"></div>
-                                    <input type="file" id="FileUpload1" class="img_upload" accept=".jpg,.png,.gif">
+                                    <input type="file"
+                                           id="txtUploadImage"
+                                           class="img_upload"
+                                           kendo-upload
+                                           k-success="onSuccess"
+                                           k-error="onError"
+                                           k-multiple="false"
+                                           k-options="fileAttachmentOptions"
+                                           k-select="onSelect"
+                                           accept=".jpg,.png,.gif">
                                     <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
                                 </div>
                                 <div class="alignleft room_avatar_image_txt">
                                     <div class="true-ic">Ảnh đẹp sẽ giúp tin có nhiều lượt xem</div>
                                     <div class="true-ic">Dung lượng tối đa 2MB</div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Danh mục<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <input class="form-control"
-                                       data-fv-stringlength="true"
-                                       data-fv-stringlength-min="20"
-                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
-                                       data-fv-stringlength-max="250"
-                                       ng-model="rooms.RoomName"
-                                       ng-change="GetSeoTitle();"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
                             </div>
                         </div>
                         <div class="form-group clearfix">
@@ -171,9 +165,10 @@
                                        data-fv-stringlength-min="20"
                                        data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
                                        data-fv-stringlength-max="250"
-                                       ng-model="rooms.RoomName"
+                                       ng-model="room.RoomName"
                                        ng-change="GetSeoTitle();"
                                        data-fv-notempty="true"
+                                       id="txtRoomName"
                                        data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
                                        placeholder="Tiêu đề phải dài hơn 20 kí tự"
                                        name="title" type="text">
@@ -186,19 +181,39 @@
                             </div>
                         </div>
                         <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Danh mục<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <select kendo-drop-down-list
+                                        k-option-label="'Chọn Loại Phòng'"
+                                        k-data-text-field="'Name'"
+                                        k-data-value-field="'ID'"
+                                        k-filter="'contains'"
+                                        k-suggest="true"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstRoomType"
+                                        k-ng-model="room.RoomTypeID"
+                                        style="width: 100%"></select>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Tỉnh Thành<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       data-fv-stringlength="true"
-                                       data-fv-stringlength-min="20"
-                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
-                                       data-fv-stringlength-max="250"
-                                       ng-model="rooms.RoomName"
-                                       ng-change="GetSeoTitle();"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
+                                <select kendo-drop-down-list
+                                        k-option-label="'Chọn Tỉnh/Thành Phố'"
+                                        k-data-text-field="'name'"
+                                        k-data-value-field="'id'"
+                                        data-fv-notempty="true"
+                                        data-fv-notempty-message="Vui lòng chọn tỉnh thành"
+                                        name="province"
+                                        k-filter="'contains'"
+                                        k-suggest="true"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstProvince"
+                                        k-on-change="GetAllDistrict(room.provinceId)"
+                                        k-ng-model="room.provinceId"
+                                        style="width: 100%"></select>
                             </div>
                             <div class="col-md-4 note-col">
                             </div>
@@ -206,17 +221,19 @@
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Quận/huyện<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       data-fv-stringlength="true"
-                                       data-fv-stringlength-min="20"
-                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
-                                       data-fv-stringlength-max="250"
-                                       ng-model="rooms.RoomName"
-                                       ng-change="GetSeoTitle();"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
+                                <select kendo-drop-down-list
+                                        k-option-label="'Chọn Quận/Huyện'"
+                                        k-data-text-field="'name'"
+                                        k-data-value-field="'id'"
+                                        k-filter="'contains'"
+                                        k-suggest="true"
+                                        ng-disabled="isDistrict"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstDistrict"
+                                        k-on-change="GetAllWard(filter.districtID)"
+                                        k-ng-model="room.districtID"
+                                        style="width: 100%"></select>
                             </div>
                             <div class="col-md-4 note-col">
                             </div>
@@ -224,17 +241,18 @@
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Phường/xã<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       data-fv-stringlength="true"
-                                       data-fv-stringlength-min="20"
-                                       data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
-                                       data-fv-stringlength-max="250"
-                                       ng-model="rooms.RoomName"
-                                       ng-change="GetSeoTitle();"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
+                                <select kendo-drop-down-list
+                                        k-option-label="'Chọn Xã/Phường'"
+                                        k-data-text-field="'name'"
+                                        k-data-value-field="'id'"
+                                        k-filter="'contains'"
+                                        k-suggest="true"
+                                        ng-disabled="isWard"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstWard"
+                                        k-ng-model="room.wardID"
+                                        style="width: 100%"></select>
                             </div>
                             <div class="col-md-4 note-col">
                             </div>
@@ -243,7 +261,8 @@
                             <label class="col-lg-2 col-xs-12" for="userName">Gía tiền<i class="required">*</i> :</label>
                             <div class="col-lg-3 col-xs-6">
                                 <input class="form-control"
-                                       name="title" type="text">
+                                       ng-model="room.price"
+                                       name="title" type="number">
                             </div>
                             <div class="col-md-4 col-xs-6 note-col">
                                 <div class="form-control-static">
@@ -256,6 +275,7 @@
                             <label class="col-lg-2 col-xs-12 control-label " for="userName">Diện tích<i class="required">*</i> :</label>
                             <div class="col-lg-3 col-xs-6">
                                 <input class="form-control"
+                                       ng-model="room.acreage"
                                        name="title" type="text">
                             </div>
                             <div class="col-md-4 col-xs-6 note-col">
@@ -271,6 +291,7 @@
                             <label class="col-lg-2 control-label " for="userName">Nội dung<i class="required">*</i> :</label>
                             <div class="col-lg-6">
                                 <textarea style="width:100%"
+                                          ng-model="room.description"
                                           name="title" type="text"></textarea>
                             </div>
                             <div class="col-md-4 note-col">
@@ -285,6 +306,7 @@
                             <label class="col-lg-2 control-label " for="userName">Từ khóa SEO<i class="required">*</i> :</label>
                             <div class="col-lg-6">
                                 <input class="form-control"
+                                       ng-model="room.tags"
                                        name="title" type="text">
                             </div>
                             <div class="col-md-4 note-col">

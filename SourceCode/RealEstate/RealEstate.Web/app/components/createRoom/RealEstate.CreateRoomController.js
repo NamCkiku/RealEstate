@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('CreateRoomController', CreateRoomController);
 
-    CreateRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$rootScope', '$modal'];
+    CreateRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$rootScope', '$modal', '$filter'];
 
-    function CreateRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $rootScope, $modal) {
+    function CreateRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $rootScope, $modal, $filter) {
         $scope.isDistrict = true;
         $scope.isWard = true;
         $scope.isActive = '1';
@@ -20,9 +20,13 @@
         $scope.init = function () {
             $scope.GetAllRoomType();
             $scope.GetAllProvince();
+            angular.element('#txtuserName').focus();
         };
 
-
+        $scope.GetSeoTitle = GetSeoTitle;
+        function GetSeoTitle() {
+            $scope.room.Alias = BaseService.getSeoTitle($scope.room.RoomName);
+        }
         //Hàm lấy ra commbobox loại phòng
         $scope.GetAllRoomType = function () {
             var myBlockUI = blockUI.instances.get('BlockUIRoom');
@@ -62,7 +66,7 @@
             var myBlockUI = blockUI.instances.get('BlockUIRoom');
             myBlockUI.start();
             apiService.get('api/management/getalldistrict', null, function (respone) {
-                $scope.data.lstDistrict = $filter('filter')(respone.data, { ProvinceId: id }, true);
+                $scope.data.lstDistrict = $filter('filter')(respone.data, { provinceId: id }, true);
                 $scope.isDistrict = false;
                 $scope.data.lstWard = [];
                 myBlockUI.stop();
@@ -79,7 +83,7 @@
             var myBlockUI = blockUI.instances.get('BlockUIRoom');
             myBlockUI.start();
             apiService.get('api/management/getallward', null, function (respone) {
-                $scope.data.lstWard = $filter('filter')(respone.data, { DistrictID: id }, true);
+                $scope.data.lstWard = $filter('filter')(respone.data, { districtID: id }, true);
                 $scope.isWard = false;
                 myBlockUI.stop();
             }, function (respone) {
@@ -88,22 +92,71 @@
             });
         }
 
+        $scope.onSuccess = function () {
+            $log.info('Upload Successfull...');
+        };
+        $scope.onSelect = function (e) {
+            angular.forEach(e.file, function (index, value) {
+                var ok = value.extension == ".xlsx"
+                    || value.extension == ".pdf"
+                    || value.extension == ".doc"
+                    || value.extension == ".html";
 
+                if (value.extension === ok) {
+                    e.preventDefault();
+                    alert("Please upload jpg image files");
+                }
+            });
+            //$.each(e.file, function (index, value) {
+            //    var ok = value.extension == ".xlsx"
+            //        || value.extension == ".pdf"
+            //        || value.extension == ".doc"
+            //        || value.extension == ".html";
 
+            //    if (value.extension === ok) {
+            //        e.preventDefault();
+            //        alert("Please upload jpg image files");
+            //    }
+            //});
+        };
+        $scope.uploadImage = function () {
+            angular.element('#txtUploadImage').trigger();
+        }
+        $scope.onError = function () {
+            $log.info('Upload Errored out...');
+            console.log('Error while uploading attachment');
+        };
+        $scope.fileAttachmentOptions = function () {
+            //async: {
+            //    saveUrl: 'app/upload/uploadAttch',
+            //        removeUrl: 'remove',
+            //            removeVerb: 'DELETE',
+            //                autoUpload: false
+            //},
+        }
         $scope.nextStep = function (item) {
             if (item == 1) {
                 BaseService.ValidatorForm("#formStep1");
-                var frmAdd = angular.element(document.querySelector('#formStep1'));
-                var formValidation = frmAdd.data('formValidation').validate();
+                var formStep1 = angular.element(document.querySelector('#formStep1'));
+                var formValidation = formStep1.data('formValidation').validate();
                 if (formValidation.isValid()) {
                     $scope.isActive = '2';
+                    angular.element('#txtRoomName').focus();
                 }
                 else {
                     BaseService.displayError("Vui lòng nhập đầy đủ thông tin", 5000);
                 }
             }
             else if (item == 2) {
-                $scope.isActive = '3';
+                BaseService.ValidatorForm("#formStep2");
+                var formStep2 = angular.element(document.querySelector('#formStep2'));
+                var formValidation = formStep2.data('formValidation').validate();
+                if (formValidation.isValid()) {
+                    $scope.isActive = '3';
+                }
+                else {
+                    BaseService.displayError("Vui lòng nhập đầy đủ thông tin", 5000);
+                }
             }
             else if (item == 3) {
                 $scope.isActive = '4';
