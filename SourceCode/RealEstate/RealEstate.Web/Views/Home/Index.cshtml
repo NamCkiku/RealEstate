@@ -25,54 +25,127 @@
                 </div>
             </div>
         </div>
-        <div class="hero" id="search-room-hero">
+        <div class="search-expandable search-expandable-mini search-mini-left" ng-controller="SearchRoomController">
             <div class="container">
-                <div class="box-search-room box">
-                    <form method="get" id="frm-search-room" onsubmit="return false;">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h1>Tìm kiếm <strong>ngôi nhà mơ ước</strong> của bạn cùng <strong>Phòng Tốt</strong></h1>
-                            </div>
-                            <div class="col-sm-10 search-input">
-                                <div class="form-group col-sm-4">
-                                    <input class="form-control" placeholder="Địa chỉ của bạn" id="keyword" value="">
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <input class="form-control" placeholder="Tất cả loại phòng" id="keyword" value="">
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <input class="form-control" placeholder="Gía tiền" id="keyword" value="">
-                                </div>
-                                <div class="col-xs-12 common-searches text-white">
-                                    <a href="#">Phòng trọ</a>,
-                                    <a href="#">Văn phòng</a>,
-                                    <a href="#">Nhà ở</a>,
-                                    <a href="#">Bất động sản</a>,
-                                    <a href="#">tư vấn</a>,
-                                    <a href="#">hành chính</a>,
-                                    <a href="#">nhân sự</a>,
-                                    <a href="#">ngân hàng</a>,
-                                    <a href="#">lập trình</a>,
-                                    <a href="#">seo</a>,
-                                    <a href="#">tester</a>,
-                                    <a href="#">fpt</a>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 search-submit">
-                                <div class="row">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <div class="search-inner-wrap hero">
+                            <div class="search-expand-btn btn-primary active">Tìm kiếm nhà trọ</div>
+                            <div class="advanced-search advanced-search-hidden" style="display: block;">
+                                <form method="get" id="frm-search-room" onsubmit="return false;">
                                     <div class="col-xs-12">
-                                        <button class="form-control btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
+                                        <h1>Tìm kiếm ngôi nhà mơ ước của bạn cùng Phòng Tốt</h1>
                                     </div>
-                                </div>
+                                    <div class="col-sm-12 search-input">
+                                        <div class="form-group">
+                                            <select kendo-drop-down-list
+                                                    k-option-label="'Chọn Loại Phòng'"
+                                                    k-data-text-field="'roomTypeName'"
+                                                    k-data-value-field="'id'"
+                                                    k-filter="'contains'"
+                                                    k-suggest="true"
+                                                    k-value-primitive="true"
+                                                    k-auto-bind="false"
+                                                    k-data-source="data.lstRoomType"
+                                                    k-ng-model="fillter.RoomTypeID"
+                                                    style="width: 100%"></select>
+                                            @*<select class="form-control"
+                                                    ng-model="keywords.RoomType"
+                                                    ng-options="option.id as option.roomTypeName for option in data.lstRoomType"
+                                                    data-placeholder="Chọn loại phòng">
+                                            </select>*@
+                                        </div>
+                                        <div class="form-group">
+                                            <select kendo-drop-down-list
+                                                    k-option-label="'Chọn Tỉnh/Thành Phố'"
+                                                    k-data-text-field="'name'"
+                                                    k-data-value-field="'id'"
+                                                    data-fv-notempty="true"
+                                                    data-fv-notempty-message="Vui lòng chọn tỉnh thành"
+                                                    name="province"
+                                                    k-filter="'contains'"
+                                                    k-suggest="true"
+                                                    k-value-primitive="true"
+                                                    k-auto-bind="false"
+                                                    k-data-source="data.lstProvince"
+                                                    k-on-change="GetAllDistrict(fillter.provinceId)"
+                                                    k-ng-model="fillter.provinceId"
+                                                    style="width: 100%"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select kendo-drop-down-list
+                                                    k-option-label="'Chọn Quận/Huyện'"
+                                                    k-data-text-field="'name'"
+                                                    k-data-value-field="'id'"
+                                                    k-filter="'contains'"
+                                                    k-suggest="true"
+                                                    ng-disabled="isDistrict"
+                                                    k-value-primitive="true"
+                                                    k-auto-bind="false"
+                                                    k-data-source="data.lstDistrict"
+                                                    k-on-change="GetAllWard(fillter.districtID)"
+                                                    k-ng-model="fillter.districtID"
+                                                    style="width: 100%"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select kendo-drop-down-list
+                                                    k-option-label="'Chọn Xã/Phường'"
+                                                    k-data-text-field="'name'"
+                                                    k-data-value-field="'id'"
+                                                    k-filter="'contains'"
+                                                    k-suggest="true"
+                                                    ng-disabled="isWard"
+                                                    k-value-primitive="true"
+                                                    k-auto-bind="false"
+                                                    k-data-source="data.lstWard"
+                                                    k-ng-model="fillter.wardID"
+                                                    style="width: 100%"></select>
+                                        </div>
+                                        <div class="col-xs-12 common-searches text-white">
+                                            <a href="#">Phòng trọ</a>,
+                                            <a href="#">Văn phòng</a>,
+                                            <a href="#">Nhà ở</a>,
+                                            <a href="#">Bất động sản</a>,
+                                            <a href="#">tư vấn</a>,
+                                            <a href="#">hành chính</a>,
+                                            <a href="#">nhân sự</a>,
+                                            <a href="#">ngân hàng</a>,
+                                            <a href="#">lập trình</a>,
+                                            <a href="#">seo</a>,
+                                            <a href="#">tester</a>,
+                                            <a href="#">fpt</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 search-submit">
+                                        <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+<script>
+    /*  ADVANCE DROPDOWN
+     /* ------------------------------------------------------------------------ */
+    var expand_trigger = $('.search-expand-btn');
+    var search_expand = $('.search-expandable .advanced-search');
+
+    expand_trigger.on('click', function () {
+        var btn_this = $(this);
+        btn_this.toggleClass('active');
+        if (btn_this.hasClass('active')) {
+            search_expand.slideDown();
+        } else {
+            search_expand.add('.search-expandable .advance-fields').slideUp();
+            $('.advance-btn').removeClass('active');
+
+        }
+    });
+</script>
 <div class="clearfix"></div>
 <div class="main-content">
     <div class="container">
