@@ -867,7 +867,7 @@ html ul, html ol {
 
 .hero h1 {
     margin: 0;
-    font-size: 20px;
+    font-size: 18px;
     padding: 0;
     color: white;
     margin-bottom: 10px;
@@ -969,6 +969,95 @@ html ul, html ol {
         height: 500px;
     }
 }
+
+
+
+
+
+.search-expandable {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+}
+
+    .search-expandable div[class^="col-"] {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .search-expandable .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .search-expandable .advanced-search {
+        float: left;
+        padding: 17px 15px 0;
+        background-color: #00648f;
+        width: 100%;
+    }
+
+
+    .search-expandable .features-list {
+        padding-bottom: 30px;
+    }
+
+    .search-expandable .advance-fields {
+        padding: 0;
+    }
+
+.search-expand-btn {
+    color: #fff;
+    padding: 13px 15px 10px 15px;
+    display: inline-block;
+    line-height: 16px;
+    border-radius: 4px 4px 0 0;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 16px;
+    width: 230px;
+    position: relative;
+}
+
+    .search-expand-btn:after {
+        font-family: "FontAwesome";
+        content: '\f0d8';
+        margin-left: 15px;
+        position: absolute;
+        right: 15px;
+    }
+
+    .search-expand-btn.active:after {
+        content: '\f0d7';
+    }
+
+.advanced-search-hidden {
+    display: none;
+}
+
+.search-expandable-mini .search-inner-wrap {
+    width: 370px;
+}
+
+@media (max-width: 767px) {
+    .search-expandable-mini .search-inner-wrap {
+        width: 100%;
+    }
+}
+
+.search-expandable-mini .advanced-search {
+    padding: 15px;
+}
+
+.search-expandable-mini .range-text {
+    text-align: center;
+}
+
+    .search-expandable-mini .range-text p {
+        font-size: 13px;
+    }
 
 
 /*end form Search*/

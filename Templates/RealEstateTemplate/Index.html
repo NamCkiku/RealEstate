@@ -339,7 +339,7 @@
                 </div>
             </div>
         </div>
-        
+
     </header>
     <div class="clearfix"></div>
     <div class="search-form">
@@ -363,7 +363,159 @@
                     </div>
                 </div>
             </div>
-            <div class="hero" id="search-room-hero">
+            <div class="search-expandable search-expandable-mini search-mini-left">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="search-inner-wrap hero">
+                                <div class="search-expand-btn btn-primary active">Advanced Search</div>
+                                <div class="advanced-search advanced-search-hidden" style="display: block;">
+                                    <form method="get" id="frm-search-room" onsubmit="return false;">
+                                        <div class="col-xs-12">
+                                            <h1>Tìm kiếm <strong>ngôi nhà mơ ước</strong> của bạn cùng <strong>Phòng Tốt</strong></h1>
+                                        </div>
+                                        <div class="col-sm-12 search-input">
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Địa chỉ của bạn" id="keyword" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Tất cả loại phòng" id="keyword" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Gía tiền" id="keyword" value="">
+                                            </div>
+                                            <div class="col-xs-12 common-searches text-white">
+                                                <a href="#">Phòng trọ</a>,
+                                                <a href="#">Văn phòng</a>,
+                                                <a href="#">Nhà ở</a>,
+                                                <a href="#">Bất động sản</a>,
+                                                <a href="#">tư vấn</a>,
+                                                <a href="#">hành chính</a>,
+                                                <a href="#">nhân sự</a>,
+                                                <a href="#">ngân hàng</a>,
+                                                <a href="#">lập trình</a>,
+                                                <a href="#">seo</a>,
+                                                <a href="#">tester</a>,
+                                                <a href="#">fpt</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 search-submit">
+                                            <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                /*  ADVANCE DROPDOWN
+     /* ------------------------------------------------------------------------ */
+                var expand_trigger = $('.search-expand-btn');
+                var search_expand = $('.search-expandable .advanced-search');
+
+                expand_trigger.on('click', function () {
+                    var btn_this = $(this);
+                    btn_this.toggleClass('active');
+                    if (btn_this.hasClass('active')) {
+                        search_expand.slideDown();
+                    } else {
+                        search_expand.add('.search-expandable .advance-fields').slideUp();
+                        $('.advance-btn').removeClass('active');
+
+                    }
+                });
+
+            </script>
+            <style>
+                .search-expandable {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 3;
+                }
+
+                    .search-expandable div[class^="col-"] {
+                        padding-right: 5px;
+                        padding-left: 5px;
+                    }
+
+                    .search-expandable .row {
+                        margin-left: -5px;
+                        margin-right: -5px;
+                    }
+
+                    .search-expandable .advanced-search {
+                        float: left;
+                        padding: 17px 15px 0;
+                        background-color: #00648f;
+                        width: 100%;
+                    }
+
+                  
+                .search-expandable .features-list {
+                    padding-bottom: 30px;
+                }
+
+                .search-expandable .advance-fields {
+                    padding: 0;
+                }
+
+                .search-expand-btn {
+                    color: #fff;
+                    padding: 13px 15px 10px 15px;
+                    display: inline-block;
+                    line-height: 16px;
+                    border-radius: 4px 4px 0 0;
+                    font-weight: 400;
+                    cursor: pointer;
+                    font-size: 16px;
+                    width: 230px;
+                    position: relative;
+                }
+
+                    .search-expand-btn:after {
+                        font-family: "FontAwesome";
+                        content: '\f0d8';
+                        margin-left: 15px;
+                        position: absolute;
+                        right: 15px;
+                    }
+
+                    .search-expand-btn.active:after {
+                        content: '\f0d7';
+                    }
+
+                .advanced-search-hidden {
+                    display: none;
+                }
+
+                .search-expandable-mini .search-inner-wrap {
+                    width: 370px;
+                }
+
+                @media (max-width: 767px) {
+                    .search-expandable-mini .search-inner-wrap {
+                        width: 100%;
+                    }
+                }
+
+                .search-expandable-mini .advanced-search {
+                    padding: 15px;
+                }
+
+                .search-expandable-mini .range-text {
+                    text-align: center;
+                }
+
+                    .search-expandable-mini .range-text p {
+                        font-size: 13px;
+                    }
+
+            </style>
+            <!--<div class="hero" id="search-room-hero">
                 <div class="container">
                     <div class="box-search-room box">
                         <form method="get" id="frm-search-room" onsubmit="return false;">
@@ -408,7 +560,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="clearfix"></div>
@@ -490,38 +642,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
                     <a href="#" class="card" id="card-309">
-                    <div class="figure">
-                        <div class="featured-label">
-                            <div class="featured-label-left"></div>
-                            <div class="featured-label-content"><span class="fa fa-star"></span></div>
-                            <div class="featured-label-right"></div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
-                        <div class="figCaption">
-                            <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
-                            <span><span class="fa fa-eye"></span> 9999+</span>
-                            <span><span class="fa fa-heart-o"></span> 2</span>
-                        </div>
-                        <div class="figView"><span class="fa fa-eye"></span></div>
-                        <div class="figType">1,900,000 Đ/tháng</div>
-                    </div>
-                    <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                    <div class="cardAddress">
-                        <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
-                    </div>
-                    <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                        <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                        <!--@*
-                        <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
-                        <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
-                    <a href="#" class="card" id="card-309">
                         <div class="figure">
                             <div class="featured-label">
                                 <div class="featured-label-left"></div>
@@ -546,7 +666,7 @@
                             <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
                             <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                             <!--@*
-                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
                             <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                         </ul>
                         <div class="clearfix"></div>
@@ -578,7 +698,7 @@
                             <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
                             <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                             <!--@*
-                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
                             <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                         </ul>
                         <div class="clearfix"></div>
@@ -610,7 +730,7 @@
                             <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
                             <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                             <!--@*
-                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
                             <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                         </ul>
                         <div class="clearfix"></div>
@@ -642,7 +762,7 @@
                             <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
                             <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                             <!--@*
-                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
                             <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                         </ul>
                         <div class="clearfix"></div>
@@ -674,7 +794,7 @@
                             <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
                             <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                             <!--@*
-                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
                             <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                         </ul>
                         <div class="clearfix"></div>
@@ -706,7 +826,7 @@
                             <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
                             <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                             <!--@*
-                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
                             <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                         </ul>
                         <div class="clearfix"></div>
@@ -738,7 +858,39 @@
                             <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
                             <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                             <!--@*
-                <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
+                            <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 no-touch">
+                    <a href="#" class="card" id="card-309">
+                        <div class="figure">
+                            <div class="featured-label">
+                                <div class="featured-label-left"></div>
+                                <div class="featured-label-content"><span class="fa fa-star"></span></div>
+                                <div class="featured-label-right"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="img" style="background-image:url(http://localhost:6568/Content/images/cho-thue-phong-tro-so-3-ngach-20-ngo-151-nguyen-duc-canh-1482230449fnkre-lzzvd.jpg);"></div>
+                            <div class="figCaption">
+                                <div><span class="fa fa-home" style="margin-right:10px"></span>Phòng trọ</div>
+                                <span><span class="fa fa-eye"></span> 9999+</span>
+                                <span><span class="fa fa-heart-o"></span> 2</span>
+                            </div>
+                            <div class="figView"><span class="fa fa-eye"></span></div>
+                            <div class="figType">1,900,000 Đ/tháng</div>
+                        </div>
+                        <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
+                        <div class="cardAddress">
+                            <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
+                        </div>
+                        <ul class="cardFeat">
+                            <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                            <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+                            <!--@*
+                            <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
                             <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                         </ul>
                         <div class="clearfix"></div>
@@ -752,6 +904,7 @@
                 <div class="section-title a-center">
                     <h2>
                         <a href="/collections">Tin tức</a>
+                        a>
                     </h2>
                     <p>Những tin tức chứng khoán,bất động sản nhanh nhất</p>
                 </div>
@@ -787,43 +940,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="article-item">
-                        <div class="article-item__thumb">
-                            <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="article-item">
+                    <div class="article-item__thumb">
+                        <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
 
-                                <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
+                            <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
 
-                            </a>
-                        </div>
-                        <div class="article-item__content">
-                            <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
-                            <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
-                            <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên chính gian hàng online của Apple,...</div>
-                        </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="article-item">
-                        <div class="article-item__thumb">
-                            <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
-
-                                <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
-
-                            </a>
-                        </div>
-                        <div class="article-item__content">
-                            <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
-                            <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
-                            <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên chính gian hàng online của Apple,...</div>
-                        </div>
+                    <div class="article-item__content">
+                        <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
+                        <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
+                        <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên chính gian hàng online của Apple,...</div>
                     </div>
                 </div>
             </div>
-            <div class="a-center clearfix">
-                <a class="view-more-room" href="javascript:;">Xem thêm</a>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="article-item">
+                    <div class="article-item__thumb">
+                        <a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">
+
+                            <img src="//bizweb.dktcdn.net/thumb/large/100/141/731/articles/asdadsad.jpg?v=1479057687783" alt="Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành">
+
+                        </a>
+                    </div>
+                    <div class="article-item__content">
+                        <h3 class="article-item__title"><a href="/apple-lan-dau-tien-truc-tiep-ban-iphone-tra-bao-hanh">Apple lần đầu tiên trực tiếp bán iPhone trả bảo hành</a></h3>
+                        <div class="article-item__date">Thứ Hai, 14/11/2016 00:13</div>
+                        <div class="article-item__summary"> Trước đây, người ta có thể dễ dàng tìm mua các mẫu máy Mac, iPad hay cả iPod hàng “tân trang” (refurbished) trên chính gian hàng online của Apple,...</div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="a-center clearfix">
+            <a class="view-more-room" href="javascript:;">Xem thêm</a>
+        </div>
+    </div>
     </div>
     <div class="clearfix"></div>
     <section class="people_say">
