@@ -50,9 +50,3 @@ function showList() {
     $('#list_view').addClass('icon_selected');
     $('#grid_view').removeClass('icon_selected');
 }
-/*Open filter*/
-$('#open-filters').click(function (e) {
-    e.stopPropagation();
-    $(this).toggleClass('openf');
-    $('.dqdt-sidebar').toggleClass('openf');
-});

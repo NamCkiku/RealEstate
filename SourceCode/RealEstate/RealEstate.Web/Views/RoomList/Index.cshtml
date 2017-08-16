@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3 col-lg-3 col-xs-12">
+            <div class="col-md-3 col-lg-3 col-xs-12" ng-controller="SearchRoomController">
                 <div class="box-search-sidebar dqdt-sidebar">
                     <div class="title_st">
                         <h2>
@@ -28,84 +28,12 @@
                                 <div class="layered_subtitle">Tất cả danh mục</div>
                                 <div class="layered-content filter-group">
                                     <ul>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
+                                        <li class="filter-item filter-item--check-box filter-item--green" ng-repeat="item in data.lstRoomType">
                                             <span>
-                                                <label for="filter-giay-hai-tien">
-                                                    <input type="checkbox" id="filter-giay-hai-tien" data-group="Hãng" data-field="vendor" data-text="Giấy Hải Tiến" value="(Giấy Hải Tiến)" data-operator="OR">
+                                                <label for="{{item.id}}">
+                                                    <input type="checkbox" id="{{item.id}}" value="{{item.id}}">
                                                     <i class="fa"></i>
-                                                    Giấy Hải Tiến
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-han-quoc">
-                                                    <input type="checkbox" id="filter-han-quoc" data-group="Hãng" data-field="vendor" data-text="Hàn Quốc" value="(Hàn Quốc)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Hàn Quốc
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-thien-long">
-                                                    <input type="checkbox" id="filter-thien-long" data-group="Hãng" data-field="vendor" data-text="Thiên Long" value="(Thiên Long)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Thiên Long
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-giay-hai-tien">
-                                                    <input type="checkbox" id="filter-giay-hai-tien" data-group="Hãng" data-field="vendor" data-text="Giấy Hải Tiến" value="(Giấy Hải Tiến)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Giấy Hải Tiến
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-han-quoc">
-                                                    <input type="checkbox" id="filter-han-quoc" data-group="Hãng" data-field="vendor" data-text="Hàn Quốc" value="(Hàn Quốc)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Hàn Quốc
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-thien-long">
-                                                    <input type="checkbox" id="filter-thien-long" data-group="Hãng" data-field="vendor" data-text="Thiên Long" value="(Thiên Long)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Thiên Long
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-giay-hai-tien">
-                                                    <input type="checkbox" id="filter-giay-hai-tien" data-group="Hãng" data-field="vendor" data-text="Giấy Hải Tiến" value="(Giấy Hải Tiến)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Giấy Hải Tiến
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-han-quoc">
-                                                    <input type="checkbox" id="filter-han-quoc" data-group="Hãng" data-field="vendor" data-text="Hàn Quốc" value="(Hàn Quốc)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Hàn Quốc
-                                                </label>
-                                            </span>
-                                        </li>
-                                        <li class="filter-item filter-item--check-box filter-item--green ">
-                                            <span>
-                                                <label for="filter-thien-long">
-                                                    <input type="checkbox" id="filter-thien-long" data-group="Hãng" data-field="vendor" data-text="Thiên Long" value="(Thiên Long)" data-operator="OR">
-                                                    <i class="fa"></i>
-                                                    Thiên Long
+                                                    {{item.roomTypeName}}
                                                 </label>
                                             </span>
                                         </li>
@@ -114,38 +42,82 @@
                                 <!-- filter price -->
                                 <div class="layered_subtitle">Gía tiền</div>
                                 <div class="layered-content slider-range">
-                                    <div data-label-reasult="Range:" data-min="100" data-max="500000000" data-unit="$" class="slider-range-price" data-value-min="100" data-value-max="500000000"></div>
-                                    <div class="amount-range-price">Range:</div>
+                                    <rzslider rz-slider-model="sliderFrice.minValue" style="margin-top:0px"
+                                              rz-slider-high="sliderFrice.maxValue"
+                                              rz-slider-options="sliderFrice.options"></rzslider>
+                                    <div class="amount-range-price">
+                                        <label for="amount" style="font-weight:normal;">Khoảng giá:</label>
+                                        <span id="amount_2" style="border:0;font-weight:normal;">{{sliderFrice.minValue}} triệu đến {{sliderFrice.maxValue}} triệu</span>
+                                    </div>
+                                </div>
+                                <div class="layered_subtitle">Diện tích</div>
+                                <div class="layered-content slider-range">
+                                    <rzslider rz-slider-model="sliderAcreage.minValue" style="margin-top:0px"
+                                              rz-slider-high="sliderAcreage.maxValue"
+                                              rz-slider-options="sliderAcreage.options"></rzslider>
+                                    <div class="amount-range-price">
+                                        <label for="amount" style="font-weight:normal;">Diện tích:</label>
+                                        <span id="amount_2" style="border:0;font-weight:normal;">{{sliderAcreage.minValue}} m<sup>2</sup> đến {{sliderAcreage.maxValue}} m<sup>2</sup></span>
+                                    </div>
                                 </div>
                                 <!-- ./filter price -->
                                 <div class="layered_subtitle">Địa điểm</div>
                                 <div class="margin-bottom-15">
-                                    <select class="js-example-basic-single">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                    </select>
+                                    <select kendo-drop-down-list
+                                            k-option-label="'Chọn Tỉnh/Thành Phố'"
+                                            k-data-text-field="'name'"
+                                            k-data-value-field="'id'"
+                                            data-fv-notempty="true"
+                                            data-fv-notempty-message="Vui lòng chọn tỉnh thành"
+                                            name="province"
+                                            k-filter="'contains'"
+                                            k-suggest="true"
+                                            k-value-primitive="true"
+                                            k-auto-bind="false"
+                                            k-data-source="data.lstProvince"
+                                            k-on-change="GetAllDistrict(fillter.provinceId)"
+                                            k-ng-model="fillter.provinceId"
+                                            style="width: 100%"></select>
                                 </div>
                                 <div class="margin-bottom-15">
-                                    <select class="js-example-basic-single">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                    </select>
+                                    <select kendo-drop-down-list
+                                            k-option-label="'Chọn Quận/Huyện'"
+                                            k-data-text-field="'name'"
+                                            k-data-value-field="'id'"
+                                            k-filter="'contains'"
+                                            k-suggest="true"
+                                            k-value-primitive="true"
+                                            k-auto-bind="false"
+                                            k-data-source="data.lstDistrict"
+                                            k-on-change="GetAllWard(fillter.districtID)"
+                                            k-ng-model="fillter.districtID"
+                                            style="width: 100%"></select>
                                 </div>
                                 <div class="margin-bottom-15">
-                                    <select class="js-example-basic-single">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                    </select>
+                                    <select kendo-drop-down-list
+                                            k-option-label="'Chọn Xã/Phường'"
+                                            k-data-text-field="'name'"
+                                            k-data-value-field="'id'"
+                                            k-filter="'contains'"
+                                            k-suggest="true"
+                                            k-value-primitive="true"
+                                            k-auto-bind="false"
+                                            k-data-source="data.lstWard"
+                                            k-ng-model="fillter.wardID"
+                                            style="width: 100%"></select>
+                                </div>
+                                <div class="layered-content slider-range">
+                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div id="open-filters" class="open-filters hidden-lg hidden-md">
+                <a id="open-filters" ng-click="showFilter();" class="open-filters hidden-lg hidden-md">
                     <i class="fa fa-filter"></i>
                     <span>Lọc</span>
-                </div>
+                </a>
                 <div class="clearfix"></div>
                 <div class="sidebar-ads nopadding-xs hidden-xs hidden-sm margin-top-20" style="margin-top:20px;">
                     <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />

@@ -1,11 +1,18 @@
 ﻿(function (app) {
     app.controller('SearchRoomController', SearchRoomController);
 
-    SearchRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$modal', '$log', 'authData', 'authenticationService', 'loginService','$filter'];
+    SearchRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$modal', '$log', 'authData', 'authenticationService', 'loginService', '$filter'];
 
     function SearchRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $modal, $log, authData, authenticationService, loginService, $filter) {
         $scope.fillter = {
-
+            roomtype: null,
+            provinceId: null,
+            districtID: null,
+            wardID: null,
+            priceFrom: 0,
+            priceTo: 0,
+            acreageFrom: 0,
+            acreageTo: 0,
         }
         $scope.data = {
             lstRoomType: [],
@@ -29,7 +36,7 @@
                 hidePointerLabels: true,
             }
         };
-        $scope.sliderArge = {
+        $scope.sliderAcreage = {
             minValue: 0,
             maxValue: 500,
             options: {
@@ -100,6 +107,57 @@
                 BaseService.displayError("Không lấy được dữ liệu xã phường", 3000);
             });
         }
+
+
+
+        //Hàm tìm kiếm phòng
+        $scope.searchRoom = function () {
+            var params = {
+                roomtype: $scope.fillter.roomtype,
+                province: $scope.fillter.provinceId,
+                district: $scope.fillter.districtID,
+                ward: $scope.fillter.wardID,
+                priceFrom: $scope.sliderFrice.minValue,
+                priceTo: $scope.sliderFrice.maxValue,
+                acreageFrom: $scope.sliderAcreage.minValue,
+                acreageTo: $scope.sliderAcreage.maxValue,
+            };
+            var queryString = [];
+            for (var key in params) {
+                if (params[key] !== undefined) {
+                    queryString.push(key + '=' + params[key]);
+                }
+            }
+            $window.location.href = '/RoomList/Index?' + queryString.join('&');
+        }
+
+        $scope.showFilter = function () {
+            $('#open-filters').toggleClass('openf');
+            $('.dqdt-sidebar').toggleClass('openf');
+        }
+
+        var QueryString = function () {
+            // This function is anonymous, is executed immediately and 
+            // the return value is assigned to QueryString!
+            var query_string = {};
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                // If first entry with this name
+                if (typeof query_string[pair[0]] === "undefined") {
+                    query_string[pair[0]] = decodeURIComponent(pair[1]);
+                    // If second entry with this name
+                } else if (typeof query_string[pair[0]] === "string") {
+                    var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+                    query_string[pair[0]] = arr;
+                    // If third or later entry with this name
+                } else {
+                    query_string[pair[0]].push(decodeURIComponent(pair[1]));
+                }
+            }
+            return query_string;
+        }();
 
         $scope.init();
     }

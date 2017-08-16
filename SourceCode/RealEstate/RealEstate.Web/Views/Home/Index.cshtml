@@ -32,7 +32,7 @@
                         <div class="search-inner-wrap hero">
                             <div class="search-expand-btn btn-primary active">Tìm kiếm nhà trọ</div>
                             <div class="advanced-search advanced-search-hidden" style="display: block;">
-                                <form method="get" id="frm-search-room" onsubmit="return false;">
+                                <form novalidate id="frmsearchroom" name="frmsearchroom" role="form" ng-submit="searchRoom()">
                                     <div class="col-xs-12 hidden-xs hidden-sm">
                                         <h1>Tìm kiếm ngôi nhà mơ ước của bạn cùng Phòng Tốt</h1>
                                     </div>
@@ -47,13 +47,8 @@
                                                     k-value-primitive="true"
                                                     k-auto-bind="false"
                                                     k-data-source="data.lstRoomType"
-                                                    k-ng-model="fillter.RoomTypeID"
+                                                    k-ng-model="fillter.roomtype"
                                                     style="width: 100%"></select>
-                                            @*<select class="form-control"
-                                                        ng-model="keywords.RoomType"
-                                                        ng-options="option.id as option.roomTypeName for option in data.lstRoomType"
-                                                        data-placeholder="Chọn loại phòng">
-                                                </select>*@
                                         </div>
                                         <div class="form-group">
                                             <select kendo-drop-down-list
@@ -79,7 +74,6 @@
                                                     k-data-value-field="'id'"
                                                     k-filter="'contains'"
                                                     k-suggest="true"
-                                                    ng-disabled="isDistrict"
                                                     k-value-primitive="true"
                                                     k-auto-bind="false"
                                                     k-data-source="data.lstDistrict"
@@ -94,7 +88,6 @@
                                                     k-data-value-field="'id'"
                                                     k-filter="'contains'"
                                                     k-suggest="true"
-                                                    ng-disabled="isWard"
                                                     k-value-primitive="true"
                                                     k-auto-bind="false"
                                                     k-data-source="data.lstWard"
@@ -102,24 +95,24 @@
                                                     style="width: 100%"></select>
                                         </div>
                                         <div class="form-group">
-                                            <p style="margin-bottom:0px">
-                                                <label for="amount" style="color:#fff;">Khoảng giá:</label>
-                                                <span id="amount_2" style="border:0; color:#fff; font-weight:bold;">{{sliderFrice.minValue}} triệu đến {{sliderFrice.maxValue}}triệu</span>
+                                            <p style="margin-bottom:0px;font-size:12px;">
+                                                <label for="amount" style="color:#fff;font-weight:normal;">Khoảng giá:</label>
+                                                <span id="amount_2" style="border:0; color:#fff;font-weight:normal;">{{sliderFrice.minValue}} triệu đến {{sliderFrice.maxValue}} triệu</span>
                                             </p>
                                             <rzslider rz-slider-model="sliderFrice.minValue" style="margin-top:0px"
                                                       rz-slider-high="sliderFrice.maxValue"
                                                       rz-slider-options="sliderFrice.options"></rzslider>
                                         </div>
                                         <div class="form-group">
-                                            <p style="margin-bottom:0px">
-                                                <label for="amount" style="color:#fff;">Diện tích:</label>
-                                                <span id="amount_2" style="border:0; color:#fff; font-weight:bold;">{{sliderArge.minValue}} m2 đến {{sliderArge.maxValue}}m2</span>
+                                            <p style="margin-bottom:0px;font-size:12px;">
+                                                <label for="amount" style="color:#fff;font-weight:normal;">Diện tích:</label>
+                                                <span id="amount_2" style="border:0; color:#fff; font-weight:normal;">{{sliderAcreage.minValue}} m<sup>2</sup> đến {{sliderAcreage.maxValue}} m<sup>2</sup></span>
                                             </p>
-                                            <rzslider rz-slider-model="sliderArge.minValue" style="margin-top:0px"
-                                                      rz-slider-high="sliderArge.maxValue"
-                                                      rz-slider-options="sliderArge.options"></rzslider>
+                                            <rzslider rz-slider-model="sliderAcreage.minValue" style="margin-top:0px"
+                                                      rz-slider-high="sliderAcreage.maxValue"
+                                                      rz-slider-options="sliderAcreage.options"></rzslider>
                                         </div>
-                                        <div class="col-xs-12 common-searches text-white hidden-xs hidden-sm">
+                                        <div class="form-group common-searches text-white hidden-xs hidden-sm">
                                             <a href="#">Phòng trọ</a>,
                                             <a href="#">Văn phòng</a>,
                                             <a href="#">Nhà ở</a>,
@@ -135,7 +128,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 search-submit">
-                                        <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
+                                        <button ng-disabled="frm-search-room.$invalid" class="btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
                                     </div>
                                 </form>
                             </div>
@@ -296,7 +289,8 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
                     </div>
                     <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span></span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                         <!--@*
                         <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
@@ -328,7 +322,8 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
                     </div>
                     <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span></span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                         <!--@*
                         <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
@@ -360,7 +355,8 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
                     </div>
                     <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span></span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                         <!--@*
                         <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
@@ -392,7 +388,8 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
                     </div>
                     <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span></span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                         <!--@*
                         <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
@@ -424,7 +421,8 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
                     </div>
                     <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span></span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                         <!--@*
                         <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
@@ -456,7 +454,8 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
                     </div>
                     <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span></span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                         <!--@*
                         <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
@@ -488,7 +487,8 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>Thái Thịnh-Đống đa- Hà Nội
                     </div>
                     <ul class="cardFeat">
-                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span></span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
                         <!--@*
                         <li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@-->
@@ -498,7 +498,7 @@
                 </a>
             </div>
             <div class="a-center clearfix" style="clear: left;">
-                <a class="view-more-room" href="javascript:;"></a>
+                <a class="view-more-room" href="javascript:;">Xem thêm</a>
             </div>
         </div>
         <div class="row box-new-info">
