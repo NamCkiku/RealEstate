@@ -17,11 +17,30 @@
             $scope.GetAllRoomType();
             $scope.GetAllProvince();
         };
-        $scope.select2Options = {
-            allowClear: false,
-            theme: "bootstrap",
+        $scope.sliderFrice = {
+            minValue: 0,
+            maxValue: 300,
+            options: {
+                floor: 0,
+                ceil: 300,
+                step: 0.5,
+                precision: 1,
+                hideLimitLabels: true,
+                hidePointerLabels: true,
+            }
         };
-
+        $scope.sliderArge = {
+            minValue: 0,
+            maxValue: 500,
+            options: {
+                floor: 0,
+                ceil: 500,
+                step: 5,
+                precision: 1,
+                hideLimitLabels: true,
+                hidePointerLabels: true,
+            }
+        };
         //Hàm lấy ra commbobox loại phòng
         $scope.GetAllRoomType = function () {
             var myBlockUI = blockUI.instances.get('BlockUIRoom');
