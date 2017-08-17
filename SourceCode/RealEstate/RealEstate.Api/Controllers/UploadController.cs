@@ -14,7 +14,7 @@ using RealEstate.Common.Helper;
 namespace RealEstate.Api.Controllers
 {
     [RoutePrefix("api/upload")]
-    [Authorize]
+    //[Authorize]
     public class UploadController : ApiControllerBase
     {
         public UploadController(IErrorService errorService) : base(errorService)
@@ -30,7 +30,7 @@ namespace RealEstate.Api.Controllers
         /// Name     Date         Comments
         /// namth  6/20/2017   created
         [HttpPost]
-        [Route("images/uploadimage")]
+        [Route("uploadimage")]
         public HttpResponseMessage SaveImage(string type)
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
@@ -98,9 +98,9 @@ namespace RealEstate.Api.Controllers
 
                             string path = Path.Combine(HttpContext.Current.Server.MapPath(directory), postedFile.FileName);
                             //Userimage myfolder name where i want to save my image
-                            string pathLogo = Path.Combine(HttpContext.Current.Server.MapPath("/UploadedFiles/Rooms/logo.png"), postedFile.FileName);
-                            ImageHelper.Images(pathLogo, path, 50, 50, postedFile.FileName);
-                            //postedFile.SaveAs(path);
+                            //string pathLogo = Path.Combine(HttpContext.Current.Server.MapPath("/UploadedFiles/Rooms/logo.png"), postedFile.FileName);
+                            //ImageHelper.Images(pathLogo, path, 50, 50, postedFile.FileName);
+                            postedFile.SaveAs(path);
                             return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, postedFile.FileName));
                         }
                     }
@@ -138,7 +138,7 @@ namespace RealEstate.Api.Controllers
         /// <Modified>
         /// Name     Date         Comments
         /// namth  6/20/2017   created
-        [Route("images/uploadsingeimage")]
+        [Route("uploadsingeimage")]
         [HttpPost]
         public async Task UploadSingleFile()
         {
@@ -146,8 +146,8 @@ namespace RealEstate.Api.Controllers
             {
                 Request.CreateErrorResponse(HttpStatusCode.UnsupportedMediaType, new NotSupportedException("Media type not supported"));
             }
-            var root = HttpContext.Current.Server.MapPath("~/Content/images");
-            var dataFolder = HttpContext.Current.Server.MapPath("~/Content/images");
+            var root = HttpContext.Current.Server.MapPath("~/UploadedFiles/Rooms");
+            var dataFolder = HttpContext.Current.Server.MapPath("~/UploadedFiles/Rooms");
             Directory.CreateDirectory(root);
             var provider = new MultipartFormDataStreamProvider(root);
             var result = await Request.Content.ReadAsMultipartAsync(provider);

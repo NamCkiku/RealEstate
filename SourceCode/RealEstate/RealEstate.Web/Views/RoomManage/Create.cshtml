@@ -46,10 +46,10 @@
                     <div class="col-md-6 up-right">
                         <div class="title3 orange">Mẹo giúp bạn tăng doanh thu</div>
                         <ul class="introduce-list">
-                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-nhap-thong-tin">Cách nhập thông tin đầy đủ, rõ ràng và hữu ích</a></li>
-                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-gia-hop-ly">Đưa ra mức phí hợp lý và có sức thu hút</a></li>
-                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-gioi-thieu">Tạo chiến lược quảng bá, giới thiệu</a></li>
-                            <li><a href="https://sharecode.vn/cau-hoi/meo-giup-ban-tang-doanh-thu-ban-source-code-9.htm#meo-tham-gia-event">Tham gia đầy đủ các sự kiện của PhongTot.vn</a></li>
+                            <li><a href="#">Cách nhập thông tin đầy đủ, rõ ràng và hữu ích</a></li>
+                            <li><a href="#">Đưa ra mức phí hợp lý và có sức thu hút</a></li>
+                            <li><a href="#">Tạo chiến lược quảng bá, giới thiệu</a></li>
+                            <li><a href="#">Tham gia đầy đủ các sự kiện của PhongTot.vn</a></li>
                         </ul>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         <div class="quick-fill">
                             <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span>Tôi đã từng đăng tin trên phongtot.vn, hãy giúp tôi</span></div>
                             <div class="input">
-                                <button class="quick-fill-infor btn" ng-click="GetUserLogin();"><i class="fa fa-pencil" style="margin-right:10px;" aria-hidden="true"></i>Điền nhanh thông tin</button>
+                                <button type="button" class="quick-fill-infor btn" ng-click="GetUserLogin();"><i class="fa fa-pencil" style="margin-right:10px;" aria-hidden="true"></i>Điền nhanh thông tin</button>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                         <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(1)">Tiếp theo</button>
                     </div>
                 </div>
-                <form class="form-step" id="formStep2" ng-show="isActive=='2'">
+                <div class="form-step" id="formStep2" ng-show="isActive=='2'">
                     <div class="steps_header">Thông tin cơ bản <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12">
@@ -131,26 +131,30 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        {{room |json}}
                         <div class="form-group clearfix">
                             <label class="col-md-2 control-label">Ảnh đại diện<i class="required">*</i> :</label>
-                            <div class="col-md-10">
-                                <div class="room_avatar_image" ng-click="uploadImage();">
-                                    <canvas id="canvas" height="5" width="5"></canvas>
-                                    <img class="room_avatar_image_edit">
-                                    <div class="img_edit"></div>
-                                    <input type="file"
-                                           id="txtUploadImage"
-                                           class="img_upload"
-                                           kendo-upload
-                                           k-success="onSuccess"
-                                           k-error="onError"
-                                           k-multiple="false"
-                                           k-options="fileAttachmentOptions"
-                                           k-select="onSelect"
-                                           accept=".jpg,.png,.gif">
-                                    <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
-                                </div>
+                            <div class="col-md-5">
+                                <input name="files"
+                                       type="file"
+                                       id="txtUploadImage"
+                                       kendo-upload
+                                       k-options="kendoUploadOptions" />
+                                @*<div class="room_avatar_image" ng-click="uploadImage();">
+                                        <canvas id="canvas" height="5" width="5"></canvas>
+                                        <img class="room_avatar_image_edit">
+                                        <div class="img_edit"></div>
+                                        <div style="display: none;">
+                                            <input name="files"
+                                                   type="file"
+                                                   id="txtUploadImage"
+                                                   class="hidden"
+                                                   kendo-upload
+                                                   k-options="kendoUploadOptions" />
+                                        </div>
+                                        <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
+                                    </div>*@
+                            </div>
+                            <div class="col-md-5">
                                 <div class="alignleft room_avatar_image_txt">
                                     <div class="true-ic">Ảnh đẹp sẽ giúp tin có nhiều lượt xem</div>
                                     <div class="true-ic">Dung lượng tối đa 2MB</div>
@@ -191,6 +195,9 @@
                                         k-suggest="true"
                                         k-value-primitive="true"
                                         k-auto-bind="false"
+                                        data-fv-notempty="true"
+                                        data-fv-notempty-message="Vui lòng chọn danh mục"
+                                        name="roomtype"
                                         k-data-source="data.lstRoomType"
                                         k-ng-model="room.RoomTypeID"
                                         style="width: 100%"></select>
@@ -227,11 +234,10 @@
                                         k-data-value-field="'id'"
                                         k-filter="'contains'"
                                         k-suggest="true"
-                                        ng-disabled="isDistrict"
                                         k-value-primitive="true"
                                         k-auto-bind="false"
                                         k-data-source="data.lstDistrict"
-                                        k-on-change="GetAllWard(filter.districtID)"
+                                        k-on-change="GetAllWard(room.districtID)"
                                         k-ng-model="room.districtID"
                                         style="width: 100%"></select>
                             </div>
@@ -247,7 +253,6 @@
                                         k-data-value-field="'id'"
                                         k-filter="'contains'"
                                         k-suggest="true"
-                                        ng-disabled="isWard"
                                         k-value-primitive="true"
                                         k-auto-bind="false"
                                         k-data-source="data.lstWard"
@@ -261,8 +266,10 @@
                             <label class="col-lg-2 col-xs-12" for="userName">Gía tiền<i class="required">*</i> :</label>
                             <div class="col-lg-3 col-xs-6">
                                 <input class="form-control"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập giá tiền"
                                        ng-model="room.price"
-                                       name="title" type="number">
+                                       name="price" type="number">
                             </div>
                             <div class="col-md-4 col-xs-6 note-col">
                                 <div class="form-control-static">
@@ -275,8 +282,10 @@
                             <label class="col-lg-2 col-xs-12 control-label " for="userName">Diện tích<i class="required">*</i> :</label>
                             <div class="col-lg-3 col-xs-6">
                                 <input class="form-control"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập diện tích"
                                        ng-model="room.acreage"
-                                       name="title" type="text">
+                                       name="acreage" type="text">
                             </div>
                             <div class="col-md-4 col-xs-6 note-col">
                                 <div class="form-control-static">
@@ -292,7 +301,9 @@
                             <div class="col-lg-6">
                                 <textarea style="width:100%"
                                           ng-model="room.description"
-                                          name="title" type="text"></textarea>
+                                          data-fv-notempty="true"
+                                          data-fv-notempty-message="Vui lòng nhập nội dung mô tả"
+                                          name="description" type="text"></textarea>
                             </div>
                             <div class="col-md-4 note-col">
                                 <div class="up-idea hidden-xs">
@@ -307,7 +318,7 @@
                             <div class="col-lg-6">
                                 <input class="form-control"
                                        ng-model="room.tags"
-                                       name="title" type="text">
+                                       name="tags" type="text">
                             </div>
                             <div class="col-md-4 note-col">
                                 <div class="form-control-static">
@@ -320,21 +331,19 @@
                         <button type="button" class="btn btn-sm btn-success" ng-click="previousStep(1)">Quay lại</button>
                         <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(2)">Tiếp theo</button>
                     </div>
-                </form>
-                <form class="form-step" id="formStep3" ng-show="isActive=='3'">
+                </div>
+                <div class="form-step" id="formStep3" ng-show="isActive=='3'">
                     <div class="steps_header">Thông tin bổ sung <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12">
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Ảnh<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input name="files" id="files" type="file" />
-
-                                <script type="text/x-kendo-template" id="template">
-                                    <div class="product">
-                                        <img src="../content/web/foods/#= name #" alt="#: name # image" />
-                                    </div>
-                                </script>
+                                <input name="filesDropzone"
+                                       type="file"
+                                       id="txtUploadDropzoneImage"
+                                       kendo-upload
+                                       k-options="kendoUploadDropzoneOptions" />
                             </div>
                         </div>
                         <div class="form-group clearfix">
@@ -370,7 +379,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
                 <form class="form-step" id="formStep4" ng-show="isActive=='4'">
                     <div class="steps_header">Bản đồ <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
                     <div class="clearfix"></div>
