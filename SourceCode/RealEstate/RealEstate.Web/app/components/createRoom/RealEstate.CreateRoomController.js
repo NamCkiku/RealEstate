@@ -4,9 +4,8 @@
     CreateRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$rootScope', '$modal', '$filter'];
 
     function CreateRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $rootScope, $modal, $filter) {
-        $scope.isDistrict = true;
-        $scope.isWard = true;
         $scope.isActive = '1';
+        kendo.culture("vi-VN");
         $scope.room = {
 
         }
@@ -67,7 +66,6 @@
             myBlockUI.start();
             apiService.get('api/management/getalldistrict', null, function (respone) {
                 $scope.data.lstDistrict = $filter('filter')(respone.data, { provinceId: id }, true);
-                $scope.isDistrict = false;
                 $scope.data.lstWard = [];
                 myBlockUI.stop();
             }, function (respone) {
@@ -84,7 +82,6 @@
             myBlockUI.start();
             apiService.get('api/management/getallward', null, function (respone) {
                 $scope.data.lstWard = $filter('filter')(respone.data, { districtID: id }, true);
-                $scope.isWard = false;
                 myBlockUI.stop();
             }, function (respone) {
                 myBlockUI.stop();
@@ -93,46 +90,53 @@
         }
 
         $scope.onSuccess = function () {
-            $log.info('Upload Successfull...');
         };
         $scope.onSelect = function (e) {
-            angular.forEach(e.file, function (index, value) {
-                var ok = value.extension == ".xlsx"
-                    || value.extension == ".pdf"
-                    || value.extension == ".doc"
-                    || value.extension == ".html";
-
-                if (value.extension === ok) {
-                    e.preventDefault();
-                    alert("Please upload jpg image files");
-                }
-            });
-            //$.each(e.file, function (index, value) {
-            //    var ok = value.extension == ".xlsx"
-            //        || value.extension == ".pdf"
-            //        || value.extension == ".doc"
-            //        || value.extension == ".html";
-
-            //    if (value.extension === ok) {
-            //        e.preventDefault();
-            //        alert("Please upload jpg image files");
-            //    }
-            //});
         };
-        $scope.uploadImage = function () {
-            angular.element('#txtUploadImage').trigger();
-        }
         $scope.onError = function () {
-            $log.info('Upload Errored out...');
-            console.log('Error while uploading attachment');
         };
-        $scope.fileAttachmentOptions = function () {
-            //async: {
-            //    saveUrl: 'app/upload/uploadAttch',
-            //        removeUrl: 'remove',
-            //            removeVerb: 'DELETE',
-            //                autoUpload: false
-            //},
+        $scope.kendoUploadOptions = {
+            async: {
+                saveUrl: $rootScope.baseUrl + 'api/upload/uploadimage?type=room',
+                autoUpload: true
+            },
+            multiple: false,
+            validation: {
+                //allowedExtensions: ['.html,.xlsx,.pdf,.doc,'],
+                maxFileSize: 4194304
+            },
+            localization: {
+                select: 'Chọn ảnh',
+                remove: 'Xóa',
+                cancel: 'Hủy'
+            },
+            success: $scope.onSuccess,
+            remove: $scope.onRemove,
+            select: $scope.onSelect,
+            error: $scope.onError,
+
+        }
+        $scope.kendoUploadDropzoneOptions = {
+            async: {
+                saveUrl: $rootScope.baseUrl + 'api/upload/uploadsingeimage',
+                autoUpload: true
+            },
+            multiple: true,
+            validation: {
+                allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif"],
+                maxFileSize: 4194304
+            },
+            dropZone: ".dropZoneElement",
+            localization: {
+                select: 'Chọn ảnh',
+                remove: 'Xóa',
+                cancel: 'Hủy'
+            },
+            success: $scope.onSuccess,
+            remove: $scope.onRemove,
+            select: $scope.onSelect,
+            error: $scope.onError,
+
         }
         $scope.nextStep = function (item) {
             if (item == 1) {
