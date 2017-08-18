@@ -86,7 +86,7 @@
                         <div class="form-group clearfix">
                             <label class="col-lg-3 control-label " for="confirm">Số điện thoại<i class="required">*</i> :</label>
                             <div class="col-lg-9 no-padding">
-                                <input id="phone"
+                                <input id="phone" ui-br-phone-number
                                        name="phone"
                                        ng-model="room.phone"
                                        type="text"
@@ -264,12 +264,15 @@
                         </div>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 col-xs-12" for="userName">Gía tiền<i class="required">*</i> :</label>
-                            <div class="col-lg-3 col-xs-6">
-                                <input class="form-control"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập giá tiền"
-                                       ng-model="room.price"
-                                       name="price" type="number">
+                            <div class="col-lg-6 col-xs-6">
+                                <div class="input-group">
+                                    <input class="form-control" ui-number-mask="0"
+                                           data-fv-notempty="true"
+                                           data-fv-notempty-message="Vui lòng nhập giá tiền"
+                                           ng-model="room.price"
+                                           name="price" type="text">
+                                    <span class="input-group-addon">VNĐ</span>
+                                </div>
                             </div>
                             <div class="col-md-4 col-xs-6 note-col">
                                 <div class="form-control-static">
@@ -280,12 +283,15 @@
                         </div>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 col-xs-12 control-label " for="userName">Diện tích<i class="required">*</i> :</label>
-                            <div class="col-lg-3 col-xs-6">
-                                <input class="form-control"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập diện tích"
-                                       ng-model="room.acreage"
-                                       name="acreage" type="text">
+                            <div class="col-lg-6 col-xs-6">
+                                <div class="input-group">
+                                    <input class="form-control" ui-number-mask="0"
+                                           data-fv-notempty="true"
+                                           data-fv-notempty-message="Vui lòng nhập diện tích"
+                                           ng-model="room.acreage"
+                                           name="acreage" type="text">
+                                    <span class="input-group-addon">m<sup>2</sup></span>
+                                </div>
                             </div>
                             <div class="col-md-4 col-xs-6 note-col">
                                 <div class="form-control-static">
@@ -299,11 +305,12 @@
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Nội dung<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <textarea style="width:100%"
-                                          ng-model="room.description"
+                                <textarea kendo-editor
+                                          name="description"
                                           data-fv-notempty="true"
                                           data-fv-notempty-message="Vui lòng nhập nội dung mô tả"
-                                          name="description" type="text"></textarea>
+                                          ng-model="room.description"
+                                          k-options="{{editorOptions}}"></textarea>
                             </div>
                             <div class="col-md-4 note-col">
                                 <div class="up-idea hidden-xs">
@@ -316,9 +323,15 @@
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Từ khóa SEO<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       ng-model="room.tags"
-                                       name="tags" type="text">
+                                <tags-input name="tags"
+                                            ng-model="room.tags"
+                                            add-on-blur="true"
+                                            min-tags="0"
+                                            max-tags="6"
+                                            placeholder="Thêm từ khóa tìm kiếm"
+                                            replace-spaces-with-dashes="false"
+                                            allow-leftover-text="true">
+                                </tags-input>
                             </div>
                             <div class="col-md-4 note-col">
                                 <div class="form-control-static">

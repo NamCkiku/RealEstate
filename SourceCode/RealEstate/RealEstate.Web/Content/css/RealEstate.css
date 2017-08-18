@@ -2784,8 +2784,20 @@ sort-theme .sort-by li:first-child {
         color: rgba(0,0,0,0.87);
     }
 
+    .form-step .input-group-addon {
+        padding: 6px 8px;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1;
+        color: #555;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 0px;
+    }
+
     .form-step .form-control-feedback {
-        top:7px;
+        top: 7px;
         height: 30px;
     }
 
@@ -3074,6 +3086,7 @@ sort-theme .sort-by li:first-child {
 .margin-bottom-20 {
     margin-bottom: 20px;
 }
+
 .help-block {
     display: block;
     margin-top: 0px;

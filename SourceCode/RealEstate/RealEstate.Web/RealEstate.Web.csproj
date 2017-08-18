@@ -127,6 +127,20 @@
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.js" />
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.css" />
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks-debug.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks-debug.min.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks-dependencies.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks-dependencies.min.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks-standalone.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks-standalone.min.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.br.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.br.min.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.ch.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.ch.min.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.min.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.us.js" />
+    <Content Include="bower_components\angular-input-masks\angular-input-masks.us.min.js" />
     <Content Include="bower_components\angular-local-storage\.gitattributes" />
     <Content Include="bower_components\angular-local-storage\.gitignore" />
     <Content Include="bower_components\angular-local-storage\demo\demo-app.js" />
@@ -265,6 +279,14 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
+    <Content Include="bower_components\ng-tags-input\ng-tags-input.bootstrap.css" />
+    <Content Include="bower_components\ng-tags-input\ng-tags-input.bootstrap.min.css" />
+    <Content Include="bower_components\ng-tags-input\ng-tags-input.css" />
+    <Content Include="bower_components\ng-tags-input\ng-tags-input.js" />
+    <Content Include="bower_components\ng-tags-input\ng-tags-input.min.css" />
+    <Content Include="bower_components\ng-tags-input\ng-tags-input.min.js" />
+    <Content Include="bower_components\ng-timeago\LICENSE.txt" />
+    <Content Include="bower_components\ng-timeago\ngtimeago.js" />
     <Content Include="bower_components\select2\.gitignore" />
     <Content Include="bower_components\select2\select2-bootstrap.css" />
     <Content Include="bower_components\select2\select2-spinner.gif" />
@@ -3384,6 +3406,16 @@
     <Content Include="bower_components\angularjs-slider\README.md" />
     <Content Include="bower_components\angularjs-slider\src\rzslider.less" />
     <Content Include="bower_components\angularjs-slider\src\variables.less" />
+    <Content Include="bower_components\angular-input-masks\.bower.json" />
+    <Content Include="bower_components\angular-input-masks\bower.json" />
+    <Content Include="bower_components\angular-input-masks\LICENSE" />
+    <Content Include="bower_components\angular-input-masks\README.md" />
+    <Content Include="bower_components\ng-timeago\.bower.json" />
+    <Content Include="bower_components\ng-timeago\bower.json" />
+    <Content Include="bower_components\ng-timeago\README.md" />
+    <Content Include="bower_components\ng-tags-input\.bower.json" />
+    <Content Include="bower_components\ng-tags-input\bower.json" />
+    <Content Include="bower_components\ng-tags-input\README" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
