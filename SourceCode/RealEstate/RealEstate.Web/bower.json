@@ -7,6 +7,9 @@
     "angular-block-ui": "~0.2.2",
     "angular-local-storage": "~0.7.1",
     "angular-ui-select2": "~0.0.5",
-    "angularjs-slider": "~6.4.0"
+    "angularjs-slider": "~6.4.0",
+    "angular-input-masks": "~2.6.0",
+    "ng-timeago": "~0.0.2",
+    "ng-tags-input": "~3.2.0"
   }
 }

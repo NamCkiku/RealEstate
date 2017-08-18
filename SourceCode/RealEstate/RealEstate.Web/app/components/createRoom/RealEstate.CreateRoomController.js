@@ -22,6 +22,43 @@
             angular.element('#txtuserName').focus();
         };
 
+        $scope.editorOptions = {
+            tools: [
+                "bold",
+                "italic",
+                "underline",
+                "strikethrough",
+                "justifyLeft",
+                "justifyCenter",
+                "justifyRight",
+                "justifyFull",
+                "insertUnorderedList",
+                "insertOrderedList",
+                "indent",
+                "outdent",
+                "createLink",
+                "unlink",
+                "subscript",
+                "superscript",
+                "createTable",
+                "addRowAbove",
+                "addRowBelow",
+                "addColumnLeft",
+                "addColumnRight",
+                "deleteRow",
+                "deleteColumn",
+                "viewHtml",
+                "formatting",
+                "cleanFormatting",
+                "fontName",
+                "fontSize",
+                "foreColor",
+                "backColor",
+                "print",
+                "pdf"
+            ],         
+        };
+
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
             $scope.room.Alias = BaseService.getSeoTitle($scope.room.RoomName);
