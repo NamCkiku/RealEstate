@@ -58,6 +58,8 @@ namespace RealEstate.Api.Providers
                 identity.AddClaim(new Claim("avatar", avatar));
                 identity.AddClaim(new Claim("email", email));
                 identity.AddClaim(new Claim("username", user.UserName));
+                identity.AddClaim(new Claim("address", user.Address));
+                identity.AddClaim(new Claim("phonenumber", user.PhoneNumber));
                 var props = new AuthenticationProperties(new Dictionary<string, string>
                     {
                         {"userID", user.Id},
@@ -65,6 +67,8 @@ namespace RealEstate.Api.Providers
                         {"avatar", avatar },
                         {"email", email},
                         {"username", user.UserName},
+                        {"address", user.Address},
+                        {"phonenumber", user.PhoneNumber},
 
                     });
                 context.Validated(new AuthenticationTicket(identity, props));
