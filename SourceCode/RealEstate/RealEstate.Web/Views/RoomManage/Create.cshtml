@@ -184,84 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Danh mục<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'--Chọn danh mục--'"
-                                        k-data-text-field="'Name'"
-                                        k-data-value-field="'ID'"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        data-fv-notempty="true"
-                                        data-fv-notempty-message="Vui lòng chọn danh mục"
-                                        name="roomtype"
-                                        k-data-source="data.lstRoomType"
-                                        k-ng-model="room.RoomTypeID"
-                                        style="width: 100%"></select>
-                            </div>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Tỉnh Thành<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'--Chọn Tỉnh/Thành Phố--'"
-                                        k-data-text-field="'name'"
-                                        k-data-value-field="'id'"
-                                        data-fv-notempty="true"
-                                        data-fv-notempty-message="Vui lòng chọn tỉnh thành"
-                                        name="province"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        k-data-source="data.lstProvince"
-                                        k-on-change="GetAllDistrict(room.provinceId)"
-                                        k-ng-model="room.provinceId"
-                                        style="width: 100%"></select>
-                            </div>
-                            <div class="col-md-4 note-col">
-                            </div>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Quận/huyện<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'--Chọn Quận/Huyện--'"
-                                        k-data-text-field="'name'"
-                                        k-data-value-field="'id'"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        k-data-source="data.lstDistrict"
-                                        k-on-change="GetAllWard(room.districtID)"
-                                        k-ng-model="room.districtID"
-                                        style="width: 100%"></select>
-                            </div>
-                            <div class="col-md-4 note-col">
-                            </div>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Phường/xã<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'--Chọn Xã/Phường--'"
-                                        k-data-text-field="'name'"
-                                        k-data-value-field="'id'"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        k-data-source="data.lstWard"
-                                        k-ng-model="room.wardID"
-                                        style="width: 100%"></select>
-                            </div>
-                            <div class="col-md-4 note-col">
-                            </div>
-                        </div>
+                        <search-control search-info="searchInfo" search-type="3"></search-control>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 col-xs-12" for="userName">Gía tiền<i class="required">*</i> :</label>
                             <div class="col-lg-6 col-xs-6">
@@ -522,7 +445,7 @@
                     </div>
                     <div class="col-lg-12 margin-bottom-15 margin-top-15">
                         <button type="button" class="btn btn-sm btn-success" ng-click="previousStep(3)">Quay lại</button>
-                        <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(4)">Tiếp theo</button>
+                        <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(4)">Hoàn thành</button>
                     </div>
                 </div>
             </div>

@@ -37,63 +37,7 @@
                                         <h1>Tìm kiếm ngôi nhà mơ ước của bạn cùng Phòng Tốt</h1>
                                     </div>
                                     <div class="col-sm-12 search-input">
-                                        <div class="form-group">
-                                            <select kendo-drop-down-list
-                                                    k-option-label="'Chọn Loại Phòng'"
-                                                    k-data-text-field="'roomTypeName'"
-                                                    k-data-value-field="'id'"
-                                                    k-filter="'contains'"
-                                                    k-suggest="true"
-                                                    k-value-primitive="true"
-                                                    k-auto-bind="false"
-                                                    k-data-source="data.lstRoomType"
-                                                    k-ng-model="fillter.roomtype"
-                                                    style="width: 100%"></select>
-                                        </div>
-                                        <div class="form-group">
-                                            <select kendo-drop-down-list
-                                                    k-option-label="'Chọn Tỉnh/Thành Phố'"
-                                                    k-data-text-field="'name'"
-                                                    k-data-value-field="'id'"
-                                                    data-fv-notempty="true"
-                                                    data-fv-notempty-message="Vui lòng chọn tỉnh thành"
-                                                    name="province"
-                                                    k-filter="'contains'"
-                                                    k-suggest="true"
-                                                    k-value-primitive="true"
-                                                    k-auto-bind="false"
-                                                    k-data-source="data.lstProvince"
-                                                    k-on-change="GetAllDistrict(fillter.provinceId)"
-                                                    k-ng-model="fillter.provinceId"
-                                                    style="width: 100%"></select>
-                                        </div>
-                                        <div class="form-group">
-                                            <select kendo-drop-down-list
-                                                    k-option-label="'Chọn Quận/Huyện'"
-                                                    k-data-text-field="'name'"
-                                                    k-data-value-field="'id'"
-                                                    k-filter="'contains'"
-                                                    k-suggest="true"
-                                                    k-value-primitive="true"
-                                                    k-auto-bind="false"
-                                                    k-data-source="data.lstDistrict"
-                                                    k-on-change="GetAllWard(fillter.districtID)"
-                                                    k-ng-model="fillter.districtID"
-                                                    style="width: 100%"></select>
-                                        </div>
-                                        <div class="form-group">
-                                            <select kendo-drop-down-list
-                                                    k-option-label="'Chọn Xã/Phường'"
-                                                    k-data-text-field="'name'"
-                                                    k-data-value-field="'id'"
-                                                    k-filter="'contains'"
-                                                    k-suggest="true"
-                                                    k-value-primitive="true"
-                                                    k-auto-bind="false"
-                                                    k-data-source="data.lstWard"
-                                                    k-ng-model="fillter.wardID"
-                                                    style="width: 100%"></select>
-                                        </div>
+                                        <search-control search-info="searchInfo" search-type="1"></search-control>
                                         <div class="form-group">
                                             <p style="margin-bottom:0px;font-size:12px;">
                                                 <label for="amount" style="color:#fff;font-weight:normal;">Khoảng giá:</label>

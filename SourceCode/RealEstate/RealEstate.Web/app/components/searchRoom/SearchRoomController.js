@@ -14,15 +14,7 @@
             acreageFrom: 0,
             acreageTo: 0,
         }
-        $scope.data = {
-            lstRoomType: [],
-            lstProvince: [],
-            lstDistrict: [],
-            lstWard: [],
-        }
         $scope.init = function () {
-            $scope.GetAllRoomType();
-            $scope.GetAllProvince();
         };
         $scope.sliderFrice = {
             minValue: 0,
@@ -48,76 +40,13 @@
                 hidePointerLabels: true,
             }
         };
-        //Hàm lấy ra commbobox loại phòng
-        $scope.GetAllRoomType = function () {
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/roomtype/getallroomtype', null, function (respone) {
-                console.log(respone.data)
-                $scope.data.lstRoomType = respone.data;
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu Loại Phòng", 3000);
-            });
-        }
-
-        //Hàm lấy ra commbobox tỉnh thành
-        $scope.GetAllProvince = function () {
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/management/getallprovince', null, function (respone) {
-                $scope.data.lstProvince = respone.data;
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu Tỉnh Thành", 3000);
-            });
-        }
-
-
-        //Hàm lấy ra commbobox quận huyện theo tỉnh thành
-        $scope.GetAllDistrict = GetAllDistrict;
-        function GetAllDistrict(id) {
-
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/management/getalldistrict', null, function (respone) {
-                $scope.data.lstDistrict = $filter('filter')(respone.data, { provinceId: id }, true);
-                $scope.isDistrict = false;
-                $scope.data.lstWard = [];
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu Quận huyện", 3000);
-            });
-        }
-
-
-        //Hàm lấy ra commbobox xã phường theo quận huyện
-        $scope.GetAllWard = GetAllWard;
-        function GetAllWard(id) {
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/management/getallward', null, function (respone) {
-                $scope.data.lstWard = $filter('filter')(respone.data, { districtID: id }, true);
-                $scope.isWard = false;
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu xã phường", 3000);
-            });
-        }
-
-
-
         //Hàm tìm kiếm phòng
         $scope.searchRoom = function () {
             var params = {
-                roomtype: $scope.fillter.roomtype,
-                province: $scope.fillter.provinceId,
-                district: $scope.fillter.districtID,
-                ward: $scope.fillter.wardID,
+                roomtype: $scope.searchInfo.roomtype,
+                province: $scope.searchInfo.provinceId,
+                district: $scope.searchInfo.districtID,
+                ward: $scope.searchInfo.wardID,
                 priceFrom: $scope.sliderFrice.minValue,
                 priceTo: $scope.sliderFrice.maxValue,
                 acreageFrom: $scope.sliderAcreage.minValue,
