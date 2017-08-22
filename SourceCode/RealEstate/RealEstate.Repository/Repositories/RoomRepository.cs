@@ -61,7 +61,7 @@ namespace RealEstate.Repository.Repositories
                 parameter.Add("@Province", filter.ProvinceID, dbType: DbType.Int32);
                 parameter.Add("@District", filter.DistrictID, dbType: DbType.Int32);
                 parameter.Add("@Ward", filter.WardID, dbType: DbType.Int32);
-                parameter.Add("@@RoomType", filter.RoomTypeID, dbType: DbType.Int32);
+                parameter.Add("@RoomType", filter.RoomTypeID, dbType: DbType.Int32);
                 parameter.Add("@PriceFrom", filter.PriceFrom, dbType: DbType.Int32);
                 parameter.Add("@PriceTo", filter.PriceTo, dbType: DbType.Int32);
                 parameter.Add("@PageCount", pageSize, dbType: DbType.Int32);

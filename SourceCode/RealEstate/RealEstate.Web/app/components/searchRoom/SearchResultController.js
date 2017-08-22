@@ -8,13 +8,52 @@
             lstRoom: [],
         }
         $scope.pageLoad = function () {
-            $scope.loadAllRoomByQueryString();
+          //  $scope.loadAllRoomByQueryString();
         }
         angular.element(document).ready(function () {
             $scope.pageLoad();
         });
 
-        $scope.$on('fireLoadFilterEvent', function (event, searchObj) {
+      
+        $rootScope.$on('changeValueInCtl1', function (event, searchObj) {
+            $scope.init = function () {
+                $scope.FilterRoom();
+            };
+            // Lọc phòng theo tiêu chí
+            $scope.FilterRoom = function () {
+                var myBlockUI = blockUI.instances.get('BlockUIRoom');
+                myBlockUI.start();
+                var config = {
+                    params: {
+                        RoomTypeID: searchObj.roomtype,
+                        PriceFrom: searchObj.minValue,
+                        PriceTo: searchObj.maxValue,
+                        WardID: searchObj.wardID,
+                        DistrictID: searchObj.districtID,
+                        ProvinceID: searchObj.provinceId,
+                        Keywords: null,
+                        StartDate: null,
+                        EndDate: null,
+                        Status: true,
+                        page: 1,
+                        pageSize: 10,
+                        sort: "ASC"
+                    }
+                }
+                apiService.get('api/room/getallroomfullsearch', config, function (respone) {
+                    $scope.data.listRoom = respone.data.items;
+                    console.log($scope.data.listRoom);
+                    myBlockUI.stop();
+                }, function (respone) {
+                    myBlockUI.stop();
+                    BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
+                });
+            }
+            $scope.init();
+        });
+
+        $scope.$on('fireLoadFilterEvents', function (event, searchObj) {
+           
             $scope.init = function () {
                 $scope.FilterRoom();
             };

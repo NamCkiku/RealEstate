@@ -133,8 +133,12 @@
         }
 
         $scope.fireLoadFilterEvent = function () {
-            $scope.$broadcast('fireLoadFilterEvent', $scope.fillter);
+            $scope.$broadcast('fireLoadFilterEvents', $scope.fillter);
+
+            $scope.$emit('changeValueInCtl1', $scope.fillter);
         };
+
+      
 
         $scope.showFilter = function () {
             $('#open-filters').toggleClass('openf');
