@@ -21,7 +21,7 @@ namespace RealEstate.Api.Controllers
     /// </Modified>
     /// <seealso cref="RealEstate.Api.Controllers.ApiControllerBase" />
     [RoutePrefix("api/management")]
-    [Authorize]
+   // [Authorize]
     public class ManagementController : ApiControllerBase
     {
         private readonly ICountryService _countryService;

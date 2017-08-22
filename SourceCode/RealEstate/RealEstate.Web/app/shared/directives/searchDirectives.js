@@ -1,6 +1,5 @@
 ﻿(function (app) {
-    'use strict';
-
+    'use strict';   
     app.directive('searchControl', searchControl);
     searchControl.$inject = ['$rootScope'];
     function searchControl($rootScope) {
@@ -106,7 +105,7 @@
             restrict: 'EA', //Default in 1.3+
             scope: {
                 fillter: '=searchInfo',
-                searchType: '=searchtype'
+                searchType: '=?searchtype'
             },
             controller: controller,
             link: function (scope, elem, attr) {
