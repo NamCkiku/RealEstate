@@ -73,7 +73,7 @@
                     data-fv-notempty-message="Vui lòng chọn danh mục"
                     name="roomtype"
                     k-data-source="data.lstRoomType"
-                    k-ng-model="room.RoomTypeID"
+                    k-ng-model="fillter.roomtype"
                     style="width: 100%"></select>
         </div>
     </div>
@@ -92,8 +92,8 @@
                     k-value-primitive="true"
                     k-auto-bind="false"
                     k-data-source="data.lstProvince"
-                    k-on-change="GetAllDistrict(room.provinceId)"
-                    k-ng-model="room.provinceId"
+                    k-on-change="GetAllDistrict(fillter.provinceId)"
+                    k-ng-model="fillter.provinceId"
                     style="width: 100%"></select>
         </div>
         <div class="col-md-4 note-col">
@@ -111,8 +111,8 @@
                     k-value-primitive="true"
                     k-auto-bind="false"
                     k-data-source="data.lstDistrict"
-                    k-on-change="GetAllWard(room.districtID)"
-                    k-ng-model="room.districtID"
+                    k-on-change="GetAllWard(fillter.districtID)"
+                    k-ng-model="fillter.districtID"
                     style="width: 100%"></select>
         </div>
         <div class="col-md-4 note-col">
@@ -130,7 +130,7 @@
                     k-value-primitive="true"
                     k-auto-bind="false"
                     k-data-source="data.lstWard"
-                    k-ng-model="room.wardID"
+                    k-ng-model="fillter.wardID"
                     style="width: 100%"></select>
         </div>
         <div class="col-md-4 note-col">

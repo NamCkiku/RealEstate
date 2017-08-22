@@ -21,6 +21,7 @@ namespace RealEstate.Api.Controllers
     /// </Modified>
     /// <seealso cref="RealEstate.Api.Controllers.ApiControllerBase" />
     [RoutePrefix("api/management")]
+    [Authorize]
     public class ManagementController : ApiControllerBase
     {
         private readonly ICountryService _countryService;
@@ -93,7 +94,6 @@ namespace RealEstate.Api.Controllers
         /// namth  6/7/2017   created
         /// </Modified>
         [Route("getallprovince")]
-        [CacheOutput(ClientTimeSpan = 100)]
         public HttpResponseMessage GetAllProvince(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -135,7 +135,6 @@ namespace RealEstate.Api.Controllers
         /// namth  6/7/2017   created
         /// </Modified>
         [Route("getalldistrict")]
-        [CacheOutput(ClientTimeSpan = 100)]
         public HttpResponseMessage GetAllDistrict(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -178,7 +177,6 @@ namespace RealEstate.Api.Controllers
         /// namth  6/7/2017   created
         /// </Modified>
         [Route("getallward")]
-        [CacheOutput(ClientTimeSpan = 100)]
         public HttpResponseMessage GetAllWard(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
@@ -221,7 +219,6 @@ namespace RealEstate.Api.Controllers
         /// namth  6/7/2017   created
         /// </Modified>
         [Route("getallwardbydistrictid/{id:int}")]
-        [CacheOutput(ClientTimeSpan = 100)]
         public HttpResponseMessage GetAllWardByDistricId(HttpRequestMessage request, int id)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();

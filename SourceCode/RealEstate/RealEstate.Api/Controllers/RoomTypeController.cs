@@ -38,7 +38,7 @@ namespace RealEstate.Api.Controllers
         /// namth  6/18/2017   created
         /// </Modified>
         [Route("getallroomtype")]
-        [CacheOutput(ClientTimeSpan = 100)]
+        [Authorize]
         public HttpResponseMessage GetAllRoomType(HttpRequestMessage request)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();

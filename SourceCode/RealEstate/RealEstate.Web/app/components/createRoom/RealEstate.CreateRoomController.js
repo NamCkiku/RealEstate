@@ -4,10 +4,14 @@
     CreateRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$rootScope', '$modal', '$filter'];
 
     function CreateRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $rootScope, $modal, $filter) {
-        $scope.isActive = '2';
+        $scope.isActive = '1';
         kendo.culture("vi-VN");
+        $scope.searchType = 3;
         $scope.room = {
             MoreImages: [],
+        }
+        $scope.searchInfo = {
+
         }
         $scope.data = {
             lstToilet: [],
@@ -152,7 +156,7 @@
         }
         $scope.onSuccess = function (e) {
             if (e.response != null) {
-                $scope.room.thumial = e.response;
+                $scope.room.ThumbnailImage = e.response;
             }
         };
         $scope.onSuccessDropzone = function (e) {
@@ -210,6 +214,8 @@
                     function (results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                            $scope.room.lat = results[0].geometry.location.lat();
+                            $scope.room.lng = results[0].geometry.location.lng();
                         }
                         else {
                             alert("error");
@@ -271,14 +277,47 @@
             }
             else {
                 if ($scope.room.MoreImages != null) {
-                    $scope.room.MoreImages = JSON.stringify($scope.room.MoreImages)
+                    $scope.room.MoreImages = JSON.stringify($scope.room.MoreImages);
                 }
-                $scope.rooms.MoreInfomations.Convenient = '';
-                angular.forEach($scope.ConvenientModel, function (value, key) {
-                    $scope.rooms.MoreInfomations.Convenient += value.label + ",";
-                })
-                $scope.rooms.MoreInfomations.Convenient = JSON.stringify($scope.rooms.MoreInfomations.Convenient)
-                apiService.post('api/room/insertroom', $scope.rooms, function (respone) {
+                if ($scope.room.convenient != null) {
+                    $scope.room.convenient = JSON.stringify($scope.room.convenient);
+                }
+
+                var data = {
+                    RoomName: $scope.room.RoomName,
+                    Alias: $scope.room.Alias,
+                    RoomTypeID: $scope.searchInfo.roomtype,
+                    WardID: $scope.searchInfo.wardID,
+                    DistrictID: $scope.searchInfo.districtID,
+                    ProvinceID: $scope.searchInfo.provinceId,
+                    VipID: "",
+                    PaymentID: "",
+                    ThumbnailImage: $scope.room.ThumbnailImage,
+                    MoreImages: $scope.room.MoreImages,
+                    Acreage: $scope.room.acreage,
+                    Price: $scope.room.price,
+                    Phone: $scope.room.phone,
+                    Address: $scope.room.address,
+                    UserName: $scope.room.username,
+                    Email: $scope.room.email,
+                    UserID: $rootScope.userInfomation.userID,
+                    Description: $scope.room.description,
+                    Content: $scope.room.content,
+                    Lat: $scope.room.lat,
+                    Lng: $scope.room.lng,
+                    Tags: $scope.room.tags.toString(),
+                    MoreInfomations: {
+                        FloorNumber: $scope.room.numberroom,
+                        ToiletNumber: $scope.room.toilet,
+                        BedroomNumber: $scope.room.numberpeople,
+                        Compass: $scope.room.compass,
+                        ElectricPrice: $scope.room.ElectricPrice,
+                        WaterPrice: $scope.room.WaterPrice,
+                        Convenient: $scope.room.convenient,
+                        Facade: "",
+                    }
+                }
+                apiService.post('api/room/insertroom', data, function (respone) {
                     if (respone.data.success == true) {
                         $scope.isActive = '4';
                         BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
@@ -314,24 +353,6 @@
                 $scope.room.email = user.email;
                 $scope.room.phone = user.phonenumber;
                 $scope.room.address = user.address;
-                //var myBlockUI = blockUI.instances.get('BlockUIRoom');
-                //myBlockUI.start();
-                //var config = {
-                //    params: {
-                //        id: user.userID
-                //    }
-                //}
-                //apiService.get('api/account/user', config, function (respone) {
-                //    var userInfo = respone.data.result;
-                //    $scope.room.username = userInfo.fullName;
-                //    $scope.room.email = userInfo.email;
-                //    $scope.room.phone = userInfo.phoneNumber;
-                //    $scope.room.address = userInfo.address;
-                //    myBlockUI.stop();
-                //}, function (respone) {
-                //    myBlockUI.stop();
-                //    BaseService.displayError("Không lấy được dữ liệu người dùng", 3000);
-                //});
             }
             else {
                 var modalInstance = $modal.open({
