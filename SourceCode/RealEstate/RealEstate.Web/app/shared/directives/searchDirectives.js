@@ -14,9 +14,7 @@
                     lstDistrictAll: [],
                     lstWardAll: [],
                 }
-                $scope.searchType = {
-
-                }
+                $scope.searchType = null;
                 $scope.fillter = {
                     roomtype: null,
                     provinceId: null,
@@ -108,7 +106,7 @@
             restrict: 'EA', //Default in 1.3+
             scope: {
                 fillter: '=searchInfo',
-                searchType: '=searchType'
+                searchType: '=searchtype'
             },
             controller: controller,
             link: function (scope, elem, attr) {

@@ -64,8 +64,8 @@
                 var config = {
                     params: {
                         RoomTypeID: searchObj.roomtype,
-                        PriceFrom: searchObj.minValue,
-                        PriceTo: searchObj.maxValue,
+                        PriceFrom: searchObj.minValue * 1000000,
+                        PriceTo: searchObj.maxValue * 1000000,
                         WardID: searchObj.wardID,
                         DistrictID: searchObj.districtID,
                         ProvinceID: searchObj.provinceId,
@@ -73,7 +73,7 @@
                         StartDate: null,
                         EndDate: null,
                         Status: true,
-                        page: 1,
+                        page: 0,
                         pageSize: 10,
                         sort: "ASC"
                     }
@@ -95,9 +95,9 @@
                 myBlockUI.start();
                 var config = {
                     params: {
-                        RoomTypeID: QueryString.priceTo,
-                        PriceFrom: QueryString.priceFrom,
-                        PriceTo: QueryString.maxValue,
+                        RoomTypeID: QueryString.roomtype,
+                        PriceFrom: QueryString.priceFrom * 1000000,
+                        PriceTo: QueryString.priceTo * 1000000,
                         WardID: QueryString.ward,
                         DistrictID: QueryString.district,
                         ProvinceID: QueryString.province,
@@ -105,7 +105,7 @@
                         StartDate: null,
                         EndDate: null,
                         Status: true,
-                        page: 1,
+                        page: 0,
                         pageSize: 10,
                         sort: "ASC"
                     }

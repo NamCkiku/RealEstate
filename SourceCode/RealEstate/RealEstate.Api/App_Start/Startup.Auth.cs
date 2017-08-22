@@ -72,7 +72,19 @@ namespace RealEstate.Api
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
-            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            // Configure the sign in cookie
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                Provider = new CookieAuthenticationProvider
+                {
+                    // Enables the application to validate the security stamp when the user logs in.
+                    // This is a security feature which is used when you change a password or add an external login to your account.  
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, AppUser>(
+                        validateInterval: TimeSpan.FromMinutes(30),
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager, "LocalBearer"))
+                }
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
 
@@ -83,12 +95,14 @@ namespace RealEstate.Api
                 TokenEndpointPath = new PathString("/api/oauth/token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 //AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 // In production mode set AllowInsecureHttp = false
-                AllowInsecureHttp = true
+                AllowInsecureHttp = true,
+                AuthenticationType = "LocalBearer",
             };
 
             // Enable the application to use bearer tokens to authenticate users
+            app.UseOAuthAuthorizationServer(OAuthOptions);
             app.UseOAuthBearerTokens(OAuthOptions);
             app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
