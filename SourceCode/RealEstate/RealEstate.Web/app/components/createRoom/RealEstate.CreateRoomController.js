@@ -4,21 +4,17 @@
     CreateRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$rootScope', '$modal', '$filter'];
 
     function CreateRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $rootScope, $modal, $filter) {
-        $scope.isActive = '3';
+        $scope.isActive = '2';
         kendo.culture("vi-VN");
         $scope.room = {
-
+            MoreImages: [],
         }
         $scope.data = {
-            lstRoomType: [],
-            lstProvince: [],
-            lstDistrict: [],
-            lstWard: [],
             lstToilet: [],
             lstCompass: [],
             lstConvenient: [],
             lstNumberPeople: [],
-            lstNumberRoom:[]
+            lstNumberRoom: []
         }
         $scope.registerControl = function () {
             $scope.data.lstNumberPeople = [
@@ -134,10 +130,6 @@
                     cancel: 'Hủy'
                 },
                 success: $scope.onSuccess,
-                remove: $scope.onRemove,
-                select: $scope.onSelect,
-                error: $scope.onError,
-
             }
             $scope.kendoUploadDropzoneOptions = {
                 async: {
@@ -155,19 +147,26 @@
                     remove: 'Xóa',
                     cancel: 'Hủy'
                 },
-                success: $scope.onSuccess,
-                remove: $scope.onRemove,
-                select: $scope.onSelect,
-                error: $scope.onError,
-
+                success: $scope.onSuccessDropzone,
             }
         }
-
+        $scope.onSuccess = function (e) {
+            if (e.response != null) {
+                $scope.room.thumial = e.response;
+            }
+        };
+        $scope.onSuccessDropzone = function (e) {
+            if (e.operation == "upload") {
+                console.log(e.files);
+                for (var i = 0; i < e.files.length; i++) {
+                    $scope.room.MoreImages.push(e.files[i].name);
+                }
+                console.log($scope.room.MoreImages);
+            }
+        };
         $scope.init = function () {
             if ($rootScope.userInfomation.IsAuthenticated) {
                 $scope.registerControl();
-                $scope.GetAllRoomType();
-                $scope.GetAllProvince();
                 $scope.initMap();
                 angular.element('#txtuserName').focus();
             }
@@ -243,76 +242,6 @@
         function GetSeoTitle() {
             $scope.room.Alias = BaseService.getSeoTitle($scope.room.RoomName);
         }
-        //Hàm lấy ra commbobox loại phòng
-        $scope.GetAllRoomType = function () {
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/roomtype/getallroomtype', null, function (respone) {
-                console.log(respone.data)
-                $scope.lstRoomTypeTree = respone.data;
-                $scope.lstRoomTypeComboboxTree = BaseService.getTree($scope.lstRoomTypeTree, { idKey: 'ID', parentKey: 'ParentID' });
-                $scope.lstRoomTypeComboboxTree.forEach(function (item) {
-                    recur(item, 0, $scope.data.lstRoomType);
-                });
-                console.log($scope.data.lstRoomType);
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu Loại Phòng", 3000);
-            });
-        }
-
-        //Hàm lấy ra commbobox tỉnh thành
-        $scope.GetAllProvince = function () {
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/management/getallprovince', null, function (respone) {
-                $scope.data.lstProvince = respone.data;
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu Tỉnh Thành", 3000);
-            });
-        }
-
-
-        //Hàm lấy ra commbobox quận huyện theo tỉnh thành
-        $scope.GetAllDistrict = GetAllDistrict;
-        function GetAllDistrict(id) {
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/management/getalldistrict', null, function (respone) {
-                $scope.data.lstDistrict = $filter('filter')(respone.data, { provinceId: id }, true);
-                $scope.data.lstWard = [];
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu Quận huyện", 3000);
-            });
-        }
-
-
-        //Hàm lấy ra commbobox xã phường theo quận huyện
-        $scope.GetAllWard = GetAllWard;
-        function GetAllWard(id) {
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            apiService.get('api/management/getallward', null, function (respone) {
-                $scope.data.lstWard = $filter('filter')(respone.data, { districtID: id }, true);
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu xã phường", 3000);
-            });
-        }
-
-        $scope.onSuccess = function () {
-        };
-        $scope.onSelect = function (e) {
-        };
-        $scope.onError = function () {
-        };
-
         $scope.nextStep = function (item) {
             if (item == 1) {
                 BaseService.ValidatorForm("#formStep1");
@@ -341,7 +270,24 @@
                 $scope.isActive = '4';
             }
             else {
-                $scope.isActive = '1';
+                if ($scope.room.MoreImages != null) {
+                    $scope.room.MoreImages = JSON.stringify($scope.room.MoreImages)
+                }
+                $scope.rooms.MoreInfomations.Convenient = '';
+                angular.forEach($scope.ConvenientModel, function (value, key) {
+                    $scope.rooms.MoreInfomations.Convenient += value.label + ",";
+                })
+                $scope.rooms.MoreInfomations.Convenient = JSON.stringify($scope.rooms.MoreInfomations.Convenient)
+                apiService.post('api/room/insertroom', $scope.rooms, function (respone) {
+                    if (respone.data.success == true) {
+                        $scope.isActive = '4';
+                        BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
+                    } else {
+                        BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
+                    }
+                }, function (respone) {
+                    console.log('Load product failed.');
+                });
             }
         }
         $scope.previousStep = previousStep;

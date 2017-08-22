@@ -25,20 +25,7 @@
                     <div class="box_search">
                         <div class="col-lg-12 margin-bottom-15">
                             <div class="layered layered-filter-price">
-                                <div class="layered_subtitle">Tất cả danh mục</div>
-                                <div class="layered-content filter-group">
-                                    <ul>
-                                        <li class="filter-item filter-item--check-box filter-item--green" ng-repeat="item in data.lstRoomType">
-                                            <span>
-                                                <label for="{{item.id}}">
-                                                    <input type="checkbox" id="{{item.id}}" value="{{item.id}}">
-                                                    <i class="fa"></i>
-                                                    {{item.roomTypeName}}
-                                                </label>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <search-control search-info="searchInfo" search-type="2"></search-control>
                                 <!-- filter price -->
                                 <div class="layered_subtitle">Gía tiền</div>
                                 <div class="layered-content slider-range">
@@ -51,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="layered_subtitle">Diện tích</div>
-                                <div class="layered-content slider-range">
+                                <div class="slider-range">
                                     <rzslider rz-slider-model="sliderAcreage.minValue" style="margin-top:0px"
                                               rz-slider-high="sliderAcreage.maxValue"
                                               rz-slider-options="sliderAcreage.options"></rzslider>
@@ -60,52 +47,7 @@
                                         <span id="amount_2" style="border:0;font-weight:normal;">{{sliderAcreage.minValue}} m<sup>2</sup> đến {{sliderAcreage.maxValue}} m<sup>2</sup></span>
                                     </div>
                                 </div>
-                                <!-- ./filter price -->
-                                <div class="layered_subtitle">Địa điểm</div>
-                                <div class="margin-bottom-15">
-                                    <select kendo-drop-down-list
-                                            k-option-label="'Chọn Tỉnh/Thành Phố'"
-                                            k-data-text-field="'name'"
-                                            k-data-value-field="'id'"
-                                            data-fv-notempty="true"
-                                            data-fv-notempty-message="Vui lòng chọn tỉnh thành"
-                                            name="province"
-                                            k-filter="'contains'"
-                                            k-suggest="true"
-                                            k-value-primitive="true"
-                                            k-auto-bind="false"
-                                            k-data-source="data.lstProvince"
-                                            k-on-change="GetAllDistrict(fillter.provinceId)"
-                                            k-ng-model="fillter.provinceId"
-                                            style="width: 100%"></select>
-                                </div>
-                                <div class="margin-bottom-15">
-                                    <select kendo-drop-down-list
-                                            k-option-label="'Chọn Quận/Huyện'"
-                                            k-data-text-field="'name'"
-                                            k-data-value-field="'id'"
-                                            k-filter="'contains'"
-                                            k-suggest="true"
-                                            k-value-primitive="true"
-                                            k-auto-bind="false"
-                                            k-data-source="data.lstDistrict"
-                                            k-on-change="GetAllWard(fillter.districtID)"
-                                            k-ng-model="fillter.districtID"
-                                            style="width: 100%"></select>
-                                </div>
-                                <div class="margin-bottom-15">
-                                    <select kendo-drop-down-list
-                                            k-option-label="'Chọn Xã/Phường'"
-                                            k-data-text-field="'name'"
-                                            k-data-value-field="'id'"
-                                            k-filter="'contains'"
-                                            k-suggest="true"
-                                            k-value-primitive="true"
-                                            k-auto-bind="false"
-                                            k-data-source="data.lstWard"
-                                            k-ng-model="fillter.wardID"
-                                            style="width: 100%"></select>
-                                </div>
+
                                 <div class="layered-content slider-range">
                                     <button class="btn btn-block btn-search-primary btn-border btn-border-thin" ng-click="fireLoadFilterEvent();" type="button"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
                                 </div>
