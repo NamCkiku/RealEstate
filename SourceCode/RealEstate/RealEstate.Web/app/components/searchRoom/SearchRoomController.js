@@ -18,11 +18,14 @@
             lstRoomType: [],
             lstProvince: [],
             lstDistrict: [],
-            lstWard: []
+            lstWard: [],
+            listRoom : []
         }
         $scope.init = function () {
+
             $scope.GetAllRoomType();
             $scope.GetAllProvince();
+            $scope.FilterRoom();
         };
         $scope.sliderFrice = {
             minValue: 0,
@@ -79,6 +82,7 @@
         //Hàm lấy ra commbobox quận huyện theo tỉnh thành
         $scope.GetAllDistrict = GetAllDistrict;
         function GetAllDistrict(id) {
+
             var myBlockUI = blockUI.instances.get('BlockUIRoom');
             myBlockUI.start();
             apiService.get('api/management/getalldistrict', null, function (respone) {
@@ -129,6 +133,38 @@
                 }
             }
             $window.location.href = '/RoomList/Index?' + queryString.join('&');
+        }
+
+        // Lọc phòng theo tiêu chí
+        $scope.FilterRoom = function () {
+            var myBlockUI = blockUI.instances.get('BlockUIRoom');
+            myBlockUI.start();
+            alert($scope.sortKey);
+            var config = {
+                params: {
+                    RoomTypeID: $scope.fillter.roomtype,
+                    PriceFrom: $scope.sliderFrice.minValue,
+                    PriceTo: $scope.sliderFrice.maxValue,
+                    WardID: $scope.fillter.wardID,
+                    DistrictID: $scope.fillter.districtID,
+                    ProvinceID: $scope.fillter.provinceId,
+                    Keywords: null,
+                    StartDate: null,
+                    EndDate: null,
+                    Status: true,
+                    page: 1,
+                    pageSize: 10,
+                    sort: "ASC"
+                }
+            }
+            apiService.get('api/room/getallroomfullsearch', config, function (respone) {
+                $scope.data.listRoom = respone.data.items;
+                console.log($scope.data.listRoom);
+                myBlockUI.stop();
+            }, function (respone) {
+                myBlockUI.stop();
+                BaseService.displayError("Không lấy được dữ liệu xã phường", 3000);
+            });
         }
 
         $scope.showFilter = function () {
