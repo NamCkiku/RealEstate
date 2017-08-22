@@ -117,6 +117,7 @@
     <Content Include="app\components\base\RealEstate.ModalLoginController.js" />
     <Content Include="app\components\base\RealEstate.ModalRegisterController.js" />
     <Content Include="app\components\createRoom\RealEstate.CreateRoomController.js" />
+    <Content Include="app\components\searchRoom\SearchResultController.js" />
     <Content Include="app\components\searchRoom\SearchRoomController.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\authData.js" />

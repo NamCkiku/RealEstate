@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3 col-lg-3 col-xs-12" >
+            <div class="col-md-3 col-lg-3 col-xs-12">
                 <div class="box-search-sidebar dqdt-sidebar">
                     <div class="title_st">
                         <h2>
@@ -107,7 +107,7 @@
                                             style="width: 100%"></select>
                                 </div>
                                 <div class="layered-content slider-range">
-                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
+                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" ng-click="fireLoadFilterEvent();" type="button"><i class="fa fa-search" aria-hidden="true"></i> Tìm</button>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                     <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
                 </div>
             </div>
-            <div class="col-md-9 col-lg-9 col-xs-12">
+            <div class="col-md-9 col-lg-9 col-xs-12" ng-controller="SearchResultController" block-ui="BlockUIRoom">
                 <div class="bannercollection">
                     <img class="img-responsive" src="//bizweb.dktcdn.net/100/109/381/themes/161997/assets/img_collection.jpg?1492597369483" alt="Tất cả sản phẩm">
                 </div>
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-room-list" >
+                <div class="box-room-list">
                     <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6" ng-repeat="item in data.listRoom">
                         <div class="property_listing">
                             <div class="listing-unit-img-wrapper">
