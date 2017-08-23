@@ -256,6 +256,7 @@ namespace RealEstate.Api.Controllers
             catch (Exception ex)
             {
                 Common.Logs.LogCommon.WriteLogError(ex.Message);
+                responeResult = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             return responeResult;
         }
@@ -323,6 +324,7 @@ namespace RealEstate.Api.Controllers
             catch (Exception ex)
             {
                 Common.Logs.LogCommon.WriteLogError(ex.Message);
+                responeResult = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             return responeResult;
         }
@@ -370,6 +372,7 @@ namespace RealEstate.Api.Controllers
             catch (Exception ex)
             {
                 Common.Logs.LogCommon.WriteLogError(ex.Message);
+                responeResult = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             return responeResult;
         }
@@ -420,6 +423,7 @@ namespace RealEstate.Api.Controllers
             catch (Exception ex)
             {
                 Common.Logs.LogCommon.WriteLogError(ex.Message);
+                responeResult = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             return responeResult;
         }

@@ -282,7 +282,12 @@
                 if ($scope.room.convenient != null) {
                     $scope.room.convenient = JSON.stringify($scope.room.convenient);
                 }
-
+                if ($scope.room.tags != null) {
+                    $scope.room.tag = '';
+                    angular.forEach($scope.room.tags, function (value, key) {
+                        $scope.room.tag += value.text + ",";
+                    })
+                }
                 var data = {
                     RoomName: $scope.room.RoomName,
                     Alias: $scope.room.Alias,
@@ -305,7 +310,7 @@
                     Content: $scope.room.content,
                     Lat: $scope.room.lat,
                     Lng: $scope.room.lng,
-                    Tags: $scope.room.tags.toString(),
+                    Tags: $scope.room.tag,
                     MoreInfomations: {
                         FloorNumber: $scope.room.numberroom,
                         ToiletNumber: $scope.room.toilet,
@@ -318,14 +323,14 @@
                     }
                 }
                 apiService.post('api/room/insertroom', data, function (respone) {
-                    if (respone.data.success == true) {
+                    if (respone.data != null) {
                         $scope.isActive = '4';
                         BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
                     } else {
                         BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
                     }
                 }, function (respone) {
-                    console.log('Load product failed.');
+                    BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
                 });
             }
         }
