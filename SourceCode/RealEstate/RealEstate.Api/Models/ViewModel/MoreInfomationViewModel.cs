@@ -7,7 +7,7 @@ namespace RealEstate.Api.Models.ViewModel
 {
     public class MoreInfomationViewModel
     {
-        public int MoreInfomationID { get; set; }
+        public int? MoreInfomationID { get; set; }
 
         public string FloorNumber { get; set; }
 

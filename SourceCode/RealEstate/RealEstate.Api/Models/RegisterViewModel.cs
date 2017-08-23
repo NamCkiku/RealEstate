@@ -14,12 +14,12 @@ namespace RealEstate.Api.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(10, MinimumLength = 0, ErrorMessage = "Họ và tên phải lớn hơn 10 và nhỏ hơn 20 ký tự")]
+        [StringLength(100, MinimumLength = 0, ErrorMessage = "Họ và tên phải lớn hơn 10 và nhỏ hơn 20 ký tự")]
         [Display(Name = "FullName")]
         public string FullName { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 10, ErrorMessage = "Họ và tên phải lớn hơn 10 và nhỏ hơn 20 ký tự")]
+        [StringLength(100, MinimumLength = 10, ErrorMessage = "Địa chỉ phải lớn hơn 10 và nhỏ hơn 20 ký tự")]
         [Display(Name = "Address")]
         public string Address { get; set; }
 

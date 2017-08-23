@@ -26,6 +26,8 @@ namespace RealEstate.Api.Infrastructure.Extensions
             room.WardID = roomVM.WardID;
             room.UserID = roomVM.UserID;
             room.Price = roomVM.Price;
+            room.Acreage = roomVM.Acreage;
+            room.Email = roomVM.Email;
             room.Sex = roomVM.Sex;
             room.Tags = roomVM.Tags;
             room.Published = roomVM.Published;

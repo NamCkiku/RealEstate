@@ -15,12 +15,14 @@
         });
 
       
-        $rootScope.$on('changeValueInCtl1', function (event, searchObj) {
+        $rootScope.$on('fireLoadFilterEvents', function (event, searchObj) {
+      
             $scope.init = function () {
                 $scope.FilterRoom();
             };
             // Lọc phòng theo tiêu chí
             $scope.FilterRoom = function () {
+                alert(12);
                 var myBlockUI = blockUI.instances.get('BlockUIRoom');
                 myBlockUI.start();
                 var config = {
@@ -52,52 +54,15 @@
             $scope.init();
         });
 
-        $scope.$on('fireLoadFilterEvents', function (event, searchObj) {
-           
-            $scope.init = function () {
-                $scope.FilterRoom();
-            };
-            // Lọc phòng theo tiêu chí
-            $scope.FilterRoom = function () {
-                var myBlockUI = blockUI.instances.get('BlockUIRoom');
-                myBlockUI.start();
-                var config = {
-                    params: {
-                        RoomTypeID: searchObj.roomtype,
-                        PriceFrom: searchObj.minValue,
-                        PriceTo: searchObj.maxValue,
-                        WardID: searchObj.wardID,
-                        DistrictID: searchObj.districtID,
-                        ProvinceID: searchObj.provinceId,
-                        Keywords: null,
-                        StartDate: null,
-                        EndDate: null,
-                        Status: true,
-                        page: 1,
-                        pageSize: 10,
-                        sort: "ASC"
-                    }
-                }
-                apiService.get('api/room/getallroomfullsearch', config, function (respone) {
-                    $scope.data.listRoom = respone.data.items;
-                    console.log($scope.data.listRoom);
-                    myBlockUI.stop();
-                }, function (respone) {
-                    myBlockUI.stop();
-                    BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
-                });
-            }
-            $scope.init();
-        });
         $scope.loadAllRoomByQueryString = function () {
             if (QueryString.province != null) {
                 var myBlockUI = blockUI.instances.get('BlockUIRoom');
                 myBlockUI.start();
                 var config = {
                     params: {
-                        RoomTypeID: QueryString.priceTo,
-                        PriceFrom: QueryString.priceFrom,
-                        PriceTo: QueryString.maxValue,
+                        RoomTypeID: QueryString.roomtype,
+                        PriceFrom: QueryString.priceFrom * 1000000,
+                        PriceTo: QueryString.priceTo * 1000000,
                         WardID: QueryString.ward,
                         DistrictID: QueryString.district,
                         ProvinceID: QueryString.province,
@@ -105,7 +70,7 @@
                         StartDate: null,
                         EndDate: null,
                         Status: true,
-                        page: 1,
+                        page: 0,
                         pageSize: 10,
                         sort: "ASC"
                     }

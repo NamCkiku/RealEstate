@@ -14,10 +14,23 @@ namespace RealEstate.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            name: "Create",
+            url: "dang-tin-mien-phi",
+            defaults: new { controller = "RoomManage", id = UrlParameter.Optional, action = "Create" }
+        );
+
+            routes.MapRoute(
+           name: "Index",
+           url: "danh-sach-phong",
+           defaults: new { controller = "RoomList", id = UrlParameter.Optional, action = "Index" }
+       );
+
+            routes.MapRoute(
+               name: "Default",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+           );
+
         }
     }
 }

@@ -58,13 +58,11 @@
                     queryString.push(key + '=' + params[key]);
                 }
             }
-            $window.location.href = '/RoomList/Index?' + queryString.join('&');
+            $window.location.href = '/danh-sach-phong?' + queryString.join('&');
         }
 
         $scope.fireLoadFilterEvent = function () {
-            $scope.$broadcast('fireLoadFilterEvents', $scope.fillter);
-
-            $scope.$emit('changeValueInCtl1', $scope.fillter);
+            $scope.$emit('fireLoadFilterEvents', $scope.fillter);
         };
 
       
