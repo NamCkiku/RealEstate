@@ -28,6 +28,8 @@
                     authData.authenticationData.avatar = tokenInfo.avatar;
                     authData.authenticationData.fullName = tokenInfo.fullName;
                     authData.authenticationData.userID = tokenInfo.userID;
+                    authData.authenticationData.address = tokenInfo.address;
+                    authData.authenticationData.phonenumber = tokenInfo.phonenumber;
                     authData.authenticationData.accessToken = tokenInfo.accessToken;
                 }
             }

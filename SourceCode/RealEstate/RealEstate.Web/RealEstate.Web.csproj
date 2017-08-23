@@ -117,7 +117,10 @@
     <Content Include="app\components\base\RealEstate.ModalLoginController.js" />
     <Content Include="app\components\base\RealEstate.ModalRegisterController.js" />
     <Content Include="app\components\createRoom\RealEstate.CreateRoomController.js" />
+    <Content Include="app\components\searchRoom\SearchResultController.js" />
     <Content Include="app\components\searchRoom\SearchRoomController.js" />
+    <Content Include="app\shared\directives\searchDirectives.html" />
+    <Content Include="app\shared\directives\searchDirectives.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\authData.js" />
     <Content Include="app\shared\services\authenticationService.js" />
@@ -3424,7 +3427,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\shared\directives\" />
     <Folder Include="app\shared\filters\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />

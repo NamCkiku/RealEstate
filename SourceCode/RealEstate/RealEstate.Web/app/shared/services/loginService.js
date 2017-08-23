@@ -19,6 +19,8 @@
                         avatar: response.data.avatar,
                         fullName: response.data.fullName,
                         userID: response.data.userID,
+                        phonenumber: response.data.phonenumber,
+                        address: response.data.address,
                     };
                     authenticationService.setTokenInfo(userInfo);
                     authData.authenticationData.IsAuthenticated = true;
@@ -28,6 +30,8 @@
                     authData.authenticationData.avatar = userInfo.avatar;
                     authData.authenticationData.fullName = userInfo.fullName;
                     authData.authenticationData.userID = userInfo.userID;
+                    authData.authenticationData.phonenumber = userInfo.phonenumber;
+                    authData.authenticationData.address = userInfo.address;
 
                     deferred.resolve(null);
                 }, function (err, status) {

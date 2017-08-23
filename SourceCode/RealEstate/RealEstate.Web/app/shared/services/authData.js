@@ -10,6 +10,8 @@
             avatar: "",
             fullName: "",
             userID: "",
+            address: "",
+            phonenumber: "",
         };
         authDataFactory.authenticationData = authentication;
 

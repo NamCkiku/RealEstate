@@ -184,84 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Danh mục<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'Chọn Loại Phòng'"
-                                        k-data-text-field="'Name'"
-                                        k-data-value-field="'ID'"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        data-fv-notempty="true"
-                                        data-fv-notempty-message="Vui lòng chọn danh mục"
-                                        name="roomtype"
-                                        k-data-source="data.lstRoomType"
-                                        k-ng-model="room.RoomTypeID"
-                                        style="width: 100%"></select>
-                            </div>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Tỉnh Thành<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'Chọn Tỉnh/Thành Phố'"
-                                        k-data-text-field="'name'"
-                                        k-data-value-field="'id'"
-                                        data-fv-notempty="true"
-                                        data-fv-notempty-message="Vui lòng chọn tỉnh thành"
-                                        name="province"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        k-data-source="data.lstProvince"
-                                        k-on-change="GetAllDistrict(room.provinceId)"
-                                        k-ng-model="room.provinceId"
-                                        style="width: 100%"></select>
-                            </div>
-                            <div class="col-md-4 note-col">
-                            </div>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Quận/huyện<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'Chọn Quận/Huyện'"
-                                        k-data-text-field="'name'"
-                                        k-data-value-field="'id'"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        k-data-source="data.lstDistrict"
-                                        k-on-change="GetAllWard(room.districtID)"
-                                        k-ng-model="room.districtID"
-                                        style="width: 100%"></select>
-                            </div>
-                            <div class="col-md-4 note-col">
-                            </div>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Phường/xã<i class="required">*</i> :</label>
-                            <div class="col-lg-6">
-                                <select kendo-drop-down-list
-                                        k-option-label="'Chọn Xã/Phường'"
-                                        k-data-text-field="'name'"
-                                        k-data-value-field="'id'"
-                                        k-filter="'contains'"
-                                        k-suggest="true"
-                                        k-value-primitive="true"
-                                        k-auto-bind="false"
-                                        k-data-source="data.lstWard"
-                                        k-ng-model="room.wardID"
-                                        style="width: 100%"></select>
-                            </div>
-                            <div class="col-md-4 note-col">
-                            </div>
-                        </div>
+                        <search-control search-info="searchInfo" search-type="3"></search-control>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 col-xs-12" for="userName">Gía tiền<i class="required">*</i> :</label>
                             <div class="col-lg-6 col-xs-6">
@@ -271,13 +194,13 @@
                                            data-fv-notempty-message="Vui lòng nhập giá tiền"
                                            ng-model="room.price"
                                            name="price" type="text">
-                                    <span class="input-group-addon">VNĐ</span>
+                                    <span class="input-group-addon">VNĐ/tháng</span>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-6 note-col">
                                 <div class="form-control-static">
                                     <span id="title_error" class="text-error "></span>
-                                    <span class="text-nowrap title5">Quyết định 80% SEO <span data-toggle="tooltip" data-placement="top" title="Tiêu đề tối thiểu 20 kí tự, Tiêu đề cần chứa 'Từ khóa' trọng tâm, tiêu đề càng hấp dẫn sẽ thu hút nhiều lượt xem."><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
+                                    <span class="text-nowrap title5">Quyết định 70% chất lượng bài đăng <span data-toggle="tooltip" data-placement="top" title="Mức giá hợp lý sẽ quyết định 70% về chất lượng bài đăng của bạn"><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
                                 </div>
                             </div>
                         </div>
@@ -293,10 +216,25 @@
                                     <span class="input-group-addon">m<sup>2</sup></span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Mô tả ngắn<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <textarea name="description"
+                                          data-fv-notempty="true"
+                                          data-fv-notempty-message="Vui lòng nhập nội dung mô tả ngắn"
+                                          data-fv-trigger="blur"
+                                          rows="2"
+                                          class="k-textbox"
+                                          style="width:100%"
+                                          ng-model="room.description"></textarea>
+                            </div>
                             <div class="col-md-4 col-xs-6 note-col">
                                 <div class="form-control-static">
                                     <span id="title_error" class="text-error "></span>
-                                    <span class="text-nowrap title5">Quyết định 80% SEO <span data-toggle="tooltip" data-placement="top" title="Tiêu đề tối thiểu 20 kí tự, Tiêu đề cần chứa 'Từ khóa' trọng tâm, tiêu đề càng hấp dẫn sẽ thu hút nhiều lượt xem."><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
+                                    <span class="text-nowrap title5">Tối ưu từ 70 - 200 kí tự  <span data-toggle="tooltip" data-placement="top" title="Để có thứ hạng cao trên kết quả tìm kiếm bạn cần viết mô tả hấp dẫn về ngôi nhà của bạn, chứa từ khóa, những ưu điểm và tính năng...để thu hút người mua"><i class="fa fa-info-circle" aria-hidden="true"></i></span></span>
                                 </div>
                             </div>
                         </div>
@@ -306,10 +244,11 @@
                             <label class="col-lg-2 control-label " for="userName">Nội dung<i class="required">*</i> :</label>
                             <div class="col-lg-6">
                                 <textarea kendo-editor
-                                          name="description"
+                                          name="content"
                                           data-fv-notempty="true"
                                           data-fv-notempty-message="Vui lòng nhập nội dung mô tả"
-                                          ng-model="room.description"
+                                          data-fv-trigger="blur"
+                                          ng-model="room.content"
                                           k-options="{{editorOptions}}"></textarea>
                             </div>
                             <div class="col-md-4 note-col">
@@ -358,49 +297,157 @@
                                        kendo-upload
                                        k-options="kendoUploadDropzoneOptions" />
                             </div>
+                            <div class="col-md-4 col-xs-6 note-col">
+                                <div class="form-control-static">
+                                    <span id="title_error" class="text-error "></span>
+                                    <span class="text-nowrap title5">Tối đa 10 ảnh,Dung lượng tối đa 2MB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 col-xs-12" for="userName">Gía điện<i class="required">*</i> :</label>
+                            <div class="col-lg-6 col-xs-6">
+                                <div class="input-group">
+                                    <input class="form-control" ui-number-mask="0"
+                                           data-fv-notempty="true"
+                                           data-fv-notempty-message="Vui lòng nhập giá tiền"
+                                           ng-model="room.priceelectonic"
+                                           name="price" type="text">
+                                    <span class="input-group-addon">VNĐ/tháng</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-6 note-col">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 col-xs-12" for="userName">Gía nước<i class="required">*</i> :</label>
+                            <div class="col-lg-6 col-xs-6">
+                                <div class="input-group">
+                                    <input class="form-control" ui-number-mask="0"
+                                           data-fv-notempty="true"
+                                           data-fv-notempty-message="Vui lòng nhập giá tiền"
+                                           ng-model="room.pricewater"
+                                           name="price" type="text">
+                                    <span class="input-group-addon">VNĐ/tháng</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-6 note-col">
+                            </div>
                         </div>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Số người<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
+                                <select kendo-drop-down-list
+                                        k-option-label="'--Số người--'"
+                                        k-data-text-field="'text'"
+                                        k-data-value-field="'value'"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstNumberPeople"
+                                        k-ng-model="room.moreinfomation.numberpeople"
+                                        style="width: 100%"></select>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Số phòng<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <select kendo-drop-down-list
+                                        k-option-label="'--Số phòng--'"
+                                        k-data-text-field="'text'"
+                                        k-data-value-field="'value'"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstNumberRoom"
+                                        k-ng-model="room.moreinfomation.numberroom"
+                                        style="width: 100%"></select>
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Vệ sinh<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
+                                <select kendo-drop-down-list
+                                        k-option-label="'--Nhà vệ sinh--'"
+                                        k-data-text-field="'text'"
+                                        k-data-value-field="'value'"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstToilet"
+                                        k-ng-model="room.moreinfomation.toilet"
+                                        style="width: 100%"></select>
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 control-label " for="userName">Hướng nhà<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
+                                <select kendo-drop-down-list
+                                        k-option-label="'--Hướng nhà--'"
+                                        k-data-text-field="'text'"
+                                        k-data-value-field="'value'"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstCompass"
+                                        k-ng-model="room.moreinfomation.compass"
+                                        style="width: 100%"></select>
                             </div>
                         </div>
                         <div class="form-group clearfix">
-                            <label class="col-lg-2 control-label " for="userName">Hướng nhà<i class="required">*</i> :</label>
+                            <label class="col-lg-2 control-label " for="userName">Tiện ích<i class="required">*</i> :</label>
                             <div class="col-lg-6">
-                                <input class="form-control"
-                                       placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                                       name="title" type="text">
+                                <select kendo-multi-select
+                                        k-options="selectConvenientOptions"
+                                        k-ng-model="room.moreinfomation.convenient"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label " for="userName">Tin nổi bật<i class="required">*</i> :</label>
+                            <div class="col-lg-6">
+                                <ul class="fieldlist">
+                                    <li>
+                                        <input type="checkbox" id="eq1" class="k-checkbox" checked="checked">
+                                        <label class="k-checkbox-label" for="eq1"> Đưa tin đăng lên trang nhất <a>(Tìm hiểu thêm)</a></label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="eq2" class="k-checkbox" checked="checked">
+                                        <label class="k-checkbox-label" for="eq2">Tin đăng được tài trợ <a>(Tìm hiểu thêm)</a></label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 note-col">
+                                <div class="up-idea">
+                                    Chú ý: Đăng tin hoàn toàn miễn phí, nhưng nếu bạn muốn tin đăng được ưu tiên và có nhiều người xem hơn thì bạn nên sử dụng các dịch vụ bên cạnh
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <style>
+                        .fieldlist {
+                            margin: 0 0 -1em;
+                            padding: 0;
+                        }
+
+                            .fieldlist li {
+                                list-style: none;
+                                padding-bottom: 1em;
+                            }
+                    </style>
+                    <div class="col-lg-12 margin-bottom-15 margin-top-15">
+                        <button type="button" class="btn btn-sm btn-success" ng-click="previousStep(2)">Quay lại</button>
+                        <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(3)">Tiếp theo</button>
+                    </div>
                 </div>
-                <form class="form-step" id="formStep4" ng-show="isActive=='4'">
-                    <div class="steps_header">Bản đồ <span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i> )</span></div>
+                <div class="form-step" id="formStep4" ng-show="isActive=='4'">
+                    <div class="steps_header">Bản đồ <span class="steps_header_notice">(Kéo thả marker đến vị trí của bạn )</span></div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12">
                         <input id="pac-input" class="form-control" type="text" placeholder="Tìm kiếm địa chỉ....">
                         <div id="map-canvas" style="width:100%;height:300px"></div>
                     </div>
-                </form>
+                    <div class="col-lg-12 margin-bottom-15 margin-top-15">
+                        <button type="button" class="btn btn-sm btn-success" ng-click="previousStep(3)">Quay lại</button>
+                        <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(4)">Hoàn thành</button>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3 col-lg-3 col-xs-12">
                 <div class="title_st">
@@ -417,106 +464,8 @@
         </div>
     </div>
 </div>
-@*<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common-material.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css" />*@
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeERa22t2lASaDOgxzPMZe1Fkm3ePJ7ok&libraries=places"
-        type="text/javascript"></script>
-<script>
-    $(function () {
-        $("#files").kendoUpload({
-            async: {
-                saveUrl: "save",
-                removeUrl: "remove",
-                autoUpload: true
-            },
-            validation: {
-                allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif"]
-            },
-            success: onSuccess,
-            showFileList: false,
-            dropZone: ".dropZoneElement"
-        });
-
-        function onSuccess(e) {
-            if (e.operation == "upload") {
-                for (var i = 0; i < e.files.length; i++) {
-                    var file = e.files[i].rawFile;
-                    if (file) {
-                    }
-                }
-            }
-        }
-    });
-</script>
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
-</script>
-<script>
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            var myLatlng = new google.maps.LatLng(pos.lat, pos.lng);
-            var map = new google.maps.Map(document.getElementById('map-canvas'), {
-                zoom: 14,
-                center: myLatlng
-            });
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                draggable: true,
-            });
-            marker.setMap(map);
-            google.maps.event.addListener(marker, 'dragend', function () {
-                geocodePosition(marker.getPosition());
-            });
-
-            function geocodePosition(pos) {
-                geocoder = new google.maps.Geocoder();
-                geocoder.geocode
-                    ({
-                        latLng: pos
-                    },
-                    function (results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-                        }
-                        else {
-                            alert("error");
-                        }
-                    }
-                    );
-            }
-
-            var searchBox = new google.maps.places.SearchBox(document.getElementById('pac-input'));
-            map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('pac-input'));
-            google.maps.event.addListener(searchBox, 'places_changed', function () {
-                searchBox.set('map', null);
-                var places = searchBox.getPlaces();
-                var bounds = new google.maps.LatLngBounds();
-                var i, place;
-                for (i = 0; place = places[i]; i++) {
-                    (function (place) {
-                        marker.setPosition(place.geometry.location);
-                        google.maps.event.addListener(marker, 'map_changed', function () {
-                            if (!this.getMap()) {
-                                this.unbindAll();
-                            }
-                        });
-                        bounds.extend(place.geometry.location);
-                    }(place));
-                }
-                map.fitBounds(bounds);
-                searchBox.set('map', map);
-                map.setZoom(Math.min(map.getZoom(), 12));
-
-            });
-
-        }, function () {
-        });
-    }
 </script>
