@@ -184,7 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <search-control search-info="searchInfo" search-type="3"></search-control>
+                        <search-control search-info="searchInfo" searchtype="3"></search-control>
                         <div class="form-group clearfix">
                             <label class="col-lg-2 col-xs-12" for="userName">Gía tiền<i class="required">*</i> :</label>
                             <div class="col-lg-6 col-xs-6">
@@ -311,7 +311,7 @@
                                     <input class="form-control" ui-number-mask="0"
                                            data-fv-notempty="true"
                                            data-fv-notempty-message="Vui lòng nhập giá tiền"
-                                           ng-model="room.priceelectonic"
+                                           ng-model="room.ElectricPrice"
                                            name="price" type="text">
                                     <span class="input-group-addon">VNĐ/tháng</span>
                                 </div>
@@ -326,7 +326,7 @@
                                     <input class="form-control" ui-number-mask="0"
                                            data-fv-notempty="true"
                                            data-fv-notempty-message="Vui lòng nhập giá tiền"
-                                           ng-model="room.pricewater"
+                                           ng-model="room.WaterPrice"
                                            name="price" type="text">
                                     <span class="input-group-addon">VNĐ/tháng</span>
                                 </div>
@@ -344,7 +344,7 @@
                                         k-value-primitive="true"
                                         k-auto-bind="false"
                                         k-data-source="data.lstNumberPeople"
-                                        k-ng-model="room.moreinfomation.numberpeople"
+                                        k-ng-model="room.numberpeople"
                                         style="width: 100%"></select>
                             </div>
                         </div>
@@ -358,7 +358,7 @@
                                         k-value-primitive="true"
                                         k-auto-bind="false"
                                         k-data-source="data.lstNumberRoom"
-                                        k-ng-model="room.moreinfomation.numberroom"
+                                        k-ng-model="room.numberroom"
                                         style="width: 100%"></select>
                             </div>
                         </div>
@@ -372,7 +372,7 @@
                                         k-value-primitive="true"
                                         k-auto-bind="false"
                                         k-data-source="data.lstToilet"
-                                        k-ng-model="room.moreinfomation.toilet"
+                                        k-ng-model="room.toilet"
                                         style="width: 100%"></select>
                             </div>
                         </div>
@@ -386,7 +386,7 @@
                                         k-value-primitive="true"
                                         k-auto-bind="false"
                                         k-data-source="data.lstCompass"
-                                        k-ng-model="room.moreinfomation.compass"
+                                        k-ng-model="room.compass"
                                         style="width: 100%"></select>
                             </div>
                         </div>
@@ -395,7 +395,7 @@
                             <div class="col-lg-6">
                                 <select kendo-multi-select
                                         k-options="selectConvenientOptions"
-                                        k-ng-model="room.moreinfomation.convenient"></select>
+                                        k-ng-model="room.convenient"></select>
                             </div>
                         </div>
 

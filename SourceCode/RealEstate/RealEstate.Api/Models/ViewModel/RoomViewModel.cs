@@ -14,7 +14,7 @@ namespace RealEstate.Api.Models.ViewModel
         [Required]
         [MaxLength(256)]
         [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Nhập tên phòng")]
+        //[RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Nhập tên phòng")]
         public string RoomName { set; get; }
 
         [Required]
