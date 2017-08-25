@@ -324,7 +324,7 @@
                 }
                 apiService.post('api/room/insertroom', data, function (respone) {
                     if (respone.data != null) {
-                        $scope.isActive = '4';
+                        $scope.isActive = '5';
                         BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
                     } else {
                         BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
@@ -375,6 +375,29 @@
                 });
             }
         }
+
+
+        $scope.showPopupPayment = function () {
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'ModalPayment.html',
+                controller: 'ModalPaymentController',
+                size: 'md',
+                backdrop: 'static',
+                keyboard: false,
+                resolve: {
+                    items: function () {
+                        return $scope.account;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (response) {
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        }
+
 
         function times(n, str) {
             var result = '';

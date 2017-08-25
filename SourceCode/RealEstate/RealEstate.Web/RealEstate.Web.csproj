@@ -3419,6 +3419,7 @@
     <Content Include="bower_components\ng-tags-input\.bower.json" />
     <Content Include="bower_components\ng-tags-input\bower.json" />
     <Content Include="bower_components\ng-tags-input\README" />
+    <Content Include="app\components\payment\RealEstate.ModalPaymentController.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
