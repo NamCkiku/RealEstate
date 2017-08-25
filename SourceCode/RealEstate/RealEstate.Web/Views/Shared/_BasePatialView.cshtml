@@ -199,3 +199,98 @@
     </div>
 </script>
 
+
+<script type="text/ng-template" id="ModalPayment.html">
+    <div class="modal-header popup_header">
+        <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title popup_title" id="messageDel">
+            <img src="/Content/img/logo.png" />
+        </h4>
+    </div>
+    <div class="line_orn"></div>
+    <div class="modal-body modal-body-payment" block-ui="BlockUIPayment">
+        <div class="row bg-pop-info bg-colo2">
+            <div class="col-xs-12">
+                <span><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messUser">Nam Ckiku</span></span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messEmail">tranhoangnam11373@gmail.com</span></span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-money fa-lg" aria-hidden="true"></i>&nbsp;<b id="mainbody_contentbody_messMoney">23 Xu</b> </span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-gift fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messPoint">15 Point</span></span>
+            </div>
+        </div>
+        <br>
+        <div class="text-center orange">
+            **Tài khoản của bạn không đủ để download source code này!
+        </div>
+        <br>
+        <div class="form-horizontal  bold">
+            <div class="form-group">
+                <label class="col-xs-6 control-label dt-label">Tài khoản:</label>
+                <div class="col-xs-6">
+                    <div id="mainbody_contentbody_messMoney2" class="green dt-lbl">&nbsp;23 Xu</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-6 control-label dt-label">Download code:</label>
+                <div class="col-xs-6">
+                    <div id="mainbody_contentbody_messPrice" class="orange dt-lbl">-80 Xu</div>
+                </div>
+            </div>
+            <div class="col-sm-offset-3 col-sm-6 line"></div>
+            <div class="form-group">
+                <label class="col-xs-6 control-label dt-label">Còn thiếu:</label>
+                <div class="col-xs-6">
+                    <div id="mainbody_contentbody_messResult" class="orange dt-lbl">&nbsp;57 Xu</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="text-center">
+            <a title="Nạp tiền vào tài khoản"><i class="fa fa-money fa-lg" aria-hidden="true"></i>&nbsp; NẠP TIỀN VÀO TÀI KHOẢN</a>
+        </div>
+        <br>
+    </div>
+    <div class="modal-footer">
+    </div>
+</script>
+<style>
+    .modal-body-payment {
+        background: #f4f0e2;
+        overflow: hidden;
+    }
+    .bg-colo2 {
+        background: #faf8f1;
+    }
+    .bg-pop {
+        margin-top: 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+    .bg-pop-info {
+        padding: 8px 0px;
+        margin-top: -15px;
+        line-height: 20px;
+    }
+
+        .bg-pop-info span {
+            white-space: nowrap;
+        }
+
+    .bg-pop ul {
+        margin-left: 10px;
+    }
+
+    .bg-pop .note {
+        margin-bottom: 10px;
+    }
+
+        .bg-pop .note em {
+            color: #cebda2;
+        }
+
+    .bg-pop em {
+        color: #ff8401;
+    }
+
+</style>
