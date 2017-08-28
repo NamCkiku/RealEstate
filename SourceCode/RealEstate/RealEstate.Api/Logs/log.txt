@@ -59,3 +59,20 @@ Logging Start2017-08-22 17:06:49,325 [7] ERROR RealEstate.Common.Logs.LogCommon 
 2017-08-22 17:09:15,031 [22] ERROR RealEstate.Common.Logs.LogCommon - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
 2017-08-22 17:09:15,095 [22] ERROR RealEstate.Common.Logs.LogCommon - Object reference not set to an instance of an object.
 Logging Start2017-08-22 17:17:27,142 [9] ERROR RealEstate.Common.Logs.LogCommon - Unable to determine the principal end of the 'RealEstate.Entities.Entites.RoomTag_Tag' relationship. Multiple added entities may have the same primary key.
+Logging Start2017-08-28 20:07:41,066 [32] ERROR RealEstate.Common.Logs.LogCommon - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2017-08-28 20:07:41,167 [32] ERROR RealEstate.Common.Logs.LogCommon - Object reference not set to an instance of an object.
+Logging Start2017-08-28 20:20:58,164 [18] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Room, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-08-28 20:21:03,396 [18] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Room, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-08-28 20:21:27,880 [18] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Room, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]

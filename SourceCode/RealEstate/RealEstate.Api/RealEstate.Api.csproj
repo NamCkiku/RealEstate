@@ -295,6 +295,7 @@
     <Compile Include="Models\ViewModel\MoreInfomationViewModel.cs" />
     <Compile Include="Models\ViewModel\NotificationViewModel.cs" />
     <Compile Include="Models\ViewModel\ProvinceViewModel.cs" />
+    <Compile Include="Models\ViewModel\RoomListViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomTypeViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomViewModel.cs" />
     <Compile Include="Models\ViewModel\WardViewModel.cs" />

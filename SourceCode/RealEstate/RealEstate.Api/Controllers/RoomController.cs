@@ -58,7 +58,7 @@ namespace RealEstate.Api.Controllers
                 {
                     var listRoom = _roomService.GetAllListRoom(top).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
 
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listRoomVm);
 
@@ -95,8 +95,8 @@ namespace RealEstate.Api.Controllers
                     int totalRow = 0;
                     var listRoom = _roomService.GetAllListRoomByUser(userID, page, pageSize, out totalRow).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
-                    var paginationSet = new PaginationSet<RoomViewModel>()
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
+                    var paginationSet = new PaginationSet<RoomListViewModel>()
                     {
                         Items = listRoomVm,
                         Page = page,
@@ -136,7 +136,7 @@ namespace RealEstate.Api.Controllers
                 {
                     var listRoom = _roomService.GetAllListRoomVip(top, vipID).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
 
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listRoomVm);
 
@@ -172,9 +172,9 @@ namespace RealEstate.Api.Controllers
                     int totalRow = 0;
                     var listRoom = _roomService.GetAllListRoomFullSearchStoreProc(filter, page, pageSize, out totalRow, sort).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
 
-                    var paginationSet = new PaginationSet<RoomViewModel>()
+                    var paginationSet = new PaginationSet<RoomListViewModel>()
                     {
                         Items = listRoomVm,
                         Page = page,
