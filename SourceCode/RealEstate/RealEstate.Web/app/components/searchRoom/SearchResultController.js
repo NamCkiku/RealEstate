@@ -22,7 +22,6 @@
             };
             // Lọc phòng theo tiêu chí
             $scope.FilterRoom = function () {
-                alert(12);
                 var myBlockUI = blockUI.instances.get('BlockUIRoom');
                 myBlockUI.start();
                 var config = {
