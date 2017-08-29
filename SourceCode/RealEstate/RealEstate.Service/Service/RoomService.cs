@@ -299,5 +299,25 @@ namespace RealEstate.Service.Service
             }
             return lstroom;
         }
+
+        public RoomEntity GetRoomByIdStoreProc(int roomId)
+        {
+            RoomEntity room = new RoomEntity();
+            try
+            {
+                var result = _roomRepository.GetRoomById(roomId);
+                if (result != null)
+                {
+                    room = result;
+                }
+            }
+            catch (Exception ex)
+            {
+                string FunctionName = MethodInfo.GetCurrentMethod().Name;
+                Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
+                return null;
+            }
+            return room;
+        }
     }
 }

@@ -118,6 +118,7 @@
     <Content Include="app\components\base\RealEstate.ModalRegisterController.js" />
     <Content Include="app\components\createRoom\RealEstate.CreateRoomController.js" />
     <Content Include="app\components\room\roomController.js" />
+    <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
     <Content Include="app\components\searchRoom\SearchRoomController.js" />
     <Content Include="app\shared\directives\searchDirectives.html" />
@@ -2494,6 +2495,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\RoomDetailController.cs" />
     <Compile Include="Controllers\RoomListController.cs" />
     <Compile Include="Controllers\RoomManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3421,6 +3423,7 @@
     <Content Include="bower_components\ng-tags-input\bower.json" />
     <Content Include="bower_components\ng-tags-input\README" />
     <Content Include="app\components\payment\RealEstate.ModalPaymentController.js" />
+    <Content Include="Views\RoomDetail\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -23,6 +23,8 @@ namespace RealEstate.Service.IService
 
         IEnumerable<RoomEntity> GetAllListRoomFullSearchStoreProc(SearchRoomEntity filter, int page, int pageSize, out int totalRow, string sort);
 
+        RoomEntity GetRoomByIdStoreProc(int roomId);
+
         Room InsertRoom(Room room);
 
         void UpdateRoom(Room room);

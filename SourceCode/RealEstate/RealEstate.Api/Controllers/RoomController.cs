@@ -72,6 +72,44 @@ namespace RealEstate.Api.Controllers
             return responeResult;
         }
         /// <summary>
+        /// Hàm trả về đối tượng phòng theo roomId.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/19/2017   created
+        [Route("getroombyid")]
+        [HttpGet]
+        public HttpResponseMessage GetRoomById(HttpRequestMessage request, int roomId)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var result = _roomService.GetRoomByIdStoreProc(roomId);
+                    if (result != null)
+                    {
+                        var room = Mapper.Map<RoomListViewModel>(result);
+                        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, room);
+                        return response;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+        /// <summary>
         /// Lấy ra tất cả danh sách phòng của User.
         /// </summary>
         /// <param name="request">The request.</param>
