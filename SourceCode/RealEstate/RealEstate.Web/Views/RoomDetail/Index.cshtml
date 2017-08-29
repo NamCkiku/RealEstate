@@ -1,0 +1,505 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content" ng-controller="RoomDetailController" block-ui="BlockUIRoomDetail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+                        <li><a href="/">Phòng</a> <span class="divider"></span></li>
+                        <li>{{roomObj.roomName}}</li>
+                    </ul>
+                </div>
+            </div>
+            <input type="hidden" id="txtRoomId" value="@ViewBag.RoomId" />
+            <div class="col-lg-9 col-md-9">
+                <div class="real-estate">
+                    <div class="real-estate-detail">
+                        <h1 class="title">{{roomObj.roomName}}</h1>
+                        <div class="main-info">
+                            <div class="col-md-8 left-info nopadding-xs no-padding-left">
+                                <div id="carousel-listing" class="carousel slide post-carusel" data-ride="carousel" data-interval="false">
+                                    <div class="carousel-inner my-gallery">
+                                        <div class="item" ng-repeat="item in roomObj.moreImages">
+                                            <a href="" rel="prettyPhoto" class="prettygalery">
+                                                <img ng-src="{{baseUrl}}UploadedFiles/Rooms/{{item}}" data-slider-no="1" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                        <!-- Background of PhotoSwipe.
+                                        It's a separate element, as animating opacity is faster than rgba(). -->
+                                        <div class="pswp__bg"></div>
+
+                                        <!-- Slides wrapper with overflow:hidden. -->
+                                        <div class="pswp__scroll-wrap">
+
+                                            <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+                                            <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+                                            <div class="pswp__container">
+                                                <div class="pswp__item"></div>
+                                                <div class="pswp__item"></div>
+                                                <div class="pswp__item"></div>
+                                            </div>
+
+                                            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                                            <div class="pswp__ui pswp__ui--hidden">
+
+                                                <div class="pswp__top-bar">
+
+                                                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                                                    <div class="pswp__counter"></div>
+
+                                                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                                                    <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                                                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                                                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                                                    <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                                                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                                                    <div class="pswp__preloader">
+                                                        <div class="pswp__preloader__icn">
+                                                            <div class="pswp__preloader__cut">
+                                                                <div class="pswp__preloader__donut"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                                    <div class="pswp__share-tooltip"></div>
+                                                </div>
+
+                                                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+                                                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+                                                <div class="pswp__caption">
+                                                    <div class="pswp__caption__center"></div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="carusel-back"></div>
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-listing" ng-repeat="item in roomObj.moreImages">
+                                            <img ng-src="{{baseUrl}}UploadedFiles/Rooms/{{item}}" alt="slider">
+                                        </li>
+                                    </ol>
+                                    <ol class="carousel-round-indicators">
+                                        <li data-target="#carousel-listing" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-listing" data-slide-to="1" class=""></li>
+                                        <li data-target="#carousel-listing" data-slide-to="2" class=""></li>
+                                        <li data-target="#carousel-listing" data-slide-to="3" class=""></li>
+                                        <li data-target="#carousel-listing" data-slide-to="4" class=""></li>
+                                    </ol>
+                                    <div class="caption-wrapper">
+                                        <span data-slide-to="0" class="">Video</span><span data-slide-to="1" class="active"></span><span data-slide-to="2" class=""> Close to business center.</span><span data-slide-to="3" class=""> Apartment building view.</span><span data-slide-to="4" class=""> </span> <div class="caption_control"></div>
+                                    </div>
+
+                                    <a class="left carousel-control" href="#carousel-listing" data-slide="prev">
+                                        <i cla
+                                            <i class="fa fa-angle-left"></i>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-listing" data-slide="next">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="room-detail-info margin-bottom-15">
+                                    <div class="address">
+                                        <span class="btn info-label">Địa chỉ</span>
+                                        <a class="" href="">{{roomObj.address}}</a>
+                                    </div>
+                                    <div class="size">
+                                        <span class="btn info-label">Diện tích</span>
+                                        <a href="" class="btn info-data">{{roomObj.acreage |number}}m<sup>2</sup></a>
+                                        <span class="btn info-label">Loại phòng</span>
+                                        <a href="">{{roomObj.roomTypeName}}</a>
+                                    </div>
+                                    <div class="vs">
+                                        <span class="btn info-label">Vệ sinh</span>
+                                        <a href="" class="btn info-data">{{roomObj.toiletNumber}}</a>
+                                        <span class="btn info-label">Số người ở</span>
+                                        <a href="">{{roomObj.floorNumber}} người</a>
+                                    </div>
+                                    <div class="type">
+                                        <span class="btn info-label">Giá điện</span>
+                                        <a href="" class="btn info-data">{{roomObj.electricPrice|number}} Nghìn/số</a>
+                                        <span class="btn info-label">Giá nước</span>
+                                        <a href="">30,000 Nghìn/số</a>
+                                    </div>
+                                    <div class="type">
+                                        <span class="btn info-label">Tầng</span>
+                                        <a href="" class="btn info-data">Tầng {{roomObj.floorNumber}}</a>
+                                        <span class="btn info-label">Số người ở</span>
+                                        <a href="">{{roomObj.floorNumber}} người</a>
+                                    </div>
+                                    <div class="Compass">
+                                        <span class="btn info-label">Tiện ích</span>
+                                        <a class="" href="">{{roomObj.convenient}}</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-4 no-padding margin-bottom-10">
+                                <div class="info-contact">
+                                    <div class="agentAvatar">
+                                        <a href="#">
+                                            <img class="avatar agentAvatarImg" src="/Content/img/boy-512.png" alt="Rust Cohle">
+                                        </a>
+                                    </div>
+                                    <div class="info-boss">
+                                        <div class="info-boss-name" style="padding-bottom: 5px;">
+                                            <a href="#"><strong class="info-strong-name">{{roomObj.userName}}</strong></a>
+                                        </div>
+                                        <div class="info-boss-address">
+                                            <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-adress">{{roomObj.address}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-price">
+                                        <span>{{roomObj.price|number}} Đ/Tháng</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="info-help" style="padding: 10px 10px 0;">
+                                    <div class="info-help-phone" style="margin-bottom: 10px;">
+                                        <a id="show_phone_bnt" class="btn btn-primary btn-block">
+                                            <i style="margin-right: 10px;" class="fa fa-phone"></i><span>Nhấn để hiện số điện thoại</span>
+                                        </a>
+                                        <h4 style="text-align: center;padding: 12.5px;"><strong>{{roomObj.phone}}</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                                <div class="quick-fill hidden-xs">
+                                    <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="font-weight:bold">Thuê phòng an toàn</span></div>
+                                    <ul style="padding-left:15px" class="text-justify">
+                                        <li>
+                                            <em>KHÔNG trả tiền trước khi nhận hàng.</em>
+                                        </li>
+                                        <li><em>Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</em></li>
+                                        <li><em>Hẹn gặp ở nơi công cộng.</em></li>
+                                        <li><em>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix padding-top-10"></div>
+
+                        <!-- Light Slider -->
+                        <!-- Product Single - Gallery
+                        ============================================= -->
+                        <!--<div class="product-image product-main-image margin-bottom-15" ng-if="moreImages != null">
+                            <ul id="product_gallery">
+                                <li ng-repeat="img in moreImages" data-thumb="http://localhost:6568/Content/images/{{img}}">
+                                    <img style="height:100%;width:100%" ng-src="http://localhost:6568/Content/images/{{img}}" />
+                                </li>
+                            </ul>
+                            <div class="clearfix padB10"></div>
+                        </div>-->
+                        <!-- Product Single - Gallery End -->
+                        <!-- End Light Slider -->
+                        <div class="room-info-des">
+                            <div class="dis-content">
+                                <ul role="tablist" class="nav nav-tabs clearfix">
+                                    <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">NỘI DUNG</a></li>
+                                    <li role="presentation"><a href="#tab-2" aria-controls="tab-1" role="tab" data-toggle="tab">BẢN ĐỒ</a></li>
+                                    <li role="tablist" class=""><a href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab">BÌNH LUẬN / ĐÁNH GIÁ</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" id="tab-1" class="tab-pane active">
+                                        <div class="dis-content" ng-bind-html="roomObj.content">
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" id="tab-2" class="tab-pane">
+                                        <div id="map"></div>
+                                    </div>
+                                    <div role="tabpanel" id="tab-3" class="tab-pane">
+                                        <div data-href="https://developers.facebook.com/docs/plugins" data-width="100%" data-numposts="1" class="fb-comments fb_iframe_widget fb_iframe_widget_fluid" fb-xfbml-state="rendered">
+                                            <span style="height: 436px;">
+                                                <iframe id="f1de98f06b604fc" name="f196e2a775eb24" scrolling="no" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=&amp;channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FXBwzv5Yrm_1.js%3Fversion%3D42%23cb%3Df34faefffacbba8%26domain%3Dega-fashion-magazine.bizwebvietnam.net%26origin%3Dhttps%253A%252F%252Fega-fashion-magazine.bizwebvietnam.net%252Ff256c7428bd01f4%26relation%3Dparent.parent&amp;href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins&amp;locale=en_US&amp;numposts=1&amp;sdk=joey&amp;version=v2.8&amp;width=100%25" style="border: none; overflow: hidden; height: 436px; width: 100%;"></iframe>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" id="tab-4" class="tab-pane">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xs-12">
+                <div class="box-search-sidebar dqdt-sidebar">
+                    <div class="title_st">
+                        <h2>
+                            <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
+                            Tin liên quan
+                        </h2>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="sidebar-ads nopadding-xs hidden-xs hidden-sm margin-top-20" style="margin-top:20px;">
+                    <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #map {
+        height: 300px;
+        width: 100%;
+    }
+
+    .dis-content .nav-tabs {
+        border-top: 2px solid #00c5bb;
+        background: #eee;
+    }
+
+        .dis-content .nav-tabs > li.active a {
+            border-top: 3px solid #00c5bb;
+        }
+
+        .dis-content .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-bottom-color: transparent;
+            cursor: default;
+        }
+
+        .dis-content .nav-tabs > li a {
+            border-radius: 0;
+        }
+
+    .dis-content .tab-content {
+        border: 1px solid #e7e7e7;
+        border-top: 0;
+        padding: 20px;
+    }
+</style>
+<script>
+    $('.caption-wrapper').click(function () {
+        $(this).toggleClass('closed');
+        $('.carusel-back').toggleClass('rowclosed');
+        $('.post-carusel .carousel-indicators').toggleClass('rowclosed');
+    });
+    var initPhotoSwipeFromDOM = function (gallerySelector) {
+
+        // parse slide data (url, title, size ...) from DOM elements
+        // (children of gallerySelector)
+        var parseThumbnailElements = function (el) {
+            var thumbElements = el.childNodes,
+                numNodes = thumbElements.length,
+                items = [],
+                figureEl,
+                linkEl,
+                size,
+                item;
+
+            for (var i = 0; i < numNodes; i++) {
+
+                figureEl = thumbElements[i]; // <figure> element
+
+                // include only element nodes
+                if (figureEl.nodeType !== 1) {
+                    continue;
+                }
+
+                linkEl = figureEl.children[0]; // <a> element
+
+                // create slide object
+                item = {
+                    src: linkEl.getAttribute('href'),
+                    w: 900,
+                    h: 600
+                };
+
+
+
+                if (figureEl.children.length > 1) {
+                    // <figcaption> content
+                    item.title = figureEl.children[1].innerHTML;
+                }
+
+                if (linkEl.children.length > 0) {
+                    // <img> thumbnail element, retrieving thumbnail url
+                    item.msrc = linkEl.children[0].getAttribute('src');
+                }
+
+                item.el = figureEl; // save link to element for getThumbBoundsFn
+                items.push(item);
+            }
+
+            return items;
+        };
+
+        // find nearest parent element
+        var closest = function closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        };
+
+        // triggers when user clicks on thumbnail
+        var onThumbnailsClick = function (e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+
+            // find root element of slide
+            var clickedListItem = closest(eTarget, function (el) {
+                return (el.tagName && el.tagName.toUpperCase() === 'DIV');
+            });
+
+            if (!clickedListItem) {
+                return;
+            }
+
+            // find index of clicked item by looping through all child nodes
+            // alternatively, you may define index via data- attribute
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
+                numChildNodes = childNodes.length,
+                nodeIndex = 0,
+                index;
+
+            for (var i = 0; i < numChildNodes; i++) {
+                if (childNodes[i].nodeType !== 1) {
+                    continue;
+                }
+
+                if (childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                }
+                nodeIndex++;
+            }
+
+
+
+            if (index >= 0) {
+                // open PhotoSwipe if valid index found
+                openPhotoSwipe(index, clickedGallery);
+            }
+            return false;
+        };
+
+        // parse picture index and gallery index from URL (#&pid=1&gid=2)
+        var photoswipeParseHash = function () {
+            var hash = window.location.hash.substring(1),
+                params = {};
+
+            if (hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                options,
+                items;
+
+            items = parseThumbnailElements(galleryElement);
+
+            // define options (if needed)
+            options = {
+
+                // define gallery index (for URL)
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                getThumbBoundsFn: function (index) {
+                    // See Options -> getThumbBoundsFn section of documentation for more info
+                    var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect();
+
+                    return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+                }
+
+            };
+
+            // PhotoSwipe opened from URL
+            if (fromURL) {
+                if (options.galleryPIDs) {
+                    // parse real index when custom PIDs are used
+                    // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    // in URL indexes start from 1
+                    options.index = parseInt(index, 10) - 1;
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            // exit if index not found
+            if (isNaN(options.index)) {
+                return;
+            }
+
+            if (disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            // Pass data to PhotoSwipe and initialize it
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        };
+
+        // loop through all gallery elements and bind events
+        var galleryElements = document.querySelectorAll(gallerySelector);
+
+        for (var i = 0, l = galleryElements.length; i < l; i++) {
+            galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+            galleryElements[i].onclick = onThumbnailsClick;
+        }
+
+        // Parse URL and open gallery if it contains #&pid=3&gid=1
+        var hashData = photoswipeParseHash();
+        if (hashData.pid && hashData.gid) {
+            openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+        }
+    };
+    // execute above function
+    initPhotoSwipeFromDOM('.my-gallery');
+</script>

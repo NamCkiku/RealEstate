@@ -83,5 +83,22 @@ namespace RealEstate.Repository.Repositories
                 return new List<RoomEntity>();
             }
         }
+
+        public RoomEntity GetRoomById(int roomId)
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                parameter.Add("@RoomId", roomId, dbType: DbType.Int32);
+                var result = DapperExtensions.QueryDapperStoreProc<RoomEntity>("sp_GetRoomByRoomId", parameter).FirstOrDefault();
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
+                return null;
+            }
+        }
     }
 }

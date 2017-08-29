@@ -14,5 +14,7 @@ namespace RealEstate.Repository.IRepositories
         IEnumerable<RoomEntity> GetAllRoom();
         IEnumerable<RoomEntity> GetAllRoomPagingFullSearch(SearchRoomEntity filter, int page, int pageSize, out int totalRow, string sort);
         IEnumerable<RoomEntity> GetAllRoomByUser(string userID, int page, int pageSize, out int totalRow);
+
+        RoomEntity GetRoomById(int roomId);
     }
 }
