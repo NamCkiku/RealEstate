@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:imgcircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             Title="Trang chủ"
+             Icon="iconhome.png"
+             x:Class="RealEstateMobile.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:CarouselView x:Name="MainCarouseView">
+                <controls:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout BackgroundColor="Yellow">
+                                <Entry Placeholder="Tìm kiếm phòng bạn cần"/>
+                            </StackLayout>
+                            <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl}"/>
+                            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+                                <Label TextColor="White" Text="{Binding Name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </controls:CarouselView.ItemTemplate>
+            </controls:CarouselView>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
