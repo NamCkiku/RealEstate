@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:RealEstateMobile.Views;assembly=RealEstateMobile"
+             x:Class="RealEstateMobile.Views.LayoutPage">
+    <pages:HomePage>
+
+    </pages:HomePage>
+    <pages:RoomDetailPage>
+
+    </pages:RoomDetailPage>
+    <pages:CreateRoom>
+
+    </pages:CreateRoom>
+    <pages:MapPage>
+
+    </pages:MapPage>
+    <pages:ProfilePage>
+
+    </pages:ProfilePage>
+    <pages:LoginPage>
+
+    </pages:LoginPage>
+</TabbedPage>
