@@ -696,8 +696,8 @@ html ul, html ol {
     color: #FFFFFF;
     display: block;
     margin: 0 auto;
-    height: 45px;
-    width: 240px;
+    height: 40px;
+    width: 150px;
     text-align: center;
 }
 
@@ -2913,6 +2913,417 @@ sort-theme .sort-by li:first-child {
 .orange {
     color: #ff8401;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=============Room details===============*/
+/*Detail-Room*/
+.real-estate .real-estate-detail h2.title, .real-estate .real-estate-detail h1.title {
+    margin-top: 0px;
+    padding-bottom: 10px;
+    color: rgb(1, 30, 43);
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.lSSlideOuter .lSPager.lSGallery img {
+    display: block;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.main-info .left-info a {
+    text-decoration: none;
+    color: #2e3339;
+    margin-left: 5px;
+}
+
+    .main-info .left-info a:hover {
+        color: #FF0047;
+    }
+
+.room-detail-info {
+    border: 1px solid #ecf0f1;
+}
+
+.main-info .address {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .tang {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .size {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .bed-room {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .vs {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .type {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .info-label {
+    /*cursor: inherit;*/
+    border-radius: 0px;
+    border: none;
+    width: 100px;
+    height: 36px;
+    background-color: #ecf0f1;
+    padding: 6px 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.main-info .info-data {
+    border-radius: 0px;
+    border: none;
+    width: 150px;
+    height: 36px;
+    padding: 6px 0px;
+    text-align: left;
+}
+
+.main-info .info-contact .contact-label a {
+    font-size: 18px;
+    padding-left: 12px;
+    color: #2e3339;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+
+.room-detail-des {
+    margin-top: 20px;
+}
+
+    .room-detail-des .des-label .pull-left a h3, .room-detail-map .map-label .pull-left a h3 {
+        margin-bottom: 5px;
+    }
+
+    .room-detail-des .dis-content {
+        font-family: 'Arial';
+        font-size: 15px;
+        text-align: justify;
+        background-color: #ecf0f1;
+        padding: 10px 5px;
+        margin-top: -10px;
+    }
+
+.main-info {
+    float: left;
+    width: 100%;
+}
+
+    .main-info .info-contact {
+        position: relative;
+        float: left;
+        border-bottom: 1px solid #e5e5e5;
+        width: 100%;
+    }
+
+        .main-info .info-contact:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -6px;
+            left: calc(50% - 5px);
+            width: 10px;
+            height: 10px;
+            -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+            background: #fff;
+            border-left: 1px solid #e5e5e5;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .main-info .info-contact .chr {
+            padding: 0;
+        }
+
+            .main-info .info-contact .chr hr {
+                border-color: #33cc66;
+                margin-top: 0px;
+                margin-bottom: 10px;
+            }
+
+.agentAvatar {
+    text-align: center;
+    float: left;
+    padding-left: 10px;
+}
+
+.agentAvatarImg {
+    width: 60px;
+    height: auto;
+    border: 1px solid #e8e8e8;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.main-info .info-contact .info-boss {
+    float: right;
+    vertical-align: middle;
+    width: calc(100% - 80px);
+    margin-bottom: 15px;
+}
+
+.info-boss .info-boss-name .info-strong-name {
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    max-width: 88%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    -webkit-transition: color .1s ease-in-out;
+    transition: color .1s ease-in-out;
+}
+
+    .info-boss .info-boss-name .info-strong-name:hover {
+        color: #c90927;
+    }
+
+.info-boss .info-boss-address .info-span-adress {
+    font-size: 12px;
+    display: table-cell;
+    padding-left: 5px;
+    color: #979797;
+}
+
+.info-contact .info-price {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+    .info-contact .info-price span {
+        font-size: 20px;
+        color: red;
+        margin-bottom: 10px;
+        font-weight: 700;
+        line-height: 25px;
+    }
+.post-carusel {
+    border-radius: 3px;
+    margin-bottom: 26px;
+    overflow: hidden;
+    background: #2b2937;
+}
+
+.videoitem iframe {
+    cursor: pointer;
+}
+
+.post-carusel iframe {
+    width: 100%;
+    min-height: 340px;
+}
+
+#carousel-listing {
+    background-color: #000;
+    width: 100%;
+    position: relative;
+}
+
+    #carousel-listing .carousel-inner > .item {
+        -webkit-transition: all 0.6s ease;
+        transition: all 0.6s ease;
+        width: 100%;
+    }
+
+        #carousel-listing .carousel-inner > .item a {
+            margin: 0px;
+        }
+
+    #carousel-listing .carusel-back {
+        background-color: #000;
+        opacity: 0.95;
+    }
+
+    #carousel-listing .carusel-back, #carousel-listing .carousel-indicators {
+        width: 100%;
+        position: absolute;
+        float: left;
+        display: inline;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        margin: 1px 0px 0px 0px;
+        left: 0px;
+        bottom: auto;
+        height: 83px;
+        bottom: 39px;
+        padding-top: 1px;
+        z-index: 10;
+        transition: all .4s ease-in-out;
+        -webkit-transition: all .8s ease-in-out;
+        -moz-transition: all .8s ease-in-out;
+        -ms-transition: all .8s ease-in-out;
+        -o-transition: all .8s ease-in-out;
+        white-space: nowrap;
+        text-align: left;
+    }
+
+        #carousel-listing .carousel-indicators li {
+            width: 143px;
+            height: 83px;
+            margin: 0px 1px 0px 0px;
+            border: none;
+            border-radius: 0px;
+            position: relative;
+        }
+
+            #carousel-listing .carousel-indicators li img {
+                float: left;
+                opacity: 0.4;
+                -webkit-transition: all .4s ease-in-out;
+                -moz-transition: all .4s ease-in-out;
+                -ms-transition: all .4s ease-in-out;
+                -o-transition: all .4s ease-in-out;
+            }
+
+            #carousel-listing .carousel-indicators li:hover img {
+                opacity: 0.6;
+            }
+
+    #carousel-listing .estate_video_control {
+        position: absolute;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        float: left;
+        font-size: 30px;
+        text-indent: 0px;
+        margin: -10px 0px 0px -10px;
+        opacity: 0.7;
+    }
+
+    #carousel-listing .carousel-round-indicators {
+        position: absolute;
+        right: 40px;
+        bottom: 15px;
+        z-index: 99;
+    }
+
+        #carousel-listing .carousel-round-indicators li {
+            display: inline;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            float: left;
+            color: #fff;
+            background-color: #8F9EB6;
+            margin-left: 13px;
+            cursor: pointer;
+        }
+
+            #carousel-listing .carousel-round-indicators li.active {
+                background: #fff;
+            }
+
+    #carousel-listing .carousel-control {
+        width: 52px;
+        height: 140px;
+        top: 50%;
+        margin-top: -70px;
+    }
+
+    #carousel-listing .caption-wrapper {
+        width: 100%;
+        height: 40px;
+        color: #fff;
+        float: left;
+        padding: 9px 0px 0px 13px;
+        font-size: 15px;
+        background: #2b2937;
+        z-index: 20;
+        position: relative;
+        cursor: pointer;
+    }
+
+        #carousel-listing .caption-wrapper span {
+            display: none;
+        }
+
+    #carousel-listing .carousel-control.right, .carousel-control.left {
+        background: none;
+        background-image: none;
+    }
+
+    #carousel-listing .carousel-control .fa {
+        font-size: 65px;
+        text-shadow: none;
+    }
+
+    #carousel-listing .carousel-control.right, .carousel-control.left {
+        background: none;
+        background-image: none;
+    }
+
+    #carousel-listing .carousel-control:hover, .carousel-control:focus {
+        color: #fff !important;
+        text-decoration: none;
+        filter: alpha(opacity=90);
+        outline: 0;
+        opacity: .9;
+    }
+
+    #carousel-listing .post-carusel .item img {
+        max-height: 100%;
+    }
+
+    #carousel-listing .caption_control {
+        width: 20px;
+        height: 20px;
+        float: right;
+    }
+
+        #carousel-listing .caption_control:after {
+            font-family: FontAwesome;
+            padding: 12px 13px 0px 5px;
+            color: #fff;
+            content: "\f107";
+            margin: 0px;
+            position: absolute;
+            bottom: 5px;
+            right: 0px;
+            font-size: 20px;
+        }
+
+.rowclosed {
+    bottom: -42px !important;
+}
+
+.closed .caption_control:after {
+    content: "\f106";
+}
+
 
 /* === Puclib === */
 .padding-0 {

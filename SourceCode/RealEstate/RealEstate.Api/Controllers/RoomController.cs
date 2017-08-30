@@ -58,7 +58,7 @@ namespace RealEstate.Api.Controllers
                 {
                     var listRoom = _roomService.GetAllListRoom(top).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
 
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listRoomVm);
 
@@ -71,6 +71,44 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
+        /// <summary>
+        /// Hàm trả về đối tượng phòng theo roomId.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/19/2017   created
+        [Route("getroombyid")]
+        [HttpGet]
+        public HttpResponseMessage GetRoomById(HttpRequestMessage request, int roomId)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var result = _roomService.GetRoomByIdStoreProc(roomId);
+                    if (result != null)
+                    {
+                        var room = Mapper.Map<RoomListViewModel>(result);
+                        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, room);
+                        return response;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
         /// <summary>
         /// Lấy ra tất cả danh sách phòng của User.
         /// </summary>
@@ -95,8 +133,8 @@ namespace RealEstate.Api.Controllers
                     int totalRow = 0;
                     var listRoom = _roomService.GetAllListRoomByUser(userID, page, pageSize, out totalRow).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
-                    var paginationSet = new PaginationSet<RoomViewModel>()
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
+                    var paginationSet = new PaginationSet<RoomListViewModel>()
                     {
                         Items = listRoomVm,
                         Page = page,
@@ -136,7 +174,7 @@ namespace RealEstate.Api.Controllers
                 {
                     var listRoom = _roomService.GetAllListRoomVip(top, vipID).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
 
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listRoomVm);
 
@@ -172,9 +210,9 @@ namespace RealEstate.Api.Controllers
                     int totalRow = 0;
                     var listRoom = _roomService.GetAllListRoomFullSearchStoreProc(filter, page, pageSize, out totalRow, sort).OrderByDescending(x => x.DisplayOrder).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
 
-                    var paginationSet = new PaginationSet<RoomViewModel>()
+                    var paginationSet = new PaginationSet<RoomListViewModel>()
                     {
                         Items = listRoomVm,
                         Page = page,

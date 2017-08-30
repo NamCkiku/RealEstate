@@ -7,6 +7,9 @@
         $scope.account = {
 
         }
+        $scope.data = {
+            lstRoomType:[]
+        }
         $scope.init = function () {
             authenticationService.init();
             $scope.userInfo = authData.authenticationData;
@@ -14,8 +17,18 @@
             if (!$scope.userInfo.IsAuthenticated) {
                 //$window.location.href = "/";
             }
+            $scope.GetAllRoomType();
         };
-        $scope.init();
+       
+
+        //Hàm lấy ra commbobox loại phòng
+        $scope.GetAllRoomType = function () {
+            apiService.get('api/roomtype/getallroomtype', null, function (respone) {
+                $scope.data.lstRoomType = respone.data;
+            }, function (respone) {
+                BaseService.displayError("Không lấy được dữ liệu Loại Phòng", 3000);
+            });
+        }
 
         $scope.logOut = function () {
             loginService.logOut();
@@ -60,5 +73,7 @@
                 $log.info('Modal dismissed at: ' + new Date());
             });
         }
+
+        $scope.init();
     }
 })(angular.module('myApp'));

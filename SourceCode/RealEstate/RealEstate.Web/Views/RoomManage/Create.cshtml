@@ -404,11 +404,11 @@
                             <div class="col-lg-6">
                                 <ul class="fieldlist">
                                     <li>
-                                        <input type="checkbox" id="eq1" class="k-checkbox" checked="checked">
+                                        <input type="checkbox" id="eq1" ng-click="showPopupPayment(1);" class="k-checkbox" checked="checked">
                                         <label class="k-checkbox-label" for="eq1"> Đưa tin đăng lên trang nhất <a>(Tìm hiểu thêm)</a></label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="eq2" class="k-checkbox" checked="checked">
+                                        <input type="checkbox" id="eq2" ng-click="showPopupPayment(2);" class="k-checkbox" checked="checked">
                                         <label class="k-checkbox-label" for="eq2">Tin đăng được tài trợ <a>(Tìm hiểu thêm)</a></label>
                                     </li>
                                 </ul>
@@ -448,6 +448,35 @@
                         <button type="button" class="btn btn-sm btn-success" ng-click="nextStep(4)">Hoàn thành</button>
                     </div>
                 </div>
+                <div class="form-step" id="formStep5" ng-show="isActive=='5'">
+                    <div class="row thankyou-infos">
+                        <div class="col-md-12 thankyou-message">
+                            <div class="thankyou-message-icon unprint">
+                                <div class="icon icon--order-success svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px">
+                                        <g fill="none" stroke="#8EC343" stroke-width="2">
+                                            <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
+                                            <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="thankyou-message-text">
+                                <h3>Cảm ơn bạn đã đăng tin thành công</h3>
+                                <p>
+                                    Một email xác nhận đã được gửi tới {{roomInfomation.Email}}. Xin vui lòng kiểm tra email của bạn
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 customer-info">
+                            <div class="order-success unprint">
+                                <a href="/" class="btn btn-primary">
+                                    <i class="fa fa-reply-all" style="margin-right:15px;" aria-hidden="true"></i> Trở về trang chủ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3 col-lg-3 col-xs-12">
                 <div class="title_st">
@@ -469,3 +498,36 @@
         $('[data-toggle="tooltip"]').tooltip()
     })
 </script>
+<style>
+    .thankyou-message {
+        margin-top: 7px;
+        margin-bottom: 25px;
+    }
+
+    .thankyou-message-icon {
+        float: left;
+        display: table-cell;
+        margin-right: 20px;
+        padding-top: 3px;
+    }
+
+    svg:not(:root) {
+        overflow: hidden;
+    }
+
+    .icon--order-success svg circle {
+        animation: 0.6s ease-in-out 0s normal backwards 1 running checkmark-circle;
+    }
+
+    .icon--order-success svg path {
+        animation: 0.25s ease-in-out 0.7s normal backwards 1 running checkmark;
+    }
+
+    .thankyou-message-text {
+        display: table-cell;
+    }
+
+        .thankyou-message-text p {
+            margin: 6px 0;
+        }
+</style>

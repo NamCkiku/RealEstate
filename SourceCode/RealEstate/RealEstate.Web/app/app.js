@@ -1,7 +1,7 @@
 ﻿var app;
 (function () {
     app = angular.module("myApp", ['kendo.directives', 'ui.bootstrap', 'ngAnimate'
-        , 'blockUI', 'LocalStorageModule', 'ui.select2', 'rzModule', 'ui.utils.masks', 'ngtimeago', 'ngTagsInput']);
+        , 'blockUI', 'LocalStorageModule', 'ui.select2', 'rzModule', 'ui.utils.masks', 'ngtimeago', 'ngTagsInput','ngSanitize']);
     app.run(['$rootScope', function ($rootScope) {
         var baseUrl = 'http://localhost:22034/';
         $rootScope.baseUrl = baseUrl;

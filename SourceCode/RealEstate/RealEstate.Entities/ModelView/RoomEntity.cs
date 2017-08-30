@@ -76,6 +76,7 @@ namespace RealEstate.Entities.ModelView
         public bool isDelete { get; set; }
 
         public bool Status { get; set; }
+        public string RoomTypeName { get; set; }
 
 
         public string FloorNumber { get; set; }
@@ -91,6 +92,7 @@ namespace RealEstate.Entities.ModelView
         public decimal? WaterPrice { get; set; }
 
         public string Convenient { get; set; }
+        public int? Facade { get; set; }
 
         public string ProvinceName { get; set; }
 

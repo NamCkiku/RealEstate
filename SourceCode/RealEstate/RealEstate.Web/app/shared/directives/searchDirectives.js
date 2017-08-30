@@ -29,7 +29,6 @@
                 //Hàm lấy ra commbobox loại phòng
                 $scope.GetAllRoomType = function () {
                     apiService.get('api/roomtype/getallroomtype', null, function (respone) {
-                        console.log(respone.data)
                         $scope.data.lstRoomType = respone.data;
                     }, function (respone) {
                         BaseService.displayError("Không lấy được dữ liệu Loại Phòng", 3000);
@@ -112,6 +111,10 @@
                 };
 
                 function showPosition(position) {
+<<<<<<< HEAD
+=======
+                    //alert(position.coords.latitude + "-" + position.coords.longitude);
+>>>>>>> bb032d16ab177cba24e15bd77d25ac266c5a1ca1
                     var request = new XMLHttpRequest();
 
                     var method = 'GET';
@@ -123,9 +126,16 @@
                         if (request.readyState == 4 && request.status == 200) {
                             var data = JSON.parse(request.responseText);
                             var address = data.results[0];
+<<<<<<< HEAD
                             $scope.fillter.provinceId = address.address_components[3].long_name;
                             $scope.fillter.districtID = address.address_components[2].long_name;
                             $scope.fillter.wardID = address.address_components[1].long_name;
+=======
+                            //alert(address.address_components[3].long_name + '-' + address.address_components[2].long_name + '-' + address.address_components[1].long_name);
+                            //$scope.fillter.provinceId = address.address_components[3].long_name;
+                            //$scope.fillter.districtID = address.address_components[2].long_name;
+                            //$scope.fillter.wardID = address.address_components[1].long_name;
+>>>>>>> bb032d16ab177cba24e15bd77d25ac266c5a1ca1
                         }
                     };
                     request.send();

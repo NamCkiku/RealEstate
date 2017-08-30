@@ -117,6 +117,8 @@
     <Content Include="app\components\base\RealEstate.ModalLoginController.js" />
     <Content Include="app\components\base\RealEstate.ModalRegisterController.js" />
     <Content Include="app\components\createRoom\RealEstate.CreateRoomController.js" />
+    <Content Include="app\components\room\roomController.js" />
+    <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
     <Content Include="app\components\searchRoom\SearchRoomController.js" />
     <Content Include="app\shared\directives\searchDirectives.html" />
@@ -552,7 +554,7 @@
     <Content Include="Content\img\app_store.png" />
     <Content Include="Content\img\boy-512.png" />
     <Content Include="Content\img\google_play.png" />
-    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\Logobizland.png" />
     <Content Include="Content\img\range-icon.png" />
     <Content Include="Content\js\bootstrapextend.min.js" />
     <Content Include="Content\js\common.js" />
@@ -2493,6 +2495,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\RoomDetailController.cs" />
     <Compile Include="Controllers\RoomListController.cs" />
     <Compile Include="Controllers\RoomManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3419,6 +3422,8 @@
     <Content Include="bower_components\ng-tags-input\.bower.json" />
     <Content Include="bower_components\ng-tags-input\bower.json" />
     <Content Include="bower_components\ng-tags-input\README" />
+    <Content Include="app\components\payment\RealEstate.ModalPaymentController.js" />
+    <Content Include="Views\RoomDetail\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
