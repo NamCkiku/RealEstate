@@ -16,13 +16,11 @@
 
       
         $rootScope.$on('fireLoadFilterEvents', function (event, searchObj) {
-      
             $scope.init = function () {
                 $scope.FilterRoom();
             };
             // Lọc phòng theo tiêu chí
             $scope.FilterRoom = function () {
-                alert(12);
                 var myBlockUI = blockUI.instances.get('BlockUIRoom');
                 myBlockUI.start();
                 var config = {
@@ -43,6 +41,7 @@
                     }
                 }
                 apiService.get('api/room/getallroomfullsearch', config, function (respone) {
+                   
                     $scope.data.listRoom = respone.data.items;
                     console.log($scope.data.listRoom);
                     myBlockUI.stop();
