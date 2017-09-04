@@ -13,6 +13,11 @@
         $scope.searchInfo = {
 
         }
+        function decodeHtml(text) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = text;
+            return txt.value;
+        }
         $scope.data = {
             lstToilet: [],
             lstCompass: [],
@@ -186,7 +191,7 @@
             var options = {
                 componentRestrictions: { country: "VN" }
             };
-            $scope.autocomplete = new google.maps.places.Autocomplete(address, options);
+            $scope.searchBox = new google.maps.places.Autocomplete(address, options);
             var pos = {
                 lat: 21.0029317912212212,
                 lng: 105.820226663232323
@@ -223,9 +228,6 @@
                     }
                     );
             }
-
-            $scope.searchBox = new google.maps.places.Autocomplete(document.getElementById('pac-input'), options);
-            $scope.map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('pac-input'));
             $scope.searchBox.addListener('place_changed', function () {
                 $scope.searchBox.set('map', null);
                 $scope.places = $scope.searchBox.getPlace();
@@ -273,9 +275,6 @@
                 }
             }
             else if (item == 3) {
-                $scope.isActive = '4';
-            }
-            else {
                 if ($scope.room.MoreImages != null) {
                     $scope.room.MoreImages = JSON.stringify($scope.room.MoreImages);
                 }
@@ -307,7 +306,7 @@
                     Email: $scope.room.email,
                     UserID: $rootScope.userInfomation.userID,
                     Description: $scope.room.description,
-                    Content: $scope.room.content,
+                    Content: decodeHtml($scope.room.content),
                     Lat: $scope.room.lat,
                     Lng: $scope.room.lng,
                     Tags: $scope.room.tag,
@@ -324,7 +323,7 @@
                 }
                 apiService.post('api/room/insertroom', data, function (respone) {
                     if (respone.data != null) {
-                        $scope.isActive = '5';
+                        $scope.isActive = '4';
                         BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
                     } else {
                         BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
