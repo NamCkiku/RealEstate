@@ -1,7 +1,7 @@
 ﻿(function (app) {
     'use strict';
-    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData', 'apiService', '$rootScope',
-        function ($http, $q, authenticationService, authData, apiService, $rootScope) {
+    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData', 'apiService', '$rootScope','$window',
+        function ($http, $q, authenticationService, authData, apiService, $rootScope, $window) {
             var userInfo;
             var deferred;
 
@@ -48,6 +48,7 @@
                     authData.authenticationData.IsAuthenticated = false;
                     authData.authenticationData.userName = "";
                     authData.authenticationData.accessToken = "";
+                    $window.location.href = "/";
 
                 }, null);
 

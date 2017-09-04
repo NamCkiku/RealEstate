@@ -8,13 +8,13 @@
             lstRoom: [],
         }
         $scope.pageLoad = function () {
-          //  $scope.loadAllRoomByQueryString();
+            $scope.loadAllRoomByQueryString();
         }
         angular.element(document).ready(function () {
             $scope.pageLoad();
         });
 
-      
+
         $rootScope.$on('fireLoadFilterEvents', function (event, searchObj) {
             $scope.init = function () {
                 $scope.FilterRoom();
@@ -41,7 +41,7 @@
                     }
                 }
                 apiService.get('api/room/getallroomfullsearch', config, function (respone) {
-                   
+
                     $scope.data.listRoom = respone.data.items;
                     console.log($scope.data.listRoom);
                     myBlockUI.stop();

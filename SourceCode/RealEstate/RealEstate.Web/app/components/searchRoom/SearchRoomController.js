@@ -4,7 +4,7 @@
     SearchRoomController.$inject = ['$scope', 'BaseService', 'apiService', '$rootScope', '$window', '$timeout', 'blockUI', '$modal', '$log', 'authData', 'authenticationService', 'loginService', '$filter'];
 
     function SearchRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $modal, $log, authData, authenticationService, loginService, $filter) {
-        $scope.fillter = {
+        $scope.searchInfo = {
             roomtype: null,
             provinceId: null,
             districtID: null,
@@ -62,7 +62,7 @@
                 acreageFrom: $scope.sliderAcreage.minValue,
                 acreageTo: $scope.sliderAcreage.maxValue,
             }
-            console.log(params);    
+            console.log(params);
             var queryString = [];
             for (var key in params) {
                 if (params[key] !== undefined) {
@@ -84,10 +84,10 @@
                 acreageTo: $scope.sliderAcreage.maxValue,
             }
             console.log($scope.fillter);
-           $scope.$emit('fireLoadFilterEvents', $scope.fillter);
+            $scope.$emit('fireLoadFilterEvents', $scope.fillter);
         };
 
-      
+
 
         $scope.showFilter = function () {
             $('#open-filters').toggleClass('openf');
