@@ -51,21 +51,11 @@
                 priceTo: $scope.sliderFrice.maxValue,
                 acreageFrom: $scope.sliderAcreage.minValue,
                 acreageTo: $scope.sliderAcreage.maxValue,
+                searchIndex: true
             };
-            $scope.fillter = {
-                roomtype: $scope.searchInfo.roomtype,
-                province: $scope.searchInfo.provinceId,
-                district: $scope.searchInfo.districtID,
-                ward: $scope.searchInfo.wardID,
-                priceFrom: $scope.sliderFrice.minValue,
-                priceTo: $scope.sliderFrice.maxValue,
-                acreageFrom: $scope.sliderAcreage.minValue,
-                acreageTo: $scope.sliderAcreage.maxValue,
-            }
-            console.log(params);
             var queryString = [];
             for (var key in params) {
-                if (params[key] !== undefined) {
+                if (params[key] !== undefined && params[key] !== null) {
                     queryString.push(key + '=' + params[key]);
                 }
             }
@@ -83,8 +73,7 @@
                 acreageFrom: $scope.sliderAcreage.minValue,
                 acreageTo: $scope.sliderAcreage.maxValue,
             }
-            console.log($scope.fillter);
-            $scope.$emit('fireLoadFilterEvents', $scope.fillter);
+            $scope.$broadcast('fireLoadFillterEvent', $scope.fillter);
         };
 
 

@@ -3,9 +3,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="main-content" >
+<div class="main-content">
     <div class="container">
-        <div class="row">
+        <div class="row" ng-controller="SearchRoomController">
             <div class="col-lg-12 col-md-12">
                 <div class="breadcrumbs">
                     <ul class="breadcrumb">
@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3 col-lg-3 col-xs-12" ng-controller="SearchRoomController">
+            <div class="col-md-3 col-lg-3 col-xs-12">
                 <div class="box-search-sidebar dqdt-sidebar">
                     <div class="title_st">
                         <h2>
@@ -98,378 +98,30 @@
                     <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6" ng-repeat="item in data.listRoom">
                         <div class="property_listing">
                             <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
+                                <div id="{{item.id}}" class="carousel property_unit_carousel slide" data-ride="carousel" data-interval="false">
                                     <div class="prop_new_details">
                                         <div class="prop_new_details_back"></div>
                                         <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
+                                            <i class="fa fa-home" aria-hidden="true"></i> {{item.roomTypeName}}
                                         </div>
                                         <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
+                                            <span class="property_marker"></span><a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" rel="tag">Đống đa</a>,
+                                            <a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" rel="tag">{{item.provinceName}}</a>
                                         </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
+                                        <div class="figType">{{item.price |number}} Đ/tháng</div>
                                     </div>
                                     <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
+                                        <div class="item active">
+                                            <a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}"><img width="525" height="328" ng-src="{{baseUrl}}/{{item.thumbnailImage}}" class="lazyload img-responsive wp-post-image" alt=""></a>
                                         </div>
                                     </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
                                 </div>
-
                             </div>
-                            <h2 title="{{item.roomName}}">{{item.roomName}}</h2>
+                            <h2 title="{{item.roomName}}"><a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}">{{item.roomName}}</a></h2>
                             <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
+                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>{{item.createdDate|timeago}}</span></li>
+                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">{{item.acreage}} m<sup>2</sup></span></li>
                                 <li><span class="fa fa-male"></span><span style="margin-left:5px;">{{item.userName}}</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6">
-                        <div class="property_listing">
-                            <div class="listing-unit-img-wrapper">
-                                <div id="59735fadc7d26" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                                    <div class="prop_new_details">
-                                        <div class="prop_new_details_back"></div>
-                                        <div class="property_media">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Phòng trọ
-                                        </div>
-                                        <div class="property_location_image">
-                                            <span class="property_marker"></span><a href="http://wpresidence.net/area/bayonne/" rel="tag">Đống đa</a>,
-                                            <a href="http://wpresidence.net/city/jersey-city/" rel="tag">Hà Nội</a>
-                                        </div>
-                                        <div class="figType">1,900,000 Đ/tháng</div>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <a href=""><img width="525" height="328" src="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://wpresidence.net/wp-content/uploads/2014/05/old-house-436486_1920-525x328.jpg"></a>
-                                        </div>
-                                        <div class="item lazy-load-item">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header4-1-525x328.jpg"></a>
-                                        </div><div class="item lazy-load-item active">
-                                            <a href=""><img data-lazy-load-src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg" alt="Gorgeous Farm in Jersey" class="img-responsive" src="http://wpresidence.net/wp-content/uploads/2014/05/header-525x328.jpg"></a>
-                                        </div>
-                                    </div>
-                                    <a href=""> </a><a class="left  carousel-control" href="#property_unit_carousel_59735fadc7d26" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right  carousel-control" href="#59735fadc7d26" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">Cho thuê phòng trọ tại Thái Thịnh Hà Nội</h2>
-                            <ul class="cardFeat">
-                                <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>1 ngày trước</span></li>
-                                <li><span class="fa fa-info"></span><span style="margin-left:5px;">30 m<sup>2</sup></span></li>
-                                <li><span class="fa fa-male"></span><span style="margin-left:5px;">NamCkiku</span></li>
                             </ul>
                         </div>
                     </div>
