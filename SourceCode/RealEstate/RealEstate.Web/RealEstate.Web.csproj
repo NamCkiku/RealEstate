@@ -121,6 +121,7 @@
     <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
     <Content Include="app\components\searchRoom\SearchRoomController.js" />
+    <Content Include="app\shared\directives\owlCarouselDirectives.js" />
     <Content Include="app\shared\directives\searchDirectives.html" />
     <Content Include="app\shared\directives\searchDirectives.js" />
     <Content Include="app\shared\services\apiService.js" />
