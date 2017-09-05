@@ -76,4 +76,4 @@ System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Room, RealEstate.
 Mapping types:
 List`1 -> List`1
 System.Collections.Generic.List`1[[RealEstate.Entities.Entites.Room, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Logging Start2017-09-04 22:26:18,253 [44] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetRoomByRoomId'.GetRoomById
+2017-09-05 08:09:31,446 [20] ERROR RealEstate.Common.Logs.LogCommon - Object reference not set to an instance of an object.
