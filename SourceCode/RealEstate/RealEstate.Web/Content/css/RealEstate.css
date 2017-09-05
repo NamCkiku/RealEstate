@@ -1877,6 +1877,7 @@ div#owl-demo-people-say .owl-controls {
     border: 1px solid #dde4e9;
     padding-bottom: 15px;
     padding-top: 15px;
+    width:100%;
 }
 
     .box-room-list .listing_wrapper.col-md-12 > .property_listing {
