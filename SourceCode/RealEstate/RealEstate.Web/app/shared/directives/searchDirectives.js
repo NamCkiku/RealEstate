@@ -111,8 +111,6 @@
                 };
 
                 function showPosition(position) {
-<<<<<<< HEAD
-=======
                     var request = new XMLHttpRequest();
 
                     var method = 'GET';

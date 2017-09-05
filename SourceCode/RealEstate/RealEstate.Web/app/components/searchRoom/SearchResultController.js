@@ -43,7 +43,7 @@
                 }
             }
             apiService.get('api/room/getallroomfullsearch', config, function (respone) {
-
+                console.log(respone);
                 $scope.data.listRoom = respone.data.items;
                 console.log($scope.data.listRoom);
                 myBlockUI.stop();
