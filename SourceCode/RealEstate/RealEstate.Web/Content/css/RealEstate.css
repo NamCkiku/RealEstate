@@ -1875,10 +1875,15 @@ div#owl-demo-people-say .owl-controls {
 .box-room-list {
     float: left;
     border: 1px solid #dde4e9;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    width:100%;
+    padding: 10px;
+    padding-right:0px;
+    width: 100%;
 }
+
+    .box-room-list .has_prop_slider {
+        padding:0px;
+        padding-right:10px;
+    }
 
     .box-room-list .listing_wrapper.col-md-12 > .property_listing {
         min-height: 200px;
@@ -1889,7 +1894,7 @@ div#owl-demo-people-say .owl-controls {
         padding-bottom: 0px;
         cursor: pointer;
         position: relative;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         border: 1px solid #dde4e9;
         border-radius: 3px;
         font-size: 13px;
@@ -1962,12 +1967,12 @@ div#owl-demo-people-say .owl-controls {
 
     .box-room-list .property_listing {
         position: relative;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         border: 1px solid #dde4e9;
         border-radius: 3px;
         font-size: 13px;
         background-color: #ffffff;
-        max-width: 525px;
+        width: 100%;
         -webkit-transition: all 0.15s ease;
         -moz-transition: all 0.15s ease;
         -o-transition: all 0.15s ease;
@@ -3131,6 +3136,7 @@ sort-theme .sort-by li:first-child {
         font-weight: 700;
         line-height: 25px;
     }
+
 .post-carusel {
     border-radius: 3px;
     margin-bottom: 26px;
