@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -182,6 +183,8 @@
     <Content Include="bower_components\angular\angular.js" />
     <Content Include="bower_components\angular\angular.min.js" />
     <Content Include="bower_components\angular\index.js" />
+    <Content Include="bower_components\checklist-model\checklist-model.js" />
+    <Content Include="bower_components\checklist-model\LICENSE.txt" />
     <Content Include="bower_components\jquery\AUTHORS.txt" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
     <Content Include="bower_components\jquery\dist\jquery.min.js" />
@@ -3425,6 +3428,10 @@
     <Content Include="bower_components\ng-tags-input\README" />
     <Content Include="app\components\payment\RealEstate.ModalPaymentController.js" />
     <Content Include="Views\RoomDetail\Index.cshtml" />
+    <Content Include="bower_components\checklist-model\.bower.json" />
+    <Content Include="bower_components\checklist-model\bower.json" />
+    <Content Include="bower_components\checklist-model\checklist-model.nuspec" />
+    <Content Include="bower_components\checklist-model\readme.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3435,6 +3442,7 @@
   <ItemGroup>
     <Folder Include="app\shared\filters\" />
     <Folder Include="App_Data\" />
+    <Folder Include="bower_components\checklist-model\test\" />
     <Folder Include="Models\" />
     <Folder Include="Views\PatialView\" />
   </ItemGroup>

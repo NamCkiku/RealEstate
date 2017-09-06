@@ -76,7 +76,7 @@ namespace RealEstate.Service.Service
             try
             {
                 lstroom = _roomRepository.GetMulti(x => x.Status == filter.Status
-                && (filter.RoomTypeID == null || x.RoomTypeID == filter.RoomTypeID)
+                //&& (filter.RoomTypeID == null || x.RoomTypeID == filter.RoomTypeID)
                 && (filter.ProvinceID == null || x.ProvinceID == filter.ProvinceID)
                 && (filter.DistrictID == null || x.DistrictID == filter.DistrictID)
                 && (filter.WardID == null || x.WardID == filter.WardID)
@@ -106,7 +106,7 @@ namespace RealEstate.Service.Service
             try
             {
                 lstroom = _roomRepository.GetMulti(x => x.Status == true
-                && (x.RoomTypeID == filter.RoomTypeID || filter.RoomTypeID == null)
+                //&& (x.RoomTypeID == filter.RoomTypeID || filter.RoomTypeID == null)
                 && (x.Price >= filter.PriceFrom || filter.PriceFrom == null)
                 && (x.Price <= filter.PriceTo || filter.PriceTo == null)
                 && (x.ProvinceID == filter.ProvinceID || filter.ProvinceID == null)

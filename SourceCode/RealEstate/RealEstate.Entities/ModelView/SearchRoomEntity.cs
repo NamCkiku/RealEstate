@@ -8,7 +8,7 @@ namespace RealEstate.Entities.ModelView
 {
     public class SearchRoomEntity
     {
-        public int? RoomTypeID { get; set; }
+        public string RoomTypeID { get; set; }
         public int? PriceFrom { get; set; }
         public int? PriceTo { get; set; }
 
