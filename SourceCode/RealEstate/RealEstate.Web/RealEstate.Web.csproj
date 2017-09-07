@@ -118,6 +118,8 @@
     <Content Include="app\components\base\RealEstate.ModalLoginController.js" />
     <Content Include="app\components\base\RealEstate.ModalRegisterController.js" />
     <Content Include="app\components\createRoom\RealEstate.CreateRoomController.js" />
+    <Content Include="app\components\map\infobox.js" />
+    <Content Include="app\components\map\mapRoomController.js" />
     <Content Include="app\components\room\roomController.js" />
     <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
