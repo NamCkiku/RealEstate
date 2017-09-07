@@ -57,8 +57,10 @@
             });
         }
         function get(url, params, success, failure) {
+           
             authenticationService.setHeader();
             $http.get(baseUrl + url, params).then(function (result) {
+                console.log(result);
                 success(result);
             }, function (error) {
                 console.log(error.status)

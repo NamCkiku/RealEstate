@@ -64,7 +64,7 @@
 
         $scope.fireLoadFilterEvent = function () {
             $scope.fillter = {
-                roomtype: $scope.searchInfo.roomtype.toString(),
+                roomtype: $scope.searchInfo.roomtype,
                 province: $scope.searchInfo.provinceId,
                 district: $scope.searchInfo.districtID,
                 ward: $scope.searchInfo.wardID,
