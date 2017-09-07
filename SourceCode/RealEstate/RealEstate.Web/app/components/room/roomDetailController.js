@@ -12,6 +12,8 @@
         $scope.roomObj = {
 
         }
+       
+        
         $scope.showPhoneNumber = function () {
             $scope.isShowPhone = true;
         }
@@ -31,6 +33,33 @@
                 console.log($scope.roomObj);
                 $scope.roomObj.convenient = JSON.parse(respone.data.convenient);
                 $scope.roomObj.moreImages = JSON.parse(respone.data.moreImages);
+                $timeout(function () {
+                    $('#carousel').flexslider({
+                        animation: "slide",
+                        controlNav: false,
+                        animateHeight: true,
+                        directionNav: true,
+                        animationLoop: false,
+                        slideshow: true,
+                        slideshowSpeed: 7000,
+                        animationDuration: 600,
+                        itemWidth: 120,
+                        asNavFor: '#slider'
+                    });
+                    $('#slider').flexslider({
+                        animation: "slide",
+                        controlNav: false,
+                        animationLoop: false,
+                        slideshow: false,
+                        sync: "#carousel"
+                    });
+                    jQuery('.gallery-item').magnificPopup({
+                        type: 'image',
+                        gallery: {
+                            enabled: true
+                        }
+                    });
+                }, 100);
                 var pos = {
                     lat: respone.data.lat,
                     lng: respone.data.lng

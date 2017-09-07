@@ -1840,6 +1840,7 @@ div#owl-demo-people-say .owl-controls {
 
     .search-map-options .search-map-options-body {
         padding: 16px;
+        float:left;
         border-bottom: 1px solid #eeeeee;
     }
 
@@ -2957,7 +2958,6 @@ sort-theme .sort-by li:first-child {
 .main-info .left-info a {
     text-decoration: none;
     color: #2e3339;
-    margin-left: 5px;
 }
 
     .main-info .left-info a:hover {
