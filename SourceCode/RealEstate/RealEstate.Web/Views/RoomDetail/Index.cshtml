@@ -3,6 +3,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/Plugins/FlexSlider/flexslider.css" rel="stylesheet" />
+<link href="~/Content/css/ct-lightbox.css" rel="stylesheet" />
+<script src="~/Content/Plugins/FlexSlider/jquery.flexslider-min.js"></script>
+<script src="~/Content/js/ct.lightbox.min.js"></script>
+<style>
+    .single-listings #slider {
+        padding-bottom: 0;
+        border: 1px solid #d5d9dd;
+    }
+</style>
 <div class="main-content" ng-controller="RoomDetailController" block-ui="BlockUIRoomDetail">
     <div class="container">
         <div class="row">
@@ -21,31 +31,33 @@
                     <div class="real-estate-detail">
                         <h1 class="title">{{roomObj.roomName}}</h1>
                         <div class="main-info">
-                            <div class="col-md-8 left-info nopadding-xs no-padding-left">
-                                <data-owl-carousel class="owl-carousel" data-options="{navigation: false, pagination: true, rewindNav : false}">
-                                    <div owl-carousel-item="" ng-repeat="item in ::roomObj.moreImages" class="item">
-                                        <a href="" rel="prettyPhoto" class="prettygalery">
-                                            <img ng-src="{{baseUrl}}UploadedFiles/Rooms/{{::item}}" class="img-responsive">
-                                        </a>
-                                    </div>
-                                </data-owl-carousel>
-                                <div id="owl-search" class="owl-carousel owl-theme">
-                                    <div class="item">
-                                        <div class="new-item">
-                                            <a href="#"><img class="img-responsive img-slider" style="width:100%;" src="//bizweb.dktcdn.net/100/174/202/themes/228417/assets/slider_1.jpg?1496653339413" alt="Thẻ alt của ảnh"></a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="new-item">
-                                            <a href="#"><img class="img-responsive img-slider" style="width:100%;" src="//bizweb.dktcdn.net/100/174/202/themes/228417/assets/slider_3.jpg?1496653339413" alt="Thẻ alt của ảnh"></a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="new-item">
-                                            <a href="#"><img class="img-responsive img-slider" style="width:100%;" src="//bizweb.dktcdn.net/100/174/202/themes/228417/assets/slider_2.jpg?1496653339413" alt="Thẻ alt của ảnh"></a>
-                                        </div>
-                                    </div>
+                            <div class="col-md-8 left-info nopadding-xs no-padding-left single-listings">
+                                <!-- Place somewhere in the <body> of your page -->
+                                <div id="slider" class="flexslider">
+                                    <ul class="slides">
+                                        <li data-thumb="{{baseUrl}}UploadedFiles/Rooms/{{item}}" ng-repeat="item in roomObj.moreImages">
+                                            <a class="gallery-item" href="{{baseUrl}}UploadedFiles/Rooms/{{item}}">
+                                                <img ng-src="{{baseUrl}}UploadedFiles/Rooms/{{item}}" class="img-responsive">
+                                            </a>
+                                        </li>
+                                        <!-- items mirrored twice, total of 12 -->
+                                    </ul>
                                 </div>
+                                <div id="carousel" class="flexslider">
+                                    <ul class="slides">
+                                        <li ng-repeat="item in roomObj.moreImages">
+                                            <img ng-src="{{baseUrl}}UploadedFiles/Rooms/{{item}}" class="img-responsive">
+                                        </li>
+                                        <!-- items mirrored twice, total of 12 -->
+                                    </ul>
+                                </div>
+                                @*<div id="owl-moreImages" class="owl-carousel owl-theme">
+                                        <div class="item" ng-repeat="item in roomObj.moreImages">
+                                            <div class="new-item">
+                                                <img ng-src="{{baseUrl}}UploadedFiles/Rooms/{{item}}" class="img-responsive">
+                                            </div>
+                                        </div>
+                                    </div>*@
                                 <div class="clearfix"></div>
                                 <div class="room-detail-info margin-bottom-15">
                                     <div class="address">

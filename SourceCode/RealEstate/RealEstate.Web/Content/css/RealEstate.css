@@ -2957,7 +2957,6 @@ sort-theme .sort-by li:first-child {
 .main-info .left-info a {
     text-decoration: none;
     color: #2e3339;
-    margin-left: 5px;
 }
 
     .main-info .left-info a:hover {
