@@ -1840,6 +1840,7 @@ div#owl-demo-people-say .owl-controls {
 
     .search-map-options .search-map-options-body {
         padding: 16px;
+        float:left;
         border-bottom: 1px solid #eeeeee;
     }
 
