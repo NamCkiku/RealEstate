@@ -49,7 +49,7 @@
                 width: "300px",
                 height: "285px"
             },
-            pixelOffset: new google.maps.Size(-122, -20),
+            pixelOffset: new google.maps.Size(-127, -40),
             zIndex: 999999,
             closeBoxMargin: "0 0 -15px 0",
             closeBoxURL: 'http://multimonitorcomputer.com/images/icon-close.png',
@@ -139,101 +139,105 @@
                 for (var i = 0; i < $scope.markers.length; i++) {
                     $scope.markers[i].setMap(null);
                 }
+                google.maps.event.trigger($scope.infobox, 'closeclick');
             }
-            $.each(props, function (i, prop) {
-                var latlng = new google.maps.LatLng(prop.lat, prop.lng);
-                var marker_url = 'https://cdn1.iconfinder.com/data/icons/communication-social-media-set-2/512/15-512.png';
-                var marker_size = new google.maps.Size(44, 56);
-                if (window.devicePixelRatio > 1.5) {
-                    if (prop.retinaIcon) {
-                        marker_url = 'https://cdn1.iconfinder.com/data/icons/communication-social-media-set-2/512/15-512.png';
-                        marker_size = new google.maps.Size(44, 56);
+            else {
+                $.each(props, function (i, prop) {
+                    var latlng = new google.maps.LatLng(prop.lat, prop.lng);
+                    var marker_url = 'https://images.vexels.com/media/users/3/142675/isolated/preview/84e468a8fff79b66406ef13d3b8653e2-house-location-marker-icon-by-vexels.png';
+                    var marker_size = new google.maps.Size(60, 60);
+                    if (window.devicePixelRatio > 1.5) {
+                        if (prop.retinaIcon) {
+                            marker_url = 'https://images.vexels.com/media/users/3/142675/isolated/preview/84e468a8fff79b66406ef13d3b8653e2-house-location-marker-icon-by-vexels.png';
+                            marker_size = new google.maps.Size(60, 60);
+                        }
                     }
-                }
 
-                var marker_icon = {
-                    url: 'https://cdn1.iconfinder.com/data/icons/communication-social-media-set-2/512/15-512.png',
-                    size: marker_size,
-                    scaledSize: new google.maps.Size(44, 56),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(7, 27)
-                };
+                    var marker_icon = {
+                        url: 'https://images.vexels.com/media/users/3/142675/isolated/preview/84e468a8fff79b66406ef13d3b8653e2-house-location-marker-icon-by-vexels.png',
+                        size: marker_size,
+                        scaledSize: new google.maps.Size(60, 60),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(7, 27)
+                    };
 
-                $scope.marker = new google.maps.Marker({
-                    position: latlng,
-                    map: map,
-                    icon: marker_icon,
-                    draggable: false,
-                    animation: google.maps.Animation.DROP,
-                    //title: 'marker-'+prop.sanitizetitle
-                });
+                    $scope.marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map,
+                        icon: marker_icon,
+                        draggable: false,
+                        animation: google.maps.Animation.DROP,
+                        //title: 'marker-'+prop.sanitizetitle
+                    });
 
-                var prop_title = prop.data ? prop.data.post_title : prop.title;
+                    var prop_title = prop.data ? prop.data.post_title : prop.title;
 
-                var infoboxContent = document.createElement("div");
-                infoboxContent.className = 'box-room-info item-grid map-info-box';
-                infoboxContent.innerHTML = '<div class="col-lg-12 no-touch">' +
-                '<a href="/chi-tiet-phong/' + prop.alias + '-' + prop.id + '" class="card" id="card-309">' +
-                   ' <div class="figure">' +
+                    var infoboxContent = document.createElement("div");
+                    infoboxContent.className = 'box-room-info item-grid map-info-box';
+                    infoboxContent.innerHTML = '<div class="col-lg-12 no-touch">' +
+                        '<a href="/chi-tiet-phong/' + prop.alias + '-' + prop.id + '" class="card" id="card-309">' +
+                        ' <div class="figure">' +
                         '<div class="featured-label">' +
-                            '<div class="featured-label-left"></div>' +
-                            '<div class="featured-label-content"><span class="fa fa-star"></span></div>' +
-                            '<div class="featured-label-right"></div>' +
-                            '<div class="clearfix"></div>' +
+                        '<div class="featured-label-left"></div>' +
+                        '<div class="featured-label-content"><span class="fa fa-star"></span></div>' +
+                        '<div class="featured-label-right"></div>' +
+                        '<div class="clearfix"></div>' +
                         '</div>' +
                         '<div class="img" style="background-image:url(' + $scope.baseUrl + '' + prop.thumbnailImage + ');"></div>' +
                         '<div class="figCaption">' +
-                            '<div><span class="fa fa-home" style="margin-right:10px"></span>' + prop.roomTypeName + '</div>' +
-                            '<span><span class="fa fa-eye"></span>' + prop.viewCount + '</span>' +
-                            '<span><span class="fa fa-heart-o"></span> 2</span>' +
+                        '<div><span class="fa fa-home" style="margin-right:10px"></span>' + prop.roomTypeName + '</div>' +
+                        '<span><span class="fa fa-eye"></span>' + prop.viewCount + '</span>' +
+                        '<span><span class="fa fa-heart-o"></span> 2</span>' +
                         '</div>' +
                         '<div class="figView"><span class="fa fa-eye"></span></div>' +
-                        '<div class="figType">' + prop.price + ' Đ/tháng</div>' +
-                    '</div>' +
-                    '<h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">' + prop.roomName + '</h2>' +
-                    '<div class="cardAddress">' +
-                       '<span class="fa fa-map-marker" style="margin-right:10px;"></span>' + prop.address + '' +
-                    '</div>' +
-                    '<ul class="cardFeat">' +
-                        '<li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>' + prop.createdDate + '</span></li>' +
+                        '<div class="figType">' + $filter('currency')(prop.price, "", 0) + ' đ/tháng</div>' +
+                        '</div>' +
+                        '<h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">' + prop.roomName + '</h2>' +
+                        '<div class="cardAddress">' +
+                        '<span class="fa fa-map-marker" style="margin-right:10px;"></span>' + prop.address + '' +
+                        '</div>' +
+                        '<ul class="cardFeat">' +
+                        '<li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>' + $filter('timeago')(prop.createdDate, true) + '</span></li>' +
                         '<li><span class="fa fa-info"></span><span style="margin-left:5px;">' + prop.acreage + ' m<sup>2</sup></span></li>' +
                         '<li><span class="fa fa-male"></span><span style="margin-left:5px;">' + prop.userName + '</span></li>' +
-                    '</ul>' +
-                    '<div class="clearfix"></div>' +
-                '</a>' +
-            '</div>';
+                        '</ul>' +
+                        '<div class="clearfix"></div>' +
+                        '</a>' +
+                        '</div>';
 
-                google.maps.event.addListener($scope.marker, 'click', (function (marker, i) {
-                    return function () {
-                        var scale = Math.pow(2, map.getZoom());
-                        var offsety = ((100 / scale) || 0);
-                        var projection = map.getProjection();
-                        var markerPosition = marker.getPosition();
-                        var markerScreenPosition = projection.fromLatLngToPoint(markerPosition);
-                        var pointHalfScreenAbove = new google.maps.Point(markerScreenPosition.x, markerScreenPosition.y - offsety);
-                        var aboveMarkerLatLng = projection.fromPointToLatLng(pointHalfScreenAbove);
-                        map.setCenter(aboveMarkerLatLng);
-                        $scope.infobox.setContent(infoboxContent);
-                        $scope.infobox.open(map, marker);
+                    google.maps.event.addListener($scope.marker, 'click', (function (marker, i) {
+                        return function () {
+                            var scale = Math.pow(2, map.getZoom());
+                            var offsety = ((100 / scale) || 0);
+                            var projection = map.getProjection();
+                            var markerPosition = marker.getPosition();
+                            var markerScreenPosition = projection.fromLatLngToPoint(markerPosition);
+                            var pointHalfScreenAbove = new google.maps.Point(markerScreenPosition.x, markerScreenPosition.y - offsety);
+                            var aboveMarkerLatLng = projection.fromPointToLatLng(pointHalfScreenAbove);
+                            map.setCenter(aboveMarkerLatLng);
+                            $scope.infobox.setContent(infoboxContent);
+                            $scope.infobox.open(map, marker);
 
-                    }
-                })($scope.marker, i));
+                        }
+                    })($scope.marker, i));
 
-                $scope.markers.push($scope.marker);
-            });
-            var markerCluster = new MarkerClusterer(map, $scope.markers,
-            {
-                maxZoom: 18,
-                gridSize: 60,
-                styles: [
+                    $scope.markers.push($scope.marker);
+                });
+                var markerCluster = new MarkerClusterer(map, $scope.markers,
                     {
-                        url: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/cluster-icon.png',
-                        width: 48,
-                        height: 48,
-                        textColor: "#fff"
-                    }
-                ]
-            });
+                        maxZoom: 18,
+                        gridSize: 60,
+                        styles: [
+                            {
+                                url: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/cluster-icon.png',
+                                width: 48,
+                                height: 48,
+                                textColor: "#fff"
+                            }
+                        ]
+                    });
+            }
+
         }
 
 
@@ -701,7 +705,7 @@
             myBlockUI.start();
             var config = {
                 params: {
-                    RoomTypeID: $scope.searchInfo.roomtype.toString(),
+                    RoomTypeID: $scope.searchInfo.roomtype,
                     PriceFrom: $scope.sliderFrice.minValue * 1000000,
                     PriceTo: $scope.sliderFrice.maxValue * 1000000,
                     WardID: $scope.searchInfo.wardID,
@@ -718,7 +722,8 @@
             }
             apiService.get('api/room/getallroomfullsearch', config, function (respone) {
                 $scope.data.listRoom = respone.data.items;
-                $scope.AddMarkers(respone.data.items, $scope.map)
+                $scope.AddMarkers(respone.data.items, $scope.map);
+                $scope.nextRoomMap();
                 myBlockUI.stop();
             }, function (respone) {
                 myBlockUI.stop();
