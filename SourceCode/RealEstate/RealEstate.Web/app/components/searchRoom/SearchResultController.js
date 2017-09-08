@@ -7,6 +7,9 @@
         $scope.data = {
             lstRoom: [],
         }
+
+        $scope.filter;
+
         $scope.baseUrl = $rootScope.baseUrl;
         $scope.pageLoad = function () {
             $scope.loadAllRoomByQueryString();
@@ -17,10 +20,12 @@
 
 
         $scope.$on('fireLoadFillterEvent', function (event, searchObj) {
+            $scope.filter = searchObj;
             // Lọc phòng theo tiêu chí
             $scope.FilterRoom = function () {
                 var myBlockUI = blockUI.instances.get('BlockUIRoom');
                 myBlockUI.start();
+
                 var config = {
                     params: {
                         RoomTypeID: searchObj.roomtype,
@@ -50,6 +55,38 @@
             }
             $scope.FilterRoom();
         });
+
+        $scope.DataSort = function (data) {
+            console.log($scope.filter);
+            var myBlockUI = blockUI.instances.get('BlockUIRoom');
+            myBlockUI.start();
+            var config = {
+                params: {
+                    RoomTypeID: "",
+                    PriceFrom: "",
+                    PriceTo: "",
+                    WardID: "",
+                    DistrictID: "",
+                    ProvinceID: "",
+                    Keywords: null,
+                    StartDate: null,
+                    EndDate: null,
+                    Status: true,
+                    page: 1,
+                    pageSize: 10,
+                    sort: data
+                }
+            };
+                apiService.get('api/room/getallroomfullsearch', config, function (respone) {
+
+                $scope.data.listRoom = respone.data.items;
+                console.log($scope.data.listRoom);
+                myBlockUI.stop();
+            }, function (respone) {
+                myBlockUI.stop();
+                BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
+            });
+        }
 
         $scope.loadAllRoomByQueryString = function () {
             if (QueryString.searchIndex == 'true') {

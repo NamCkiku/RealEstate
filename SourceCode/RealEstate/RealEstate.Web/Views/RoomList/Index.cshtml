@@ -74,12 +74,12 @@
                         <i class="fa fa-sort-amount-asc hidden-sm" aria-hidden="true"></i>
                         <div class="sort-by">
                             <ul>
-                                <li data-sort="id" class="">Mới nhất</li>
-                                <li data-sort="price-asc">Giá từ thấp đến cao</li>
-                                <li data-sort="price-desc">Giá từ cao đến đến thấp</li>
-                                <li data-sort="alpha-asc">Tên A - Z</li>
-                                <li data-sort="alpha-desc">Tên Z - A</li>
-                                <li data-sort="discount-asc">Bán chạy nhất</li>
+                                <li data-sort="id" class="" ng-click="DataSort('news')">Mới nhất</li>
+                                <li data-sort="price-asc" ng-click="DataSort('pricemax')">Giá từ thấp đến cao</li>
+                                <li data-sort="price-desc" ng-click="DataSort('pricemin')">Giá từ cao đến đến thấp</li>
+                                <li data-sort="alpha-asc" ng-click="DataSort('az')">Tên A - Z</li>
+                                <li data-sort="alpha-desc" ng-click="DataSort('za')">Tên Z - A</li>
+                                <li data-sort="discount-asc" ng-click="DataSort('hot')">Bán chạy nhất</li>
                             </ul>
                         </div>
                     </div>
