@@ -23,6 +23,11 @@ namespace RealEstate.Web
             url: "dang-tin-mien-phi",
             defaults: new { controller = "RoomManage", id = UrlParameter.Optional, action = "Create" }
             );
+            routes.MapRoute(
+            name: "Map",
+            url: "ban-do",
+            defaults: new { controller = "Map", id = UrlParameter.Optional, action = "Index" }
+            );
 
             routes.MapRoute(
            name: "Index",

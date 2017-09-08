@@ -6,6 +6,7 @@
     function MapRoomController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $modal, $log, authData, authenticationService, loginService, $filter, $sce) {
         $scope.baseUrl = $rootScope.baseUrl;
         $scope.markers = [];
+        $scope.current_marker = 0;
         var placesIDs = new Array();
         var transportationsMarkers = new Array();
         var supermarketsMarkers = new Array();
@@ -41,12 +42,17 @@
         }
         $scope.infobox = new InfoBox({
             disableAutoPan: true, //false
-            maxWidth: 275,
+            maxWidth: 200,
             alignBottom: true,
-            pixelOffset: new google.maps.Size(-122, -48),
-            zIndex: null,
-            closeBoxMargin: "0 0 -16px -16px",
-            //closeBoxURL: infoboxClose,
+            boxStyle: {
+                opacity: 1,
+                width: "300px",
+                height: "285px"
+            },
+            pixelOffset: new google.maps.Size(-122, -20),
+            zIndex: 999999,
+            closeBoxMargin: "0 0 -15px 0",
+            closeBoxURL: 'http://multimonitorcomputer.com/images/icon-close.png',
             infoBoxClearance: new google.maps.Size(1, 1),
             isHidden: false,
             pane: "floatPane",
@@ -129,10 +135,13 @@
          *  Houzez Add Marker
          * -------------------------------------------------------------------------*/
         $scope.AddMarkers = function (props, map) {
+            if (props.length == 0) {
+                for (var i = 0; i < $scope.markers.length; i++) {
+                    $scope.markers[i].setMap(null);
+                }
+            }
             $.each(props, function (i, prop) {
-
                 var latlng = new google.maps.LatLng(prop.lat, prop.lng);
-
                 var marker_url = 'https://cdn1.iconfinder.com/data/icons/communication-social-media-set-2/512/15-512.png';
                 var marker_size = new google.maps.Size(44, 56);
                 if (window.devicePixelRatio > 1.5) {
@@ -162,31 +171,37 @@
                 var prop_title = prop.data ? prop.data.post_title : prop.title;
 
                 var infoboxContent = document.createElement("div");
-                infoboxContent.className = 'property-item item-grid map-info-box';
-                infoboxContent.innerHTML = '' +
-                    '<div class="figure-block">' +
-                    '<figure class="item-thumb">' +
-                    '<div class="price hide-on-list">' +
-                    '<span class="item-price">' + prop.price + '</span>' +
+                infoboxContent.className = 'box-room-info item-grid map-info-box';
+                infoboxContent.innerHTML = '<div class="col-lg-12 no-touch">' +
+                '<a href="/chi-tiet-phong/' + prop.alias + '-' + prop.id + '" class="card" id="card-309">' +
+                   ' <div class="figure">' +
+                        '<div class="featured-label">' +
+                            '<div class="featured-label-left"></div>' +
+                            '<div class="featured-label-content"><span class="fa fa-star"></span></div>' +
+                            '<div class="featured-label-right"></div>' +
+                            '<div class="clearfix"></div>' +
+                        '</div>' +
+                        '<div class="img" style="background-image:url(' + $scope.baseUrl + '' + prop.thumbnailImage + ');"></div>' +
+                        '<div class="figCaption">' +
+                            '<div><span class="fa fa-home" style="margin-right:10px"></span>' + prop.roomTypeName + '</div>' +
+                            '<span><span class="fa fa-eye"></span>' + prop.viewCount + '</span>' +
+                            '<span><span class="fa fa-heart-o"></span> 2</span>' +
+                        '</div>' +
+                        '<div class="figView"><span class="fa fa-eye"></span></div>' +
+                        '<div class="figType">' + prop.price + ' Đ/tháng</div>' +
                     '</div>' +
-                    '<a href="' + prop.url + '" class="hover-effect" tabindex="0">' + prop.thumbnail + '</a>' +
-                    '</figure>' +
+                    '<h2 title="Cho thuê phòng trọ tại Thái Thịnh Hà Nội">' + prop.roomName + '</h2>' +
+                    '<div class="cardAddress">' +
+                       '<span class="fa fa-map-marker" style="margin-right:10px;"></span>' + prop.address + '' +
                     '</div>' +
-                    '<div class="item-body">' +
-                    '<div class="body-left">' +
-                    '<div class="info-row">' +
-                    '<h2><a target="_blank" href="' + prop.url + '">' + prop_title + '</a></h2>' +
-                    '<h4>' + prop.address + '</h4>' +
-                    '</div>' +
-                    '<div class="table-list full-width info-row">' +
-                    '<div class="cell">' +
-                    '<div class="info-row amenities">' + prop.prop_meta +
-                    '<p>' + prop.type + '</p>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
+                    '<ul class="cardFeat">' +
+                        '<li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>' + prop.createdDate + '</span></li>' +
+                        '<li><span class="fa fa-info"></span><span style="margin-left:5px;">' + prop.acreage + ' m<sup>2</sup></span></li>' +
+                        '<li><span class="fa fa-male"></span><span style="margin-left:5px;">' + prop.userName + '</span></li>' +
+                    '</ul>' +
+                    '<div class="clearfix"></div>' +
+                '</a>' +
+            '</div>';
 
                 google.maps.event.addListener($scope.marker, 'click', (function (marker, i) {
                     return function () {
@@ -205,6 +220,19 @@
                 })($scope.marker, i));
 
                 $scope.markers.push($scope.marker);
+            });
+            var markerCluster = new MarkerClusterer(map, $scope.markers,
+            {
+                maxZoom: 18,
+                gridSize: 60,
+                styles: [
+                    {
+                        url: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/cluster-icon.png',
+                        width: 48,
+                        height: 48,
+                        textColor: "#fff"
+                    }
+                ]
             });
         }
 
@@ -513,6 +541,158 @@
             poiMap.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(poiControlDiv);
         }
 
+
+        $scope.nextRoomMap = function () {
+            $scope.current_marker++;
+            if ($scope.current_marker > $scope.markers.length) {
+                $scope.current_marker = $scope.markers.length;
+            }
+            while ($scope.markers[$scope.current_marker - 1].visible === false) {
+                $scope.current_marker++;
+                if ($scope.current_marker > $scope.markers.length) {
+                    $scope.current_marker = 1;
+                }
+            }
+            if ($scope.map.getZoom() < 15) {
+                $scope.map.setZoom(15);
+            }
+            google.maps.event.trigger($scope.markers[$scope.current_marker - 1], 'click');
+        }
+
+        $scope.previousRoomMap = function () {
+            $scope.current_marker--;
+            if ($scope.current_marker < 1) {
+                $scope.current_marker = $scope.markers.length;
+            }
+            while ($scope.markers[$scope.current_marker - 1].visible === false) {
+                $scope.current_marker--;
+                if ($scope.current_marker > markers.length) {
+                    $scope.current_marker = 1;
+                }
+            }
+            if ($scope.map.getZoom() < 15) {
+                $scope.map.setZoom(15);
+            }
+            google.maps.event.trigger($scope.markers[$scope.current_marker - 1], 'click');
+        }
+
+        $scope.GeoLocation = function () {
+
+            // get my location useing HTML5 geolocation
+
+            var googleGeoProtocol = true;
+            var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+            if (isChrome) {
+
+                if (document.location.protocol === 'http:') {
+
+                    googleGeoProtocol = false;
+
+                }
+
+            }
+
+            if (googleGeoProtocol) {
+
+                if (navigator.geolocation) {
+
+                    navigator.geolocation.getCurrentPosition(function (position) {
+
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        var geocoder = new google.maps.Geocoder;
+                        //var infowindow = new google.maps.InfoWindow;
+
+                        // var latLng   = new google.maps.LatLng( position.coords.latitude, position.coords.longitude );
+
+                        geocoder.geocode({ 'location': pos }, function (results, status) {
+                            if (status === 'OK') {
+                                if (results[1]) {
+                                    console.log(results[1]);
+                                    // map.setZoom(11);
+                                    var marker = new google.maps.Marker({
+                                        position: pos,
+                                        map: $scope.map
+                                    });
+                                    /*infowindow.setContent(results[1].formatted_address);
+                                    infowindow.open(map, marker);*/
+                                } else {
+                                    window.alert('No results found');
+                                }
+                            } else {
+                                window.alert('Geocoder failed due to: ' + status);
+                            }
+                        });
+
+
+                        // alert( 'icon : ' + clusterIcon );
+
+                        var circle = new google.maps.Circle({
+                            strokeColor: '#67cfd8',
+                            strokeOpacity: 0.6,
+                            strokeWeight: 1,
+                            fillColor: '#67cfd8',
+                            fillOpacity: 0.2,
+                            center: $scope.myLatlng,
+                            map: $scope.map,
+                            radius: Math.sqrt(2500000)
+                        });
+
+                        // circle.bindTo('center', marker, 'position');
+                        $scope.map.fitBounds(circle.getBounds());
+                        // map.setCenter(pos);
+
+                    }, function () {
+
+                        handleLocationError(true, $scope.map, $scope.map.getCenter());
+
+                    });
+
+                }
+
+            } else {
+
+                $.getJSON('http://ipinfo.io', function (data) {
+                    // console.log(data);
+                    var localtion = data.loc;
+                    var localtion = localtion.split(",");
+
+                    var localtion = {
+                        lat: localtion[0] * 1,
+                        lng: localtion[1] * 1
+                    };
+
+                    var circle = new google.maps.Circle({
+                        strokeColor: '#67cfd8',
+                        strokeOpacity: 0.6,
+                        strokeWeight: 1,
+                        fillColor: '#67cfd8',
+                        fillOpacity: 0.2,
+                        center: $scope.myLatlng,
+                        map: $scope.map,
+                        radius: Math.sqrt(2500000)
+                    });
+
+                    // circle.bindTo('center', marker, 'position');
+                    $scope.map.fitBounds(circle.getBounds());
+
+                    var marker = new google.maps.Marker({
+                        position: localtion,
+                        animation: google.maps.Animation.DROP,
+                        // icon: clusterIcon,
+                        map: $scope.map
+                    });
+                    $scope.map.setCenter(localtion);
+                });
+
+            }
+
+        }
+
         $scope.search = function () {
             $scope.FilterRoom();
         }
@@ -538,8 +718,7 @@
             }
             apiService.get('api/room/getallroomfullsearch', config, function (respone) {
                 $scope.data.listRoom = respone.data.items;
-                $scope.setPOIControls($scope.map, $scope.map.getCenter());
-                $scope.AddMarkers(respone.data.items,$scope.map)
+                $scope.AddMarkers(respone.data.items, $scope.map)
                 myBlockUI.stop();
             }, function (respone) {
                 myBlockUI.stop();
@@ -547,5 +726,6 @@
             });
         }
         $scope.FilterRoom();
+        $scope.setPOIControls($scope.map, $scope.map.getCenter());
     }
 })(angular.module('myApp'));
