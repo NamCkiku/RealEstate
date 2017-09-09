@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using RealEstate.Common.Helper;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 namespace RealEstate.Api.Controllers
 {
     [RoutePrefix("api/upload")]
@@ -47,7 +50,7 @@ namespace RealEstate.Api.Controllers
                     if (postedFile != null && postedFile.ContentLength > 0)
                     {
 
-                        int MaxContentLength = 1024 * 1024 * 1; //Size = 1 MB
+                        int MaxContentLength = 1024 * 1024 * 2; //Size = 1 MB
 
                         IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
                         var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
@@ -97,10 +100,8 @@ namespace RealEstate.Api.Controllers
                             }
 
                             string path = Path.Combine(HttpContext.Current.Server.MapPath(directory), postedFile.FileName);
-                            //Userimage myfolder name where i want to save my image
-                            //string pathLogo = Path.Combine(HttpContext.Current.Server.MapPath("/UploadedFiles/Rooms/logo.png"), postedFile.FileName);
-                            //ImageHelper.Images(pathLogo, path, 50, 50, postedFile.FileName);
-                            postedFile.SaveAs(path);
+                            var statusUp = AddLogoToImage(postedFile);
+                            statusUp.Save(path);
                             return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, postedFile.FileName));
                         }
                     }
@@ -155,6 +156,7 @@ namespace RealEstate.Api.Controllers
             string fileName = string.Empty;
             foreach (MultipartFileData fileData in provider.FileData)
             {
+               
                 fileName = fileData.Headers.ContentDisposition.FileName;
                 if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
                 {
@@ -167,11 +169,88 @@ namespace RealEstate.Api.Controllers
                 }
                 if (File.Exists(Path.Combine(dataFolder, fileName)))
                     File.Delete(Path.Combine(dataFolder, fileName));
+              
                 File.Move(fileData.LocalFileName, Path.Combine(dataFolder, fileName));
+                AddLogoToImageMulti(fileData.LocalFileName, "~/UploadedFiles/Rooms" , fileName);
                 File.Delete(fileData.LocalFileName);
             }
 
             Request.CreateResponse(HttpStatusCode.OK, new { fileName = fileName });
         }
+
+        /// <summary>
+        /// Gắn logo vào hình ảnh
+        /// </summary>
+        /// <param name="file">File</param>
+        /// <param name="directory">Đường dẫn thư mục</param>
+        /// <param name="fileName">Tên file</param>
+        /// ThaoNV 9/9/2017 created
+        public Image AddLogoToImage(HttpPostedFile file)
+        {
+            try
+            {
+                // Đường dẫn file Logo cần chèn
+                string logo = HttpContext.Current.Server.MapPath("~/Content/logo/Logobizland.png");
+
+                // Tạo đối tượng Bitmap truyền vào đường dẫn File ảnh
+                System.IO.Stream fileStream = file.InputStream;
+                fileStream.Position = 0;
+                byte[] fileContents = new byte[file.ContentLength];
+                fileStream.Read(fileContents, 0, file.ContentLength);
+                System.Drawing.Image image = System.Drawing.Image.FromStream(new System.IO.MemoryStream(fileContents));
+
+                // Tạo đối tượng Graphic từ Bitmap
+                Graphics myGraphics = Graphics.FromImage(image);
+                // Vẽ lại hình ảnh, chèn nội dung mới vào.
+                Bitmap myBitmapLogo = new Bitmap(logo);
+                myBitmapLogo.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                myGraphics.DrawImage(myBitmapLogo, image.Width - 20 - myBitmapLogo.Width, image.Height - 20 - myBitmapLogo.Height, myBitmapLogo.Width, myBitmapLogo.Height);
+
+                // Xuất hình ảnh mới
+                HttpContext.Current.Response.ContentType = "image/jpeg";
+                image.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
+
+                // Dùng code này nếu lưu ảnh
+               // image.Save(HttpContext.Current.Server.MapPath(directory + "/" + fileName));
+                return image;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public string AddLogoToImageMulti(string path,string  dataFolder, string fileName)
+        {
+            try
+            {
+                // Đường dẫn file ảnh. 
+                string imageFile = path;
+                // Đường dẫn file Logo cần chèn
+                string logo = HttpContext.Current.Server.MapPath("~/Content/logo/Logobizland.png");
+
+                // Tạo đối tượng Bitmap truyền vào đường dẫn File ảnh
+                Bitmap myBitmap = new Bitmap(imageFile);
+                // Tạo đối tượng Graphic từ Bitmap
+                Graphics myGraphics = Graphics.FromImage(myBitmap);
+                // Vẽ lại hình ảnh, chèn nội dung mới vào.
+                Bitmap myBitmapLogo = new Bitmap(logo);
+                myBitmapLogo.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                myGraphics.DrawImage(myBitmapLogo, myBitmap.Width - 20 - myBitmapLogo.Width, myBitmap.Height - 20 - myBitmapLogo.Height, myBitmapLogo.Width, myBitmapLogo.Height);
+
+                // Xuất hình ảnh mới
+                HttpContext.Current.Response.ContentType = "image/jpeg";
+                myBitmap.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
+
+                // Dùng code này nếu lưu ảnh
+                myBitmap.Save(HttpContext.Current.Server.MapPath(dataFolder + "/" + fileName));
+                return path;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
     }
 }
