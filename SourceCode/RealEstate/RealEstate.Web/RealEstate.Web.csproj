@@ -562,6 +562,8 @@
     <Content Include="Content\img\app_store.png" />
     <Content Include="Content\img\boy-512.png" />
     <Content Include="Content\img\google_play.png" />
+    <Content Include="Content\img\iconmarker.png" />
+    <Content Include="Content\img\iconmarkersmall.png" />
     <Content Include="Content\img\Logobizland.png" />
     <Content Include="Content\img\range-icon.png" />
     <Content Include="Content\js\bootstrapextend.min.js" />

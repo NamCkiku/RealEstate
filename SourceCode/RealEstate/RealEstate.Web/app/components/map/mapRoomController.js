@@ -49,7 +49,7 @@
                 width: "300px",
                 height: "285px"
             },
-            pixelOffset: new google.maps.Size(-127, -40),
+            pixelOffset: new google.maps.Size(-135, -43),
             zIndex: 999999,
             closeBoxMargin: "0 0 -15px 0",
             closeBoxURL: 'http://multimonitorcomputer.com/images/icon-close.png',
@@ -144,19 +144,12 @@
             else {
                 $.each(props, function (i, prop) {
                     var latlng = new google.maps.LatLng(prop.lat, prop.lng);
-                    var marker_url = 'https://images.vexels.com/media/users/3/142675/isolated/preview/84e468a8fff79b66406ef13d3b8653e2-house-location-marker-icon-by-vexels.png';
-                    var marker_size = new google.maps.Size(60, 60);
-                    if (window.devicePixelRatio > 1.5) {
-                        if (prop.retinaIcon) {
-                            marker_url = 'https://images.vexels.com/media/users/3/142675/isolated/preview/84e468a8fff79b66406ef13d3b8653e2-house-location-marker-icon-by-vexels.png';
-                            marker_size = new google.maps.Size(60, 60);
-                        }
-                    }
-
+                    var marker_url = '/Content/img/iconmarker.png';
+                    var marker_size = new google.maps.Size(44, 56);
                     var marker_icon = {
-                        url: 'https://images.vexels.com/media/users/3/142675/isolated/preview/84e468a8fff79b66406ef13d3b8653e2-house-location-marker-icon-by-vexels.png',
+                        url: marker_url,
                         size: marker_size,
-                        scaledSize: new google.maps.Size(60, 60),
+                        scaledSize: new google.maps.Size(44, 56),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(7, 27)
                     };
@@ -225,7 +218,7 @@
                 });
                 var markerCluster = new MarkerClusterer(map, $scope.markers,
                     {
-                        maxZoom: 18,
+                        maxZoom: 14,
                         gridSize: 60,
                         styles: [
                             {
@@ -723,7 +716,9 @@
             apiService.get('api/room/getallroomfullsearch', config, function (respone) {
                 $scope.data.listRoom = respone.data.items;
                 $scope.AddMarkers(respone.data.items, $scope.map);
-                $scope.nextRoomMap();
+                if ($scope.data.listRoom.length > 0) {
+                    $scope.nextRoomMap();
+                }
                 myBlockUI.stop();
             }, function (respone) {
                 myBlockUI.stop();
