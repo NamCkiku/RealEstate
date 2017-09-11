@@ -130,3 +130,28 @@ Logging Start2017-09-09 14:44:38,950 [8] ERROR RealEstate.Common.Logs.LogCommon 
 Logging Start2017-09-09 15:01:52,555 [9] ERROR RealEstate.Common.Logs.LogCommon - 'E:/Project/PhongTot/RealEstate/SourceCode/RealEstate/RealEstate.Api/UploadedFiles/Rooms/20161126_082845.jpg' is a physical path, but a virtual path was expected.
 2017-09-09 15:02:01,694 [22] ERROR RealEstate.Common.Logs.LogCommon - 'E:/Project/PhongTot/RealEstate/SourceCode/RealEstate/RealEstate.Api/UploadedFiles/Rooms/20161126_082845.jpg' is a physical path, but a virtual path was expected.
 2017-09-09 15:02:02,546 [9] ERROR RealEstate.Common.Logs.LogCommon - 'E:/Project/PhongTot/RealEstate/SourceCode/RealEstate/RealEstate.Api/UploadedFiles/Rooms/20161126_082845.jpg' is a physical path, but a virtual path was expected.
+Logging Start2017-09-11 12:53:26,682 [6] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.RoomListEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-11 12:53:36,718 [5] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.RoomListEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+Logging Start2017-09-11 12:54:34,913 [20] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.RoomListEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-11 12:54:45,326 [5] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.RoomListEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-11 12:54:53,745 [5] ERROR RealEstate.Common.Logs.LogCommon - Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.RoomListEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]

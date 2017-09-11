@@ -49,16 +49,16 @@ namespace RealEstate.Api.Controllers
         [Route("getallroom")]
         [CacheOutput(ClientTimeSpan = 100)]
         [HttpGet]
-        public HttpResponseMessage GetAllRoom(HttpRequestMessage request, int top = 10)
+        public HttpResponseMessage GetAllRoom(HttpRequestMessage request, int top = 20)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
             try
             {
                 responeResult = CreateHttpResponse(request, () =>
                 {
-                    var listRoom = _roomService.GetAllListRoom(top).OrderByDescending(x => x.DisplayOrder).ToList();
+                    var listRoom = _roomService.GetAllRoomHotStoreProc(top).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
+                    var listRoomVm = Mapper.Map<List<ListRoomViewModel>>(listRoom);
 
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listRoomVm);
 
@@ -233,13 +233,13 @@ namespace RealEstate.Api.Controllers
 
 
         /// <summary>
-        /// Hàm trả về danh sách phòng có vip.
+        /// Hàm trả về danh sách phòng liên quan với phòng đang xem.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns></returns>
         /// <Modified>
         /// Name     Date         Comments
-        /// namth  6/19/2017   created
+        /// namth  9/11/2017   created
         /// </Modified>
         [Route("getallreatedroombyid")]
         [CacheOutput(ClientTimeSpan = 100)]
@@ -266,7 +266,38 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
+        /// <summary>
+        /// Hàm trả về danh sách phòng liên quan với phòng đang xem.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  9/11/2017   created
+        /// </Modified>
+        [Route("increaseview")]
+        [CacheOutput(ClientTimeSpan = 100)]
+        [HttpGet]
+        public HttpResponseMessage IncreaseView(HttpRequestMessage request, int id)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    _roomService.IncreaseView(id);
+                    _roomService.SaveChanges();
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK);
 
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
 
         /// <summary>
         /// Hàm thêm thông tin phòng.

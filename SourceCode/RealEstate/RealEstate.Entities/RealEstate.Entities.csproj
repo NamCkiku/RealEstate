@@ -157,6 +157,7 @@
     <Compile Include="ModelView\DistrictEntity.cs" />
     <Compile Include="ModelView\ProvinceEntity.cs" />
     <Compile Include="ModelView\RoomEntity.cs" />
+    <Compile Include="ModelView\RoomListEntity.cs" />
     <Compile Include="ModelView\SearchRoomEntity.cs" />
     <Compile Include="ModelView\SearchRoomTypeEntity.cs" />
     <Compile Include="ModelView\WardEntity.cs" />

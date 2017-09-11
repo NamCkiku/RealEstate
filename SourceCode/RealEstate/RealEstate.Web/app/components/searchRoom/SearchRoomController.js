@@ -63,8 +63,12 @@
         }
 
         $scope.fireLoadFilterEvent = function () {
+            var roomType = null;
+            if ($scope.searchInfo.roomtype != null) {
+                roomType = $scope.searchInfo.roomtype.toString();
+            }
             $scope.fillter = {
-                roomtype: $scope.searchInfo.roomtype,
+                roomtype: roomType,
                 province: $scope.searchInfo.provinceId,
                 district: $scope.searchInfo.districtID,
                 ward: $scope.searchInfo.wardID,

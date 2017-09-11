@@ -53,6 +53,21 @@ namespace RealEstate.Repository.Repositories
             }
         }
 
+        public IEnumerable<RoomListEntity> GetAllRoomHot()
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                var result = DapperExtensions.QueryDapperStoreProc<RoomListEntity>("sp_GetAllRoomHot", parameter).ToList();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
+                return new List<RoomListEntity>();
+            }
+        }
+
         public IEnumerable<RoomEntity> GetAllRoomPagingFullSearch(SearchRoomEntity filter, int page, int pageSize, out int totalRow, string sort)
         {
             try
@@ -64,6 +79,8 @@ namespace RealEstate.Repository.Repositories
                 parameter.Add("@RoomType", filter.RoomTypeID, dbType: DbType.String);
                 parameter.Add("@PriceFrom", filter.PriceFrom, dbType: DbType.Int32);
                 parameter.Add("@PriceTo", filter.PriceTo, dbType: DbType.Int32);
+                parameter.Add("@AcreageFrom", filter.AcreageFrom, dbType: DbType.Int32);
+                parameter.Add("@AcreageTo", filter.AcreageTo, dbType: DbType.Int32);
                 parameter.Add("@PageCount", pageSize, dbType: DbType.Int32);
                 parameter.Add("@PageIndex", page, dbType: DbType.Int32);
                 parameter.Add("@Sort", sort, dbType: DbType.String);

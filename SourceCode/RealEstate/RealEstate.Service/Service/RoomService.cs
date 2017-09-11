@@ -163,11 +163,11 @@ namespace RealEstate.Service.Service
 
         public void IncreaseView(int id)
         {
-            var product = _roomRepository.GetSingleById(id);
-            if (product.ViewCount.HasValue)
-                product.ViewCount += 1;
+            var room = _roomRepository.GetSingleById(id);
+            if (room.ViewCount.HasValue)
+                room.ViewCount += 1;
             else
-                product.ViewCount = 1;
+                room.ViewCount = 1;
         }
 
         public Room InsertRoom(Room room)
@@ -197,6 +197,7 @@ namespace RealEstate.Service.Service
                 }
                 else
                 {
+                    room.VipID = 0;
                     room.RoomStar = 0;
                     room.DisplayOrder = 5;
                 }
@@ -294,6 +295,34 @@ namespace RealEstate.Service.Service
             {
                 totalRow = 0;
                 lstroom = _roomRepository.GetAllRoomPagingFullSearch(filter, page, pageSize, out totalRow, sort).ToList();
+
+                switch (sort)
+                {
+                    case "news":
+                        lstroom = lstroom.OrderByDescending(x => x.CreatedDate).ToList();
+                        break;
+
+                    case "pricemax":
+                        lstroom = lstroom.OrderByDescending(x => x.Price).ToList();
+                        break;
+
+                    case "pricemin":
+                        lstroom = lstroom.OrderBy(x => x.Price).ToList();
+                        break;
+                    case "az":
+                        lstroom = lstroom.OrderBy(x => x.RoomName).ToList();
+                        break;
+                    case "za":
+                        lstroom = lstroom.OrderByDescending(x => x.RoomName).ToList();
+                        break;
+                    case "hot":
+                        lstroom = lstroom.OrderBy(x => x.ViewCount).ToList();
+                        break;
+
+                    default:
+                        lstroom = lstroom.ToList();
+                        break;
+                }
             }
             catch (Exception ex)
             {
@@ -331,6 +360,22 @@ namespace RealEstate.Service.Service
             try
             {
                 lstroom = _roomRepository.GetReatedRoomById(id).ToList();
+            }
+            catch (Exception ex)
+            {
+                string FunctionName = MethodInfo.GetCurrentMethod().Name;
+                Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
+                return null;
+            }
+            return lstroom;
+        }
+
+        public IEnumerable<RoomListEntity> GetAllRoomHotStoreProc(int top)
+        {
+            List<RoomListEntity> lstroom = new List<RoomListEntity>();
+            try
+            {
+                lstroom = _roomRepository.GetAllRoomHot().Take(top).ToList();
             }
             catch (Exception ex)
             {
