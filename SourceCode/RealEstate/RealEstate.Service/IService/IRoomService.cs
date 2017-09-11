@@ -25,6 +25,8 @@ namespace RealEstate.Service.IService
 
         RoomEntity GetRoomByIdStoreProc(int roomId);
 
+        IEnumerable<RoomEntity> GetReatedRoomByIdStoreProc(int id);
+
         Room InsertRoom(Room room);
 
         void UpdateRoom(Room room);

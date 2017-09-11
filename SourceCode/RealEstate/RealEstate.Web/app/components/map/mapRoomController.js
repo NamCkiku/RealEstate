@@ -222,7 +222,7 @@
                         gridSize: 60,
                         styles: [
                             {
-                                url: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/cluster-icon.png',
+                                url: '/Content/img/cluster-icon.png',
                                 width: 48,
                                 height: 48,
                                 textColor: "#fff"
@@ -284,7 +284,7 @@
                     marker = new google.maps.Marker({
                         map: poiMap,
                         position: place.geometry.location,
-                        icon: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/transportation.png'
+                        icon: '/Content/img/transportation.png'
                     });
                     transportationsMarkers.push(marker);
                     break;
@@ -292,7 +292,7 @@
                     marker = new google.maps.Marker({
                         map: poiMap,
                         position: place.geometry.location,
-                        icon: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/supermarket.png'
+                        icon: '/Content/img/supermarket.png'
                     });
                     supermarketsMarkers.push(marker);
                     break;
@@ -300,7 +300,7 @@
                     marker = new google.maps.Marker({
                         map: poiMap,
                         position: place.geometry.location,
-                        icon: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/school.png'
+                        icon: '/Content/img/school.png'
                     });
                     schoolsMarkers.push(marker);
                     break;
@@ -308,7 +308,7 @@
                     marker = new google.maps.Marker({
                         map: poiMap,
                         position: place.geometry.location,
-                        icon: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/libraries.png'
+                        icon: '/Content/img/libraries.png'
                     });
                     librariesMarkers.push(marker);
                     break;
@@ -316,7 +316,7 @@
                     marker = new google.maps.Marker({
                         map: poiMap,
                         position: place.geometry.location,
-                        icon: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/pharmacy.png'
+                        icon: '/Content/img/pharmacy.png'
                     });
                     pharmaciesMarkers.push(marker);
                     break;
@@ -324,7 +324,7 @@
                     marker = new google.maps.Marker({
                         map: poiMap,
                         position: place.geometry.location,
-                        icon: 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/hospital.png'
+                        icon: '/Content/img/hospital.png'
                     });
                     hospitalsMarkers.push(marker);
                     break;
@@ -350,7 +350,7 @@
 
         $scope.poiControls = function (controlDiv, poiMap, center) {
             controlDiv.style.clear = 'both';
-            var map_icons_path = 'http://houzez01.favethemes.com/wp-content/themes/houzez/images/map/';
+            var map_icons_path = '/Content/img/';
             // Set CSS for transportations POI
             var transportationUI = document.createElement('div');
             transportationUI.id = 'transportation';

@@ -12,8 +12,10 @@
         $scope.roomObj = {
 
         }
-       
-        
+        $scope.data = {
+            lstReatedRoom: []
+        }
+
         $scope.showPhoneNumber = function () {
             $scope.isShowPhone = true;
         }
@@ -33,6 +35,7 @@
                 console.log($scope.roomObj);
                 $scope.roomObj.convenient = JSON.parse(respone.data.convenient);
                 $scope.roomObj.moreImages = JSON.parse(respone.data.moreImages);
+                $scope.getAllReatedRoomById($scope.roomObj.id);
                 $timeout(function () {
                     $('#carousel').flexslider({
                         animation: "slide",
@@ -95,6 +98,24 @@
             });
         }
 
+
+        $scope.getAllReatedRoomById = function (roomId) {
+            var myBlockUI = blockUI.instances.get('BlockUIRoomDetail');
+            myBlockUI.start();
+            var config = {
+                params: {
+                    id: roomId
+                }
+            }
+            apiService.get('api/room/getallreatedroombyid', config, function (respone) {
+                $scope.data.lstReatedRoom = respone.data;
+                console.log($scope.data.lstReatedRoom);
+                myBlockUI.stop();
+            }, function (respone) {
+                myBlockUI.stop();
+                BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
+            });
+        }
 
         $scope.init();
     }
