@@ -1840,7 +1840,7 @@ div#owl-demo-people-say .owl-controls {
 
     .search-map-options .search-map-options-body {
         padding: 16px;
-        float:left;
+        float: left;
         border-bottom: 1px solid #eeeeee;
     }
 
@@ -1877,13 +1877,13 @@ div#owl-demo-people-say .owl-controls {
     float: left;
     border: 1px solid #dde4e9;
     padding: 10px;
-    padding-right:0px;
+    padding-right: 0px;
     width: 100%;
 }
 
     .box-room-list .has_prop_slider {
-        padding:0px;
-        padding-right:10px;
+        padding: 0px;
+        padding-right: 10px;
     }
 
     .box-room-list .listing_wrapper.col-md-12 > .property_listing {
@@ -3331,6 +3331,169 @@ sort-theme .sort-by li:first-child {
     content: "\f106";
 }
 
+
+
+
+
+/*** Banner quang cao fix goc trai ***/
+.float-ck {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    opacity: 0;
+}
+
+.float_content_right {
+    border-top: 1px solid #00aa46;
+    border-right: 1px solid #00aa46;
+}
+
+.float_content_right {
+    position: relative;
+    text-align: right;
+    font-size: 11px;
+}
+
+    .float_content_right a.hide_qc {
+        position: absolute;
+        top: -19px;
+        right: -1px;
+        background: #00aa46;
+        padding: 2px 4px;
+        color: #FFF;
+    }
+
+    .float_content_right a.show_qc {
+        position: absolute;
+        right: -65px;
+        top: 47px;
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        background: #00aa46;
+        padding: 2px 10px;
+        color: #FFF;
+        display: none;
+    }
+/*** End Banner quang cao ***/
+
+.cardAddress {
+    font-size: 11px;
+    line-height: 14px;
+    color: #999;
+    padding: 0 0 5px 10px;
+    margin: 0 10px 0 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+    .cardAddress span {
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+.box-slidebar {
+    border: 1px solid #eee;
+    padding: 5px;
+}
+
+.list-project {
+    padding-top: 15px;
+    border-bottom: 1px solid #e2eef2;
+    margin-bottom: 10px;
+}
+
+.item-project {
+    border-top: 1px solid #e2eef2;
+    padding: 8px 0px;
+}
+
+.tt_project {
+    border: 1px solid #e3e3e3;
+    padding: 2px;
+}
+
+    .tt_project:hover {
+        border: 1px solid #006092;
+    }
+
+    .tt_project img {
+        width: 100%;
+        display: block;
+    }
+
+.item-project .info_project {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.info_project a {
+    color: #00648f;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 6px;
+    display: block;
+    display: block;
+    margin-bottom: 5px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+    .info_project a:hover {
+        color: #ff9928;
+    }
+
+.item-project .info_project p {
+    color: #333;
+    font-size: 13px;
+    max-height: 38px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin: 0px;
+}
+
+.dis-content .nav-tabs {
+    border-top: 2px solid #00c5bb;
+    background: #eee;
+}
+
+    .dis-content .nav-tabs > li.active a {
+        border-top: 3px solid #00c5bb;
+    }
+
+    .dis-content .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+        cursor: default;
+    }
+
+    .dis-content .nav-tabs > li a {
+        border-radius: 0;
+    }
+
+.dis-content .tab-content {
+    border: 1px solid #e7e7e7;
+    border-top: 0;
+    padding: 20px;
+}
 
 /* === Puclib === */
 .padding-0 {

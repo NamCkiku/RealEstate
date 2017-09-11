@@ -155,3 +155,8 @@ System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.RoomListEntity,
 Mapping types:
 List`1 -> List`1
 System.Collections.Generic.List`1[[RealEstate.Entities.ModelView.RoomListEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.RoomListViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+Logging Start2017-09-11 19:49:11,336 [7] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function sp_GetAllRoomPagingFullSearch has too many arguments specified.GetAllRoomPagingFullSearch
+2017-09-11 19:49:17,735 [7] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function sp_GetAllRoomPagingFullSearch has too many arguments specified.GetAllRoomPagingFullSearch
+2017-09-11 19:49:26,922 [8] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function sp_GetAllRoomPagingFullSearch has too many arguments specified.GetAllRoomPagingFullSearch
+2017-09-11 19:49:29,388 [8] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function sp_GetAllRoomPagingFullSearch has too many arguments specified.GetAllRoomPagingFullSearch
+2017-09-11 19:50:59,244 [8] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function sp_GetAllRoomPagingFullSearch has too many arguments specified.GetAllRoomPagingFullSearch

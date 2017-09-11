@@ -704,10 +704,8 @@
                     WardID: $scope.searchInfo.wardID,
                     DistrictID: $scope.searchInfo.districtID,
                     ProvinceID: $scope.searchInfo.provinceId,
-                    Keywords: null,
-                    StartDate: null,
-                    EndDate: null,
-                    Status: true,
+                    AcreageFrom: $scope.sliderAcreage.minValue,
+                    AcreageTo: $scope.sliderAcreage.maxValue,
                     page: 1,
                     pageSize: 10,
                     sort: ""

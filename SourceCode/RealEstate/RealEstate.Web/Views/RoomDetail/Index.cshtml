@@ -137,6 +137,7 @@
                                         <li><em>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</em></li>
                                     </ul>
                                 </div>
+                                <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
                             </div>
                         </div>
                         <div class="clearfix padding-top-10"></div>
@@ -167,22 +168,34 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="clearfix padding-top-10"></div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-lg-3 col-xs-12">
-                <div class="box-search-sidebar dqdt-sidebar">
-                    <div class="title_st">
-                        <h2>
-                            <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
-                            Tin liên quan
-                        </h2>
+                <div class="title_st">
+                    <h2>
+                        <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
+                        Phòng liên quan
+                    </h2>
+                </div>
+                <div class="box-slidebar">
+                    <div class="clearfix"></div>
+                    <div class="list-project clearfix">
+                        <div class="item-project clearfix"  ng-repeat="item in data.lstReatedRoom">
+                            <a class="tt_project col-lg-5" href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" title="{{item.roomName}}">
+                                <img class="avatar" src="{{baseUrl}}{{item.thumbnailImage}}" alt="{{item.roomName}}">
+                            </a>
+                            <div class="info_project col-lg-7">
+                                <a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" title="{{item.roomName}}">{{item.roomName}}</a>
+                                <p>{{item.address}}</p>
+                            </div>
+                        </div><!--item-->
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="sidebar-ads nopadding-xs hidden-xs hidden-sm margin-top-20" style="margin-top:20px;">
-                    <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
+                    <img class="img-responsive" src="http://batdongsan368.com.vn/images/banners/original/banner-vinhomes-golden-river_1500798516.jpg" />
                 </div>
             </div>
         </div>
@@ -192,31 +205,5 @@
     #map-canvas {
         height: 300px;
         width: 100%;
-    }
-
-    .dis-content .nav-tabs {
-        border-top: 2px solid #00c5bb;
-        background: #eee;
-    }
-
-        .dis-content .nav-tabs > li.active a {
-            border-top: 3px solid #00c5bb;
-        }
-
-        .dis-content .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-bottom-color: transparent;
-            cursor: default;
-        }
-
-        .dis-content .nav-tabs > li a {
-            border-radius: 0;
-        }
-
-    .dis-content .tab-content {
-        border: 1px solid #e7e7e7;
-        border-top: 0;
-        padding: 20px;
     }
 </style>
