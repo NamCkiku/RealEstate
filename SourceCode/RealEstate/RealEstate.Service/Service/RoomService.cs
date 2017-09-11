@@ -178,46 +178,51 @@ namespace RealEstate.Service.Service
                 if (room.VipID == (int)VipTypeEnum.Vip1)
                 {
                     room.RoomStar = (int)VipTypeEnum.Vip1;
+                    room.DisplayOrder = (int)VipTypeEnum.Vip1;
                 }
                 else if (room.VipID == (int)VipTypeEnum.Vip2)
                 {
-                    room.RoomStar = (int)VipTypeEnum.Vip1;
+                    room.RoomStar = (int)VipTypeEnum.Vip2;
+                    room.DisplayOrder = (int)VipTypeEnum.Vip2;
                 }
                 else if (room.VipID == (int)VipTypeEnum.Vip3)
                 {
                     room.RoomStar = (int)VipTypeEnum.Vip3;
+                    room.DisplayOrder = (int)VipTypeEnum.Vip3;
                 }
                 else if (room.VipID == (int)VipTypeEnum.Vip4)
                 {
                     room.RoomStar = (int)VipTypeEnum.Vip4;
+                    room.DisplayOrder = (int)VipTypeEnum.Vip4;
                 }
                 else
                 {
                     room.RoomStar = 0;
+                    room.DisplayOrder = 5;
                 }
                 roomResult = _roomRepository.Add(room);
-                _unitOfWork.Commit();
-                if (!string.IsNullOrEmpty(room.Tags))
-                {
-                    string[] tags = room.Tags.Split(',');
-                    for (var i = 0; i < tags.Length; i++)
-                    {
-                        var tagId = StringHelper.ToUnsignString(tags[i]);
-                        if (_tagRepository.Count(x => x.ID == tagId) == 0)
-                        {
-                            Tag tag = new Tag();
-                            tag.ID = tagId;
-                            tag.Name = tags[i];
-                            tag.Type = CommonConstants.RoomTag;
-                            _tagRepository.Add(tag);
-                        }
+                //_unitOfWork.Commit();
+                //if (!string.IsNullOrEmpty(room.Tags))
+                //{
+                //    string[] tags = room.Tags.Split(',');
+                //    for (var i = 0; i < tags.Length; i++)
+                //    {
+                //        var tagId = StringHelper.ToUnsignString(tags[i]);
+                //        if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                //        {
+                //            Tag tag = new Tag();
+                //            tag.ID = tagId;
+                //            tag.Name = tags[i];
+                //            tag.Type = CommonConstants.RoomTag;
+                //            _tagRepository.Add(tag);
+                //        }
 
-                        RoomTag roomTag = new RoomTag();
-                        roomTag.RoomID = room.ID;
-                        roomTag.TagID = tagId;
-                        _roomTagRepository.Add(roomTag);
-                    }
-                }
+                //        RoomTag roomTag = new RoomTag();
+                //        roomTag.RoomID = room.ID;
+                //        roomTag.TagID = tagId;
+                //        _roomTagRepository.Add(roomTag);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -318,6 +323,22 @@ namespace RealEstate.Service.Service
                 return null;
             }
             return room;
+        }
+
+        public IEnumerable<RoomEntity> GetReatedRoomByIdStoreProc(int id)
+        {
+            List<RoomEntity> lstroom = new List<RoomEntity>();
+            try
+            {
+                lstroom = _roomRepository.GetReatedRoomById(id).ToList();
+            }
+            catch (Exception ex)
+            {
+                string FunctionName = MethodInfo.GetCurrentMethod().Name;
+                Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
+                return null;
+            }
+            return lstroom;
         }
     }
 }

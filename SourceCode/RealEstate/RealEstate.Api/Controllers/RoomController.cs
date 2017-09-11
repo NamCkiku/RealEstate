@@ -233,6 +233,42 @@ namespace RealEstate.Api.Controllers
 
 
         /// <summary>
+        /// Hàm trả về danh sách phòng có vip.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  6/19/2017   created
+        /// </Modified>
+        [Route("getallreatedroombyid")]
+        [CacheOutput(ClientTimeSpan = 100)]
+        [HttpGet]
+        public HttpResponseMessage GetAllReatedRoomById(HttpRequestMessage request, int id)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var listRoom = _roomService.GetReatedRoomByIdStoreProc(id).OrderByDescending(x => x.DisplayOrder).ToList();
+
+                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
+
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listRoomVm);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+
+        /// <summary>
         /// Hàm thêm thông tin phòng.
         /// </summary>
         /// <param name="request">The request.</param>
