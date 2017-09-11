@@ -17,6 +17,8 @@ namespace RealEstate.Repository.IRepositories
 
         IEnumerable<RoomEntity> GetReatedRoomById(int id);
 
+        IEnumerable<RoomListEntity> GetAllRoomHot();
+
         RoomEntity GetRoomById(int roomId);
     }
 }

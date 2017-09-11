@@ -12,6 +12,9 @@ namespace RealEstate.Entities.ModelView
         public int? PriceFrom { get; set; }
         public int? PriceTo { get; set; }
 
+        public int? AcreageFrom { get; set; }
+        public int? AcreageTo { get; set; }
+
         public int? WardID { get; set; }
 
         public int? DistrictID { get; set; }

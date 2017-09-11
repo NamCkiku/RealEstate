@@ -100,9 +100,12 @@ namespace RealEstate.Api.Controllers
                             }
 
                             string path = Path.Combine(HttpContext.Current.Server.MapPath(directory), postedFile.FileName);
-                            var statusUp = AddLogoToImage(postedFile);
-                            statusUp.Save(path);
+                            //var statusUp = AddLogoToImage(postedFile);
+                            //statusUp.Save(path);
+                            postedFile.SaveAs(path);
                             return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, postedFile.FileName));
+                            var pathResult = Path.Combine(directory, postedFile.FileName);
+                            return Request.CreateResponse(HttpStatusCode.OK, pathResult);
                         }
                     }
                     var modelMsg3 = new NotificationViewModel
@@ -156,7 +159,7 @@ namespace RealEstate.Api.Controllers
             string fileName = string.Empty;
             foreach (MultipartFileData fileData in provider.FileData)
             {
-               
+
                 fileName = fileData.Headers.ContentDisposition.FileName;
                 if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
                 {
@@ -169,10 +172,10 @@ namespace RealEstate.Api.Controllers
                 }
                 if (File.Exists(Path.Combine(dataFolder, fileName)))
                     File.Delete(Path.Combine(dataFolder, fileName));
-              
+
                 File.Move(fileData.LocalFileName, Path.Combine(dataFolder, fileName));
-                AddLogoToImageMulti(fileData.LocalFileName, "~/UploadedFiles/Rooms" , fileName);
                 File.Delete(fileData.LocalFileName);
+                AddLogoToImageMulti(fileData.LocalFileName, "~/UploadedFiles/Rooms", fileName);
             }
 
             Request.CreateResponse(HttpStatusCode.OK, new { fileName = fileName });
@@ -211,7 +214,7 @@ namespace RealEstate.Api.Controllers
                 image.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
 
                 // Dùng code này nếu lưu ảnh
-               // image.Save(HttpContext.Current.Server.MapPath(directory + "/" + fileName));
+                // image.Save(HttpContext.Current.Server.MapPath(directory + "/" + fileName));
                 return image;
             }
             catch (Exception)
@@ -220,7 +223,7 @@ namespace RealEstate.Api.Controllers
             }
         }
 
-        public string AddLogoToImageMulti(string path,string  dataFolder, string fileName)
+        public string AddLogoToImageMulti(string path, string dataFolder, string fileName)
         {
             try
             {

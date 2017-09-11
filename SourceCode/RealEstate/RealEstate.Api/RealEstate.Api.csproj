@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -292,6 +293,7 @@
     <Compile Include="Models\ViewModel\AppUserViewModel.cs" />
     <Compile Include="Models\ViewModel\CountryViewModel.cs" />
     <Compile Include="Models\ViewModel\DistrictViewModel.cs" />
+    <Compile Include="Models\ViewModel\ListRoomViewModel.cs" />
     <Compile Include="Models\ViewModel\MoreInfomationViewModel.cs" />
     <Compile Include="Models\ViewModel\NotificationViewModel.cs" />
     <Compile Include="Models\ViewModel\ProvinceViewModel.cs" />

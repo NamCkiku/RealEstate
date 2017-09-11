@@ -36,6 +36,7 @@
                 $scope.roomObj.convenient = JSON.parse(respone.data.convenient);
                 $scope.roomObj.moreImages = JSON.parse(respone.data.moreImages);
                 $scope.getAllReatedRoomById($scope.roomObj.id);
+                $scope.IncreaseView($scope.roomObj.id);     
                 $timeout(function () {
                     $('#carousel').flexslider({
                         animation: "slide",
@@ -116,7 +117,21 @@
                 BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
             });
         }
-
+        $scope.IncreaseView = function (roomId) {
+            var myBlockUI = blockUI.instances.get('BlockUIRoomDetail');
+            myBlockUI.start();
+            var config = {
+                params: {
+                    id: roomId
+                }
+            }
+            apiService.get('api/room/increaseview', config, function (respone) {
+                myBlockUI.stop();
+            }, function (respone) {
+                myBlockUI.stop();
+                BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
+            });
+        }
         $scope.init();
     }
 })(angular.module('myApp'));

@@ -8,10 +8,22 @@
             lstRoom: [],
         }
 
-        $scope.filter;
+        $scope.filter = {};
 
         $scope.baseUrl = $rootScope.baseUrl;
         $scope.pageLoad = function () {
+            //if (QueryString.searchIndex == 'true') {
+            //    if (QueryString.roomtype != null) {
+            //        $scope.searchInfo.roomtype = QueryString.roomtype.split(",");
+            //    }
+            //    $scope.searchInfo.provinceId = parseInt(QueryString.province);
+            //    $scope.searchInfo.districtID = parseInt(QueryString.district);
+            //    $scope.searchInfo.wardID = parseInt(QueryString.ward);
+            //    $scope.sliderAcreage.minValue = QueryString.acreageFrom;
+            //    $scope.sliderAcreage.maxValue = QueryString.acreageTo;
+            //    $scope.sliderFrice.minValue = QueryString.priceFrom;
+            //    $scope.sliderFrice.maxValue = QueryString.priceTo;
+            //}
             $scope.loadAllRoomByQueryString();
         }
         angular.element(document).ready(function () {
@@ -22,31 +34,30 @@
         $scope.$on('fireLoadFillterEvent', function (event, searchObj) {
             $scope.filter = searchObj;
             // Lọc phòng theo tiêu chí
-            $scope.FilterRoom = function () {
+            $scope.FilterRoom = function (sort) {
                 var myBlockUI = blockUI.instances.get('BlockUIRoom');
                 myBlockUI.start();
-
+                var dataSort = "";
+                if (sort != null) {
+                    dataSort = sort;
+                }
                 var config = {
                     params: {
                         RoomTypeID: searchObj.roomtype,
                         PriceFrom: searchObj.priceFrom * 1000000,
                         PriceTo: searchObj.priceTo * 1000000,
+                        AcreageFrom: searchObj.acreageFrom,
+                        AcreageTo: searchObj.acreageTo,
                         WardID: searchObj.ward,
                         DistrictID: searchObj.district,
                         ProvinceID: searchObj.province,
-                        Keywords: null,
-                        StartDate: null,
-                        EndDate: null,
-                        Status: true,
                         page: 1,
-                        pageSize: 10,
-                        sort: ""
+                        pageSize: 20,
+                        sort: dataSort
                     }
                 }
                 apiService.get('api/room/getallroomfullsearch', config, function (respone) {
-
                     $scope.data.listRoom = respone.data.items;
-                    console.log($scope.data.listRoom);
                     myBlockUI.stop();
                 }, function (respone) {
                     myBlockUI.stop();
@@ -57,35 +68,7 @@
         });
 
         $scope.DataSort = function (data) {
-            console.log($scope.filter);
-            var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            myBlockUI.start();
-            var config = {
-                params: {
-                    RoomTypeID: "",
-                    PriceFrom: "",
-                    PriceTo: "",
-                    WardID: "",
-                    DistrictID: "",
-                    ProvinceID: "",
-                    Keywords: null,
-                    StartDate: null,
-                    EndDate: null,
-                    Status: true,
-                    page: 1,
-                    pageSize: 10,
-                    sort: data
-                }
-            };
-                apiService.get('api/room/getallroomfullsearch', config, function (respone) {
-
-                $scope.data.listRoom = respone.data.items;
-                console.log($scope.data.listRoom);
-                myBlockUI.stop();
-            }, function (respone) {
-                myBlockUI.stop();
-                BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
-            });
+            $scope.FilterRoom(data);
         }
 
         $scope.loadAllRoomByQueryString = function () {
@@ -97,21 +80,18 @@
                         RoomTypeID: QueryString.roomtype,
                         PriceFrom: QueryString.priceFrom * 1000000,
                         PriceTo: QueryString.priceTo * 1000000,
+                        AcreageFrom: QueryString.acreageFrom,
+                        AcreageTo: QueryString.acreageTo,
                         WardID: QueryString.ward,
                         DistrictID: QueryString.district,
                         ProvinceID: QueryString.province,
-                        Keywords: null,
-                        StartDate: null,
-                        EndDate: null,
-                        Status: true,
                         page: 1,
-                        pageSize: 10,
+                        pageSize: 20,
                         sort: ""
                     }
                 }
                 apiService.get('api/room/getallroomfullsearch', config, function (respone) {
                     $scope.data.listRoom = respone.data.items;
-                    console.log($scope.data.listRoom);
                     myBlockUI.stop();
                 }, function (respone) {
                     myBlockUI.stop();
