@@ -96,5 +96,26 @@
     <div class="clearfix"></div>
     @{Html.RenderAction("_FooterPatialView", "Home");}
     @{Html.RenderAction("_BasePatialView", "Home");}
+    <script>
+        function hide_float_right() {
+            $('.float-ck').css('left', '-' + $('.float-ck').width() + 'px');
+            $('.float-ck').find('.show_qc').show();
+            $('.float-ck').find('.hide_qc').hide();
+        }
+        function show_float_right() {
+            $('.float-ck').css('left', '0');
+            $('.float-ck').find('.show_qc').hide();
+            $('.float-ck').find('.hide_qc').show();
+        }
+    </script>
+    <div class="float-ck hidden-md hidden-sm hidden-xs" style="left: 0px; opacity: 1;">
+        <div class="float_content_right">
+            <a href="javascript:hide_float_right()" class="hide_qc" style="display: block;">Ẩn [X]</a>
+            <a href="javascript:show_float_right()" class="show_qc" style="display: none;">Hiển thị quảng cáo</a>
+            <a href="/collections/all" target="_blank">
+                <img src="//theme.hstatic.net/1000173891/1000246680/14/banner_qc.jpg?v=88" style="width:300px;" alt="nobita" title="nobita">
+            </a>
+        </div>
+    </div>
 </body>
 </html>

@@ -53,7 +53,7 @@
                         ProvinceID: searchObj.province,
                         page: 1,
                         pageSize: 20,
-                        sort: dataSort
+                        sort: ""
                     }
                 }
                 apiService.get('api/room/getallroomfullsearch', config, function (respone) {
