@@ -1,0 +1,643 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+                        <li>Trang cá nhân "Trần Hoàng Nam"</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xs-12">
+                <div class="media profile-block">
+                    <a class="pull-left" href="#">
+                        <img class="media-object dp img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" style="width: 100px;height:100px;">
+                        <span class="label label-default">15 Xu</span>
+                        <span class="label label-default">400 Point</span>
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading">Trần Hoàng Nam</h5>
+                        <div class="media-infomation">
+                            <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-user ">Ngọc Lịch Trưng Trắc Văn Lâm Hưng Yên</span>
+                            <i style="display: table-cell;" class="glyphicon glyphicon-envelope"></i><span class="info-span-user ">tranhoangnam11373@gmail.com</span>
+                            <i style="display: table-cell;" class="glyphicon glyphicon-globe"></i><span class="info-span-user ">www.jquery2dotnet.com</span>
+                            <i style="display: table-cell;" class="glyphicon glyphicon-gift"></i><span class="info-span-user ">30/04/1995</span>
+                        </div>
+                    </div>
+                    <div class="profile-userbuttons">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-success  btn-sm btn-block" type="button"><i class="fa fa-envelope"></i> Gửi tin nhắn</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-warning btn-sm btn-block" type="button"><i class="fa fa-coffee"></i> Nạp tiền</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-hover no-margin">
+                        <tbody>
+                            <tr>
+                                <td>Trạng thái</td>
+                                <td><span class="notice notice-danger">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Hạng</td>
+                                <td><i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Ngày đăng ký</td>
+                                <td>20/04/2017</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="widget" style="margin-top:25px;">
+                        <div class="widget-body">
+                            <div class="streamline sl-style-2">
+                                <div class="sl-item sl-primary">
+                                    <div class="sl-content">
+                                        <small class="text-muted">5 mins ago</small>
+                                        <p>Williams has just joined Project X</p>
+                                    </div>
+                                </div>
+                                <div class="sl-item sl-danger">
+                                    <div class="sl-content">
+                                        <small class="text-muted">25 mins ago</small>
+                                        <p>Jane sent you a request to grant access to the project folder</p>
+                                    </div>
+                                </div>
+                                <div class="sl-item sl-success">
+                                    <div class="sl-content">
+                                        <small class="text-muted">40 mins ago</small>
+                                        <p>Kate added you to her team</p>
+                                    </div>
+                                </div>
+                                <div class="sl-item">
+                                    <div class="sl-content">
+                                        <small class="text-muted">55</small>
+                                        <p>John has finished his task</p>
+                                    </div>
+                                </div>
+                                <div class="sl-item sl-warning">
+                                    <div class="sl-content">
+                                        <small class="text-muted">60 mins ago</small>
+                                        <p>Jim shared a folder with you</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-8 col-xs-12">
+                <div class="card tab-profile">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>Tài khoản</span></a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>Profile</span></a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>  <span>Messages</span></a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-cog"></i>  <span>Settings</span></a></li>
+                        <li role="presentation"><a href="#extra" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-plus-square-o"></i>  <span>extra</span></a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="account">
+                            <form id="update-profile-form" action="/thay-doi-thong-tin" method="post" class="zn-form form-horizontal" role="form" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
+                                <div class="form-group">
+                                    <label for="user_name" class="col-sm-3 control-label">Tên đăng nhập <span class="required-text">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input name="user_name" maxlength="255" placeholder="" disabled="disabled" type="text" class="form-control" id="user_name" value="namckiku">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-3 control-label">E-mail <span class="required-text">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input id="email" type="text" class="required form-control" name="email" maxlength="255" value="tranhoangnam11373@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name" class="col-sm-3 control-label">Tên hiển thị</label>
+                                    <div class="col-sm-8">
+                                        <input id="display-name" type="text" class="form-control" name="display_name" maxlength="255" value="Nam Ckiku">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="school-search-input" class="col-sm-3 control-label">Trường THPT</label>
+                                    <div class="col-sm-8">
+                                        <div id="school-search-box" class="item-search-box" style="">
+                                            <input type="text" class="form-control item-search-input" name="item-search-input" placeholder="Nhập tên trường cần tìm" data-type="school">
+                                            <input id="school-id" type="hidden" name="school_id" value="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="biography" class="col-sm-3 control-label">Giới thiệu về bản thân</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" style="height: 100px;" id="biography" rows="10" cols="40" name="biography"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="col-md-3 control-label">Ảnh đại diện<i class="required">*</i> :</label>
+                                    <div class="col-md-8">
+                                        <div class="room_avatar_image">
+                                            <canvas id="canvas" height="5" width="5"></canvas>
+                                            <img class="room_avatar_image_edit">
+                                            <div class="img_edit"></div>
+                                            <input type="file" id="FileUpload1" class="img_upload" accept=".jpg,.png,.gif">
+                                            <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-3">
+                                        <input class="zn-btn btn-success btn-save" type="submit" value="Lưu">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                        <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+                        <div role="tabpanel" class="tab-pane" id="extra">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<section class="app-store-main hidden-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-7 pull-right">
+                <header>
+                    <h2><strong>DOWNLOAD</strong> MOBILE APP</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est...</p>
+                </header>
+                <div class="row inner app-icons">
+                    <div class="col-xs-4">
+                        <a href="#" class="app-store">
+                            <img src="http://askbootstrap.com/osahan-ads/images/android.png" alt="Google play">
+                            <span>download on</span>
+                            <h4>Google Play</h4>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="#" class="app-store">
+                            <img src="http://askbootstrap.com/osahan-ads/images/apple.png" alt="Apple store">
+                            <span>download on</span>
+                            <h4>Apple Store</h4>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="#" class="app-store">
+                            <img src="http://askbootstrap.com/osahan-ads/images/win.png" alt="windows store">
+                            <span>download on</span>
+                            <h4>Windows Store</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-5 pull-right">
+                <div class="action-mock">
+                    <img src="http://askbootstrap.com/osahan-ads/images/app-mock.png" alt="download apps">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .text-warning {
+        color: #fbbc05 !important;
+    }
+
+    .required-text {
+        color: #ff0000;
+    }
+
+    .tab-profile .form-control {
+        display: inline-block;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .tab-profile .control-label {
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    .profile-userbuttons {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .profile-userbuttons .btn {
+            margin-bottom: 5px;
+        }
+
+        .profile-userbuttons button {
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 15px;
+        }
+
+    .btn.aqua:not(.btn-outline) {
+        color: #FFF;
+        background-color: #49b6d6;
+        border-color: #49b6d6;
+    }
+
+
+    .streamline .sl-item {
+        position: relative;
+        padding-bottom: 12px;
+        border-left: 1px solid #ccc;
+    }
+
+    .streamline.sl-style-2 .sl-item:before {
+        top: 6px;
+        background-color: #fff;
+        width: 11px;
+        height: 11px;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+    }
+
+    .streamline .sl-item:before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: 0;
+        background-color: #ccc;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+    }
+
+    .streamline .sl-item .sl-content {
+        margin-left: 24px;
+    }
+
+    .streamline .sl-item .text-muted {
+        color: rgba(0,0,0,.38) !important;
+        opacity: .6;
+    }
+
+    .streamline .sl-item p {
+        margin-bottom: 10px;
+    }
+
+    .streamline .sl-primary:before, .streamline .sl-primary:last-child:after {
+        background-color: #188ae2;
+    }
+
+    .streamline.sl-style-2 .sl-primary:before, .streamline.sl-style-2 .sl-primary:last-child:after {
+        border-color: #188ae2;
+    }
+
+    .streamline .sl-primary {
+        border-left-color: #188ae2;
+    }
+
+    .streamline .sl-danger {
+        border-left-color: #ff5b5b;
+    }
+
+    .streamline.sl-style-2 .sl-danger:before, .streamline.sl-style-2 .sl-danger:last-child:after {
+        border-color: #ff5b5b;
+    }
+
+    .streamline .sl-danger:before, .streamline .sl-danger:last-child:after {
+        background-color: #ff5b5b;
+    }
+
+    .streamline .sl-success {
+        border-left-color: #10c469;
+    }
+
+    .streamline.sl-style-2 .sl-success:before, .streamline.sl-style-2 .sl-success:last-child:after {
+        border-color: #10c469;
+    }
+
+    .streamline .sl-success:before, .streamline .sl-success:last-child:after {
+        background-color: #10c469;
+    }
+
+    .streamline .sl-warning {
+        border-left-color: #f9c851;
+    }
+
+    .streamline.sl-style-2 .sl-warning:before, .streamline.sl-style-2 .sl-warning:last-child:after {
+        border-color: #f9c851;
+    }
+
+    .streamline .sl-warning:before, .streamline .sl-warning:last-child:after {
+        background-color: #f9c851;
+    }
+
+
+
+
+    .element-box, .invoice-w, .big-error-w {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+    }
+</style>
+<style>
+    #box-profile .tab .nav-tabs {
+        border-bottom: 0 none;
+    }
+
+        #box-profile .tab .nav-tabs li {
+            margin-right: 15px;
+        }
+
+            #box-profile .tab .nav-tabs li a {
+                position: relative;
+                padding: 7px;
+                color: #fff;
+                font-size: 13px;
+                z-index: 1;
+            }
+
+                #box-profile .tab .nav-tabs li a:hover {
+                    background: transparent;
+                    border: 1px solid transparent;
+                }
+
+                #box-profile .tab .nav-tabs li a:before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    bottom: 3px;
+                    left: -1px;
+                    font-size: 17px;
+                    background: #2672ec;
+                    border: 1px solid #d3d3d3;
+                    border-bottom: 0px none;
+                    border-radius: 10px 10px 0 0;
+                    transform-origin: left center 0;
+                    transform: perspective(4px) rotateX(2deg);
+                    z-index: -1;
+                }
+
+            #box-profile .tab .nav-tabs li.active a:before {
+                background: #fff;
+            }
+
+            #box-profile .tab .nav-tabs li.active a,
+            #box-profile .tab .nav-tabs li.active a:focus,
+            #box-profile .tab .nav-tabs li.active a:hover {
+                border: 1px solid transparent;
+                background: transparent;
+                color: #444;
+                z-index: 2;
+            }
+
+    .nav .badge {
+        top: -10px;
+        left: 68px;
+        position: absolute;
+        background-color: #e73c3c;
+    }
+
+    @@media only screen and (max-width: 767px) {
+        #box-profile .tab .nav-tabs li a {
+            padding: 15px 10px;
+            font-size: 14px;
+        }
+
+            #box-profile .tab .nav-tabs li a:before {
+                bottom: 6px;
+            }
+    }
+
+    @@media only screen and (max-width: 480px) {
+        #box-profile .tab .nav-tabs li {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+            #box-profile .tab .nav-tabs li a:before {
+                bottom: 0;
+                transform: none;
+                border-bottom: 1px solid #d3d3d3;
+            }
+    }
+</style>
+<style>
+    .tab-profile {
+        height: 100% !important;
+    }
+
+        .tab-profile .nav-tabs {
+            border-bottom: 2px solid #DDD;
+        }
+
+            .tab-profile .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+                border-width: 0;
+            }
+
+            .tab-profile .nav-tabs > li > a {
+                border: none;
+                color: #ffffff;
+                background: #5a4080;
+            }
+
+            .tab-profile .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+                border: none;
+                color: #5a4080 !important;
+                background: #fff;
+            }
+
+            .tab-profile .nav-tabs > li > a::after {
+                content: "";
+                background: #5a4080;
+                height: 2px;
+                position: absolute;
+                width: 100%;
+                left: 0px;
+                bottom: -1px;
+                transition: all 250ms ease 0s;
+                transform: scale(0);
+            }
+
+            .tab-profile .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+                transform: scale(1);
+            }
+
+        .tab-profile .tab-nav > li > a::after {
+            background: ##5a4080 none repeat scroll 0% 0%;
+            color: #fff;
+        }
+
+        .tab-profile .tab-pane {
+            padding: 15px 0;
+        }
+
+        .tab-profile .tab-content {
+            padding: 20px
+        }
+
+        .tab-profile .nav-tabs > li {
+            width: 20%;
+            text-align: center;
+        }
+
+    @@media all and (max-width:724px) {
+        .tab-profile .nav-tabs > li > a > span {
+            display: none;
+        }
+
+        .tab-profile .nav-tabs > li > a {
+            padding: 5px 5px;
+        }
+    }
+</style>
+<style>
+    .media {
+        /*box-shadow:0px 0px 4px -2px #000;*/
+        margin: 20px 0;
+        padding: 10px;
+        border: 1px solid #eee;
+    }
+
+    .dp {
+        border: 5px solid #eee;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .dp:hover {
+            border: 2px solid #eee;
+            transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            /*-webkit-font-smoothing:antialiased;*/
+        }
+
+    .media-infomation .info-span-user {
+        font-size: 12px;
+        display: table-cell;
+        padding-left: 10px;
+        padding-bottom: 3px;
+        color: #979797;
+    }
+
+
+    .room_avatar_image {
+        width: 200px;
+        height: 150px;
+        background: url(https://sharecode.vn/assets/images/img_code.jpg) no-repeat;
+        border: 1px solid #d5c6ae;
+        border-radius: 3px;
+        float: left;
+        position: relative;
+        overflow: hidden;
+        margin-right: 40px;
+    }
+
+        .room_avatar_image .room_avatar_image_edit {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 148px;
+        }
+
+        .room_avatar_image .img_edit {
+            position: absolute;
+            top: 0;
+            width: 200px;
+            height: 150px;
+        }
+
+        .room_avatar_image:hover .img_edit {
+            background: url(https://sharecode.vn/assets/images/img_edit.png) no-repeat;
+        }
+
+        .room_avatar_image:focus .img_edit {
+            background: url(https://sharecode.vn/assets/images/img_edit.png) no-repeat;
+        }
+
+        .room_avatar_image input.img_upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 150px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+</style>
+<style>
+    /* App Store */
+    .app-store-main {
+        background: #ffffff none repeat scroll 0 0;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+        .app-store-main h2, .app-store-main p {
+            color: #1f1f1f;
+            margin: 0 0 5px;
+        }
+
+        .app-store-main header h2 {
+            font-size: 24px;
+        }
+
+    .app-store, .app-store:hover {
+        background: #ffffff none repeat scroll 0 0;
+        border-radius: 62px;
+        color: #7e7e7e;
+        display: block;
+        padding-bottom: 18px;
+        padding-left: 65px;
+        padding-top: 5px;
+        position: relative;
+        text-decoration: none;
+    }
+
+        .app-store img {
+            left: 6px;
+            position: absolute;
+            top: 6px;
+        }
+
+        .app-store h4 {
+            color: #333333;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 13px;
+            margin: 0;
+        }
+
+    .app-store-main header {
+        margin: 52px 0 26px;
+    }
+
+        .app-store-main header h2 {
+            font-size: 40px;
+            margin: 14px 0;
+        }
+
+    .app-store span {
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+</style>

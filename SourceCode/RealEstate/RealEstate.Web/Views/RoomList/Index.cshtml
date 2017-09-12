@@ -96,7 +96,7 @@
                 </div>
                 <div class="box-room-list">
                     <div class="has_prop_slider  listing_wrapper col-md-4 col-lg-4 col-sm-6" ng-repeat="item in data.listRoom">
-                        <div class="property_listing">
+                        <div class="property_listing animated zoomIn">
                             <div class="listing-unit-img-wrapper">
                                 <div id="{{item.id}}" class="carousel property_unit_carousel slide" data-ride="carousel" data-interval="false">
                                     <div class="prop_new_details">
@@ -105,8 +105,9 @@
                                             <i class="fa fa-home" aria-hidden="true"></i> {{item.roomTypeName}}
                                         </div>
                                         <div class="property_location_image">
-                                            <span class="property_marker"> <span class="fa fa-map-marker"></span><a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" rel="tag"></a>
-                                            <a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" rel="tag">{{item.provinceName}}</a>
+                                            <span class="property_marker">
+                                                <span class="fa fa-map-marker"></span><a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" rel="tag"></a>
+                                                <a href="/chi-tiet-phong/{{item.alias}}-{{item.id}}" rel="tag">{{item.provinceName}}</a>
                                         </div>
                                         <div class="figType">{{item.price |number}} Đ/tháng</div>
                                     </div>
@@ -128,6 +129,12 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12">
+                        <div class="pull-right">
+                            <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="loadAllRoomByQueryString(page)"></pager-directive>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-12">
                 </div>
@@ -135,4 +142,44 @@
         </div>
     </div>
 </div>
+<style>
+    .pagination {
+        padding-top: 0;
+        margin-top: 0;
+        margin-bottom: 70px;
+        padding-bottom: 0
+    }
 
+        .pagination .page-link {
+            margin: 2.5px;
+            width: 40px;
+            background: #333;
+            text-align: center;
+            height: 40px;
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            border-radius: 0;
+            border: none;
+            text-decoration: none;
+            border-bottom: 1px transparent solid
+        }
+
+            .pagination .page-link:hover {
+                background-color: #f94e3f;
+                border-bottom: 1px #f94e3f solid
+            }
+
+        .pagination .page-item.disabled .page-link {
+            border: 0;
+            display: none
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #f94e3f;
+            border-color: #f94e3f;
+            color: #fff;
+            display: block
+        }
+</style>
