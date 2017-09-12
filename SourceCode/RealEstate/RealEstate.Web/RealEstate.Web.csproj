@@ -126,6 +126,8 @@
     <Content Include="app\components\searchRoom\SearchResultController.js" />
     <Content Include="app\components\searchRoom\SearchRoomController.js" />
     <Content Include="app\shared\directives\owlCarouselDirectives.js" />
+    <Content Include="app\shared\directives\pagerDirective.html" />
+    <Content Include="app\shared\directives\pagerDirective.js" />
     <Content Include="app\shared\directives\searchDirectives.html" />
     <Content Include="app\shared\directives\searchDirectives.js" />
     <Content Include="app\shared\services\apiService.js" />
@@ -2736,6 +2738,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RoomDetailController.cs" />
     <Compile Include="Controllers\RoomListController.cs" />
     <Compile Include="Controllers\RoomManageController.cs" />
@@ -3708,6 +3711,7 @@
     <Content Include="Content\Plugins\FlexSlider\node_modules\jquery\src\sizzle\dist\sizzle.min.map" />
     <Content Include="Content\Plugins\FlexSlider\package.json" />
     <Content Include="Content\Plugins\FlexSlider\README.md" />
+    <Content Include="Views\Profile\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

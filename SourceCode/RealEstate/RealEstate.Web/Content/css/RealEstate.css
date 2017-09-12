@@ -2091,13 +2091,48 @@ div#owl-demo-people-say .owl-controls {
                 color: #999;
             }
 
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
 
 /*=============Filter-Silebar=====================*/
 
 
 .layered .layered_subtitle {
     cursor: pointer;
-    margin: 10px 0;
+    margin: 5px 0;
     text-transform: uppercase;
     color: #555;
     font-size: 14px;
@@ -2106,9 +2141,9 @@ div#owl-demo-people-say .owl-controls {
 
 .layered .layered-content {
     border-bottom: 1px solid #eaeaea;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    padding-top: 0px;
 }
 
     .layered .layered-content:last-child {

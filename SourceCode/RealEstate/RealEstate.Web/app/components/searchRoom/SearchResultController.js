@@ -7,7 +7,9 @@
         $scope.data = {
             lstRoom: [],
         }
-
+        $scope.page = 0;
+        $scope.pagesCount = 0;
+        $scope.totalCount = 0;
         $scope.filter = {};
 
         $scope.baseUrl = $rootScope.baseUrl;
@@ -34,13 +36,11 @@
         $scope.$on('fireLoadFillterEvent', function (event, searchObj) {
             $scope.filter = searchObj;
             // Lọc phòng theo tiêu chí
-            $scope.FilterRoom = function (sort) {
+            $scope.FilterRoom = function (page) {
                 var myBlockUI = blockUI.instances.get('BlockUIRoom');
                 myBlockUI.start();
+                page = page || 1;
                 var dataSort = "";
-                if (sort != null) {
-                    dataSort = sort;
-                }
                 var config = {
                     params: {
                         RoomTypeID: searchObj.roomtype,
@@ -51,13 +51,16 @@
                         WardID: searchObj.ward,
                         DistrictID: searchObj.district,
                         ProvinceID: searchObj.province,
-                        page: 1,
+                        page: page,
                         pageSize: 20,
                         sort: ""
                     }
                 }
                 apiService.get('api/room/getallroomfullsearch', config, function (respone) {
                     $scope.data.listRoom = respone.data.items;
+                    $scope.page = respone.data.page;
+                    $scope.pagesCount = respone.data.totalPages;
+                    $scope.totalCount = respone.data.totalCount;
                     myBlockUI.stop();
                 }, function (respone) {
                     myBlockUI.stop();
@@ -92,6 +95,9 @@
                 }
                 apiService.get('api/room/getallroomfullsearch', config, function (respone) {
                     $scope.data.listRoom = respone.data.items;
+                    $scope.page = respone.data.page;
+                    $scope.pagesCount = respone.data.totalPages;
+                    $scope.totalCount = respone.data.totalCount;
                     myBlockUI.stop();
                 }, function (respone) {
                     myBlockUI.stop();
