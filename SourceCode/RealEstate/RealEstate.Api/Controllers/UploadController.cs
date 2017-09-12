@@ -100,12 +100,13 @@ namespace RealEstate.Api.Controllers
                             }
 
                             string path = Path.Combine(HttpContext.Current.Server.MapPath(directory), postedFile.FileName);
-                            //var statusUp = AddLogoToImage(postedFile);
-                            //statusUp.Save(path);
-                            postedFile.SaveAs(path);
+                            var statusUp = AddLogoToImage(postedFile);
+                            statusUp.Save(path);
                             return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, postedFile.FileName));
-                            var pathResult = Path.Combine(directory, postedFile.FileName);
-                            return Request.CreateResponse(HttpStatusCode.OK, pathResult);
+                            //postedFile.SaveAs(path);
+                            //return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, postedFile.FileName));
+                            //var pathResult = Path.Combine(directory, postedFile.FileName);
+                            //return Request.CreateResponse(HttpStatusCode.OK, pathResult);
                         }
                     }
                     var modelMsg3 = new NotificationViewModel
@@ -172,10 +173,9 @@ namespace RealEstate.Api.Controllers
                 }
                 if (File.Exists(Path.Combine(dataFolder, fileName)))
                     File.Delete(Path.Combine(dataFolder, fileName));
-
                 File.Move(fileData.LocalFileName, Path.Combine(dataFolder, fileName));
                 File.Delete(fileData.LocalFileName);
-                AddLogoToImageMulti(fileData.LocalFileName, "~/UploadedFiles/Rooms", fileName);
+                AddLogoToImageMulti(dataFolder, fileName);
             }
 
             Request.CreateResponse(HttpStatusCode.OK, new { fileName = fileName });
@@ -210,8 +210,8 @@ namespace RealEstate.Api.Controllers
                 myGraphics.DrawImage(myBitmapLogo, image.Width - 20 - myBitmapLogo.Width, image.Height - 20 - myBitmapLogo.Height, myBitmapLogo.Width, myBitmapLogo.Height);
 
                 // Xuất hình ảnh mới
-                HttpContext.Current.Response.ContentType = "image/jpeg";
-                image.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
+             //   HttpContext.Current.Response.ContentType = "image/jpeg";
+              //  image.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
 
                 // Dùng code này nếu lưu ảnh
                 // image.Save(HttpContext.Current.Server.MapPath(directory + "/" + fileName));
@@ -223,12 +223,12 @@ namespace RealEstate.Api.Controllers
             }
         }
 
-        public string AddLogoToImageMulti(string path, string dataFolder, string fileName)
+        public string AddLogoToImageMulti(string dataFolder, string fileName)
         {
             try
             {
                 // Đường dẫn file ảnh. 
-                string imageFile = path;
+                string imageFile = Path.Combine(dataFolder, fileName);
                 // Đường dẫn file Logo cần chèn
                 string logo = HttpContext.Current.Server.MapPath("~/Content/logo/Logobizland.png");
 
@@ -242,12 +242,13 @@ namespace RealEstate.Api.Controllers
                 myGraphics.DrawImage(myBitmapLogo, myBitmap.Width - 20 - myBitmapLogo.Width, myBitmap.Height - 20 - myBitmapLogo.Height, myBitmapLogo.Width, myBitmapLogo.Height);
 
                 // Xuất hình ảnh mới
-                HttpContext.Current.Response.ContentType = "image/jpeg";
-                myBitmap.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
+                // HttpContext.Current.Response.ContentType = "image/jpeg";
+                // myBitmap.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
 
                 // Dùng code này nếu lưu ảnh
+                File.Delete(imageFile);
                 myBitmap.Save(HttpContext.Current.Server.MapPath(dataFolder + "/" + fileName));
-                return path;
+                return "";
             }
             catch (Exception e)
             {

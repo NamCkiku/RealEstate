@@ -7,6 +7,7 @@
         $scope.isActive = '1';
         kendo.culture("vi-VN");
         $scope.searchType = 3;
+        $scope.lat, $scope.lng;
         $scope.room = {
             MoreImages: [],
         }
@@ -160,6 +161,7 @@
             }
         }
         $scope.onSuccess = function (e) {
+            console.log(e);
             if (e.response != null) {
                 $scope.room.ThumbnailImage = e.response;
             }
@@ -175,9 +177,11 @@
         };
         $scope.init = function () {
             if ($rootScope.userInfomation.IsAuthenticated) {
+                getLocation();
                 $scope.registerControl();
-                $scope.initMap();
+               // $scope.initMap();
                 angular.element('#txtuserName').focus();
+               
             }
             else {
                 $window.location.href = '/';
@@ -186,15 +190,16 @@
         };
 
 
-        $scope.initMap = function () {
+        $scope.initMap = function (position) {
+
             var address = document.getElementById('adress');
             var options = {
                 componentRestrictions: { country: "VN" }
             };
             $scope.searchBox = new google.maps.places.Autocomplete(address, options);
             var pos = {
-                lat: 21.0029317912212212,
-                lng: 105.820226663232323
+                lat: position.coords.latitude == undefined ? 21.0029317912212212 : position.coords.latitude,
+                lng: position.coords.longitude == undefined ? 105.820226663232323 : position.coords.longitude
             };
             $scope.myLatlng = new google.maps.LatLng(pos.lat, pos.lng);
             $scope.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -418,6 +423,23 @@
                 });
             }
         };
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition($scope.initMap);
+
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        };
+
+        function showPosition(position) {
+            $scope.lat = position.coords.latitude;
+            $scope.lng = position.coords.longitude;
+            
+        };
+
+
         $scope.init();
     }
 })(angular.module('myApp'));

@@ -23,7 +23,7 @@
                 $scope.init = function () {
                     $scope.GetAllRoomType();
                     $scope.GetAllProvince();
-                    getLocation();
+              
                 };
 
                 //Hàm lấy ra commbobox loại phòng
@@ -101,36 +101,7 @@
                     }
                 };
 
-                function getLocation() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(showPosition);
-
-                    } else {
-                        x.innerHTML = "Geolocation is not supported by this browser.";
-                    }
-                };
-
-                function showPosition(position) {
-                    var request = new XMLHttpRequest();
-
-                    var method = 'GET';
-                    var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&sensor=true';
-                    var async = true;
-
-                    request.open(method, url, async);
-                    request.onreadystatechange = function () {
-                        if (request.readyState == 4 && request.status == 200) {
-                            var data = JSON.parse(request.responseText);
-                            var address = data.results[0];
-                            //alert(address.address_components[3].long_name + '-' + address.address_components[2].long_name + '-' + address.address_components[1].long_name);
-                            //$scope.fillter.provinceId = address.address_components[3].long_name;
-                            //$scope.fillter.districtID = address.address_components[2].long_name;
-                            //$scope.fillter.wardID = address.address_components[1].long_name;
-                        }
-                    };
-                    request.send();
-                };
-
+            
             }]
         return {
             restrict: 'EA', //Default in 1.3+
