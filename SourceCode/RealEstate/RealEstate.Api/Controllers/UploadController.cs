@@ -161,7 +161,7 @@ namespace RealEstate.Api.Controllers
             string fileName = string.Empty;
             foreach (MultipartFileData fileData in provider.FileData)
             {
-
+                int width, height;
                 fileName = fileData.Headers.ContentDisposition.FileName;
                 if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
                 {
@@ -176,7 +176,13 @@ namespace RealEstate.Api.Controllers
                     File.Delete(Path.Combine(dataFolder, fileName));
                 File.Move(fileData.LocalFileName, Path.Combine(dataFolder, fileName));
                 File.Delete(fileData.LocalFileName);
-                AddLogoToImageMulti(dataFolder, fileName);
+                Image image = Image.FromFile(Path.Combine(dataFolder, fileName));
+                var rename = AddLogoToImageMulti(image, fileName, dataFolder);
+                image.Dispose();
+                File.Delete(Path.Combine(dataFolder, fileName));
+                fileName = rename;
+
+
             }
 
             Request.CreateResponse(HttpStatusCode.OK, new { fileName = fileName });
@@ -205,14 +211,14 @@ namespace RealEstate.Api.Controllers
                 byte[] fileContents = new byte[file.ContentLength];
                 fileStream.Read(fileContents, 0, file.ContentLength);
                 System.Drawing.Image image = System.Drawing.Image.FromStream(new System.IO.MemoryStream(fileContents));
-                width = (int)(image.Width * 0.125);
+                width = (int)(image.Width * 0.25);
                 height = (int)((img.Height * width) / img.Width);
                 // Tạo đối tượng Graphic từ Bitmap
                 Graphics myGraphics = Graphics.FromImage(image);
                 // Vẽ lại hình ảnh, chèn nội dung mới vào.
                 Bitmap myBitmapLogo = new Bitmap(width, height);
                 Bitmap myBitmapLogoCenter = new Bitmap(width, height);
-             //   myBitmapLogo.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                //   myBitmapLogo.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 Graphics g1 = Graphics.FromImage((Image)myBitmapLogo);
                 g1.InterpolationMode = InterpolationMode.High;
                 g1.DrawImage(img, 0, 0, width, height);
@@ -236,36 +242,48 @@ namespace RealEstate.Api.Controllers
             }
         }
 
-        public string AddLogoToImageMulti(string dataFolder, string fileName)
+        public string AddLogoToImageMulti(Image image, string fileName, string dataFolder)
         {
             try
             {
-             
+                int width, height;
                 // Đường dẫn file ảnh. 
-                string imageFile = Path.Combine(dataFolder, fileName);
                 // Đường dẫn file Logo cần chèn
                 string logo = HttpContext.Current.Server.MapPath("~/Content/logo/Logo_bizland.vn-01.png");
+                string logoCenter = HttpContext.Current.Server.MapPath("~/Content/logo/Logo_bizland.vn-02.png");
                 Image img = Image.FromFile(logo);
+                Image imgCenter = Image.FromFile(logoCenter);
                 // Tạo đối tượng Bitmap truyền vào đường dẫn File ảnh
-                Bitmap myBitmap = new Bitmap(imageFile);
+
+                width = (int)(image.Width * 0.25);
+                height = (int)((img.Height * width) / img.Width);
                 // Tạo đối tượng Graphic từ Bitmap
-                Graphics myGraphics = Graphics.FromImage(myBitmap);
+                Graphics myGraphics = Graphics.FromImage(image);
                 // Vẽ lại hình ảnh, chèn nội dung mới vào.
-                Bitmap myBitmapLogo = new Bitmap(logo);
-                myBitmapLogo.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                Bitmap myBitmapLogo = new Bitmap(width, height);
+                Bitmap myBitmapLogoCenter = new Bitmap(width, height);
+   
                 Graphics g1 = Graphics.FromImage((Image)myBitmapLogo);
                 g1.InterpolationMode = InterpolationMode.High;
-                g1.DrawImage(img, 0, 0, (int)(myBitmap.Width * 0.6) , (int)(myBitmap.Height * 0.6));
-                myGraphics.DrawImage(myBitmapLogo, myBitmap.Width - 20 - myBitmapLogo.Width, myBitmap.Height - 20 - myBitmapLogo.Height, myBitmapLogo.Width, myBitmapLogo.Height);
+                g1.DrawImage(img, 0, 0, width, height);
+                Graphics g2 = Graphics.FromImage((Image)myBitmapLogoCenter);
+                g2.InterpolationMode = InterpolationMode.High;
+                g2.DrawImage(imgCenter, 0, 0, width, height);
+
+                myGraphics.DrawImage(myBitmapLogo, image.Width - 20 - myBitmapLogo.Width, image.Height - 20 - myBitmapLogo.Height, myBitmapLogo.Width, myBitmapLogo.Height);
+                myGraphics.DrawImage(myBitmapLogoCenter, ((image.Width - myBitmapLogoCenter.Width) / 2), ((image.Height - myBitmapLogoCenter.Height) / 2), myBitmapLogoCenter.Width, myBitmapLogoCenter.Height);
 
                 // Xuất hình ảnh mới
                 // HttpContext.Current.Response.ContentType = "image/jpeg";
                 // myBitmap.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Jpeg);
 
                 // Dùng code này nếu lưu ảnh
-                File.Delete(imageFile);
-                myBitmap.Save(HttpContext.Current.Server.MapPath(dataFolder + "/" + fileName));
-                return "";
+                string rename = ReNameImage("room", fileName);
+                string path = Path.Combine(dataFolder, rename);
+                image.Save(path);
+                image.Dispose();
+                myGraphics.Dispose();
+                return rename;
             }
             catch (Exception e)
             {
