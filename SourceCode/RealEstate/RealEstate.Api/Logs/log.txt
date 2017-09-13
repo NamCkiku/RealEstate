@@ -177,3 +177,14 @@ Logging Start2017-09-13 00:01:26,502 [24] ERROR RealEstate.Common.Logs.LogCommon
 2017-09-13 00:08:02,709 [36] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
 Logging Start2017-09-13 00:19:44,005 [11] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
 Logging Start2017-09-13 00:27:11,154 [10] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 11:21:33,830 [9] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 11:28:38,906 [23] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 11:31:26,075 [13] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 11:36:58,028 [10] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 11:39:56,093 [22] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 11:45:24,591 [11] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 11:48:53,479 [23] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 12:14:48,339 [10] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 13:54:22,751 [9] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 13:57:59,812 [24] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-13 15:08:55,100 [23] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot

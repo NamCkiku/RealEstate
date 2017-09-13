@@ -125,6 +125,7 @@
                 ],
             };
             $scope.kendoUploadOptions = {
+                
                 async: {
                     saveUrl: $rootScope.baseUrl + 'api/upload/uploadimage?type=room',
                     autoUpload: true
@@ -254,6 +255,7 @@
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
             $scope.room.Alias = BaseService.getSeoTitle($scope.room.RoomName);
+            return $scope.room.Alias;
         }
         $scope.nextStep = function (item) {
             if (item == 1) {
