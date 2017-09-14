@@ -707,7 +707,7 @@
                     AcreageFrom: $scope.sliderAcreage.minValue,
                     AcreageTo: $scope.sliderAcreage.maxValue,
                     page: 1,
-                    pageSize: 10,
+                    pageSize: 100,
                     sort: ""
                 }
             }
