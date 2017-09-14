@@ -346,7 +346,7 @@ namespace RealEstate.Api.Controllers
                                  newRoom.MoreInfomationID = moreIfResult.MoreInfomationID;
                              }
                              var room = _roomService.InsertRoom(newRoom);
-                             _roomService.SaveChanges();
+                             //_roomService.SaveChanges();
                              var responseData = Mapper.Map<Room, RoomViewModel>(room);
                              response = request.CreateResponse(HttpStatusCode.Created, responseData);
                          }

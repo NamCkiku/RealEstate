@@ -202,33 +202,35 @@ namespace RealEstate.Service.Service
                     room.DisplayOrder = 5;
                 }
                 roomResult = _roomRepository.Add(room);
-                //_unitOfWork.Commit();
-                //if (!string.IsNullOrEmpty(room.Tags))
-                //{
-                //    string[] tags = room.Tags.Split(',');
-                //    for (var i = 0; i < tags.Length; i++)
-                //    {
-                //        var tagId = StringHelper.ToUnsignString(tags[i]);
-                //        if (_tagRepository.Count(x => x.ID == tagId) == 0)
-                //        {
-                //            Tag tag = new Tag();
-                //            tag.ID = tagId;
-                //            tag.Name = tags[i];
-                //            tag.Type = CommonConstants.RoomTag;
-                //            _tagRepository.Add(tag);
-                //        }
+                _unitOfWork.Commit();
+                if (!string.IsNullOrEmpty(room.Tags))
+                {
+                    string[] tags = room.Tags.Split(',');
+                    for (var i = 0; i < tags.Length; i++)
+                    {
+                        var tagId = StringHelper.ToUnsignString(tags[i]);
+                        if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                        {
+                            Tag tag = new Tag();
+                            tag.ID = tagId;
+                            tag.Name = tags[i];
+                            tag.Type = CommonConstants.RoomTag;
+                            _tagRepository.Add(tag);
+                        }
 
-                //        RoomTag roomTag = new RoomTag();
-                //        roomTag.RoomID = room.ID;
-                //        roomTag.TagID = tagId;
-                //        _roomTagRepository.Add(roomTag);
-                //    }
-                //}
+                        RoomTag roomTag = new RoomTag();
+                        roomTag.RoomID = room.ID;
+                        roomTag.TagID = tagId;
+                        _roomTagRepository.Add(roomTag);
+                    }
+                    _unitOfWork.Commit();
+                }
             }
             catch (Exception ex)
             {
                 string FunctionName = string.Format("InsertRoom('{0}')", "");
                 Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
+                return null;
             }
 
             return roomResult;
