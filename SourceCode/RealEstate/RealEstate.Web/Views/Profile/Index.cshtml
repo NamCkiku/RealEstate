@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="main-content">
+<div class="main-content" style="background:#F7F9FA">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
@@ -17,20 +17,19 @@
             </div>
             <div class="col-md-4 col-lg-4 col-xs-12">
                 <div class="media profile-block">
-                    <a class="pull-left" href="#">
-                        <img class="media-object dp img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" style="width: 100px;height:100px;">
+                    <div class="media-user-avatar col-lg-4 col-sm-4 col-xs-4 no-padding">
+                        <img class="media-object user-avatar img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png">
                         <span class="label label-default">15 Xu</span>
                         <span class="label label-default">400 Point</span>
-                    </a>
-                    <div class="media-body">
-                        <h5 class="media-heading">Trần Hoàng Nam</h5>
-                        <div class="media-infomation">
-                            <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-user ">Ngọc Lịch Trưng Trắc Văn Lâm Hưng Yên</span>
-                            <i style="display: table-cell;" class="glyphicon glyphicon-envelope"></i><span class="info-span-user ">tranhoangnam11373@gmail.com</span>
-                            <i style="display: table-cell;" class="glyphicon glyphicon-globe"></i><span class="info-span-user ">www.jquery2dotnet.com</span>
-                            <i style="display: table-cell;" class="glyphicon glyphicon-gift"></i><span class="info-span-user ">30/04/1995</span>
-                        </div>
                     </div>
+                    <div class="user-info-desc col-lg-8 col-sm-8 col-xs-8 no-padding">
+                        <strong class="user-info-name">Trần Hoàng Nam</strong>
+                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-map-marker"></i>Ngọc Lịch Trưng Trắc Văn Lâm Hưng yên</div>
+                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-phone"></i>0965207749</div>
+                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-inbox"></i>tranhoangnam11373@gmail.com</div>
+                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-university"></i>bizland.vn</div>
+                    </div>
+                    <div class="clearfix"></div>
                     <div class="profile-userbuttons">
                         <div class="row">
                             <div class="col-md-6">
@@ -96,77 +95,172 @@
                 </div>
             </div>
             <div class="col-md-8 col-lg-8 col-xs-12">
-                <div class="card tab-profile">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>Tài khoản</span></a></li>
-                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>Profile</span></a></li>
-                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>  <span>Messages</span></a></li>
-                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-cog"></i>  <span>Settings</span></a></li>
-                        <li role="presentation"><a href="#extra" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-plus-square-o"></i>  <span>extra</span></a></li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="account">
-                            <form id="update-profile-form" action="/thay-doi-thong-tin" method="post" class="zn-form form-horizontal" role="form" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
-                                <div class="form-group">
-                                    <label for="user_name" class="col-sm-3 control-label">Tên đăng nhập <span class="required-text">*</span></label>
-                                    <div class="col-sm-8">
-                                        <input name="user_name" maxlength="255" placeholder="" disabled="disabled" type="text" class="form-control" id="user_name" value="namckiku">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="col-sm-3 control-label">E-mail <span class="required-text">*</span></label>
-                                    <div class="col-sm-8">
-                                        <input id="email" type="text" class="required form-control" name="email" maxlength="255" value="tranhoangnam11373@gmail.com">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="last_name" class="col-sm-3 control-label">Tên hiển thị</label>
-                                    <div class="col-sm-8">
-                                        <input id="display-name" type="text" class="form-control" name="display_name" maxlength="255" value="Nam Ckiku">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="school-search-input" class="col-sm-3 control-label">Trường THPT</label>
-                                    <div class="col-sm-8">
-                                        <div id="school-search-box" class="item-search-box" style="">
-                                            <input type="text" class="form-control item-search-input" name="item-search-input" placeholder="Nhập tên trường cần tìm" data-type="school">
-                                            <input id="school-id" type="hidden" name="school_id" value="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="biography" class="col-sm-3 control-label">Giới thiệu về bản thân</label>
-                                    <div class="col-sm-8">
-                                        <textarea class="form-control" style="height: 100px;" id="biography" rows="10" cols="40" name="biography"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group clearfix">
-                                    <label class="col-md-3 control-label">Ảnh đại diện<i class="required">*</i> :</label>
-                                    <div class="col-md-8">
-                                        <div class="room_avatar_image">
-                                            <canvas id="canvas" height="5" width="5"></canvas>
-                                            <img class="room_avatar_image_edit">
-                                            <div class="img_edit"></div>
-                                            <input type="file" id="FileUpload1" class="img_upload" accept=".jpg,.png,.gif">
-                                            <span class="glyphicon glyphicon-ok form-control-feedback success-ic2" aria-hidden="true" id="successImg" style="display: none;"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-8 col-sm-offset-3">
-                                        <input class="zn-btn btn-success btn-save" type="submit" value="Lưu">
-                                    </div>
-                                </div>
-                            </form>
+                <div class="content-user-infomation">
+                    <div class="content-user-item">
+                        <div class="content-item-title">
+                            <div class="oplog-title__txt">LỊCH SỬ ĐĂNG NHẬP</div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                        <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                        <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
-                        <div role="tabpanel" class="tab-pane" id="extra">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+                        <div class="content-item-main">
+                            <div class="content-item-information">
+                                <div class="content-item-panel"><div class="content-item-panel-txt">Kiểm tra 3 lần đăng nhập mới nhất. Hãy thay đổi mật khẩu ngay nếu bạn thấy có sự khác thường.</div></div>
+                                <div class="content-item-data">
+                                    <table class="table table-hover no-margin">
+                                        <thead class="table-thead">
+                                            <tr>
+                                                <th>Ngày Tháng</th>
+                                                <th>Quốc gia</th>
+                                                <th>IP</th>
+                                                <th>Nguồn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-body">
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-user-infomation">
+                    <div class="content-user-item">
+                        <div class="content-item-title">
+                            <div class="oplog-title__txt">LỊCH SỬ ĐĂNG NHẬP</div>
+                        </div>
+                        <div class="content-item-main">
+                            <div class="content-item-information">
+                                <div class="content-item-panel"><div class="content-item-panel-txt">Kiểm tra 3 lần đăng nhập mới nhất. Hãy thay đổi mật khẩu ngay nếu bạn thấy có sự khác thường.</div></div>
+                                <div class="content-item-data">
+                                    <table class="table table-hover no-margin">
+                                        <thead class="table-thead">
+                                            <tr>
+                                                <th>Ngày Tháng</th>
+                                                <th>Quốc gia</th>
+                                                <th>IP</th>
+                                                <th>Nguồn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-body">
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-user-infomation">
+                    <div class="content-user-item">
+                        <div class="content-item-title">
+                            <div class="oplog-title__txt">LỊCH SỬ ĐĂNG NHẬP</div>
+                        </div>
+                        <div class="content-item-main">
+                            <div class="content-item-information">
+                                <div class="content-item-panel"><div class="content-item-panel-txt">Kiểm tra 3 lần đăng nhập mới nhất. Hãy thay đổi mật khẩu ngay nếu bạn thấy có sự khác thường.</div></div>
+                                <div class="content-item-data">
+                                    <table class="table table-hover no-margin">
+                                        <thead class="table-thead">
+                                            <tr>
+                                                <th>Ngày Tháng</th>
+                                                <th>Quốc gia</th>
+                                                <th>IP</th>
+                                                <th>Nguồn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-body">
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2017-09-15 08:58:37</td>
+                                                <td>VN</td>
+                                                <td>113.160.22.74</td>
+                                                <td>Mobile</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,46 +268,142 @@
     </div>
 </div>
 <div class="clearfix"></div>
-<section class="app-store-main hidden-xs">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-7 pull-right">
-                <header>
-                    <h2><strong>DOWNLOAD</strong> MOBILE APP</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est...</p>
-                </header>
-                <div class="row inner app-icons">
-                    <div class="col-xs-4">
-                        <a href="#" class="app-store">
-                            <img src="http://askbootstrap.com/osahan-ads/images/android.png" alt="Google play">
-                            <span>download on</span>
-                            <h4>Google Play</h4>
-                        </a>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="#" class="app-store">
-                            <img src="http://askbootstrap.com/osahan-ads/images/apple.png" alt="Apple store">
-                            <span>download on</span>
-                            <h4>Apple Store</h4>
-                        </a>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="#" class="app-store">
-                            <img src="http://askbootstrap.com/osahan-ads/images/win.png" alt="windows store">
-                            <span>download on</span>
-                            <h4>Windows Store</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-5 pull-right">
-                <div class="action-mock">
-                    <img src="http://askbootstrap.com/osahan-ads/images/app-mock.png" alt="download apps">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<style>
+    .profile-block {
+        background: #FFF;
+        border-radius: 2px;
+        border: 1px solid rgb(226, 235, 242) !important;
+        margin: 20px 0;
+        padding: 10px;
+    }
+
+    .media-user-avatar {
+        margin-bottom: 10px;
+    }
+
+        .media-user-avatar .user-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border: 5px solid #eee;
+            transition: all 0.2s ease-in-out;
+        }
+
+            .media-user-avatar .user-avatar:hover {
+                border: 2px solid #eee;
+                transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                /*-webkit-font-smoothing:antialiased;*/
+            }
+
+    .user-info-desc {
+        color: #354C60;
+        font-size: 12px;
+    }
+
+        .user-info-desc .user-info-name {
+            color: #000;
+            font-weight: 400;
+            font-size: 16px;
+            max-width: 88%;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            -webkit-transition: color .1s ease-in-out;
+            transition: color .1s ease-in-out;
+        }
+
+        .user-info-desc .user-info-address {
+            color: rgba(53, 76, 96, 0.4);
+            overflow: hidden;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            padding: 5px;
+        }
+
+    .content-user-item {
+        margin: 0 0 10px;
+        border-radius: 2px;
+        background: #fff;
+        box-sizing: border-box;
+        border: 1px solid rgb(226, 235, 242)
+    }
+
+        .content-user-item .content-item-title {
+            padding: 12px 20px 10px;
+            font-size: 16px;
+            color: #4A6277;
+            font-weight: normal;
+        }
+
+    .content-item-main {
+    }
+
+        .content-item-main:before {
+            margin: 0 20px;
+            content: '';
+            border-top: 1px solid rgb(226, 235, 242);
+            display: block;
+        }
+
+        .content-item-main .content-item-information {
+            padding: 0 20px 20px;
+        }
+
+    .content-item-panel {
+        padding: 10px 0;
+        font-size: 12px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+        .content-item-panel .content-item-panel-txt {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1 1 auto;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            color: rgba(53, 76, 96, 0.8);
+        }
+
+    .table-thead {
+        border-left: 1px solid #E2EBF2;
+        border-right: 1px solid #E2EBF2;
+        border-top: 1px solid #E2EBF2;
+        background: rgba(226, 235, 242, 0.3);
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+    }
+    .table-thead th{
+        font-weight:normal;
+    }
+    .table-body {
+        border-top: 1px solid #f0f1f4;
+        border-left: 1px solid #f0f1f4;
+        border-right: 1px solid #f0f1f4;
+        overflow: hidden;
+        font-size: 12px;
+    }
+        .table-body tr {
+            background: transparent;
+            border-bottom: 1px solid #E2EBF2;
+        }
+</style>
 <style>
     .text-warning {
         color: #fbbc05 !important;
@@ -223,21 +413,10 @@
         color: #ff0000;
     }
 
-    .tab-profile .form-control {
-        display: inline-block;
-        border-radius: 3px;
-        font-size: 12px;
-        font-weight: normal;
-    }
-
-    .tab-profile .control-label {
-        font-weight: normal;
-        font-size: 12px;
-    }
-
     .profile-userbuttons {
         text-align: center;
         margin-top: 20px;
+        margin-bottom: 20px;
     }
 
         .profile-userbuttons .btn {
@@ -353,291 +532,5 @@
     .element-box, .invoice-w, .big-error-w {
         padding: 1.5rem 2rem;
         margin-bottom: 1rem;
-    }
-</style>
-<style>
-    #box-profile .tab .nav-tabs {
-        border-bottom: 0 none;
-    }
-
-        #box-profile .tab .nav-tabs li {
-            margin-right: 15px;
-        }
-
-            #box-profile .tab .nav-tabs li a {
-                position: relative;
-                padding: 7px;
-                color: #fff;
-                font-size: 13px;
-                z-index: 1;
-            }
-
-                #box-profile .tab .nav-tabs li a:hover {
-                    background: transparent;
-                    border: 1px solid transparent;
-                }
-
-                #box-profile .tab .nav-tabs li a:before {
-                    content: "";
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    bottom: 3px;
-                    left: -1px;
-                    font-size: 17px;
-                    background: #2672ec;
-                    border: 1px solid #d3d3d3;
-                    border-bottom: 0px none;
-                    border-radius: 10px 10px 0 0;
-                    transform-origin: left center 0;
-                    transform: perspective(4px) rotateX(2deg);
-                    z-index: -1;
-                }
-
-            #box-profile .tab .nav-tabs li.active a:before {
-                background: #fff;
-            }
-
-            #box-profile .tab .nav-tabs li.active a,
-            #box-profile .tab .nav-tabs li.active a:focus,
-            #box-profile .tab .nav-tabs li.active a:hover {
-                border: 1px solid transparent;
-                background: transparent;
-                color: #444;
-                z-index: 2;
-            }
-
-    .nav .badge {
-        top: -10px;
-        left: 68px;
-        position: absolute;
-        background-color: #e73c3c;
-    }
-
-    @@media only screen and (max-width: 767px) {
-        #box-profile .tab .nav-tabs li a {
-            padding: 15px 10px;
-            font-size: 14px;
-        }
-
-            #box-profile .tab .nav-tabs li a:before {
-                bottom: 6px;
-            }
-    }
-
-    @@media only screen and (max-width: 480px) {
-        #box-profile .tab .nav-tabs li {
-            width: 100%;
-            margin-bottom: 5px;
-        }
-
-            #box-profile .tab .nav-tabs li a:before {
-                bottom: 0;
-                transform: none;
-                border-bottom: 1px solid #d3d3d3;
-            }
-    }
-</style>
-<style>
-    .tab-profile {
-        height: 100% !important;
-    }
-
-        .tab-profile .nav-tabs {
-            border-bottom: 2px solid #DDD;
-        }
-
-            .tab-profile .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
-                border-width: 0;
-            }
-
-            .tab-profile .nav-tabs > li > a {
-                border: none;
-                color: #ffffff;
-                background: #5a4080;
-            }
-
-            .tab-profile .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
-                border: none;
-                color: #5a4080 !important;
-                background: #fff;
-            }
-
-            .tab-profile .nav-tabs > li > a::after {
-                content: "";
-                background: #5a4080;
-                height: 2px;
-                position: absolute;
-                width: 100%;
-                left: 0px;
-                bottom: -1px;
-                transition: all 250ms ease 0s;
-                transform: scale(0);
-            }
-
-            .tab-profile .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
-                transform: scale(1);
-            }
-
-        .tab-profile .tab-nav > li > a::after {
-            background: ##5a4080 none repeat scroll 0% 0%;
-            color: #fff;
-        }
-
-        .tab-profile .tab-pane {
-            padding: 15px 0;
-        }
-
-        .tab-profile .tab-content {
-            padding: 20px
-        }
-
-        .tab-profile .nav-tabs > li {
-            width: 20%;
-            text-align: center;
-        }
-
-    @@media all and (max-width:724px) {
-        .tab-profile .nav-tabs > li > a > span {
-            display: none;
-        }
-
-        .tab-profile .nav-tabs > li > a {
-            padding: 5px 5px;
-        }
-    }
-</style>
-<style>
-    .media {
-        /*box-shadow:0px 0px 4px -2px #000;*/
-        margin: 20px 0;
-        padding: 10px;
-        border: 1px solid #eee;
-    }
-
-    .dp {
-        border: 5px solid #eee;
-        transition: all 0.2s ease-in-out;
-    }
-
-        .dp:hover {
-            border: 2px solid #eee;
-            transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            -webkit-transform: rotate(360deg);
-            /*-webkit-font-smoothing:antialiased;*/
-        }
-
-    .media-infomation .info-span-user {
-        font-size: 12px;
-        display: table-cell;
-        padding-left: 10px;
-        padding-bottom: 3px;
-        color: #979797;
-    }
-
-
-    .room_avatar_image {
-        width: 200px;
-        height: 150px;
-        background: url(https://sharecode.vn/assets/images/img_code.jpg) no-repeat;
-        border: 1px solid #d5c6ae;
-        border-radius: 3px;
-        float: left;
-        position: relative;
-        overflow: hidden;
-        margin-right: 40px;
-    }
-
-        .room_avatar_image .room_avatar_image_edit {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 200px;
-            height: 148px;
-        }
-
-        .room_avatar_image .img_edit {
-            position: absolute;
-            top: 0;
-            width: 200px;
-            height: 150px;
-        }
-
-        .room_avatar_image:hover .img_edit {
-            background: url(https://sharecode.vn/assets/images/img_edit.png) no-repeat;
-        }
-
-        .room_avatar_image:focus .img_edit {
-            background: url(https://sharecode.vn/assets/images/img_edit.png) no-repeat;
-        }
-
-        .room_avatar_image input.img_upload {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 150px;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            filter: alpha(opacity=0);
-        }
-</style>
-<style>
-    /* App Store */
-    .app-store-main {
-        background: #ffffff none repeat scroll 0 0;
-        padding-bottom: 0;
-        padding-top: 0;
-    }
-
-        .app-store-main h2, .app-store-main p {
-            color: #1f1f1f;
-            margin: 0 0 5px;
-        }
-
-        .app-store-main header h2 {
-            font-size: 24px;
-        }
-
-    .app-store, .app-store:hover {
-        background: #ffffff none repeat scroll 0 0;
-        border-radius: 62px;
-        color: #7e7e7e;
-        display: block;
-        padding-bottom: 18px;
-        padding-left: 65px;
-        padding-top: 5px;
-        position: relative;
-        text-decoration: none;
-    }
-
-        .app-store img {
-            left: 6px;
-            position: absolute;
-            top: 6px;
-        }
-
-        .app-store h4 {
-            color: #333333;
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 13px;
-            margin: 0;
-        }
-
-    .app-store-main header {
-        margin: 52px 0 26px;
-    }
-
-        .app-store-main header h2 {
-            font-size: 40px;
-            margin: 14px 0;
-        }
-
-    .app-store span {
-        font-size: 10px;
-        text-transform: uppercase;
     }
 </style>
