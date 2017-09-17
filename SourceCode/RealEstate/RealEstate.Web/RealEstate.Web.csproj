@@ -121,6 +121,7 @@
     <Content Include="app\components\map\infobox.js" />
     <Content Include="app\components\map\mapRoomController.js" />
     <Content Include="app\components\map\markerclusterer.js" />
+    <Content Include="app\components\profile\profileController.js" />
     <Content Include="app\components\room\roomController.js" />
     <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
