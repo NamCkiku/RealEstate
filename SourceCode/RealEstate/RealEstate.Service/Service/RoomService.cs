@@ -47,17 +47,17 @@ namespace RealEstate.Service.Service
             return lstroom;
         }
 
-        public IEnumerable<RoomEntity> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow)
+        public IEnumerable<RoomListEntity> GetAllListRoomByUserStoreProc(string userID,string keyword, int page, int pageSize, out int totalRow)
         {
-            List<RoomEntity> lstroom = new List<RoomEntity>();
+            List<RoomListEntity> lstroom = new List<RoomListEntity>();
             try
             {
                 totalRow = 0;
-                lstroom = _roomRepository.GetAllRoomByUser(userID, page, pageSize, out totalRow).ToList();
+                lstroom = _roomRepository.GetAllRoomByUser(userID,keyword, page, pageSize, out totalRow).ToList();
             }
             catch (Exception ex)
             {
-                string FunctionName = string.Format("GetAllListRoomByUser('{0}')", "");
+                string FunctionName = MethodInfo.GetCurrentMethod().Name;
                 Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
                 totalRow = 0;
             }

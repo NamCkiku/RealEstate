@@ -76,7 +76,7 @@ namespace RealEstate.Api.Controllers
             {
                 responeResult = CreateHttpResponse(request, () =>
                 {
-                    var result = UserManager.FindByIdAsync(Id);
+                    var result = UserManager.FindById(Id);
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, result);
                     return response;
                 });
