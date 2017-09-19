@@ -19,6 +19,11 @@ namespace RealEstate.Web
               defaults: new { controller = "RoomDetail", id = UrlParameter.Optional, action = "Index" }
             );
             routes.MapRoute(
+              name: "Profile",
+              url: "thong-tin-tai-khoan",
+              defaults: new { controller = "Profile", id = UrlParameter.Optional, action = "Index" }
+            );
+            routes.MapRoute(
             name: "Create",
             url: "dang-tin-mien-phi",
             defaults: new { controller = "RoomManage", id = UrlParameter.Optional, action = "Create" }

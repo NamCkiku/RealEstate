@@ -32,7 +32,7 @@ namespace RealEstate.Repository.Repositories
                 parameter.Add("@PageCount", pageSize, dbType: DbType.Int32);
                 parameter.Add("@PageIndex", page, dbType: DbType.Int32);
                 parameter.Add("@totalrow", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var result = DapperExtensions.QueryDapperStoreProc<AuditlogEntity>("sp_HistoryLogin");
+                var result = DapperExtensions.QueryDapperStoreProc<AuditlogEntity>("sp_HistoryLogin", parameter);
                 totalRow = parameter.Get<int>("@totalrow");
                 return result;
             }

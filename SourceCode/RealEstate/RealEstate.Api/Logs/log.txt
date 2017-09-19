@@ -220,3 +220,5 @@ Logging Start2017-09-17 13:13:12,168 [9] ERROR RealEstate.Common.Logs.LogCommon 
 Logging Start2017-09-17 13:24:21,344 [12] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
 2017-09-17 13:25:37,879 [12] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
 2017-09-17 13:34:37,706 [33] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+Logging Start2017-09-18 08:15:22,030 [21] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+2017-09-18 08:25:35,536 [25] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
