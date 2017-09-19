@@ -51,5 +51,20 @@ namespace RealEstate.Service.Service
             }
             return lstuser;
         }
+
+        public AppUserEntity GetInfomationUserById(string userId)
+        {
+            AppUserEntity user = new AppUserEntity();
+            try
+            {
+                user = _userRepository.GetInfomationUserById(userId);
+            }
+            catch (Exception ex)
+            {
+                string FunctionName = MethodInfo.GetCurrentMethod().Name;
+                Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
+            }
+            return user;
+        }
     }
 }

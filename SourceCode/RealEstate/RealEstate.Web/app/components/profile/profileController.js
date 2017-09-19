@@ -7,6 +7,7 @@
         $scope.userInfo = {
 
         }
+
         angular.element(document).ready(function () {
             $scope.init();
         });
@@ -24,10 +25,10 @@
                 myBlockUI.start();
                 var config = {
                     params: {
-                        id: user.userID
+                        userID: user.userID
                     }
                 }
-                apiService.get('api/account/user', config, function (respone) {
+                apiService.get('api/management/getuserbyid', config, function (respone) {
                     $scope.userInfo = respone.data;
                     console.log($scope.userInfo);
                     $scope.fireLoadProfileHistoryEvent();
@@ -57,6 +58,29 @@
         $scope.init = function () {
             $scope.GetAllUserInfo();
         };
+
+
+         $scope.showPopupPayment = function () {
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'ModalPayment.html',
+                controller: 'ModalPaymentController',
+                size: 'md',
+                backdrop: 'static',
+                keyboard: false,
+                resolve: {
+                    items: function () {
+                        return $scope.userInfo;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (response) {
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        }
+
 
         $scope.fireLoadProfileHistoryEvent = function () {
             $scope.$broadcast('fireLoadProfileHistoryEvent', $scope.userInfo);

@@ -288,6 +288,36 @@ namespace RealEstate.Api.Controllers
             }
             return responeResult;
         }
+        /// <summary>
+        /// Hàm API lấy ra thông tin của user theo id
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/management/getallhistorylogin</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  17/09/2017   created
+        /// </Modified>
+        [Route("getuserbyid")]
+        public HttpResponseMessage GetInfomationById(HttpRequestMessage request, string userID)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var user = _userService.GetInfomationUserById(userID);
+                    var userVm = Mapper.Map<AppUserViewModel>(user);
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, userVm);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
         #endregion
     }
 }

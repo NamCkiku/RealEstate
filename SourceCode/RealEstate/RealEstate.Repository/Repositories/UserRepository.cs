@@ -58,6 +58,22 @@ namespace RealEstate.Repository.Repositories
             }
         }
 
+        public AppUserEntity GetInfomationUserById(string userID)
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                parameter.Add("@UserID", userID, dbType: DbType.String);
+                var result = DapperExtensions.QueryFirstOrDefaultStoreProc<AppUserEntity>("sp_GetInfomationUserById", parameter);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
+                return new AppUserEntity();
+            }
+        }
+
         public async Task<IdentityResult> RegisterUser(AppUser userModel)
         {
             IdentityUser user = new IdentityUser

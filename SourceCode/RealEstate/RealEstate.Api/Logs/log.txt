@@ -222,3 +222,29 @@ Logging Start2017-09-17 13:24:21,344 [12] ERROR RealEstate.Common.Logs.LogCommon
 2017-09-17 13:34:37,706 [33] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
 Logging Start2017-09-18 08:15:22,030 [21] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
 2017-09-18 08:25:35,536 [25] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+Logging Start2017-09-19 09:03:50,334 [18] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Task`1 -> List`1
+System.Threading.Tasks.Task`1[[RealEstate.Entities.ModelView.AppUserEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-19 09:03:50,405 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserId', which was not supplied.MoveNext
+Logging Start2017-09-19 09:07:40,382 [20] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserId', which was not supplied.GetInfomationUserById
+2017-09-19 09:08:02,462 [20] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserId', which was not supplied.GetInfomationUserById
+2017-09-19 09:08:02,982 [20] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AppUserEntity -> List`1
+RealEstate.Entities.ModelView.AppUserEntity -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-19 09:08:15,912 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserID', which was not supplied.GetInfomationUserById
+2017-09-19 09:09:03,640 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserID', which was not supplied.GetInfomationUserById
+2017-09-19 09:09:03,696 [5] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AppUserEntity -> List`1
+RealEstate.Entities.ModelView.AppUserEntity -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-19 09:09:13,481 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserID', which was not supplied.GetInfomationUserById
+2017-09-19 09:09:24,926 [5] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AppUserEntity -> List`1
+RealEstate.Entities.ModelView.AppUserEntity -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
