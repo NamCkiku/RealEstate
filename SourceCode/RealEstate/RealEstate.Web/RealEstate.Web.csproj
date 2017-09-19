@@ -122,6 +122,9 @@
     <Content Include="app\components\map\mapRoomController.js" />
     <Content Include="app\components\map\markerclusterer.js" />
     <Content Include="app\components\profile\profileController.js" />
+    <Content Include="app\components\profile\pVProfileChangePasswordController.js" />
+    <Content Include="app\components\profile\pVProfileHistoryController.js" />
+    <Content Include="app\components\profile\pvProfileUpdateUserController.js" />
     <Content Include="app\components\room\roomController.js" />
     <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
@@ -3713,6 +3716,8 @@
     <Content Include="Content\Plugins\FlexSlider\package.json" />
     <Content Include="Content\Plugins\FlexSlider\README.md" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Profile\PVProfileHistory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

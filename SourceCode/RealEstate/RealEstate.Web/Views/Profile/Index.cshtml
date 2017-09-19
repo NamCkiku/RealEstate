@@ -18,7 +18,8 @@
             <div class="col-md-4 col-lg-4 col-xs-12">
                 <div class="media profile-block">
                     <div class="media-user-avatar col-lg-4 col-sm-4 col-xs-4 no-padding">
-                        <img class="media-object user-avatar img-circle" ng-src="{{userInfo.avatar}}">
+                        <img class="media-object user-avatar img-circle" ng-if="userInfo.avatar !=null && userInfo.avatar !=''" ng-src="{{userInfo.avatar}}">
+                        <img class="media-object user-avatar img-circle" ng-if="userInfo.avatar ==null || userInfo.avatar ==''" src="/Content/img/boy-512.png">
                         <span class="label label-default">15 Xu</span>
                         <span class="label label-default">400 Point</span>
                     </div>
@@ -56,203 +57,47 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="widget" style="margin-top:25px;">
-                        <div class="widget-body">
-                            <div class="streamline sl-style-2">
-                                <div class="sl-item sl-primary">
-                                    <div class="sl-content">
-                                        <small class="text-muted">5 mins ago</small>
-                                        <p>Williams has just joined Project X</p>
+                    @*<div class="widget" style="margin-top:25px;">
+                            <div class="widget-body">
+                                <div class="streamline sl-style-2">
+                                    <div class="sl-item sl-primary">
+                                        <div class="sl-content">
+                                            <small class="text-muted">5 mins ago</small>
+                                            <p>Williams has just joined Project X</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sl-item sl-danger">
-                                    <div class="sl-content">
-                                        <small class="text-muted">25 mins ago</small>
-                                        <p>Jane sent you a request to grant access to the project folder</p>
+                                    <div class="sl-item sl-danger">
+                                        <div class="sl-content">
+                                            <small class="text-muted">25 mins ago</small>
+                                            <p>Jane sent you a request to grant access to the project folder</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sl-item sl-success">
-                                    <div class="sl-content">
-                                        <small class="text-muted">40 mins ago</small>
-                                        <p>Kate added you to her team</p>
+                                    <div class="sl-item sl-success">
+                                        <div class="sl-content">
+                                            <small class="text-muted">40 mins ago</small>
+                                            <p>Kate added you to her team</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-content">
-                                        <small class="text-muted">55</small>
-                                        <p>John has finished his task</p>
+                                    <div class="sl-item">
+                                        <div class="sl-content">
+                                            <small class="text-muted">55</small>
+                                            <p>John has finished his task</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sl-item sl-warning">
-                                    <div class="sl-content">
-                                        <small class="text-muted">60 mins ago</small>
-                                        <p>Jim shared a folder with you</p>
+                                    <div class="sl-item sl-warning">
+                                        <div class="sl-content">
+                                            <small class="text-muted">60 mins ago</small>
+                                            <p>Jim shared a folder with you</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>*@
                 </div>
             </div>
             <div class="col-md-8 col-lg-8 col-xs-12">
-                <div class="content-user-infomation">
-                    <div class="content-user-item">
-                        <div class="content-item-title">
-                            <div class="oplog-title__txt">CÁC TIN ĐÃ ĐĂNG</div>
-                        </div>
-                        <div class="content-item-main">
-                            <div class="content-item-information">
-                                <div class="content-item-panel"><div class="content-item-panel-txt">Danh sách các tin bạn đã đăng trên hệ thống của Bizland.vn</div></div>
-                                <div class="content-item-data">
-                                    <table class="table table-hover no-margin">
-                                        <thead class="table-thead">
-                                            <tr>
-                                                <th>Tiêu đề</th>
-                                                <th>Danh mục</th>
-                                                <th>Lượt xem</th>
-                                                <th>Giá tiền</th>
-                                                <th>Trạng thái</th>
-                                                <th>Chức năng</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-body">
-                                            <tr ng-repeat="item in data.lstRoomByUser">
-                                                <td>{{item.roomName}}</td>
-                                                <td>{{item.roomTypeName}}</td>
-                                                <td>{{item.viewCount}}</td>
-                                                <td>{{item.price |number}}</td>
-                                                <td>Đã duyệt</td>
-                                                <td>
-                                                    <a href="" data-toggle="tooltip" data-placement="top" title="Click để Hiển thị (or) Ẩn với mọi người">
-                                                        <i class="fa fa-eye green" aria-hidden="true"></i>
-                                                    </a>&nbsp;
-                                                    <a href="" data-toggle="tooltip" data-placement="top" title="Sửa thông tin">
-                                                        <i class="fa fa-pencil orange" aria-hidden="true"></i>
-                                                    </a>&nbsp;
-                                                    <a href="" data-toggle="tooltip" data-placement="top" title="Xóa vĩnh viễn tin này">
-                                                        <i class="fa fa-trash orange" aria-hidden="true"></i>
-                                                    </a>&nbsp;
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-user-infomation">
-                    <div class="content-user-item">
-                        <div class="content-item-title">
-                            <div class="oplog-title__txt">LỊCH SỬ ĐĂNG NHẬP</div>
-                        </div>
-                        <div class="content-item-main">
-                            <div class="content-item-information">
-                                <div class="content-item-panel"><div class="content-item-panel-txt">Kiểm tra 3 lần đăng nhập mới nhất. Hãy thay đổi mật khẩu ngay nếu bạn thấy có sự khác thường.</div></div>
-                                <div class="content-item-data">
-                                    <table class="table table-hover no-margin">
-                                        <thead class="table-thead">
-                                            <tr>
-                                                <th>Ngày Tháng</th>
-                                                <th>Quốc gia</th>
-                                                <th>IP</th>
-                                                <th>Nguồn</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-body">
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-user-infomation">
-                    <div class="content-user-item">
-                        <div class="content-item-title">
-                            <div class="oplog-title__txt">LỊCH SỬ ĐĂNG NHẬP</div>
-                        </div>
-                        <div class="content-item-main">
-                            <div class="content-item-information">
-                                <div class="content-item-panel"><div class="content-item-panel-txt">Kiểm tra 3 lần đăng nhập mới nhất. Hãy thay đổi mật khẩu ngay nếu bạn thấy có sự khác thường.</div></div>
-                                <div class="content-item-data">
-                                    <table class="table table-hover no-margin">
-                                        <thead class="table-thead">
-                                            <tr>
-                                                <th>Ngày Tháng</th>
-                                                <th>Quốc gia</th>
-                                                <th>IP</th>
-                                                <th>Nguồn</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-body">
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-09-15 08:58:37</td>
-                                                <td>VN</td>
-                                                <td>113.160.22.74</td>
-                                                <td>Mobile</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @{ Html.RenderAction("PVProfileHistory", "Profile"); }
+
             </div>
         </div>
     </div>
