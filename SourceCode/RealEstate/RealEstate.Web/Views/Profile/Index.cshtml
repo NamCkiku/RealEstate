@@ -59,6 +59,15 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="profile-nav">
+                        <ul class="nav nav-pills nav-stacked" role="tablist">
+                            <li role="presentation" class="active"><a href="#RecentActivity" role="tab" data-toggle="tab" aria-expanded="true"> <i class="fa fa-calendar-times-o" aria-hidden="true"></i> Hoạt động gần đây</a></li>
+                            <li role="presentation"><a href="#history" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-history" aria-hidden="true"></i> Lịch sử giao dịch</a></li>
+                            <li role="presentation"><a href="#edituser" role="tab" data-toggle="tab" aria-expanded="false"> <i class="fa fa-edit"></i> Sửa thông tin</a></li>
+                            <li role="presentation"><a href="#changepassword" role="tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-cogs" aria-hidden="true"></i> Đổi mật khẩu</a></li>
+                        </ul>
+                    </div>
+
                     @*<div class="widget" style="margin-top:25px;">
                             <div class="widget-body">
                                 <div class="streamline sl-style-2">
@@ -98,7 +107,111 @@
                 </div>
             </div>
             <div class="col-md-8 col-lg-8 col-xs-12">
-                @{ Html.RenderAction("PVProfileHistory", "Profile"); }
+                <div class="tab-content">
+                    <div role="tabpanel" class="row tab-pane active" id="RecentActivity">
+                        @{ Html.RenderAction("PVProfileHistory", "Profile"); }
+                    </div>
+                    <div role="tabpanel" class="row tab-pane" id="history">
+                    </div>
+                    <div role="tabpanel" class="row tab-pane" id="edituser">
+                        <div class="content-user-infomation">
+                            <div class="content-user-item">
+                                <div class="content-item-title">
+                                    <div class="oplog-title__txt">Thay đổi thông tin</div>
+                                </div>
+                                <div class="content-item-main">
+                                    <div class="content-item-information">
+                                        <div class="content-item-panel"><div class="content-item-panel-txt">Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i></div></div>
+                                        <div class="content-item-data">
+                                            <form class="form-horizontal form-profile">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Input text</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Password</label>
+                                                    <div class="col-md-6">
+                                                        <input type="password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Placeholder</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="placeholder">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Predefined value</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" value="Predefined value">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Readonly</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" value="Field value" readonly="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Disabled</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" value="Field value" disabled="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Textarea</label>
+                                                    <div class="col-md-6">
+                                                        <textarea class="form-control" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div role="tabpanel" class="row tab-pane" id="changepassword">
+                        <div class="content-user-infomation">
+                            <div class="content-user-item">
+                                <div class="content-item-title">
+                                    <div class="oplog-title__txt">Thay đổi mật khẩu</div>
+                                </div>
+                                <div class="content-item-main">
+                                    <div class="content-item-information">
+                                        <div class="content-item-panel"><div class="content-item-panel-txt">Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i></div></div>
+                                        <div class="content-item-data">
+                                            <form class="form-horizontal form-profile">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Input text</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Password</label>
+                                                    <div class="col-md-6">
+                                                        <input type="password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Placeholder</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="placeholder">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -394,5 +507,63 @@
     .element-box, .invoice-w, .big-error-w {
         padding: 1.5rem 2rem;
         margin-bottom: 1rem;
+    }
+</style>
+
+<style>
+    .profile-nav ul {
+        margin-top: 1px;
+    }
+
+        .profile-nav ul > li {
+            border-bottom: 1px solid #ebeae6;
+            margin-top: 0;
+            line-height: 30px;
+        }
+
+            .profile-nav ul > li:last-child {
+                border-bottom: none;
+            }
+
+            .profile-nav ul > li > a {
+                border-radius: 0;
+                -webkit-border-radius: 0;
+                color: #89817f;
+                border-left: 5px solid #fff;
+            }
+
+                .profile-nav ul > li > a:hover, .profile-nav ul > li > a:focus, .profile-nav ul li.active a {
+                    background: #f8f7f5 !important;
+                    border-left: 5px solid #ff766c;
+                    color: #89817f !important;
+                }
+
+            .profile-nav ul > li:last-child > a:last-child {
+                border-radius: 0 0 4px 4px;
+                -webkit-border-radius: 0 0 4px 4px;
+            }
+
+            .profile-nav ul > li > a > i {
+                font-size: 16px;
+                padding-right: 10px;
+                color: #bcb3aa;
+            }
+
+    .form-horizontal label {
+        font-weight: normal;
+    }
+
+    .form-profile .form-control {
+        height: 30px;
+        font-size: 12px;
+        border-radius: 0px;
+        outline: none;
+        -webkit-appearance: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-color: rgba(0,0,0,0.1);
+        padding: 10px 10px;
+        color: rgba(0,0,0,0.87);
     }
 </style>

@@ -203,68 +203,416 @@
 <script type="text/ng-template" id="ModalPayment.html">
     <div class="modal-header popup_header">
         <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title popup_title" id="messageDel">
-            <img src="/Content/img/logo.png" />
+        <h4 class="modal-title popup_title">
+            <img src="/Content/img/Logobizland.png" />
         </h4>
     </div>
     <div class="line_orn"></div>
     <div class="modal-body modal-body-payment" block-ui="BlockUIPayment">
-        <div class="row bg-pop-info bg-colo2">
+        <div class="row bg-pop-info">
             <div class="col-xs-12">
-                <span><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messUser">Nam Ckiku</span></span>&nbsp;&nbsp;&nbsp;
-                <span><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messEmail">tranhoangnam11373@gmail.com</span></span>&nbsp;&nbsp;&nbsp;
-                <span><i class="fa fa-money fa-lg" aria-hidden="true"></i>&nbsp;<b id="mainbody_contentbody_messMoney">23 Xu</b> </span>&nbsp;&nbsp;&nbsp;
-                <span><i class="fa fa-gift fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messPoint">15 Point</span></span>
+                <span><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messUser">{{data.fullName}}</span></span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messEmail">{{data.email}}</span></span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-money fa-lg" aria-hidden="true"></i>&nbsp;<b id="mainbody_contentbody_messMoney">{{data.coin}} Xu</b> </span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-gift fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messPoint">{{data.rewardPoint}} Point</span></span>
             </div>
         </div>
-        <br>
-        <div class="text-center orange">
-            **Tài khoản của bạn không đủ để download source code này!
+        <div class="row bg-tab">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#mnCard" role="tab" data-toggle="tab" aria-expanded="true">THẺ ĐIỆN THOẠI</a></li>
+                    <li role="presentation"><a href="#mnATM" role="tab" data-toggle="tab" aria-expanded="false">THẺ ATM ONLINE</a></li>
+                    <li role="presentation"><a href="#mnNL" role="tab" data-toggle="tab" aria-expanded="false">VÍ NGÂN LƯỢNG</a></li>
+                    <li role="presentation"><a href="#mnPay" role="tab" data-toggle="tab" aria-expanded="false">PAYPAL</a></li>
+                </ul>
+            </div>
         </div>
-        <br>
-        <div class="form-horizontal  bold">
-            <div class="form-group">
-                <label class="col-xs-6 control-label dt-label">Tài khoản:</label>
-                <div class="col-xs-6">
-                    <div id="mainbody_contentbody_messMoney2" class="green dt-lbl">&nbsp;23 Xu</div>
+        <div class="row">
+            <div class="tab-content col-xs-12">
+                <div role="tabpanel" class="row tab-pane active" id="mnCard">
+                    <div class="col-sm-5">
+                        <div class="form-horizontal bg-pop" style="margin-top: 15px;">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <span class="text-error" id="errMoney"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <select name="ctl00$ctl00$ucPopupMoney$drNhamang" id="ucPopupMoney_drNhamang" class="form-control">
+                                        <option value="VIETTEL">Thẻ cào VIETTEL</option>
+                                        <option value="VNP">Thẻ cào VINAPHONE</option>
+                                        <option value="VMS">Thẻ cào MOBIPHONE</option>
+                                        <option value="VCOIN">Vcoin</option>
+                                        <option value="GATE">Gate</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon adon-custom">Mã thẻ</span>
+                                        <input type="text" maxlength="50" class="form-control" placeholder="Mã thẻ dưới lớp giấy bạc">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon adon-custom">Seri</span>
+                                        <input type="text" maxlength="50" class="form-control" placeholder="Số seri thẻ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 line-h">
+                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="button">Nạp tiền &nbsp;<i class="fa fa-money fa-lg" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="bg-pop">
+                            <div class="note"><b class="green">GIÁ TRỊ THẺ NẠP</b> <em class="orange">(Xu nhận bằng <b>80%</b> giá trị thẻ nạp)</em></div>
+                            <ul class="introduce-list">
+                                <li>Thẻ <b>10.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+8 Xu vào tài khoản)</em></li>
+                                <li>Thẻ <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+16 Xu vào tài khoản)</em></li>
+                                <li>Thẻ <b>30.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+24 Xu vào tài khoản)</em></li>
+                                <li>Thẻ <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+40 Xu vào tài khoản)</em></li>
+                                <li>Thẻ <b>100.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+80 Xu vào tài khoản)</em></li>
+                                <li>Thẻ <b>200.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+160 Xu vào tài khoản)</em></li>
+                                <li>Thẻ <b>300.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+240 Xu vào tài khoản)</em></li>
+                                <li>Thẻ <b>500.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+400 Xu vào tài khoản)</em></li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="bg-pop">
+                            <ul class="introduce-list">
+                                <li>Mua thẻ nạp Online <a href="https://thanhtoanonline.vn/mua-the-dien-thoai.html" class="aorange" target="_blank">tại đây</a></li>
+                                <li>Xem lịch sử nạp tiền của bạn <a href="/lich-su-giao-dich.htm" class="aorange" target="_blank">tại đây</a> (Hoặc) <a href="https://sharecode.vn/cau-hoi/huong-dan-nap-tien-vao-tai-khoan-8.htm#qua-the-dt" class="aorange" target="_blank">Hướng dẫn nạp tiền qua thẻ nạp ĐT</a>.</li>
+                                <li>Hotline hỗ trợ giao dịch 24/7: <a class="bold" href="tel:+84981282756" title="Click gọi ngay!">0981.282.756</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="row tab-pane" id="mnATM">
+                    <div class="col-sm-5" style="overflow:hidden;">
+                        <div id="boxBankATM" class="bank-box bg-pop">
+                            <ul class="bankList">
+
+                                <li class="bank-online-methods ">
+                                    <label for="vcb_ck_on">
+                                        <i class="VCB" title="Ngân hàng TMCP Ngoại Thương Việt Nam"></i>
+                                        <input id="Radio29" type="radio" name="bankcode" value="VCB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="vnbc_ck_on">
+                                        <i class="DAB" title="Ngân hàng Đông Á"></i>
+                                        <input id="Radio28" type="radio" name="bankcode" value="DAB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="tcb_ck_on">
+                                        <i class="TCB" title="Ngân hàng Kỹ Thương"></i>
+                                        <input id="Radio27" type="radio" name="bankcode" value="TCB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_mb_ck_on">
+                                        <i class="MB" title="Ngân hàng Quân Đội"></i>
+                                        <input id="Radio26" type="radio" name="bankcode" value="MB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="shb_ck_on">
+                                        <i class="SHB" title="Ngân hàng Sài Gòn - Hà Nội"></i>
+                                        <input id="Radio25" type="radio" name="bankcode" value="SHB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_vib_ck_on">
+                                        <i class="VIB" title="Ngân hàng Quốc tế"></i>
+                                        <input id="Radio24" type="radio" name="bankcode" value="VIB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_vtb_ck_on">
+                                        <i class="ICB" title="Ngân hàng Công Thương Việt Nam"></i>
+                                        <input id="Radio23" type="radio" name="bankcode" value="ICB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_exb_ck_on">
+                                        <i class="EXB" title="Ngân hàng Xuất Nhập Khẩu"></i>
+                                        <input id="Radio22" type="radio" name="bankcode" value="EXB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_acb_ck_on">
+                                        <i class="ACB" title="Ngân hàng Á Châu"></i>
+                                        <input id="Radio21" type="radio" name="bankcode" value="ACB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_hdb_ck_on">
+                                        <i class="HDB" title="Ngân hàng Phát triển Nhà TPHCM"></i>
+                                        <input id="Radio20" type="radio" name="bankcode" value="HDB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_msb_ck_on">
+                                        <i class="MSB" title="Ngân hàng Hàng Hải"></i>
+                                        <input id="Radio19" type="radio" name="bankcode" value="MSB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_nvb_ck_on">
+                                        <i class="NVB" title="Ngân hàng Nam Việt"></i>
+                                        <input id="Radio18" type="radio" name="bankcode" value="NVB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_vab_ck_on">
+                                        <i class="VAB" title="Ngân hàng Việt Á"></i>
+                                        <input id="Radio17" type="radio" name="bankcode" value="VAB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_vpb_ck_on">
+                                        <i class="VPB" title="Ngân Hàng Việt Nam Thịnh Vượng"></i>
+                                        <input id="Radio16" type="radio" name="bankcode" value="VPB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_scb_ck_on">
+                                        <i class="SCB" title="Ngân hàng Sài Gòn Thương tín"></i>
+                                        <input id="Radio15" type="radio" name="bankcode" value="SCB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="ojb_ck_on">
+                                        <i class="OJB" title="Ngân hàng Đại Dương"></i>
+                                        <input id="Radio14" type="radio" name="bankcode" value="OJB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="bnt_atm_pgb_ck_on">
+                                        <i class="PGB" title="Ngân hàng Xăng dầu Petrolimex"></i>
+                                        <input id="Radio13" type="radio" name="bankcode" value="PGB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="bnt_atm_gpb_ck_on">
+                                        <i class="GPB" title="Ngân hàng TMCP Dầu khí Toàn Cầu"></i>
+                                        <input id="Radio12" type="radio" name="bankcode" value="GPB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="bnt_atm_agb_ck_on">
+                                        <i class="AGB" title="Ngân hàng Nông nghiệp &amp; Phát triển nông thôn"></i>
+                                        <input id="Radio11" type="radio" name="bankcode" value="AGB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="bnt_atm_sgb_ck_on">
+                                        <i class="SGB" title="Ngân hàng Sài Gòn Công Thương"></i>
+                                        <input id="Radio10" type="radio" name="bankcode" value="SGB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="bnt_atm_nab_ck_on">
+                                        <i class="NAB" title="Ngân hàng Nam Á"></i>
+                                        <input id="Radio9" type="radio" name="bankcode" value="NAB">
+                                    </label>
+                                </li>
+
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_bab_ck_on">
+                                        <i class="BAB" title="Ngân hàng Bắc Á"></i>
+                                        <input id="Radio8" type="radio" name="bankcode" value="BAB">
+                                    </label>
+                                </li>
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_bidv_ck_on">
+                                        <i class="BIDV" title="Ngân hàng Đầu tư và Phát triển Việt Nam"></i>
+                                        <input id="Radio7" type="radio" name="bankcode" value="BIDV">
+                                    </label>
+                                </li>
+                                <li class="bank-online-methods ">
+                                    <label for="sml_atm_tpb_ck_on">
+                                        <i class="TPB" title="Ngân hàng TMCP Tiên Phong"></i>
+                                        <input id="Radio6" type="radio" name="bankcode" value="TPB">
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="bg-pop" id="boxMoneyATM">
+                            <div class="note"><b class="green">SỐ TIỀN NẠP</b> <em class="orange">(Xu nhận bằng <b>100%</b> giá trị tiền nạp)</em></div>
+                            <div>
+                                <input id="Radio1" type="radio" name="moneyATM" value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio2" type="radio" name="moneyATM" value="50000"> <span>Nạp</span> <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+50 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio3" type="radio" name="moneyATM" value="100000" checked=""> <span>Nạp</span> <b>100.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+100 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio4" type="radio" name="moneyATM" value="200000"> <span>Nạp</span> <b>200.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+200 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio5" type="radio" name="moneyATM" value="500000"> <span>Nạp</span> <b>500.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+500 Xu vào tài khoản)</em>
+                            </div>
+                        </div>
+                        <div class="form-horizontal bg-pop" style="margin-top: 15px;">
+                            <div class="text-error" id="errATM"></div>
+                            <div class="form-group">
+                                <div class="col-xs-12 line-h">
+                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="button">Nạp tiền &nbsp;<i class="fa fa-money fa-lg" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="bg-pop">
+                            <ul class="introduce-list">
+
+                                <li>Xem lịch sử nạp tiền của bạn <a href="/lich-su-giao-dich.htm" class="aorange" target="_blank">tại đây</a> (Hoặc) <a href="https://sharecode.vn/cau-hoi/huong-dan-nap-tien-vao-tai-khoan-8.htm#qua-atm" class="aorange" target="_blank">Hướng dẫn nạp tiền qua thẻ ATM</a>.</li>
+                                <li>Hotline hỗ trợ giao dịch 24/7: <a class="bold" href="tel:+84981282756" title="Click gọi ngay!">0981.282.756</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="row tab-pane" id="mnNL">
+                    <div class="col-sm-5">
+                        <div class="form-horizontal bg-pop" style="margin-top: 15px;">
+                            <div class="text-error" id="errNL"></div>
+                            <div class="form-group">
+                                <div class="col-xs-12 line-h">
+                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="button">Nạp tiền &nbsp;<i class="fa fa-money fa-lg" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="bg-pop" id="boxMoneyNL">
+                            <div class="note"><b class="green">SỐ TIỀN NẠP</b> <em class="orange">(Xu nhận bằng <b>100%</b> giá trị tiền nạp)</em></div>
+                            <div>
+                                <input id="Radio54" type="radio" name="moneyNL" value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio55" type="radio" name="moneyNL" value="50000"> <span>Nạp</span> <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+50 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio56" type="radio" name="moneyNL" value="100000" checked=""> <span>Nạp</span> <b>100.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+100 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio57" type="radio" name="moneyNL" value="200000"> <span>Nạp</span> <b>200.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+200 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio58" type="radio" name="moneyNL" value="500000"> <span>Nạp</span> <b>500.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+500 Xu vào tài khoản)</em>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="bg-pop">
+                            <ul class="introduce-list">
+                                <li>Bạn chưa có tài khoản Ngân Lượng? <a href="https://www.nganluong.vn/?portal=nganluong&amp;page=user_register" class="aorange" target="_blank">Đăng kí ngay</a>.</li>
+                                <li>Xem lịch sử nạp tiền của bạn <a href="/lich-su-giao-dich.htm" class="aorange" target="_blank">tại đây</a> (Hoặc) <a href="https://sharecode.vn/cau-hoi/huong-dan-nap-tien-vao-tai-khoan-8.htm#qua-ngan-luong" class="aorange" target="_blank">Hướng dẫn nạp tiền qua Ngân Lượng</a>.</li>
+                                <li>Hotline hỗ trợ giao dịch 24/7: <a class="bold" href="tel:+84981282756" title="Click gọi ngay!">0981.282.756</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="row tab-pane" id="mnPay">
+                    <div class="col-sm-5">
+                        <div class="form-horizontal" style="margin-top: 15px;">
+                            <div class="text-error" id="errPaypal"></div>
+                            <div class="form-group">
+                                <div class="col-xs-12 line-h">
+                                    <a href="#"></a>
+                                    <a><img src="https://sharecode.vn/assets/images/btn-paypal.png" alt="PayPal Checkout"></a>
+                                    <img src="https://sharecode.vn/assets/images/btn-paypal-2.png" alt="PayPal Checkout card" class="paypal-card">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="bg-pop" id="boxMoneyPaypal">
+                            <div class="note"><b class="green">SỐ TIỀN NẠP</b></div>
+                            <div>
+                                <input id="Radio34" type="radio" name="moneyPay" value="5"> <span>Nạp</span> <b>5$</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+80 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio35" type="radio" name="moneyPay" value="10"> <span>Nạp</span> <b>10$</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+160 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio30" type="radio" name="moneyPay" value="20"> <span>Nạp</span> <b>20$</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+320 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio31" type="radio" name="moneyPay" value="50"> <span>Nạp</span> <b>50$</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+800 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio32" type="radio" name="moneyPay" value="100" checked=""> <span>Nạp</span> <b>100$</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+1600 Xu vào tài khoản)</em>
+                            </div>
+                            <div>
+                                <input id="Radio33" type="radio" name="moneyPay" value="200"> <span>Nạp</span> <b>200$</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+3200 Xu vào tài khoản)</em>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="bg-pop">
+                            <ul class="introduce-list">
+                                <li>Xem lịch sử nạp tiền của bạn <a href="/lich-su-giao-dich.htm" class="aorange" target="_blank">tại đây</a> (Hoặc) <a href="https://sharecode.vn/cau-hoi/huong-dan-nap-tien-vao-tai-khoan-8.htm#paypal" class="aorange" target="_blank">Hướng dẫn nạp tiền qua Paypal</a>.</li>
+                                <li>Hotline hỗ trợ giao dịch 24/7: <a class="bold" href="tel:+84981282756" title="Click gọi ngay!">0981.282.756</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-xs-6 control-label dt-label">Download code:</label>
-                <div class="col-xs-6">
-                    <div id="mainbody_contentbody_messPrice" class="orange dt-lbl">-80 Xu</div>
-                </div>
-            </div>
-            <div class="col-sm-offset-3 col-sm-6 line"></div>
-            <div class="form-group">
-                <label class="col-xs-6 control-label dt-label">Còn thiếu:</label>
-                <div class="col-xs-6">
-                    <div id="mainbody_contentbody_messResult" class="orange dt-lbl">&nbsp;57 Xu</div>
-                </div>
-            </div>
         </div>
-        <br>
-        <div class="text-center">
-            <a title="Nạp tiền vào tài khoản"><i class="fa fa-money fa-lg" aria-hidden="true"></i>&nbsp; NẠP TIỀN VÀO TÀI KHOẢN</a>
-        </div>
-        <br>
-    </div>
-    <div class="modal-footer">
     </div>
 </script>
 <style>
+    .modal-payment {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
     .modal-body-payment {
-        background: #f4f0e2;
+        background: #F7F9FA;
         overflow: hidden;
-    }
-    .bg-colo2 {
-        background: #faf8f1;
-    }
-    .bg-pop {
-        margin-top: 15px;
-        background-color: #fff;
-        border-radius: 5px;
-        padding: 15px;
     }
 
     .bg-pop-info {
@@ -273,24 +621,215 @@
         line-height: 20px;
     }
 
-        .bg-pop-info span {
-            white-space: nowrap;
-        }
-
-    .bg-pop ul {
-        margin-left: 10px;
+    .bg-pop {
+        margin-top: 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 15px;
+        border: 1px solid rgb(226, 235, 242);
     }
 
-    .bg-pop .note {
-        margin-bottom: 10px;
-    }
-
-        .bg-pop .note em {
-            color: #cebda2;
+        .bg-pop .note {
+            margin-bottom: 10px;
         }
 
-    .bg-pop em {
+            .bg-pop .note em {
+                color: #cebda2;
+            }
+
+        .bg-pop em {
+            color: #ff8401;
+        }
+
+    .bg-pop-info span {
+        white-space: nowrap;
         color: #ff8401;
     }
 
+    .bg-tab {
+        background: white;
+        padding-top: 10px;
+    }
+
+        .bg-tab .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+            color: #ff8401;
+            background: #f4f0e2;
+            border: 1px solid #e2d8c7;
+            border-bottom-color: transparent;
+        }
+
+        .bg-tab .nav > li > a:focus, .nav > li > a:hover {
+            background-color: #f4f0e2;
+            color: #ff8401;
+        }
+
+        .bg-tab .nav > li > a {
+            background-color: #00648f;
+            color: #fff;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .bg-tab .nav-tabs {
+            border-bottom: 1px solid #e2d8c7;
+            margin: 0px -15px;
+            padding-left: 15px;
+        }
+
+
+    .introduce-list {
+        padding-left: 16px;
+        list-style: inherit;
+    }
+
+        .introduce-list li {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+    .aorange {
+        color: #ff8401;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .bank-box {
+        float: left;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    ul.bankList li {
+        list-style-position: outside;
+        list-style-type: none;
+        cursor: pointer;
+        float: left;
+        margin-right: 0;
+        text-align: center;
+        width: 50px;
+        margin-right: 12px;
+    }
+
+    i.VISA, i.MASTE, i.AMREX, i.JCB, i.VCB, i.TCB, i.MB, i.VIB, i.ICB, i.EXB, i.ACB, i.HDB, i.MSB, i.NVB, i.DAB, i.SHB, i.OJB, i.SEA, i.TPB, i.PGB, i.BIDV, i.AGB, i.SCB, i.VPB, i.VAB, i.GPB, i.SGB, i.NAB, i.BAB {
+        width: 55px;
+        height: 22px;
+        display: block;
+        background: url(https://www.nganluong.vn/webskins/skins/nganluong/checkout/version3/images/bank_logo.png) no-repeat;
+        background-size: 55px;
+        border: 1px solid #e2d8c7;
+    }
+
+    i.MASTE {
+        background-position: 0px -23px;
+    }
+
+    i.AMREX {
+        background-position: 0px -46px;
+    }
+
+    i.JCB {
+        background-position: 0px -69px;
+    }
+
+    i.VCB {
+        background-position: 0px -85px;
+    }
+
+    i.TCB {
+        background-position: 0px -107px;
+    }
+
+    i.MB {
+        background-position: 0px -129px;
+    }
+
+    i.VIB {
+        background-position: 0px -149px;
+    }
+
+    i.ICB {
+        background-position: 0px -170px;
+    }
+
+    i.EXB {
+        background-position: 0px -191px;
+    }
+
+    i.ACB {
+        background-position: 0px -213px;
+    }
+
+    i.HDB {
+        background-position: 0px -234px;
+    }
+
+    i.MSB {
+        background-position: 0px -255px;
+    }
+
+    i.NVB {
+        background-position: 0px -276px;
+    }
+
+    i.DAB {
+        background-position: 0px -298px;
+    }
+
+    i.SHB {
+        background-position: 0px -320px;
+    }
+
+    i.OJB {
+        background-position: 0px -341px;
+    }
+
+    i.SEA {
+        background-position: 0px -371px;
+    }
+
+    i.TPB {
+        background-position: 0px -382px;
+    }
+
+    i.PGB {
+        background-position: 0px -405px;
+    }
+
+    i.BIDV {
+        background-position: 0px -426px;
+    }
+
+    i.AGB {
+        background-position: 0px -447px;
+    }
+
+    i.SCB {
+        background-position: 0px -469px;
+    }
+
+    i.VPB {
+        background-position: 0px -489px;
+    }
+
+    i.VAB {
+        background-position: 0px -511px;
+    }
+
+    i.GPB {
+        background-position: 0px -532px;
+    }
+
+    i.SGB {
+        background-position: 0px -554px;
+    }
+
+    i.NAB {
+        background-position: 0px -575px;
+    }
+
+    i.BAB {
+        background-position: 0px -596px;
+    }
 </style>

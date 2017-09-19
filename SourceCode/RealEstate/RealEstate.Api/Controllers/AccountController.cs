@@ -128,6 +128,10 @@ namespace RealEstate.Api.Controllers
                 FullName = model.FullName,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address,
+                CreatedDate = DateTime.Now,
+                Coin = 0,
+                RewardPoint = 0,
+                RankStar = 0,
             };
             var result = await UserManager.CreateAsync(user, model.Password);
             var auditlog = new AuditLog();
@@ -135,6 +139,7 @@ namespace RealEstate.Api.Controllers
             auditlog.CreatedBy = model.Email;
             auditlog.IPAddress = HttpContext.Current.Request.UserHostAddress;
             auditlog.LogType = (int)AuditLogType.Register;
+            auditlog.Device = ((int)AuthenticationSourceEnum.Web).ToString();
             if (result.Succeeded)
             {
                 auditlog.UserID = user.Id;
