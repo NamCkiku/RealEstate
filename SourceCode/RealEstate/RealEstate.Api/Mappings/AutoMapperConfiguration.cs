@@ -31,6 +31,7 @@ namespace RealEstate.Api.Mappings
                 cfg.CreateMap<Room, RoomListViewModel>();
                 cfg.CreateMap<RoomListEntity, ListRoomViewModel>();
                 cfg.CreateMap<AuditlogEntity, AuditlogViewModel>();
+                cfg.CreateMap<AppUserEntity, AppUserViewModel>();
             });
         }
     }

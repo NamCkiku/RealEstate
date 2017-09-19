@@ -20,15 +20,15 @@
                     <div class="media-user-avatar col-lg-4 col-sm-4 col-xs-4 no-padding">
                         <img class="media-object user-avatar img-circle" ng-if="userInfo.avatar !=null && userInfo.avatar !=''" ng-src="{{userInfo.avatar}}">
                         <img class="media-object user-avatar img-circle" ng-if="userInfo.avatar ==null || userInfo.avatar ==''" src="/Content/img/boy-512.png">
-                        <span class="label label-default">15 Xu</span>
-                        <span class="label label-default">400 Point</span>
+                        <span class="label label-default">{{userInfo.coin}} Xu</span>
+                        <span class="label label-default">{{userInfo.rewardPoint}} Point</span>
                     </div>
                     <div class="user-info-desc col-lg-8 col-sm-8 col-xs-8 no-padding">
                         <strong class="user-info-name">{{userInfo.fullName}}</strong>
                         <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-map-marker"></i>{{userInfo.address}}</div>
                         <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-phone"></i>{{userInfo.phoneNumber}}</div>
                         <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-inbox"></i>{{userInfo.email}}</div>
-                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-university"></i>{{userInfo.userName}}</div>
+                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-university"></i>{{userInfo.birthDay}}</div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="profile-userbuttons">
@@ -37,7 +37,7 @@
                                 <button class="btn btn-success  btn-sm btn-block" type="button"><i class="fa fa-envelope"></i> Gửi tin nhắn</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-warning btn-sm btn-block" type="button"><i class="fa fa-coffee"></i> Nạp tiền</button>
+                                <button class="btn btn-warning btn-sm btn-block" ng-click="showPopupPayment();" type="button"><i class="fa fa-coffee"></i> Nạp tiền</button>
                             </div>
                         </div>
                     </div>
@@ -49,11 +49,13 @@
                             </tr>
                             <tr>
                                 <td>Hạng</td>
-                                <td><i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i></td>
+                                <td>
+                                    <div star-rating ng-model="userInfo.rankStar" readonly="true" max="5"></div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Ngày đăng ký</td>
-                                <td>{{userInfo.birthDay |date}}</td>
+                                <td>{{userInfo.createdDate |date:"dd/MM/yyyy"}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -103,6 +105,28 @@
     </div>
 </div>
 <div class="clearfix"></div>
+<style>
+    .star-rating {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+
+    .star {
+        padding: 1px;
+        color: #ddd;
+        text-shadow: .05em .05em #aaa;
+        list-style-type: none;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .filled {
+        color: #fd0;
+    }
+    .readonly .star.filled {
+        color: #fd0;
+    }
+</style>
 <style>
     .profile-block {
         background: #FFF;

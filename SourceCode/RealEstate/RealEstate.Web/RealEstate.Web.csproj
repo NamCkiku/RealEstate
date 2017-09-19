@@ -134,6 +134,7 @@
     <Content Include="app\shared\directives\pagerDirective.js" />
     <Content Include="app\shared\directives\searchDirectives.html" />
     <Content Include="app\shared\directives\searchDirectives.js" />
+    <Content Include="app\shared\directives\starRatingDirective.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\authData.js" />
     <Content Include="app\shared\services\authenticationService.js" />
