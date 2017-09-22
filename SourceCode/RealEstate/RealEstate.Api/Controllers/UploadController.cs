@@ -146,7 +146,7 @@ namespace RealEstate.Api.Controllers
         /// namth  6/20/2017   created
         [Route("uploadsingeimage")]
         [HttpPost]
-        public async Task UploadSingleFile()
+        public async Task<HttpResponseMessage> UploadSingleFile()
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
@@ -158,34 +158,34 @@ namespace RealEstate.Api.Controllers
             var provider = new MultipartFormDataStreamProvider(root);
             var result = await Request.Content.ReadAsMultipartAsync(provider);
 
-            string fileName = string.Empty;
+            string[] fileName = new string[provider.FileData.Count];
+            int i = 0;
             foreach (MultipartFileData fileData in provider.FileData)
             {
                 int width, height;
-                fileName = fileData.Headers.ContentDisposition.FileName;
-                if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
+                fileName[i] = fileData.Headers.ContentDisposition.FileName;
+                if (fileName[i].StartsWith("\"") && fileName[i].EndsWith("\""))
                 {
-                    fileName = fileName.Trim('"');
+                    fileName[i] = fileName[i].Trim('"');
                 }
                 if (fileName.Contains(@"/") || fileName.Contains(@"\"))
                 {
-                    fileName = result.FormData["model"] + "_"
-                              + Path.GetFileName(fileName);
+                    fileName[i] = result.FormData["model"] + "_"
+                              + Path.GetFileName(fileName[i]);
                 }
-                if (File.Exists(Path.Combine(dataFolder, fileName)))
-                    File.Delete(Path.Combine(dataFolder, fileName));
-                File.Move(fileData.LocalFileName, Path.Combine(dataFolder, fileName));
+                if (File.Exists(Path.Combine(dataFolder, fileName[i])))
+                    File.Delete(Path.Combine(dataFolder, fileName[i]));
+                File.Move(fileData.LocalFileName, Path.Combine(dataFolder, fileName[i]));
                 File.Delete(fileData.LocalFileName);
-                Image image = Image.FromFile(Path.Combine(dataFolder, fileName));
-                var rename = AddLogoToImageMulti(image, fileName, dataFolder);
+                Image image = Image.FromFile(Path.Combine(dataFolder, fileName[i]));
+                var rename = AddLogoToImageMulti(image, fileName[i], dataFolder);
                 image.Dispose();
-                File.Delete(Path.Combine(dataFolder, fileName));
-                fileName = rename;
-
-
+                File.Delete(Path.Combine(dataFolder, fileName[i]));
+                fileName[i] = rename;
+                i++;
             }
 
-            Request.CreateResponse(HttpStatusCode.OK, new { fileName = fileName });
+          return Request.CreateResponse(HttpStatusCode.OK, fileName.ToList());
         }
 
         /// <summary>

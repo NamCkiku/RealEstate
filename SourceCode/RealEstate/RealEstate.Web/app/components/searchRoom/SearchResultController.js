@@ -71,7 +71,35 @@
         });
 
         $scope.DataSort = function (data) {
-            $scope.FilterRoom(data);
+            if (QueryString.searchIndex == 'true') {
+                var myBlockUI = blockUI.instances.get('BlockUIRoom');
+                myBlockUI.start();
+                var config = {
+                    params: {
+                        RoomTypeID: QueryString.roomtype,
+                        PriceFrom: QueryString.priceFrom * 1000000,
+                        PriceTo: QueryString.priceTo * 1000000,
+                        AcreageFrom: QueryString.acreageFrom,
+                        AcreageTo: QueryString.acreageTo,
+                        WardID: QueryString.ward,
+                        DistrictID: QueryString.district,
+                        ProvinceID: QueryString.province,
+                        page: 1,
+                        pageSize: 20,
+                        sort: data
+                    }
+                }
+                apiService.get('api/room/getallroomfullsearch', config, function (respone) {
+                    $scope.data.listRoom = respone.data.items;
+                    $scope.page = respone.data.page;
+                    $scope.pagesCount = respone.data.totalPages;
+                    $scope.totalCount = respone.data.totalCount;
+                    myBlockUI.stop();
+                }, function (respone) {
+                    myBlockUI.stop();
+                    BaseService.displayError("Không lấy được dữ liệu phòng", 3000);
+                });
+            }
         }
 
         $scope.loadAllRoomByQueryString = function () {

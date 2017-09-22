@@ -209,6 +209,7 @@ namespace RealEstate.Api.Controllers
                 responeResult = CreateHttpResponse(request, () =>
                 {
                     int totalRow = 0;
+
                     var listRoom = _roomService.GetAllListRoomFullSearchStoreProc(filter, page, pageSize, out totalRow, sort).OrderByDescending(x => x.DisplayOrder).ToList();
 
                     var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);

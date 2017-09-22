@@ -32,9 +32,10 @@
             }
             apiService.get('api/room/getroombyid', config, function (respone) {
                 $scope.roomObj = respone.data;
-                console.log($scope.roomObj);
+                console.log(respone.data);
                 $scope.roomObj.convenient = JSON.parse(respone.data.convenient);
                 $scope.roomObj.moreImages = JSON.parse(respone.data.moreImages);
+                console.log($scope.roomObj.moreImages);
                 $scope.getAllReatedRoomById($scope.roomObj.id);
                 $scope.IncreaseView($scope.roomObj.id);     
                 $timeout(function () {

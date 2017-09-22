@@ -168,10 +168,12 @@
             }
         };
         $scope.onSuccessDropzone = function (e) {
+            var data = e.response;
+            console.log(data);
             if (e.operation == "upload") {
                 console.log(e.files);
-                for (var i = 0; i < e.files.length; i++) {
-                    $scope.room.MoreImages.push(e.files[i].name);
+                for (var i = 0; i < data.length ; i++) {
+                    $scope.room.MoreImages.push(data[i]);
                 }
                 console.log($scope.room.MoreImages);
             }
