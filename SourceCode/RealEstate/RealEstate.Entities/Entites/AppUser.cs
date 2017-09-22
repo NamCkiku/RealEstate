@@ -28,6 +28,16 @@ namespace RealEstate.Entities.Entites
 
         public bool? Gender { get; set; }
 
+        public int Coin { get; set; }
+
+        public int RewardPoint { get; set; }
+
+        public int RankStar { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime UpdatedDate { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

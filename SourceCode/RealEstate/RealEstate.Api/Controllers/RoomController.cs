@@ -123,7 +123,7 @@ namespace RealEstate.Api.Controllers
         [CacheOutput(ClientTimeSpan = 100)]
         [Authorize]
         [HttpGet]
-        public HttpResponseMessage GetAllRoomByUser(HttpRequestMessage request, string userID, int page, int pageSize)
+        public HttpResponseMessage GetAllRoomByUser(HttpRequestMessage request, string userID, string keyword, int page, int pageSize)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
             try
@@ -131,10 +131,11 @@ namespace RealEstate.Api.Controllers
                 responeResult = CreateHttpResponse(request, () =>
                 {
                     int totalRow = 0;
-                    var listRoom = _roomService.GetAllListRoomByUser(userID, page, pageSize, out totalRow).OrderByDescending(x => x.DisplayOrder).ToList();
+                    var Keyword = !string.IsNullOrEmpty(keyword) ? keyword : "";
+                    var listRoom = _roomService.GetAllListRoomByUserStoreProc(userID, Keyword, page, pageSize, out totalRow).ToList();
 
-                    var listRoomVm = Mapper.Map<List<RoomListViewModel>>(listRoom);
-                    var paginationSet = new PaginationSet<RoomListViewModel>()
+                    var listRoomVm = Mapper.Map<List<ListRoomViewModel>>(listRoom);
+                    var paginationSet = new PaginationSet<ListRoomViewModel>()
                     {
                         Items = listRoomVm,
                         Page = page,

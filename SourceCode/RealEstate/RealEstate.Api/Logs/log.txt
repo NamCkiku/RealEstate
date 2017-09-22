@@ -205,4 +205,46 @@ Logging Start2017-09-13 22:45:33,031 [11] ERROR RealEstate.Common.Logs.LogCommon
 Logging Start2017-09-13 22:47:15,701 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
 Logging Start2017-09-13 22:55:58,779 [24] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
 Logging Start2017-09-13 22:58:53,508 [9] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
-Logging Start2017-09-14 08:11:57,670 [11] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-16 22:37:29,708 [10] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-17 09:49:08,698 [12] ERROR RealEstate.Common.Logs.LogCommon - Failed to convert parameter value from a String to a Int32.GetAllRoomByUser
+Logging Start2017-09-17 09:52:51,574 [24] ERROR RealEstate.Common.Logs.LogCommon - Failed to convert parameter value from a String to a Int32.GetAllRoomByUser
+2017-09-17 09:53:21,273 [24] ERROR RealEstate.Common.Logs.LogCommon - Failed to convert parameter value from a String to a Int32.GetAllRoomByUser
+Logging Start2017-09-17 10:41:04,795 [10] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2017-09-17 13:13:12,168 [9] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@userId', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:14:35,433 [11] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@userId', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:15:20,257 [11] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@userId', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:16:14,023 [27] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:18:43,358 [27] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:19:13,240 [11] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:20:46,786 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+Logging Start2017-09-17 13:24:21,344 [12] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:25:37,879 [12] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+2017-09-17 13:34:37,706 [33] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+Logging Start2017-09-18 08:15:22,030 [21] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+2017-09-18 08:25:35,536 [25] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_HistoryLogin' expects parameter '@UserID', which was not supplied.GetAllHistoryLogin
+Logging Start2017-09-19 09:03:50,334 [18] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Task`1 -> List`1
+System.Threading.Tasks.Task`1[[RealEstate.Entities.ModelView.AppUserEntity, RealEstate.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-19 09:03:50,405 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserId', which was not supplied.MoveNext
+Logging Start2017-09-19 09:07:40,382 [20] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserId', which was not supplied.GetInfomationUserById
+2017-09-19 09:08:02,462 [20] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserId', which was not supplied.GetInfomationUserById
+2017-09-19 09:08:02,982 [20] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AppUserEntity -> List`1
+RealEstate.Entities.ModelView.AppUserEntity -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-19 09:08:15,912 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserID', which was not supplied.GetInfomationUserById
+2017-09-19 09:09:03,640 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserID', which was not supplied.GetInfomationUserById
+2017-09-19 09:09:03,696 [5] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AppUserEntity -> List`1
+RealEstate.Entities.ModelView.AppUserEntity -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2017-09-19 09:09:13,481 [5] ERROR RealEstate.Common.Logs.LogCommon - Procedure or function 'sp_GetInfomationUserById' expects parameter '@UserID', which was not supplied.GetInfomationUserById
+2017-09-19 09:09:24,926 [5] ERROR RealEstate.Common.Logs.LogCommon - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AppUserEntity -> List`1
+RealEstate.Entities.ModelView.AppUserEntity -> System.Collections.Generic.List`1[[RealEstate.Api.Models.ViewModel.AppUserViewModel, RealEstate.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]

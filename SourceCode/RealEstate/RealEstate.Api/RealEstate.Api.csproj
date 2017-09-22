@@ -291,6 +291,7 @@
     <Compile Include="Models\ExternalLoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\ViewModel\AppUserViewModel.cs" />
+    <Compile Include="Models\ViewModel\AuditlogViewModel.cs" />
     <Compile Include="Models\ViewModel\CountryViewModel.cs" />
     <Compile Include="Models\ViewModel\DistrictViewModel.cs" />
     <Compile Include="Models\ViewModel\ListRoomViewModel.cs" />

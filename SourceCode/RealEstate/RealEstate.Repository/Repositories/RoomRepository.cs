@@ -28,17 +28,18 @@ namespace RealEstate.Repository.Repositories
             return _db.Query<RoomEntity>("SELECT * FROM ROOM");
         }
 
-        public IEnumerable<RoomEntity> GetAllRoomByUser(string userID, int page, int pageSize, out int totalRow)
+        public IEnumerable<RoomListEntity> GetAllRoomByUser(string userID, string keyword, int page, int pageSize, out int totalRow)
         {
             try
             {
                 var parameter = new DynamicParameters();
-                parameter.Add("@UserID", userID, dbType: DbType.Int32);
+                parameter.Add("@UserID", userID, dbType: DbType.String);
                 parameter.Add("@PageCount", pageSize, dbType: DbType.Int32);
                 parameter.Add("@PageIndex", page, dbType: DbType.Int32);
+                parameter.Add("@Keyword", keyword, dbType: DbType.String);
                 parameter.Add("@totalrow", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = DapperExtensions.QueryDapperStoreProc<RoomEntity>("sp_GetAllRoomByUser", parameter).ToList();
+                var result = DapperExtensions.QueryDapperStoreProc<RoomListEntity>("sp_GetAllRoomByUser", parameter).ToList();
 
                 totalRow = parameter.Get<int>("@totalrow");
 
@@ -49,7 +50,7 @@ namespace RealEstate.Repository.Repositories
             {
                 Common.Logs.LogCommon.WriteLogError(ex.Message + MethodInfo.GetCurrentMethod().Name);
                 totalRow = 0;
-                return new List<RoomEntity>();
+                return new List<RoomListEntity>();
             }
         }
 

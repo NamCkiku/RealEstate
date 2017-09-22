@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RealEstate.Api.Models.ViewModel;
 using RealEstate.Common.CachingProvider;
+using RealEstate.Common.Core;
 using RealEstate.Service.IService;
 using System;
 using System.Collections.Generic;
@@ -21,23 +22,26 @@ namespace RealEstate.Api.Controllers
     /// </Modified>
     /// <seealso cref="RealEstate.Api.Controllers.ApiControllerBase" />
     [RoutePrefix("api/management")]
-   // [Authorize]
+    // [Authorize]
     public class ManagementController : ApiControllerBase
     {
         private readonly ICountryService _countryService;
         private readonly IProvinceService _provinceService;
         private readonly IDistrictService _districtService;
         private readonly IWardService _wardService;
+        private readonly IUserService _userService;
         public ManagementController(IErrorService errorService,
             ICountryService countryService,
             IProvinceService provinceService,
             IDistrictService districtService,
+            IUserService userService,
             IWardService wardService) : base(errorService)
         {
             this._countryService = countryService;
             this._provinceService = provinceService;
             this._districtService = districtService;
             this._wardService = wardService;
+            this._userService = userService;
         }
         #region Địa Chính Việt Nam
         /// <summary>
@@ -241,6 +245,79 @@ namespace RealEstate.Api.Controllers
             return responeResult;
         }
 
+        #endregion
+
+        #region user
+
+        /// <summary>
+        /// Hàm API lấy ra danh sách lịch sử đăng nhập của user
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/management/getallhistorylogin</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  17/09/2017   created
+        /// </Modified>
+        [Route("getallhistorylogin")]
+        public HttpResponseMessage GetAllHistoryLogin(HttpRequestMessage request, string userID, int page, int pageSize)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    int totalRow = 0;
+                    var listHistory = _userService.GetAllHistoryLogin(userID, page, pageSize, out totalRow).ToList();
+
+                    var listHistoryVm = Mapper.Map<List<AuditlogViewModel>>(listHistory);
+                    var paginationSet = new PaginationSet<AuditlogViewModel>()
+                    {
+                        Items = listHistoryVm,
+                        Page = page,
+                        TotalCount = totalRow,
+                        TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                    };
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+        /// <summary>
+        /// Hàm API lấy ra thông tin của user theo id
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/management/getallhistorylogin</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  17/09/2017   created
+        /// </Modified>
+        [Route("getuserbyid")]
+        public HttpResponseMessage GetInfomationById(HttpRequestMessage request, string userID)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    var user = _userService.GetInfomationUserById(userID);
+                    var userVm = Mapper.Map<AppUserViewModel>(user);
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, userVm);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
         #endregion
     }
 }
