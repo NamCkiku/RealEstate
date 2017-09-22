@@ -45,7 +45,7 @@ namespace RealEstateMobile.Droid.Renderers.ImageEntry
             var drawable = ContextCompat.GetDrawable(this.Context, resID);
             var bitmap = ((BitmapDrawable)drawable).Bitmap;
 
-            return new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, element.ImageWidth * 2, element.ImageHeight * 2, true));
+            return new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, element.ImageWidth * 1, element.ImageHeight * 1, true));
         }
 
     }
