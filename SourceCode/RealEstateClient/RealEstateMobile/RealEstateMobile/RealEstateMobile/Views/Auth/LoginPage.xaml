@@ -4,20 +4,20 @@
              Title="Đăng nhập"
              Icon="iconhome.png"
              xmlns:local="clr-namespace:RealEstateMobile.Controls"
+             BackgroundImage="background.png"
              x:Class="RealEstateMobile.Views.LoginPage">
     <ContentPage.Content>
         <StackLayout 
-            BackgroundColor="#FFF"
             Orientation="Vertical"
 			Padding="20"
             VerticalOptions="FillAndExpand"
             Spacing="20">
             <BoxView
-				HeightRequest="10" />
+				HeightRequest="30" />
             <Image
 				HorizontalOptions="Center"
-				WidthRequest="300"
-				Source="Logo_bizland.png" />
+				WidthRequest="100"
+				Source="logoIconBizland.png" />
             <Frame BackgroundColor="#BF043055" HasShadow="False">
                 <StackLayout
                  Orientation="Vertical"
@@ -25,14 +25,14 @@
                     <local:ImageEntry TextColor="White" 
                         ImageHeight="30"
                         ImageWidth="30"
-                        Image="iconUsername" 
+                        Image="iconusername" 
                         PlaceholderColor="White"
                         Placeholder="Ten tai khoan" 
                         HorizontalOptions="FillAndExpand"/>
                     <local:ImageEntry TextColor="White" 
                         ImageHeight="30"
                         ImageWidth="30"
-                        Image="iconPassword" 
+                        Image="iconpassword" 
                         PlaceholderColor="White"
                         Placeholder="Mat khau" 
                         HorizontalOptions="FillAndExpand"/>
