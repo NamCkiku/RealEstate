@@ -15,5 +15,9 @@ namespace RealEstate.Repository.IRepositories
         Task<IdentityResult> RegisterUser(AppUser userModel);
 
         Task<IEnumerable<AppUserEntity>> GetAllUserIsBirthDay();
+
+        IEnumerable<AuditlogEntity> GetAllHistoryLogin(string userID, int page, int pageSize, out int totalRow);
+
+        AppUserEntity GetInfomationUserById(string userID);
     }
 }

@@ -125,7 +125,7 @@
                 ],
             };
             $scope.kendoUploadOptions = {
-                
+
                 async: {
                     saveUrl: $rootScope.baseUrl + 'api/upload/uploadimage?type=room',
                     autoUpload: true
@@ -168,10 +168,12 @@
             }
         };
         $scope.onSuccessDropzone = function (e) {
+            var data = e.response;
+            console.log(data);
             if (e.operation == "upload") {
                 console.log(e.files);
-                for (var i = 0; i < e.files.length; i++) {
-                    $scope.room.MoreImages.push(e.files[i].name);
+                for (var i = 0; i < data.length ; i++) {
+                    $scope.room.MoreImages.push(data[i]);
                 }
                 console.log($scope.room.MoreImages);
             }
@@ -180,9 +182,9 @@
             if ($rootScope.userInfomation.IsAuthenticated) {
                 getLocation();
                 $scope.registerControl();
-               // $scope.initMap();
+                // $scope.initMap();
                 angular.element('#txtuserName').focus();
-               
+
             }
             else {
                 $window.location.href = '/';
@@ -237,6 +239,8 @@
             $scope.searchBox.addListener('place_changed', function () {
                 $scope.searchBox.set('map', null);
                 $scope.places = $scope.searchBox.getPlace();
+                $scope.room.lat = $scope.places.geometry.location.lat();
+                $scope.room.lng = $scope.places.geometry.location.lng();
                 var bounds = new google.maps.LatLngBounds();
                 var i, place;
                 bounds.extend($scope.places.geometry.location);
@@ -438,7 +442,7 @@
         function showPosition(position) {
             $scope.lat = position.coords.latitude;
             $scope.lng = position.coords.longitude;
-            
+
         };
 
 

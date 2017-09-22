@@ -13,7 +13,7 @@ namespace RealEstateMobile
         {
             InitializeComponent();
 
-            MainPage = new RealEstateMobile.Views.LayoutPage();
+            MainPage = new RealEstateMobile.Views.LoginPage();
         }
 
         protected override void OnStart()

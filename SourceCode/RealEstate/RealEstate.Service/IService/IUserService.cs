@@ -12,5 +12,8 @@ namespace RealEstate.Service.IService
     public interface IUserService : IBaseService<AppUser>
     {
         Task<IEnumerable<AppUserEntity>> GetAllUserIsBirthDay();
+        AppUserEntity GetInfomationUserById(string userId);
+
+        IEnumerable<AuditlogEntity> GetAllHistoryLogin(string userID, int page, int pageSize, out int totalRow);
     }
 }

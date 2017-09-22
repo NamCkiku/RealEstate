@@ -28,6 +28,7 @@
         }
         function post(url, data, success, failure) {
             authenticationService.setHeader();
+            console.log(authenticationService.setHeader());
             $http.post(baseUrl + url, data).then(function (result) {
                 success(result);
             }, function (error) {

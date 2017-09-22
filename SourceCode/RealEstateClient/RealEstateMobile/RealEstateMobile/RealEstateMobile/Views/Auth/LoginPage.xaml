@@ -3,10 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Đăng nhập"
              Icon="iconhome.png"
+             xmlns:local="clr-namespace:RealEstateMobile.Controls"
+             BackgroundImage="background.png"
              x:Class="RealEstateMobile.Views.LoginPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+        <StackLayout 
+            Orientation="Vertical"
+			Padding="20"
+            VerticalOptions="FillAndExpand"
+            Spacing="20">
+            <BoxView
+				HeightRequest="30" />
+            <Image
+				HorizontalOptions="Center"
+				WidthRequest="100"
+				Source="logoIconBizland.png" />
+            <Frame BackgroundColor="#BF043055" HasShadow="False">
+                <StackLayout
+                 Orientation="Vertical"
+					Spacing="10">
+                    <local:ImageEntry TextColor="White" 
+                        ImageHeight="30"
+                        ImageWidth="30"
+                        Image="iconusername" 
+                        PlaceholderColor="White"
+                        Placeholder="Ten tai khoan" 
+                        HorizontalOptions="FillAndExpand"/>
+                    <local:ImageEntry TextColor="White" 
+                        ImageHeight="30"
+                        ImageWidth="30"
+                        Image="iconpassword" 
+                        PlaceholderColor="White"
+                        Placeholder="Mat khau" 
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
+            <Button
+				x:Name="LoginButton"
+				Text="Đăng nhập"
+				TextColor="White"
+				FontAttributes="Bold"
+				FontSize="20"
+				HorizontalOptions="FillAndExpand"
+				BackgroundColor="#f49131" />
+            <Button
+   x:Name="buttonForgot"
+   Text="Quên mật khẩu?"
+   TextColor="Blue"
+   BackgroundColor="Transparent"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

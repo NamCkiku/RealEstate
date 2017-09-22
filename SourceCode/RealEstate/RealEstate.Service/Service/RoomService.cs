@@ -47,17 +47,17 @@ namespace RealEstate.Service.Service
             return lstroom;
         }
 
-        public IEnumerable<RoomEntity> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow)
+        public IEnumerable<RoomListEntity> GetAllListRoomByUserStoreProc(string userID,string keyword, int page, int pageSize, out int totalRow)
         {
-            List<RoomEntity> lstroom = new List<RoomEntity>();
+            List<RoomListEntity> lstroom = new List<RoomListEntity>();
             try
             {
                 totalRow = 0;
-                lstroom = _roomRepository.GetAllRoomByUser(userID, page, pageSize, out totalRow).ToList();
+                lstroom = _roomRepository.GetAllRoomByUser(userID,keyword, page, pageSize, out totalRow).ToList();
             }
             catch (Exception ex)
             {
-                string FunctionName = string.Format("GetAllListRoomByUser('{0}')", "");
+                string FunctionName = MethodInfo.GetCurrentMethod().Name;
                 Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
                 totalRow = 0;
             }
@@ -202,33 +202,35 @@ namespace RealEstate.Service.Service
                     room.DisplayOrder = 5;
                 }
                 roomResult = _roomRepository.Add(room);
-                //_unitOfWork.Commit();
-                //if (!string.IsNullOrEmpty(room.Tags))
-                //{
-                //    string[] tags = room.Tags.Split(',');
-                //    for (var i = 0; i < tags.Length; i++)
-                //    {
-                //        var tagId = StringHelper.ToUnsignString(tags[i]);
-                //        if (_tagRepository.Count(x => x.ID == tagId) == 0)
-                //        {
-                //            Tag tag = new Tag();
-                //            tag.ID = tagId;
-                //            tag.Name = tags[i];
-                //            tag.Type = CommonConstants.RoomTag;
-                //            _tagRepository.Add(tag);
-                //        }
+                _unitOfWork.Commit();
+                if (!string.IsNullOrEmpty(room.Tags))
+                {
+                    string[] tags = room.Tags.Split(',');
+                    for (var i = 0; i < tags.Length; i++)
+                    {
+                        var tagId = StringHelper.ToUnsignString(tags[i]);
+                        if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                        {
+                            Tag tag = new Tag();
+                            tag.ID = tagId;
+                            tag.Name = tags[i];
+                            tag.Type = CommonConstants.RoomTag;
+                            _tagRepository.Add(tag);
+                        }
 
-                //        RoomTag roomTag = new RoomTag();
-                //        roomTag.RoomID = room.ID;
-                //        roomTag.TagID = tagId;
-                //        _roomTagRepository.Add(roomTag);
-                //    }
-                //}
+                        RoomTag roomTag = new RoomTag();
+                        roomTag.RoomID = room.ID;
+                        roomTag.TagID = tagId;
+                        _roomTagRepository.Add(roomTag);
+                    }
+                    _unitOfWork.Commit();
+                }
             }
             catch (Exception ex)
             {
                 string FunctionName = string.Format("InsertRoom('{0}')", "");
                 Common.Logs.LogCommon.WriteLogError(ex.Message + FunctionName);
+                return null;
             }
 
             return roomResult;

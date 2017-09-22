@@ -152,8 +152,17 @@
     <Compile Include="Migrations\201707280736293_addColumsRoomStart.Designer.cs">
       <DependentUpon>201707280736293_addColumsRoomStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709190138433_addcolumTableUser.cs" />
+    <Compile Include="Migrations\201709190138433_addcolumTableUser.Designer.cs">
+      <DependentUpon>201709190138433_addcolumTableUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709190144154_updatecolumTableUser.cs" />
+    <Compile Include="Migrations\201709190144154_updatecolumTableUser.Designer.cs">
+      <DependentUpon>201709190144154_updatecolumTableUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\AppUserEntity.cs" />
+    <Compile Include="ModelView\AuditlogEntity.cs" />
     <Compile Include="ModelView\DistrictEntity.cs" />
     <Compile Include="ModelView\ProvinceEntity.cs" />
     <Compile Include="ModelView\RoomEntity.cs" />
@@ -203,6 +212,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707280736293_addColumsRoomStart.resx">
       <DependentUpon>201707280736293_addColumsRoomStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190138433_addcolumTableUser.resx">
+      <DependentUpon>201709190138433_addcolumTableUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190144154_updatecolumTableUser.resx">
+      <DependentUpon>201709190144154_updatecolumTableUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

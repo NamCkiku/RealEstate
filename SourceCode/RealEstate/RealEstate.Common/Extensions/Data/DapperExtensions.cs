@@ -33,6 +33,16 @@ namespace RealEstate.Common.Extensions.Data
                 return result;
             }
         }
+        public static T QueryFirstOrDefaultStoreProc<T>(string store, object parameters = null)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                var result = conn.QueryFirstOrDefault<T>(store, parameters, commandType: CommandType.StoredProcedure);
+                conn.Close();
+                return result;
+            }
+        }
         public static IEnumerable<T> QueryDapperStoreProc<T>(string store, object param = null)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -86,7 +96,16 @@ namespace RealEstate.Common.Extensions.Data
                 return result;
             }
         }
-
+        public static async Task<T> QueryFirstOrDefaultStoreProcAsync<T>(string store, object parameters = null)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                var result = await conn.QueryFirstOrDefaultAsync<T>(store, parameters, commandType: CommandType.StoredProcedure);
+                conn.Close();
+                return result;
+            }
+        }
         public static async Task<int> ExecuteDapperAsync(string sql, object param = null)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))

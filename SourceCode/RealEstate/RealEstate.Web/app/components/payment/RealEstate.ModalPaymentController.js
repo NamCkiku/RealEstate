@@ -5,6 +5,7 @@
 
     function ModalPaymentController($scope, BaseService, apiService, $rootScope, $window, $timeout, blockUI, $modal, $modalInstance, items, loginService, authData) {
         $scope.data = items;
+        console.log(items)  ;
         $scope.init = function () {
         };
         $scope.init();
