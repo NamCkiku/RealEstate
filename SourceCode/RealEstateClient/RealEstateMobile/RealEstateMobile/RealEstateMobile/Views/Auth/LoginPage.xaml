@@ -3,10 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Đăng nhập"
              Icon="iconhome.png"
+             xmlns:local="clr-namespace:RealEstateMobile.Controls"
              x:Class="RealEstateMobile.Views.LoginPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+        <StackLayout 
+            BackgroundColor="#FFF"
+            Orientation="Vertical"
+			Padding="20"
+            VerticalOptions="FillAndExpand"
+            Spacing="20">
+            <BoxView
+				HeightRequest="10" />
+            <Image
+				HorizontalOptions="Center"
+				WidthRequest="300"
+				Source="Logo_bizland.png" />
+            <Frame BackgroundColor="#BF043055" HasShadow="False">
+                <StackLayout
+                 Orientation="Vertical"
+					Spacing="10">
+                    <local:ImageEntry TextColor="White" 
+                        ImageHeight="30"
+                        ImageWidth="30"
+                        Image="iconUsername" 
+                        PlaceholderColor="White"
+                        Placeholder="Ten tai khoan" 
+                        HorizontalOptions="FillAndExpand"/>
+                    <local:ImageEntry TextColor="White" 
+                        ImageHeight="30"
+                        ImageWidth="30"
+                        Image="iconPassword" 
+                        PlaceholderColor="White"
+                        Placeholder="Mat khau" 
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
+            <Button
+				x:Name="LoginButton"
+				Text="Đăng nhập"
+				TextColor="White"
+				FontAttributes="Bold"
+				FontSize="20"
+				HorizontalOptions="FillAndExpand"
+				BackgroundColor="#f49131" />
+            <Button
+   x:Name="buttonForgot"
+   Text="Quên mật khẩu?"
+   TextColor="Blue"
+   BackgroundColor="Transparent"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
