@@ -18,7 +18,7 @@
             <div class="col-md-4 col-lg-4 col-xs-12">
                 <div class="media profile-block">
                     <div class="media-user-avatar col-lg-4 col-sm-4 col-xs-4 no-padding">
-                        <img class="media-object user-avatar img-circle" ng-if="userInfo.avatar !=null && userInfo.avatar !=''" ng-src="{{userInfo.avatar}}">
+                        <img class="media-object user-avatar img-circle" ng-if="userInfo.avatar !=null && userInfo.avatar !=''" ng-src="{{baseUrl}}{{userInfo.avatar}}">
                         <img class="media-object user-avatar img-circle" ng-if="userInfo.avatar ==null || userInfo.avatar ==''" src="/Content/img/boy-512.png">
                         <span class="label label-default">{{userInfo.coin}} Xu</span>
                         <span class="label label-default">{{userInfo.rewardPoint}} Point</span>
@@ -28,7 +28,7 @@
                         <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-map-marker"></i>{{userInfo.address}}</div>
                         <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-phone"></i>{{userInfo.phoneNumber}}</div>
                         <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-inbox"></i>{{userInfo.email}}</div>
-                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-university"></i>{{userInfo.birthDay}}</div>
+                        <div class="user-info-address"><i style="margin-right:5px;" class="fa fa-birthday-cake"></i>{{userInfo.birthDay |date}}</div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="profile-userbuttons">
@@ -63,8 +63,8 @@
                         <ul class="nav nav-pills nav-stacked" role="tablist">
                             <li role="presentation" class="active"><a href="#RecentActivity" role="tab" data-toggle="tab" aria-expanded="true"> <i class="fa fa-calendar-times-o" aria-hidden="true"></i> Hoạt động gần đây</a></li>
                             <li role="presentation"><a href="#history" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-history" aria-hidden="true"></i> Lịch sử giao dịch</a></li>
-                            <li role="presentation"><a href="#edituser" role="tab" data-toggle="tab" aria-expanded="false"> <i class="fa fa-edit"></i> Sửa thông tin</a></li>
-                            <li role="presentation"><a href="#changepassword" role="tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-cogs" aria-hidden="true"></i> Đổi mật khẩu</a></li>
+                            <li role="presentation" ng-click="fireLoadProfileUpdateUserEvent();"><a href="#edituser" role="tab" data-toggle="tab" aria-expanded="false"> <i class="fa fa-edit"></i> Sửa thông tin</a></li>
+                            <li role="presentation" ng-click="fireLoadProfileChangePasswordEvent();"><a href="#changepassword" role="tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-cogs" aria-hidden="true"></i> Đổi mật khẩu</a></li>
                         </ul>
                     </div>
 
@@ -114,101 +114,10 @@
                     <div role="tabpanel" class="row tab-pane" id="history">
                     </div>
                     <div role="tabpanel" class="row tab-pane" id="edituser">
-                        <div class="content-user-infomation">
-                            <div class="content-user-item">
-                                <div class="content-item-title">
-                                    <div class="oplog-title__txt">Thay đổi thông tin</div>
-                                </div>
-                                <div class="content-item-main">
-                                    <div class="content-item-information">
-                                        <div class="content-item-panel"><div class="content-item-panel-txt">Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i></div></div>
-                                        <div class="content-item-data">
-                                            <form class="form-horizontal form-profile">
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Input text</label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Password</label>
-                                                    <div class="col-md-6">
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Placeholder</label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control" placeholder="placeholder">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Predefined value</label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control" value="Predefined value">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Readonly</label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control" value="Field value" readonly="">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Disabled</label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control" value="Field value" disabled="">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Textarea</label>
-                                                    <div class="col-md-6">
-                                                        <textarea class="form-control" rows="5"></textarea>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        @{ Html.RenderAction("PVProfileUpdateUser", "Profile"); }
                     </div>
                     <div role="tabpanel" class="row tab-pane" id="changepassword">
-                        <div class="content-user-infomation">
-                            <div class="content-user-item">
-                                <div class="content-item-title">
-                                    <div class="oplog-title__txt">Thay đổi mật khẩu</div>
-                                </div>
-                                <div class="content-item-main">
-                                    <div class="content-item-information">
-                                        <div class="content-item-panel"><div class="content-item-panel-txt">Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i></div></div>
-                                        <div class="content-item-data">
-                                            <form class="form-horizontal form-profile">
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Input text</label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Password</label>
-                                                    <div class="col-md-6">
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Placeholder</label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control" placeholder="placeholder">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @{ Html.RenderAction("PVProfileChangePassword", "Profile"); }
                     </div>
                 </div>
 
@@ -233,9 +142,11 @@
         display: inline-block;
         cursor: pointer;
     }
+
     .filled {
         color: #fd0;
     }
+
     .readonly .star.filled {
         color: #fd0;
     }
@@ -565,5 +476,25 @@
         border-color: rgba(0,0,0,0.1);
         padding: 10px 10px;
         color: rgba(0,0,0,0.87);
+    }
+
+    .button-orange {
+        white-space: nowrap;
+        padding: 6px 15px;
+        background: #ff9928;
+        border: 1px solid #ff9928;
+        color: #fff;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+    }
+
+        .button-orange:hover {
+            background: #ff8401;
+            color: #fff;
+        }
+
+    a:focus {
+        text-decoration: none;
     }
 </style>

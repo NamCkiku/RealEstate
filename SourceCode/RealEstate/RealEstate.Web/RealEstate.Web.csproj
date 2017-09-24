@@ -592,6 +592,7 @@
     <Content Include="Content\js\formValidation.min.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
     <Content Include="Content\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\js\moment.js" />
     <Content Include="Content\Plugins\bootstrap-ui\bootstrap-filestyle.js" />
     <Content Include="Content\Plugins\bootstrap-ui\bootstrap-filestyle.min.js" />
     <Content Include="Content\Plugins\bootstrap-ui\ui-bootstrap-tpls-0.14.3.min.js" />
@@ -3719,6 +3720,8 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Profile\PVProfileHistory.cshtml" />
+    <Content Include="Views\Profile\PVProfileUpdateUser.cshtml" />
+    <Content Include="Views\Profile\PVProfileChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

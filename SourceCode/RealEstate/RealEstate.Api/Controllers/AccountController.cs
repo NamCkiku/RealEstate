@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
 using RealEstate.Api.Models;
+using RealEstate.Api.Models.ViewModel;
 using RealEstate.Api.Results;
 using RealEstate.Common.Enumerations;
 using RealEstate.Entities.Entites;
@@ -109,7 +111,136 @@ namespace RealEstate.Api.Controllers
             return responeResult;
 
         }
+        /// <summary>
+        /// Hàm API update lại thông tin user
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/account/updateuser</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  17/09/2017   created
+        /// </Modified>
+        [Route("updateuser")]
+        [HttpPost]
+        public HttpResponseMessage UpdateInfomationUser(HttpRequestMessage request, AppUserViewModel model)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    responeResult = CreateHttpResponse(request, () =>
+                    {
+                        var user = UserManager.FindById(User.Identity.GetUserId());
+                        if (user != null)
+                        {
+                            user.Email = model.Email;
+                            user.FullName = model.FullName;
+                            user.PhoneNumber = model.PhoneNumber;
+                            user.Address = model.Address;
+                            user.Avatar = model.Avatar;
+                            user.BirthDay = model.BirthDay;
+                            user.Gender = model.Gender;
+                            user.UpdatedDate = DateTime.Now;
+                        }
+                        else
+                        {
+                            return request.CreateErrorResponse(HttpStatusCode.BadRequest, "Cập nhập thông tin không thành công");
+                        }
+                        var result = UserManager.Update(user);
+                        var auditlog = new AuditLog();
+                        auditlog.CreatedDate = DateTime.Now;
+                        auditlog.CreatedBy = user.UserName;
+                        auditlog.IPAddress = HttpContext.Current.Request.UserHostAddress;
+                        auditlog.LogType = (int)AuditLogType.UpdateUser;
+                        auditlog.Device = ((int)AuthenticationSourceEnum.Web).ToString();
+                        if (result.Succeeded)
+                        {
+                            auditlog.UserID = user.Id;
+                            auditlog.Description = "Cập nhập thông tin người dùng thành công tại IP" + auditlog.IPAddress;
 
+                        }
+                        else
+                        {
+                            auditlog.UserID = user.Id;
+                            auditlog.Description = "Cập nhập thông tin người dùng không thành công tại IP" + auditlog.IPAddress;
+                        }
+                        _audilogService.Insert(auditlog);
+                        _audilogService.SaveChanges();
+                        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, result);
+
+                        return response;
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+        /// <summary>
+        /// Hàm API thay đổi mật khẩu
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/account/updateuser</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  24/09/2017   created
+        /// </Modified>
+        [Route("changepassword")]
+        [HttpPost]
+        public HttpResponseMessage ChangePassword(HttpRequestMessage request, ChangePasswordViewModel model)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    responeResult = CreateHttpResponse(request, () =>
+                    {
+                        var result = UserManager.ChangePassword(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                        var auditlog = new AuditLog();
+                        auditlog.CreatedDate = DateTime.Now;
+                        auditlog.CreatedBy = string.Empty;
+                        auditlog.IPAddress = HttpContext.Current.Request.UserHostAddress;
+                        auditlog.LogType = (int)AuditLogType.UpdateUser;
+                        auditlog.Device = ((int)AuthenticationSourceEnum.Web).ToString();
+                        if (result.Succeeded)
+                        {
+                            auditlog.UserID = User.Identity.GetUserId();
+                            auditlog.Description = "Thay đổi mật khẩu thành công tại IP" + auditlog.IPAddress;
+
+                        }
+                        else
+                        {
+                            auditlog.UserID = User.Identity.GetUserId();
+                            auditlog.Description = "Thay đổi mật khẩu không thành công tại IP" + auditlog.IPAddress;
+                        }
+                        _audilogService.Insert(auditlog);
+                        _audilogService.SaveChanges();
+                        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, result);
+
+                        return response;
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+        //
         //
         // POST: /Account/Register
         [HttpPost]
