@@ -52,5 +52,7 @@ namespace RealEstate.Api.Models.ViewModel
         public int RoomStar { get; set; }
 
         public string ProvinceName { get; set; }
+
+        public bool Status { get; set; }
     }
 }

@@ -21,12 +21,12 @@
                                 </tr>
                             </thead>
                             <tbody class="table-body">
-                                <tr ng-repeat="item in data.lstRoomByUser">
-                                    <td>{{item.roomName}}</td>
+                                <tr dir-paginate="item in data.lstRoomByUser | itemsPerPage: pageSize" pagination-id="roomByuser" total-items="totalCount" current-page="roomCurrentPage">
+                                    <td style="width:40%">{{item.roomName}}</td>
                                     <td>{{item.roomTypeName}}</td>
                                     <td>{{item.viewCount}}</td>
                                     <td>{{item.price |number}}</td>
-                                    <td>Đã duyệt</td>
+                                    <td><span ng-if="item.status" class="label label-success">Đã duyệt</span><span ng-if="!item.status" class="label label-info">Chờ duyệt</span></td>
                                     <td>
                                         <a href="" data-toggle="tooltip" data-placement="top" title="Click để Hiển thị (or) Ẩn với mọi người">
                                             <i class="fa fa-eye green" aria-hidden="true"></i>
@@ -41,6 +41,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <dir-pagination-controls boundary-links="true"
+                                                 pagination-id="roomByuser"
+                                                 on-page-change="pageRoomByUserChanged(newPageNumber)"
+                                                 template-url="~/app/shared/directives/dirPagination.tpl.html"></dir-pagination-controls>
                     </div>
                 </div>
             </div>
@@ -65,7 +69,7 @@
                                 </tr>
                             </thead>
                             <tbody class="table-body">
-                                <tr ng-repeat="item in data.lstHistoryLogin">
+                                <tr dir-paginate="item in data.lstHistoryLogin | itemsPerPage: pageSize" pagination-id="historylogin" total-items="totalHistoryCount" current-page="historyCurrentPage">
                                     <td>{{item.createdDate |date}}</td>
                                     <td>{{item.ipAddress}}</td>
                                     <td>Web</td>
@@ -73,6 +77,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <dir-pagination-controls boundary-links="true"
+                                                 pagination-id="historylogin"
+                                                 on-page-change="pageHistoryLoginChanged(newPageNumber)"
+                                                 template-url="~/app/shared/directives/dirPagination.tpl.html"></dir-pagination-controls>
                     </div>
                 </div>
             </div>

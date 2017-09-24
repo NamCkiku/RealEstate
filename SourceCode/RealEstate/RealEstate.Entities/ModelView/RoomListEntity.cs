@@ -53,6 +53,6 @@ namespace RealEstate.Entities.ModelView
         public int RoomStar { get; set; }
 
         public string ProvinceName { get; set; }
-
+        public bool Status { get; set; }
     }
 }

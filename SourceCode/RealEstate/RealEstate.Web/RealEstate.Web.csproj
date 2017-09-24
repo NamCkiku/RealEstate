@@ -129,6 +129,8 @@
     <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
     <Content Include="app\components\searchRoom\SearchRoomController.js" />
+    <Content Include="app\shared\directives\dirPagination.js" />
+    <Content Include="app\shared\directives\dirPagination.tpl.html" />
     <Content Include="app\shared\directives\owlCarouselDirectives.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />
