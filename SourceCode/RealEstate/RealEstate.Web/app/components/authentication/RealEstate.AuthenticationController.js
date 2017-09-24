@@ -7,6 +7,7 @@
         $scope.account = {
 
         }
+        $scope.baseUrl = $rootScope.baseUrl;
         $scope.data = {
             lstRoomType:[]
         }

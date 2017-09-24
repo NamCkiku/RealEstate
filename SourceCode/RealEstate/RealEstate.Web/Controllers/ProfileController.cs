@@ -17,5 +17,13 @@ namespace RealEstate.Web.Controllers
         {
             return PartialView();
         }
+        public PartialViewResult PVProfileUpdateUser()
+        {
+            return PartialView();
+        }
+        public PartialViewResult PVProfileChangePassword()
+        {
+            return PartialView();
+        }
     }
 }

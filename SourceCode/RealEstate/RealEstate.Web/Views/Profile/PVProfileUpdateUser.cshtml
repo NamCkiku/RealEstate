@@ -1,0 +1,142 @@
+﻿
+<div class="content-user-infomation" block-ui="BlockUIUpdateUser" ng-controller="PVProfileUpdateUserController">
+    <div class="content-user-item">
+        <div class="content-item-title">
+            <div class="oplog-title__txt">Thay đổi thông tin</div>
+        </div>
+        <div class="content-item-main">
+            <div class="content-item-information">
+                <div class="content-item-panel"><div class="content-item-panel-txt">Vui lòng điền đầy đủ tất cả các mục có dấu <i class="required">*</i></div></div>
+                <div class="content-item-data">
+                    <div class="form-horizontal form-profile" id="form-profile">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Tên đăng nhập <span class="required-text">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control"
+                                       disabled="disabled"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy nhập tên đăng nhập của bạn"
+                                       placeholder="Tên đăng nhập"
+                                       name="userName"
+                                       readonly="readonly"
+                                       ng-model="userInfo.userName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Tên hiển thị <span class="required-text">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy nhập tên hiển thị của bạn"
+                                       placeholder="Tên hiển thị"
+                                       ng-model="userInfo.fullName"
+                                       name="fullName"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Số điện thoại <span class="required-text">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" ui-br-phone-number
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy nhập số điện thoại của bạn"
+                                       placeholder="Số điện thoại"
+                                       class="form-control"
+                                       name="phoneNumber"
+                                       ng-model="userInfo.phoneNumber">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Địa chỉ <span class="required-text">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text"
+                                       id="adress"
+                                       class="form-control"
+                                       name="address"
+                                       ng-model="userInfo.address"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy nhập địa chỉ của bạn"
+                                       placeholder="Ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Email <span class="required-text">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text"
+                                       name="email"
+                                       ng-model="userInfo.email"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy nhập email của bạn"
+                                       data-fv-emailaddress="true"
+                                       data-fv-emailaddress-message="Nhập đúng định dạng email"
+                                       placeholder="Email của tôi là:"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Giới tính</label>
+                            <div class="col-md-6">
+                                <select kendo-drop-down-list
+                                        k-option-label="'--Giới Tính--'"
+                                        k-data-text-field="'text'"
+                                        k-data-value-field="'value'"
+                                        k-value-primitive="true"
+                                        k-auto-bind="false"
+                                        k-data-source="data.lstGender"
+                                        k-ng-model="userInfo.gender"
+                                        style="width: 100%"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Ngày sinh</label>
+                            <div class="col-md-6">
+                                <input kendo-date-picker
+                                       name="birthDay"
+                                       data-fv-trigger="blur"
+                                       data-fv-callback="true"
+                                       data-fv-callback-callback="validDate"
+                                       data-fv-callback-message="Nhập đúng định dạng ngày tháng dd/MM/yyyy"
+                                       k-ng-model="userInfo.birthDay"
+                                       k-format="'dd/MM/yyyy'"
+                                       style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-6">
+                                <img class="img-circle" style="width:150px;height:150px" ng-if="userInfo.avatar !=null && userInfo.avatar !=''" ng-src="{{baseUrl}}{{userInfo.avatar}}">
+                                <img class="img-circle" style="width:150px;height:150px" ng-if="userInfo.avatar ==null || userInfo.avatar ==''" src="/Content/img/boy-512.png">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Ảnh đại diện</label>
+                            <div class="col-md-6">
+                                <input name="files"
+                                       type="file"
+                                       id="txtUploadImage"
+                                       kendo-upload
+                                       k-options="kendoUploadOptions" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                                <button type="button" class="button-orange" ng-click="updateUser();"><i class="fa fa-refresh"></i> Cập nhập</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var formatDate = 'dd/MM/yyyy';
+    function validDate(value, validator) {
+        // Determine the numbers which are generated in captchaOperation
+        var m = new moment(value, formatDate.toUpperCase(), true);
+        if (!m.isValid()) {
+            return false;
+        }
+        return true;
+    };
+</script>

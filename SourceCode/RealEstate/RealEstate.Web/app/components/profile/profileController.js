@@ -7,7 +7,7 @@
         $scope.userInfo = {
 
         }
-
+        $scope.baseUrl = $rootScope.baseUrl;
         angular.element(document).ready(function () {
             $scope.init();
         });
@@ -84,10 +84,12 @@
 
         $scope.fireLoadProfileHistoryEvent = function () {
             $scope.$broadcast('fireLoadProfileHistoryEvent', $scope.userInfo);
+         };
+        $scope.fireLoadProfileChangePasswordEvent = function () {
+            $scope.$broadcast('fireLoadProfileChangePasswordEvent', $scope.userInfo);
         };
-        $scope.fireLoadListRoomByUserEvent = function () {
-            $scope.changeTab(2);
-            $scope.$broadcast('fireLoadListRoomByUserEvent', $scope.userInfo);
+        $scope.fireLoadProfileUpdateUserEvent = function () {
+            $scope.$broadcast('fireLoadProfileUpdateUserEvent', $scope.userInfo);
         };
     }
 })(angular.module('myApp'));

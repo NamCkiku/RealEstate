@@ -10,6 +10,7 @@ namespace RealEstate.Common.Enumerations
     {
         Create = 1,
         Login = 2,
-        Register = 3
+        Register = 3,
+        UpdateUser = 4
     }
 }
