@@ -231,7 +231,7 @@
             <div class="tab-content col-xs-12">
                 <div role="tabpanel" class="row tab-pane active" id="mnCard">
                     <div class="col-sm-6">
-                        <div class="form-horizontal bg-pop" style="margin-top: 15px;">
+                        <div class="form-horizontal bg-pop" id="formpaymentCash" style="margin-top: 15px;">
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <span class="text-error" id="errMoney"></span>
@@ -243,6 +243,9 @@
                                             k-data-text-field="'text'"
                                             k-data-value-field="'value'"
                                             k-value-primitive="true"
+                                            data-fv-notempty="true"
+                                            data-fv-notempty-message="Hãy chọn loại thẻ của bạn"
+                                            name="cashtype"
                                             k-auto-bind="false"
                                             k-data-source="data.lsCashType"
                                             k-ng-model="cart.CardType"
@@ -260,7 +263,17 @@
                                 <div class="col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon adon-custom">Mã thẻ</span>
-                                        <input type="text" maxlength="50" ng-model="cart.Pincard" class="form-control" placeholder="Mã thẻ dưới lớp giấy bạc">
+                                        <input type="text"
+                                               maxlength="50"
+                                               ng-model="cart.Pincard"
+                                               data-fv-stringlength="true"
+                                               data-fv-stringlength-max="50"
+                                               data-fv-stringlength-min="5"
+                                               data-fv-stringlength-message="Mã thẻ không được quá 50 kí tự và nhỏ hơn 5 kí tự"
+                                               data-fv-notempty="true"
+                                               data-fv-notempty-message="Hãy nhập mã thẻ"
+                                               name="Pincard"
+                                               class="form-control" placeholder="Mã thẻ dưới lớp giấy bạc">
                                     </div>
                                 </div>
                             </div>
@@ -268,8 +281,25 @@
                                 <div class="col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon adon-custom">Seri</span>
-                                        <input type="text" maxlength="50" ng-model="cart.SerialCard" class="form-control" placeholder="Số seri thẻ">
+                                        <input type="text" maxlength="50"
+                                               ng-model="cart.SerialCard"
+                                               class="form-control"
+                                               data-fv-stringlength="true"
+                                               data-fv-stringlength-min="5"
+                                               data-fv-stringlength-max="50"
+                                               data-fv-stringlength-message="Seri thẻ không được quá 50 kí tự và nhỏ hơn 5 kí tự"
+                                               data-fv-notempty="true"
+                                               data-fv-notempty-message="Hãy nhập seri thẻ"
+                                               name="Pincard"
+                                               placeholder="Số seri thẻ">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div vc-recaptcha
+                                         style="width:100%"
+                                         ng-model="myRecaptchaResponse"></div>
                                 </div>
                             </div>
                             <div class="form-group">
