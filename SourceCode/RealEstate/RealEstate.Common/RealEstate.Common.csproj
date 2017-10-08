@@ -83,6 +83,7 @@
     <Compile Include="Extensions\Data\DatabaseExtensions.cs" />
     <Compile Include="Extensions\Data\DataReaderExtensions.cs" />
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\ConfigHelper.cs" />
     <Compile Include="Helper\Converter\Converter.cs" />
     <Compile Include="Helper\Converter\TConverter.cs" />
     <Compile Include="Helper\DateTimeHelper.cs" />
