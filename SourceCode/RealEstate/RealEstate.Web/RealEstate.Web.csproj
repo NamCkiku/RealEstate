@@ -168,6 +168,17 @@
     <Content Include="bower_components\angular-local-storage\dist\angular-local-storage.js" />
     <Content Include="bower_components\angular-local-storage\dist\angular-local-storage.min.js" />
     <Content Include="bower_components\angular-local-storage\index.js" />
+    <Content Include="bower_components\angular-recaptcha\demo\angular-recaptcha.js" />
+    <Content Include="bower_components\angular-recaptcha\demo\usage.html" />
+    <Content Include="bower_components\angular-recaptcha\index.js" />
+    <Content Include="bower_components\angular-recaptcha\karma.conf.js" />
+    <Content Include="bower_components\angular-recaptcha\release\angular-recaptcha.js" />
+    <Content Include="bower_components\angular-recaptcha\release\angular-recaptcha.min.js" />
+    <Content Include="bower_components\angular-recaptcha\tests\directive_test.js" />
+    <Content Include="bower_components\angular-recaptcha\tests\provider.driver.js" />
+    <Content Include="bower_components\angular-recaptcha\tests\provider_test.js" />
+    <Content Include="bower_components\angular-recaptcha\tests\service.driver.js" />
+    <Content Include="bower_components\angular-recaptcha\tests\service_test.js" />
     <Content Include="bower_components\angular-ui-select2\.gitignore" />
     <Content Include="bower_components\angular-ui-select2\docs\index.html" />
     <Content Include="bower_components\angular-ui-select2\docs\styles.css" />
@@ -3724,6 +3735,11 @@
     <Content Include="Views\Profile\PVProfileHistory.cshtml" />
     <Content Include="Views\Profile\PVProfileUpdateUser.cshtml" />
     <Content Include="Views\Profile\PVProfileChangePassword.cshtml" />
+    <Content Include="bower_components\angular-recaptcha\.bower.json" />
+    <Content Include="bower_components\angular-recaptcha\bower.json" />
+    <Content Include="bower_components\angular-recaptcha\LICENSE" />
+    <Content Include="bower_components\angular-recaptcha\package.json" />
+    <Content Include="bower_components\angular-recaptcha\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

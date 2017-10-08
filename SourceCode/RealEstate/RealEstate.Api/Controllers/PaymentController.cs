@@ -20,7 +20,6 @@ namespace RealEstate.Api.Controllers
     /// </Modified>
     /// <seealso cref="RealEstate.Api.Controllers.ApiControllerBase" />
     [RoutePrefix("api/payment")]
-    // [Authorize]
     public class PaymentController : ApiControllerBase
     {
         private string merchantId = ConfigHelper.GetByKey("MerchantId");
@@ -42,50 +41,58 @@ namespace RealEstate.Api.Controllers
         /// </Modified>
         [Route("paymentbank")]
         [HttpPost]
+        [Authorize]
         public HttpResponseMessage PaymentBank(HttpRequestMessage request, PaymentViewModel paymentviewmodel)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
             try
             {
-                responeResult = CreateHttpResponse(request, () =>
+                if (ModelState.IsValid)
                 {
-                    HttpResponseMessage response = null;
-
-                    RequestCheckoutInfo info = new RequestCheckoutInfo();
-                    info.Merchant_id = merchantId;
-                    info.Merchant_password = merchantPassword;
-                    info.Receiver_email = merchantEmail;
-
-
-
-                    info.cur_code = "vnd";
-                    info.bank_code = paymentviewmodel.BankCode;
-
-                    info.Order_code = paymentviewmodel.OrderCode.ToString();
-                    info.Total_amount = paymentviewmodel.TotalAmount.ToString();
-                    info.fee_shipping = "0";
-                    info.Discount_amount = "0";
-                    info.order_description = "Nạp tiền vào tài khoản tại Bizland.vn";
-                    info.return_url = "";
-                    info.cancel_url = "";
-
-                    info.Buyer_fullname = paymentviewmodel.UserName;
-                    info.Buyer_email = paymentviewmodel.Email;
-                    info.Buyer_mobile = paymentviewmodel.PhoneNumber.ToString();
-
-                    APICheckoutV3 objNLChecout = new APICheckoutV3();
-                    ResponseInfo result = objNLChecout.GetUrlCheckout(info, paymentviewmodel.PaymentMethod);
-                    if (result.Error_code == "00")
+                    responeResult = CreateHttpResponse(request, () =>
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, result);
-                    }
-                    else
-                    {
-                        response = request.CreateResponse(HttpStatusCode.BadRequest, result.Description);
-                    }
+                        HttpResponseMessage response = null;
 
-                    return response;
-                });
+                        RequestCheckoutInfo info = new RequestCheckoutInfo();
+                        info.Merchant_id = merchantId;
+                        info.Merchant_password = merchantPassword;
+                        info.Receiver_email = merchantEmail;
+
+
+
+                        info.cur_code = "vnd";
+                        info.bank_code = paymentviewmodel.BankCode;
+
+                        info.Order_code = paymentviewmodel.OrderCode.ToString();
+                        info.Total_amount = paymentviewmodel.TotalAmount.ToString();
+                        info.fee_shipping = "0";
+                        info.Discount_amount = "0";
+                        info.order_description = "Nạp tiền vào tài khoản tại Bizland.vn";
+                        info.return_url = "";
+                        info.cancel_url = "";
+
+                        info.Buyer_fullname = paymentviewmodel.UserName;
+                        info.Buyer_email = paymentviewmodel.Email;
+                        info.Buyer_mobile = paymentviewmodel.PhoneNumber.ToString();
+
+                        APICheckoutV3 objNLChecout = new APICheckoutV3();
+                        ResponseInfo result = objNLChecout.GetUrlCheckout(info, paymentviewmodel.PaymentMethod);
+                        if (result.Error_code == "00")
+                        {
+                            response = request.CreateResponse(HttpStatusCode.OK, result);
+                        }
+                        else
+                        {
+                            response = request.CreateResponse(HttpStatusCode.BadRequest, result.Description);
+                        }
+
+                        return response;
+                    });
+                }
+                else
+                {
+                    responeResult = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
             }
             catch (Exception ex)
             {
@@ -105,39 +112,48 @@ namespace RealEstate.Api.Controllers
         /// </Modified>
         [Route("paymentcash")]
         [HttpPost]
-        public HttpResponseMessage PaymentCash(HttpRequestMessage request, PaymentViewModel paymentviewmodel)
+        [Authorize]
+        public HttpResponseMessage PaymentCash(HttpRequestMessage request, PaymentCashViewModel paymentviewmodel)
         {
             HttpResponseMessage responeResult = new HttpResponseMessage();
             try
             {
-                responeResult = CreateHttpResponse(request, () =>
+                if (ModelState.IsValid)
                 {
-                    HttpResponseMessage response = null;
-
-                    RequestInfo info = new RequestInfo();
-                    info.Merchant_id = merchantId;
-                    //Email tài khoản nhận tiền khi nạp
-                    info.Merchant_acount = merchantEmail;
-                    info.Merchant_password = merchantPassword;
-
-                    //Nhà mạng
-                    info.CardType = paymentviewmodel.CardType;
-                    info.Pincard = paymentviewmodel.Pincard;
-
-                    info.Refcode = (new Random().Next(0, 10000)).ToString();
-                    info.SerialCard = paymentviewmodel.SerialCard;
-
-                    ResponseCashInfo resutl = NLCardLib.CardChage(info);
-                    if (resutl.Errorcode.Equals("00"))
+                    responeResult = CreateHttpResponse(request, () =>
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, resutl);
-                    }
-                    else
-                    {
-                        response = request.CreateResponse(HttpStatusCode.BadRequest, resutl);
-                    }
-                    return response;
-                });
+
+                        HttpResponseMessage response = null;
+
+                        RequestInfo info = new RequestInfo();
+                        info.Merchant_id = merchantId;
+                        //Email tài khoản nhận tiền khi nạp
+                        info.Merchant_acount = merchantEmail;
+                        info.Merchant_password = merchantPassword;
+
+                        //Nhà mạng
+                        info.CardType = paymentviewmodel.CardType;
+                        info.Pincard = paymentviewmodel.Pincard;
+
+                        info.Refcode = (new Random().Next(0, 10000)).ToString();
+                        info.SerialCard = paymentviewmodel.SerialCard;
+
+                        ResponseCashInfo resutl = NLCardLib.CardChage(info);
+                        if (resutl.Errorcode.Equals("00"))
+                        {
+                            response = request.CreateResponse(HttpStatusCode.OK, resutl);
+                        }
+                        else
+                        {
+                            response = request.CreateResponse(HttpStatusCode.BadRequest, resutl);
+                        }
+                        return response;
+                    });
+                }
+                else
+                {
+                    responeResult = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
             }
             catch (Exception ex)
             {
