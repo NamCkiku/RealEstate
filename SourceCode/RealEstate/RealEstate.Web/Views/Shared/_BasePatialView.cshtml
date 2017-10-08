@@ -230,7 +230,7 @@
         <div class="row">
             <div class="tab-content col-xs-12">
                 <div role="tabpanel" class="row tab-pane active" id="mnCard">
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <div class="form-horizontal bg-pop" style="margin-top: 15px;">
                             <div class="form-group">
                                 <div class="col-xs-12">
@@ -239,20 +239,28 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <select name="ctl00$ctl00$ucPopupMoney$drNhamang" id="ucPopupMoney_drNhamang" class="form-control">
-                                        <option value="VIETTEL">Thẻ cào VIETTEL</option>
-                                        <option value="VNP">Thẻ cào VINAPHONE</option>
-                                        <option value="VMS">Thẻ cào MOBIPHONE</option>
-                                        <option value="VCOIN">Vcoin</option>
-                                        <option value="GATE">Gate</option>
-                                    </select>
+                                    <select kendo-drop-down-list
+                                            k-data-text-field="'text'"
+                                            k-data-value-field="'value'"
+                                            k-value-primitive="true"
+                                            k-auto-bind="false"
+                                            k-data-source="data.lsCashType"
+                                            k-ng-model="cart.CardType"
+                                            style="width: 100%"></select>
+                                    @*<select ng-model="cart.CardType" class="form-control">
+                                            <option value="VIETTEL">Thẻ cào VIETTEL</option>
+                                            <option value="VNP">Thẻ cào VINAPHONE</option>
+                                            <option value="VMS">Thẻ cào MOBIPHONE</option>
+                                            <option value="VCOIN">Vcoin</option>
+                                            <option value="GATE">Gate</option>
+                                        </select>*@
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon adon-custom">Mã thẻ</span>
-                                        <input type="text" maxlength="50" class="form-control" placeholder="Mã thẻ dưới lớp giấy bạc">
+                                        <input type="text" maxlength="50" ng-model="cart.Pincard" class="form-control" placeholder="Mã thẻ dưới lớp giấy bạc">
                                     </div>
                                 </div>
                             </div>
@@ -260,18 +268,18 @@
                                 <div class="col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon adon-custom">Seri</span>
-                                        <input type="text" maxlength="50" class="form-control" placeholder="Số seri thẻ">
+                                        <input type="text" maxlength="50" ng-model="cart.SerialCard" class="form-control" placeholder="Số seri thẻ">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12 line-h">
-                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="button">Nạp tiền &nbsp;<i class="fa fa-money fa-lg" aria-hidden="true"></i></button>
+                                    <button type="button" class="button-orange btn-block" ng-click="PaymentCard();"><i class="fa fa-money fa-lg"></i> &nbsp; Nạp tiền</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6 no-padding-left">
                         <div class="bg-pop">
                             <div class="note"><b class="green">GIÁ TRỊ THẺ NẠP</b> <em class="orange">(Xu nhận bằng <b>80%</b> giá trị thẻ nạp)</em></div>
                             <ul class="introduce-list">
@@ -302,170 +310,148 @@
                     <div class="col-sm-5" style="overflow:hidden;">
                         <div id="boxBankATM" class="bank-box bg-pop">
                             <ul class="bankList">
-
                                 <li class="bank-online-methods ">
                                     <label for="vcb_ck_on">
                                         <i class="VCB" title="Ngân hàng TMCP Ngoại Thương Việt Nam"></i>
-                                        <input id="Radio29" type="radio" name="bankcode" value="VCB">
+                                        <input id="Radio29" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="VCB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="vnbc_ck_on">
                                         <i class="DAB" title="Ngân hàng Đông Á"></i>
-                                        <input id="Radio28" type="radio" name="bankcode" value="DAB">
+                                        <input id="Radio28" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="DAB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="tcb_ck_on">
                                         <i class="TCB" title="Ngân hàng Kỹ Thương"></i>
-                                        <input id="Radio27" type="radio" name="bankcode" value="TCB">
+                                        <input id="Radio27" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="TCB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_mb_ck_on">
                                         <i class="MB" title="Ngân hàng Quân Đội"></i>
-                                        <input id="Radio26" type="radio" name="bankcode" value="MB">
+                                        <input id="Radio26" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="MB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="shb_ck_on">
                                         <i class="SHB" title="Ngân hàng Sài Gòn - Hà Nội"></i>
-                                        <input id="Radio25" type="radio" name="bankcode" value="SHB">
+                                        <input id="Radio25" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="SHB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_vib_ck_on">
                                         <i class="VIB" title="Ngân hàng Quốc tế"></i>
-                                        <input id="Radio24" type="radio" name="bankcode" value="VIB">
+                                        <input id="Radio24" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="VIB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_vtb_ck_on">
                                         <i class="ICB" title="Ngân hàng Công Thương Việt Nam"></i>
-                                        <input id="Radio23" type="radio" name="bankcode" value="ICB">
+                                        <input id="Radio23" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="ICB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_exb_ck_on">
                                         <i class="EXB" title="Ngân hàng Xuất Nhập Khẩu"></i>
-                                        <input id="Radio22" type="radio" name="bankcode" value="EXB">
+                                        <input id="Radio22" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="EXB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_acb_ck_on">
                                         <i class="ACB" title="Ngân hàng Á Châu"></i>
-                                        <input id="Radio21" type="radio" name="bankcode" value="ACB">
+                                        <input id="Radio21" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="ACB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_hdb_ck_on">
                                         <i class="HDB" title="Ngân hàng Phát triển Nhà TPHCM"></i>
-                                        <input id="Radio20" type="radio" name="bankcode" value="HDB">
+                                        <input id="Radio20" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="HDB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_msb_ck_on">
                                         <i class="MSB" title="Ngân hàng Hàng Hải"></i>
-                                        <input id="Radio19" type="radio" name="bankcode" value="MSB">
+                                        <input id="Radio19" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="MSB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_nvb_ck_on">
                                         <i class="NVB" title="Ngân hàng Nam Việt"></i>
-                                        <input id="Radio18" type="radio" name="bankcode" value="NVB">
+                                        <input id="Radio18" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="NVB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_vab_ck_on">
                                         <i class="VAB" title="Ngân hàng Việt Á"></i>
-                                        <input id="Radio17" type="radio" name="bankcode" value="VAB">
+                                        <input id="Radio17" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="VAB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_vpb_ck_on">
                                         <i class="VPB" title="Ngân Hàng Việt Nam Thịnh Vượng"></i>
-                                        <input id="Radio16" type="radio" name="bankcode" value="VPB">
+                                        <input id="Radio16" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="VPB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_scb_ck_on">
                                         <i class="SCB" title="Ngân hàng Sài Gòn Thương tín"></i>
-                                        <input id="Radio15" type="radio" name="bankcode" value="SCB">
+                                        <input id="Radio15" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="SCB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="ojb_ck_on">
                                         <i class="OJB" title="Ngân hàng Đại Dương"></i>
-                                        <input id="Radio14" type="radio" name="bankcode" value="OJB">
+                                        <input id="Radio14" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="OJB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="bnt_atm_pgb_ck_on">
                                         <i class="PGB" title="Ngân hàng Xăng dầu Petrolimex"></i>
-                                        <input id="Radio13" type="radio" name="bankcode" value="PGB">
+                                        <input id="Radio13" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="PGB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="bnt_atm_gpb_ck_on">
                                         <i class="GPB" title="Ngân hàng TMCP Dầu khí Toàn Cầu"></i>
-                                        <input id="Radio12" type="radio" name="bankcode" value="GPB">
+                                        <input id="Radio12" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="GPB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="bnt_atm_agb_ck_on">
                                         <i class="AGB" title="Ngân hàng Nông nghiệp &amp; Phát triển nông thôn"></i>
-                                        <input id="Radio11" type="radio" name="bankcode" value="AGB">
+                                        <input id="Radio11" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="AGB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="bnt_atm_sgb_ck_on">
                                         <i class="SGB" title="Ngân hàng Sài Gòn Công Thương"></i>
-                                        <input id="Radio10" type="radio" name="bankcode" value="SGB">
+                                        <input id="Radio10" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="SGB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="bnt_atm_nab_ck_on">
                                         <i class="NAB" title="Ngân hàng Nam Á"></i>
-                                        <input id="Radio9" type="radio" name="bankcode" value="NAB">
+                                        <input id="Radio9" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="NAB">
                                     </label>
                                 </li>
-
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_bab_ck_on">
                                         <i class="BAB" title="Ngân hàng Bắc Á"></i>
-                                        <input id="Radio8" type="radio" name="bankcode" value="BAB">
+                                        <input id="Radio8" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="BAB">
                                     </label>
                                 </li>
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_bidv_ck_on">
                                         <i class="BIDV" title="Ngân hàng Đầu tư và Phát triển Việt Nam"></i>
-                                        <input id="Radio7" type="radio" name="bankcode" value="BIDV">
+                                        <input id="Radio7" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="BIDV">
                                     </label>
                                 </li>
                                 <li class="bank-online-methods ">
                                     <label for="sml_atm_tpb_ck_on">
                                         <i class="TPB" title="Ngân hàng TMCP Tiên Phong"></i>
-                                        <input id="Radio6" type="radio" name="bankcode" value="TPB">
+                                        <input id="Radio6" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="TPB">
                                     </label>
                                 </li>
                             </ul>
@@ -475,26 +461,26 @@
                         <div class="bg-pop" id="boxMoneyATM">
                             <div class="note"><b class="green">SỐ TIỀN NẠP</b> <em class="orange">(Xu nhận bằng <b>100%</b> giá trị tiền nạp)</em></div>
                             <div>
-                                <input id="Radio1" type="radio" name="moneyATM" value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
+                                <input id="Radio1" type="radio" ng-model="bankinfo.totalMonney" name="moneyATM" value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio2" type="radio" name="moneyATM" value="50000"> <span>Nạp</span> <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+50 Xu vào tài khoản)</em>
+                                <input id="Radio2" type="radio" ng-model="bankinfo.totalMonney" name="moneyATM" value="50000"> <span>Nạp</span> <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+50 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio3" type="radio" name="moneyATM" value="100000" checked=""> <span>Nạp</span> <b>100.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+100 Xu vào tài khoản)</em>
+                                <input id="Radio3" type="radio" ng-model="bankinfo.totalMonney" name="moneyATM" value="100000" checked=""> <span>Nạp</span> <b>100.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+100 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio4" type="radio" name="moneyATM" value="200000"> <span>Nạp</span> <b>200.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+200 Xu vào tài khoản)</em>
+                                <input id="Radio4" type="radio" ng-model="bankinfo.totalMonney" name="moneyATM" value="200000"> <span>Nạp</span> <b>200.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+200 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio5" type="radio" name="moneyATM" value="500000"> <span>Nạp</span> <b>500.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+500 Xu vào tài khoản)</em>
+                                <input id="Radio5" type="radio" ng-model="bankinfo.totalMonney" name="moneyATM" value="500000"> <span>Nạp</span> <b>500.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+500 Xu vào tài khoản)</em>
                             </div>
                         </div>
                         <div class="form-horizontal bg-pop" style="margin-top: 15px;">
                             <div class="text-error" id="errATM"></div>
                             <div class="form-group">
                                 <div class="col-xs-12 line-h">
-                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="button">Nạp tiền &nbsp;<i class="fa fa-money fa-lg" aria-hidden="true"></i></button>
+                                    <button type="button" class="button-orange btn-block" ng-click="PaymentBank();"><i class="fa fa-money fa-lg"></i> &nbsp; Nạp tiền</button>
                                 </div>
                             </div>
                         </div>
@@ -639,6 +625,7 @@
 
         .bg-pop em {
             color: #ff8401;
+            font-size: 12px;
         }
 
     .bg-pop-info span {
