@@ -211,10 +211,10 @@
     <div class="modal-body modal-body-payment" block-ui="BlockUIPayment">
         <div class="row bg-pop-info">
             <div class="col-xs-12">
-                <span><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messUser">{{data.fullName}}</span></span>&nbsp;&nbsp;&nbsp;
-                <span><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messEmail">{{data.email}}</span></span>&nbsp;&nbsp;&nbsp;
-                <span><i class="fa fa-money fa-lg" aria-hidden="true"></i>&nbsp;<b id="mainbody_contentbody_messMoney">{{data.coin}} Xu</b> </span>&nbsp;&nbsp;&nbsp;
-                <span><i class="fa fa-gift fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messPoint">{{data.rewardPoint}} Point</span></span>
+                <span><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messUser">{{userInfo.fullName}}</span></span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messEmail">{{userInfo.email}}</span></span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-money fa-lg" aria-hidden="true"></i>&nbsp;<b id="mainbody_contentbody_messMoney">{{userInfo.coin}} Xu</b> </span>&nbsp;&nbsp;&nbsp;
+                <span><i class="fa fa-gift fa-lg" aria-hidden="true"></i>&nbsp;<span id="mainbody_contentbody_messPoint">{{userInfo.rewardPoint}} Point</span></span>
             </div>
         </div>
         <div class="row bg-tab">
@@ -343,7 +343,11 @@
                                 <li class="bank-online-methods ">
                                     <label for="vcb_ck_on">
                                         <i class="VCB" title="Ngân hàng TMCP Ngoại Thương Việt Nam"></i>
-                                        <input id="Radio29" ng-model="bankinfo.bankname" type="radio" name="bankcode" value="VCB">
+                                        <input id="Radio29" ng-model="bankinfo.bankname"
+                                               type="radio"
+                                               data-fv-notempty="true"
+                                               data-fv-notempty-message="Hãy chọn 1 ngân hàng của bạn của bạn"
+                                               name="bankcode" value="VCB">
                                     </label>
                                 </li>
                                 <li class="bank-online-methods ">
@@ -491,7 +495,12 @@
                         <div class="bg-pop" id="boxMoneyATM">
                             <div class="note"><b class="green">SỐ TIỀN NẠP</b> <em class="orange">(Xu nhận bằng <b>100%</b> giá trị tiền nạp)</em></div>
                             <div>
-                                <input id="Radio1" type="radio" ng-model="bankinfo.totalMonney" name="moneyATM" value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
+                                <input id="Radio1" type="radio"
+                                       ng-model="bankinfo.totalMonney"
+                                       name="moneyATM"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Hãy chọn 1 mệnh giá của bạn của bạn"
+                                       value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
                             </div>
                             <div>
                                 <input id="Radio2" type="radio" ng-model="bankinfo.totalMonney" name="moneyATM" value="50000"> <span>Nạp</span> <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+50 Xu vào tài khoản)</em>
@@ -532,7 +541,7 @@
                             <div class="text-error" id="errNL"></div>
                             <div class="form-group">
                                 <div class="col-xs-12 line-h">
-                                    <button class="btn btn-block btn-search-primary btn-border btn-border-thin" type="button">Nạp tiền &nbsp;<i class="fa fa-money fa-lg" aria-hidden="true"></i></button>
+                                    <button class="button-orange btn-block" ng-click="PaymentNganLuong();" type="button">Nạp tiền &nbsp;<i class="fa fa-money fa-lg" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -541,19 +550,38 @@
                         <div class="bg-pop" id="boxMoneyNL">
                             <div class="note"><b class="green">SỐ TIỀN NẠP</b> <em class="orange">(Xu nhận bằng <b>100%</b> giá trị tiền nạp)</em></div>
                             <div>
-                                <input id="Radio54" type="radio" name="moneyNL" value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
+                                <input id="Radio54" type="radio" name="moneyNL" 
+                                       data-fv-notempty="true"
+                                       ng-model="nlinfo.totalMonney"
+                                       data-fv-notempty-message="Hãy chọn 1 mệnh giá của bạn của bạn"
+                                       value="20000"> <span>Nạp</span> <b>20.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+20 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio55" type="radio" name="moneyNL" value="50000"> <span>Nạp</span> <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+50 Xu vào tài khoản)</em>
+                                <input id="Radio55"
+                                       type="radio"
+                                       name="moneyNL"
+                                       ng-model="nlinfo.totalMonney"
+                                       value="50000"> <span>Nạp</span> <b>50.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+50 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio56" type="radio" name="moneyNL" value="100000" checked=""> <span>Nạp</span> <b>100.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+100 Xu vào tài khoản)</em>
+                                <input id="Radio56" type="radio"
+                                       name="moneyNL" 
+                                       ng-model="bankinfo.totalMonney"
+                                       value="100000" checked=""> <span>Nạp</span> <b>100.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+100 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio57" type="radio" name="moneyNL" value="200000"> <span>Nạp</span> <b>200.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+200 Xu vào tài khoản)</em>
+                                <input id="Radio57"
+                                       type="radio" 
+                                       name="moneyNL"
+                                       ng-model="nlinfo.totalMonney"
+                                       value="200000"> <span>Nạp</span> <b>200.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+200 Xu vào tài khoản)</em>
                             </div>
                             <div>
-                                <input id="Radio58" type="radio" name="moneyNL" value="500000"> <span>Nạp</span> <b>500.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+500 Xu vào tài khoản)</em>
+                                <input id="Radio58"
+                                       type="radio" 
+                                       name="moneyNL"
+                                       ng-model="nlinfo.totalMonney"
+                                       value="500000"> <span>Nạp</span> <b>500.000 đ</b>&nbsp;&nbsp;&nbsp;&nbsp;<em>(+500 Xu vào tài khoản)</em>
                             </div>
                         </div>
 
