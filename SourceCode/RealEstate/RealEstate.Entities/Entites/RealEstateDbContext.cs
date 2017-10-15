@@ -33,6 +33,10 @@ namespace RealEstate.Entities.Entites
 
         public DbSet<Announcement> Announcements { set; get; }
         public DbSet<AnnouncementUser> AnnouncementUsers { set; get; }
+
+        public DbSet<UserWallet> UserWallets { set; get; }
+        public DbSet<WalletTransactionTypes> WalletTransactionTypes { set; get; }
+        public DbSet<UserTransactionHistory> UserTransactionHistory { set; get; }
         public static RealEstateDbContext Create()
         {
             return new RealEstateDbContext();

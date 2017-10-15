@@ -103,6 +103,9 @@
     <Compile Include="Entites\RoomTag.cs" />
     <Compile Include="Entites\RoomType.cs" />
     <Compile Include="Entites\Tag.cs" />
+    <Compile Include="Entites\UserTransactionHistory.cs" />
+    <Compile Include="Entites\UserWallet.cs" />
+    <Compile Include="Entites\WalletTransactionTypes.cs" />
     <Compile Include="Entites\Ward.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.cs" />
     <Compile Include="Migrations\201706051405369_addIdentityTable.Designer.cs">
@@ -159,6 +162,10 @@
     <Compile Include="Migrations\201709190144154_updatecolumTableUser.cs" />
     <Compile Include="Migrations\201709190144154_updatecolumTableUser.Designer.cs">
       <DependentUpon>201709190144154_updatecolumTableUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150355070_addwallets.cs" />
+    <Compile Include="Migrations\201710150355070_addwallets.Designer.cs">
+      <DependentUpon>201710150355070_addwallets.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\AppUserEntity.cs" />
@@ -218,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709190144154_updatecolumTableUser.resx">
       <DependentUpon>201709190144154_updatecolumTableUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150355070_addwallets.resx">
+      <DependentUpon>201710150355070_addwallets.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
