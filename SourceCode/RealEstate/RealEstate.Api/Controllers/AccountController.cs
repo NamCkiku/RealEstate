@@ -32,13 +32,20 @@ namespace RealEstate.Api.Controllers
 
         private readonly IAuthService _authService;
         private readonly IAuditLogService _audilogService;
+        private readonly IUserWalletService _userWalletService;
 
-        public AccountController(IErrorService errorService, IAuditLogService audilogService, IAuthService authService, ApplicationUserManager userManager, ApplicationSignInManager signInManager) : base(errorService)
+        public AccountController(IErrorService errorService,
+            IAuditLogService audilogService,
+            IAuthService authService,
+            IUserWalletService userWalletService,
+            ApplicationUserManager userManager,
+            ApplicationSignInManager signInManager) : base(errorService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             this._authService = authService;
             this._audilogService = audilogService;
+            this._userWalletService = userWalletService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -260,6 +267,7 @@ namespace RealEstate.Api.Controllers
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address,
                 CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 Coin = 0,
                 RewardPoint = 0,
                 RankStar = 0,
@@ -273,9 +281,22 @@ namespace RealEstate.Api.Controllers
             auditlog.Device = ((int)AuthenticationSourceEnum.Web).ToString();
             if (result.Succeeded)
             {
+                //Tạo ví cho người dùng
                 auditlog.UserID = user.Id;
                 auditlog.Description = "Đăng ký thành công tại IP" + auditlog.IPAddress;
 
+                //Tạo ví cho người dùng
+                var userWallet = new UserWallet();
+                userWallet.Amount = 0;
+                userWallet.WalletName = user.UserName;
+                userWallet.PromotionAmount = 0;
+                userWallet.UserID = user.Id;
+                userWallet.IsLocked = false;
+                userWallet.IsDeleted = false;
+                userWallet.CreatedDate = DateTime.Now;
+                userWallet.CreatedByUser = user.UserName;
+                _userWalletService.Insert(userWallet);
+                _userWalletService.SaveChanges();
             }
             else
             {

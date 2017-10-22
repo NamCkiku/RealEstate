@@ -167,6 +167,10 @@
     <Compile Include="Migrations\201710150355070_addwallets.Designer.cs">
       <DependentUpon>201710150355070_addwallets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710220244134_editwallettransationType.cs" />
+    <Compile Include="Migrations\201710220244134_editwallettransationType.Designer.cs">
+      <DependentUpon>201710220244134_editwallettransationType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\AppUserEntity.cs" />
     <Compile Include="ModelView\AuditlogEntity.cs" />
@@ -228,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710150355070_addwallets.resx">
       <DependentUpon>201710150355070_addwallets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710220244134_editwallettransationType.resx">
+      <DependentUpon>201710220244134_editwallettransationType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace RealEstate.Entities.Entites
 
         public string Name { get; set; }
 
-        public bool? TypeTransaction { get; set; }
+        public int TypeTransaction { get; set; }
 
         public string Description { get; set; }
 
