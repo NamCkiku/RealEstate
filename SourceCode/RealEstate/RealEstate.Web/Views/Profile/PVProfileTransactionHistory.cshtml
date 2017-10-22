@@ -1,0 +1,44 @@
+﻿
+
+<div ng-controller="pVProfilrTransactionHistoryController" block-ui="BlockUITransactionHistory">
+    <div class="content-user-infomation">
+        <div class="content-user-item">
+            <div class="content-item-title">
+                <div class="oplog-title__txt">LỊCH SỬ GIAO DỊCH</div>
+            </div>
+            <div class="content-item-main">
+                <div class="content-item-information">
+                    <div class="content-item-panel"><div class="content-item-panel-txt">Danh sách các lịch sử giao dịch của bạn trên hệ thống của Bizland.vn</div></div>
+                    <div class="content-item-data">
+                        <table class="table table-hover no-margin">
+                            <thead class="table-thead">
+                                <tr>
+                                    <th>Thời gian</th>
+                                    <th>Chi tiết</th>
+                                    <th>Xu ban đầu</th>
+                                    <th>Xu giao dịch</th>
+                                    <th>Xu hiện tại</th>
+                                    <th>Loại giao dịch</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr dir-paginate="item in data.lstHistoryTransaction | itemsPerPage: pageSize" pagination-id="transactionhistory" total-items="totalTransactionHistoryCount" current-page="transactionCurrentPage">
+                                    <td>{{item.dateTransaction |date}}</td>
+                                    <td>{{item.note}}</td>
+                                    <td>{{item.beginBalance |number}}</td>
+                                    <td>{{item.amountTransaction |number}}</td>.
+                                    <td>{{item.amountCurrent |number}}</td>
+                                    <td><span ng-if="item.walletTransactionTypeID ==1" class="label label-success">Cộng tiền</span><span ng-if="item.walletTransactionTypeID ==2" class="label label-info">Trừ tiền</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <dir-pagination-controls boundary-links="true"
+                                                 pagination-id="transactionhistory"
+                                                 on-page-change="pageHistoryTransactionChanged(newPageNumber)"
+                                                 template-url="~/app/shared/directives/dirPagination.tpl.html"></dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

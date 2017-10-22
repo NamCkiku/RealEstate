@@ -30,18 +30,21 @@ namespace RealEstate.Api.Controllers
         private readonly IDistrictService _districtService;
         private readonly IWardService _wardService;
         private readonly IUserService _userService;
+        private readonly IUserTransactionHistoryService _userTransactionHistoryService;
         public ManagementController(IErrorService errorService,
             ICountryService countryService,
             IProvinceService provinceService,
             IDistrictService districtService,
             IUserService userService,
-            IWardService wardService) : base(errorService)
+            IUserTransactionHistoryService userTransactionHistoryService,
+        IWardService wardService) : base(errorService)
         {
             this._countryService = countryService;
             this._provinceService = provinceService;
             this._districtService = districtService;
             this._wardService = wardService;
             this._userService = userService;
+            this._userTransactionHistoryService = userTransactionHistoryService;
         }
         #region Địa Chính Việt Nam
         /// <summary>
@@ -308,6 +311,47 @@ namespace RealEstate.Api.Controllers
                     var user = _userService.GetInfomationUserById(userID);
                     var userVm = Mapper.Map<AppUserViewModel>(user);
                     HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, userVm);
+
+                    return response;
+                });
+            }
+            catch (Exception ex)
+            {
+                Common.Logs.LogCommon.WriteLogError(ex.Message);
+            }
+            return responeResult;
+        }
+
+
+        /// <summary>
+        /// Hàm API lấy ra danh sách lịch sử đăng nhập của user
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Link API:api/management/getallhistorylogin</returns>
+        /// <Modified>
+        /// Name     Date         Comments
+        /// namth  17/09/2017   created
+        /// </Modified>
+        [Route("gettransactionhistory")]
+        public HttpResponseMessage GetTransactionHistory(HttpRequestMessage request, string userID, int page, int pageSize)
+        {
+            HttpResponseMessage responeResult = new HttpResponseMessage();
+            try
+            {
+                responeResult = CreateHttpResponse(request, () =>
+                {
+                    int totalRow = 0;
+                    var listHistory = _userTransactionHistoryService.GetTransactionHistoryByUserId(userID, page, pageSize, out totalRow).ToList();
+
+                    var listHistoryVm = Mapper.Map<List<UserTransactionHistoryViewModel>>(listHistory);
+                    var paginationSet = new PaginationSet<UserTransactionHistoryViewModel>()
+                    {
+                        Items = listHistoryVm,
+                        Page = page,
+                        TotalCount = totalRow,
+                        TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                    };
+                    HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
 
                     return response;
                 });

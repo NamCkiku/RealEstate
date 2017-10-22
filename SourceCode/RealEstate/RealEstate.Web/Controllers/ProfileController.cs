@@ -25,5 +25,9 @@ namespace RealEstate.Web.Controllers
         {
             return PartialView();
         }
+        public PartialViewResult PVProfileTransactionHistory()
+        {
+            return PartialView();
+        }      
     }
 }

@@ -88,6 +88,9 @@
         $scope.fireLoadProfileChangePasswordEvent = function () {
             $scope.$broadcast('fireLoadProfileChangePasswordEvent', $scope.userInfo);
         };
+        $scope.fireLoadTransactionHistoryEvent = function () {
+            $scope.$broadcast('fireLoadTransactionHistoryEvent', $scope.userInfo);
+        };
         $scope.fireLoadProfileUpdateUserEvent = function () {
             $scope.$broadcast('fireLoadProfileUpdateUserEvent', $scope.userInfo);
         };
