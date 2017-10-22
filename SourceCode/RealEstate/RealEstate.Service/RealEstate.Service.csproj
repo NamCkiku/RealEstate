@@ -53,7 +53,10 @@
     <Compile Include="IService\IRoomService.cs" />
     <Compile Include="IService\IRoomTypeService.cs" />
     <Compile Include="IService\IUserService.cs" />
+    <Compile Include="IService\IUserTransactionHistoryService.cs" />
+    <Compile Include="IService\IWalletTransactionTypesService.cs" />
     <Compile Include="IService\IWardService.cs" />
+    <Compile Include="IService\IUserWalletService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AnnouncementService.cs" />
     <Compile Include="Service\AuditLogService.cs" />
@@ -66,6 +69,9 @@
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\RoomTypeService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\UserTransactionHistoryService.cs" />
+    <Compile Include="Service\UserWalletService.cs" />
+    <Compile Include="Service\WalletTransactionTypesService.cs" />
     <Compile Include="Service\WardService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -79,6 +79,7 @@
     <Compile Include="Enumerations\AuditLogType.cs" />
     <Compile Include="Enumerations\AuthenticationSourceEnum.cs" />
     <Compile Include="Enumerations\VipTypeEnum.cs" />
+    <Compile Include="Enumerations\WalletTransactionTypesEnum.cs" />
     <Compile Include="Extensions\Data\DapperExtensions.cs" />
     <Compile Include="Extensions\Data\DatabaseExtensions.cs" />
     <Compile Include="Extensions\Data\DataReaderExtensions.cs" />

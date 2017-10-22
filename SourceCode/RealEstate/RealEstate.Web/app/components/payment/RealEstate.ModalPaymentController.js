@@ -16,6 +16,9 @@
         $scope.nlinfo = {
             totalMonney: '20000',
         }
+        $scope.data = {
+            lsCashType: []
+        }
         $scope.data.lsCashType = [
             { text: "Thẻ cào VIETTEL", value: "VIETTEL" },
             { text: "Thẻ cào VINAPHONE", value: "VNP" },
