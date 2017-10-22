@@ -17,6 +17,8 @@ namespace RealEstate.Api.Models.ViewModel
 
         public string UserName { get; set; }
 
+        public string UserId { get; set; }
+
         public string Email { get; set; }
 
         public int PhoneNumber { get; set; }
@@ -33,5 +35,7 @@ namespace RealEstate.Api.Models.ViewModel
         [Required]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Họ và tên phải lớn hơn 5 và nhỏ hơn 50 ký tự")]
         public string SerialCard { get; set; }
+
+        public string UserId { get; set; }
     }
 }

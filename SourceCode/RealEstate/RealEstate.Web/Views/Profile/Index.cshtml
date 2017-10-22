@@ -62,7 +62,7 @@
                     <div class="profile-nav">
                         <ul class="nav nav-pills nav-stacked" role="tablist">
                             <li role="presentation" class="active"><a href="#RecentActivity" role="tab" data-toggle="tab" aria-expanded="true"> <i class="fa fa-calendar-times-o" aria-hidden="true"></i> Hoạt động gần đây</a></li>
-                            <li role="presentation"><a href="#history" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-history" aria-hidden="true"></i> Lịch sử giao dịch</a></li>
+                            <li role="presentation" ng-click="fireLoadTransactionHistoryEvent();"><a href="#history" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-history" aria-hidden="true"></i> Lịch sử giao dịch</a></li>
                             <li role="presentation" ng-click="fireLoadProfileUpdateUserEvent();"><a href="#edituser" role="tab" data-toggle="tab" aria-expanded="false"> <i class="fa fa-edit"></i> Sửa thông tin</a></li>
                             <li role="presentation" ng-click="fireLoadProfileChangePasswordEvent();"><a href="#changepassword" role="tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-cogs" aria-hidden="true"></i> Đổi mật khẩu</a></li>
                         </ul>
@@ -112,6 +112,7 @@
                         @{ Html.RenderAction("PVProfileHistory", "Profile"); }
                     </div>
                     <div role="tabpanel" class="row tab-pane" id="history">
+                        @{ Html.RenderAction("PVProfileTransactionHistory", "Profile"); }
                     </div>
                     <div role="tabpanel" class="row tab-pane" id="edituser">
                         @{ Html.RenderAction("PVProfileUpdateUser", "Profile"); }

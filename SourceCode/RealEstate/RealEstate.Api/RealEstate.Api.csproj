@@ -304,6 +304,7 @@
     <Compile Include="Models\ViewModel\RoomListViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomTypeViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomViewModel.cs" />
+    <Compile Include="Models\ViewModel\UserTransactionHistoryViewModel.cs" />
     <Compile Include="Models\ViewModel\WardViewModel.cs" />
     <Compile Include="NganLuongAPI\APICheckoutV3.cs" />
     <Compile Include="NganLuongAPI\NLCardLib.cs" />

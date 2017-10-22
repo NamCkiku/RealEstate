@@ -7,7 +7,8 @@
         $scope.userInfo = items;
         console.log(items);
         $scope.cart = {
-            CardType: "VIETTEL"
+            CardType: "VIETTEL",
+            UserId: ""
         }
         $scope.bankinfo = {
             bankname: "VCB",
@@ -42,9 +43,10 @@
             if (formValidation.isValid()) {
                 var myBlockUI = blockUI.instances.get('BlockUIPayment');
                 myBlockUI.start();
+                $scope.cart.UserId = $scope.userInfo.id;
                 apiService.post('api/payment/paymentcash', $scope.cart, function (respone) {
                     console.log(respone);
-                    BaseService.displaySuccess(respone.data.message, 10000);
+                    BaseService.displaySuccess("Nạp tiền thành công", 10000);
                     myBlockUI.stop();
                     $modalInstance.close(response);
                 }, function (respone) {
@@ -72,6 +74,7 @@
                     Email: $scope.userInfo.email,
                     UserName: $scope.userInfo.username,
                     PhoneNumber: $scope.userInfo.phoneNumber,
+                    UserId: $scope.userInfo.id
                 }
                 apiService.post('api/payment/paymentbank', data, function (respone) {
                     BaseService.displaySuccess(respone.data.message, 10000);

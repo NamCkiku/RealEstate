@@ -125,6 +125,7 @@
     <Content Include="app\components\profile\pVProfileChangePasswordController.js" />
     <Content Include="app\components\profile\pVProfileHistoryController.js" />
     <Content Include="app\components\profile\pvProfileUpdateUserController.js" />
+    <Content Include="app\components\profile\pVProfilrTransactionHistoryController.js" />
     <Content Include="app\components\room\roomController.js" />
     <Content Include="app\components\room\roomDetailController.js" />
     <Content Include="app\components\searchRoom\SearchResultController.js" />
@@ -3740,6 +3741,7 @@
     <Content Include="bower_components\angular-recaptcha\LICENSE" />
     <Content Include="bower_components\angular-recaptcha\package.json" />
     <Content Include="bower_components\angular-recaptcha\README.md" />
+    <Content Include="Views\Profile\PVProfileTransactionHistory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
