@@ -118,8 +118,8 @@ namespace RealEstate.Api
             //Configure Facebook External Login
             facebookAuthOptions = new FacebookAuthenticationOptions()
             {
-                AppId = "596145737253141",
-                AppSecret = "ceca5ea262238393f4a9c0bb7c503b64",
+                AppId = "1974624196135004",
+                AppSecret = "af77258947aecef382b8bd7176a7e15a",
                 Provider = new FacebookAuthProvider()
             };
             app.UseFacebookAuthentication(facebookAuthOptions);

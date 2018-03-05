@@ -1,6 +1,6 @@
 ﻿(function (app) {
     'use strict';
-    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData', 'apiService', '$rootScope','$window',
+    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData', 'apiService', '$rootScope', '$window',
         function ($http, $q, authenticationService, authData, apiService, $rootScope, $window) {
             var userInfo;
             var deferred;
@@ -53,5 +53,35 @@
                 }, null);
 
             }
+
+
+
+            this.registerExternal = function (registerExternalData) {
+
+                var deferred = $q.defer();
+
+                $http.post($rootScope.baseUrl + 'api/account/registerexternal', registerExternalData)
+                    .then(function (response) {
+
+                        userInfo = {
+                            accessToken: response.access_token,
+                            username: response.userName
+                        };
+
+                        authenticationService.setTokenInfo(userInfo);
+                        authData.authenticationData.IsAuthenticated = true;
+                        authData.authenticationData.accessToken = userInfo.accessToken;
+                        authData.authenticationData.userName = userInfo.username;
+
+                        deferred.resolve(response);
+
+                    }).error(function (err, status) {
+                        logOut();
+                        deferred.reject(err);
+                    });
+
+                return deferred.promise;
+
+            };
         }]);
 })(angular.module('myApp'));

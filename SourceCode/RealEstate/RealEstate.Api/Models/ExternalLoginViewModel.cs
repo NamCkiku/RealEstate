@@ -33,4 +33,11 @@ namespace RealEstate.Api.Models
         public string user_id { get; set; }
         public string app_id { get; set; }
     }
+
+    public class AddExternalLoginBindingModel
+    {
+        [Required]
+        [Display(Name = "External access token")]
+        public string ExternalAccessToken { get; set; }
+    }
 }
