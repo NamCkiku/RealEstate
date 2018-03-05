@@ -41,8 +41,7 @@
             var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
 
             var externalProviderUrl = $rootScope.baseUrl + "api/account/externallogin?provider=" + provider
-                                                                        + "&response_type=token&client_id=" + $rootScope.clientId
-                                                                        + "&redirect_uri=" + redirectUri;
+                + "&response_type=token&client_id=self&redirect_uri=" + redirectUri + "&state=VIwd5edwJC0VxBoi4L6XDtjr4p6LaB9UM7D34hoJDaM1";
             window.$windowScope = $scope;
 
             var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
@@ -72,9 +71,9 @@
                         $location.path('/orders');
 
                     },
-                 function (err) {
-                     $scope.message = err.error_description;
-                 });
+                        function (err) {
+                            $scope.message = err.error_description;
+                        });
                 }
 
             });

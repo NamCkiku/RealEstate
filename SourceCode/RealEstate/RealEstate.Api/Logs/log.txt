@@ -361,3 +361,41 @@ Logging Start2017-09-22 15:09:31,812 [23] ERROR RealEstate.Common.Logs.LogCommon
 Logging Start2017-09-22 17:19:35,314 [9] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
 2017-09-22 17:30:25,086 [88] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
 2017-09-22 17:30:33,515 [87] ERROR RealEstate.Common.Logs.LogCommon - Object reference not set to an instance of an object.
+Logging Start2017-12-05 13:42:51,911 [6] ERROR RealEstate.Common.Logs.LogCommon - The model backing the 'RealEstateDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+2017-12-05 13:42:52,636 [6] ERROR RealEstate.Common.Logs.LogCommon - The model backing the 'RealEstateDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+2017-12-05 13:43:08,424 [6] ERROR RealEstate.Common.Logs.LogCommon - The model backing the 'RealEstateDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+2017-12-05 13:43:08,860 [8] ERROR RealEstate.Common.Logs.LogCommon - The model backing the 'RealEstateDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+Logging Start2017-12-05 13:44:28,903 [6] ERROR RealEstate.Common.Logs.LogCommon - The model backing the 'RealEstateDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+2017-12-05 13:44:30,691 [7] ERROR RealEstate.Common.Logs.LogCommon - The model backing the 'RealEstateDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+Logging Start2018-03-05 14:52:07,751 [6] ERROR RealEstate.Common.Logs.LogCommon - Cannot open database "RealEstate" requested by the login. The login failed.
+Login failed for user 'HN-BINHANH\namth'.GetAllProvince
+2018-03-05 14:52:07,751 [5] ERROR RealEstate.Common.Logs.LogCommon - Cannot open database "RealEstate" requested by the login. The login failed.
+Login failed for user 'HN-BINHANH\namth'.GetAllRoomHot
+Logging Start2018-03-05 14:53:26,255 [8] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-05 14:53:26,255 [9] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+Logging Start2018-03-05 14:55:26,403 [8] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 14:55:26,406 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 14:58:09,898 [20] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 14:58:09,898 [19] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-05 15:07:50,765 [30] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 15:20:12,922 [20] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 15:20:13,016 [19] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-05 15:28:03,408 [30] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 15:34:50,840 [6] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 15:34:50,895 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 15:36:44,451 [5] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 15:36:44,524 [19] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 15:45:44,761 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 15:45:44,761 [6] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-05 15:47:25,538 [6] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 15:49:56,029 [18] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 15:49:56,045 [20] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-05 15:56:05,463 [25] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 15:56:53,746 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+Logging Start2018-03-05 16:43:18,051 [18] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 16:43:18,116 [20] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-05 16:49:38,195 [5] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetInfomationUserById'.GetInfomationUserById
+2018-03-05 16:49:40,837 [23] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-05 16:50:51,700 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+Logging Start2018-03-05 16:53:54,950 [20] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-05 16:53:54,975 [19] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot

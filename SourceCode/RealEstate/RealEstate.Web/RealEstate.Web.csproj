@@ -3742,6 +3742,7 @@
     <Content Include="bower_components\angular-recaptcha\package.json" />
     <Content Include="bower_components\angular-recaptcha\README.md" />
     <Content Include="Views\Profile\PVProfileTransactionHistory.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

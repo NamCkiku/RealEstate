@@ -3,10 +3,13 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
+using RealEstate.Api.Infrastructure;
 using RealEstate.Api.Models;
 using RealEstate.Api.Models.ViewModel;
+using RealEstate.Api.Providers;
 using RealEstate.Api.Results;
 using RealEstate.Common.Enumerations;
 using RealEstate.Entities.Entites;
@@ -39,7 +42,8 @@ namespace RealEstate.Api.Controllers
             IAuthService authService,
             IUserWalletService userWalletService,
             ApplicationUserManager userManager,
-            ApplicationSignInManager signInManager) : base(errorService)
+            ApplicationSignInManager signInManager,
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat) : base(errorService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -71,6 +75,8 @@ namespace RealEstate.Api.Controllers
                 _userManager = value;
             }
         }
+
+        public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         private IAuthenticationManager Authentication
         {
             get { return Request.GetOwinContext().Authentication; }
@@ -313,7 +319,7 @@ namespace RealEstate.Api.Controllers
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
-        [Route("externallogin")]
+        [Route("externallogin", Name = "ExternalLogin")]
         public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
         {
             string redirectUri = string.Empty;
@@ -323,10 +329,10 @@ namespace RealEstate.Api.Controllers
                 return BadRequest(Uri.EscapeDataString(error));
             }
 
-            if (!User.Identity.IsAuthenticated)
-            {
-                return new ChallengeResult(provider, this);
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return new ChallengeResult(provider, this);
+            //}
 
             var redirectUriValidationResult = ValidateClientAndRedirectUri(this.Request, ref redirectUri);
 
@@ -348,9 +354,24 @@ namespace RealEstate.Api.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            IdentityUser user = await _userManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
+            AppUser user = await _userManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
+
+            if (hasRegistered)
+            {
+                Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                ClaimsIdentity oAuthIdentity = await _userManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
+                ClaimsIdentity cookieIdentity = await _userManager.CreateIdentityAsync(user, CookieAuthenticationDefaults.AuthenticationType);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
+                Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
+            }
+            else
+            {
+                IEnumerable<Claim> claims = externalLogin.GetClaims();
+                ClaimsIdentity identity = new ClaimsIdentity(claims, OAuthDefaults.AuthenticationType);
+                Authentication.SignIn(identity);
+            }
 
             redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_user_name={4}",
                                             redirectUri,
@@ -362,6 +383,49 @@ namespace RealEstate.Api.Controllers
             return Redirect(redirectUri);
 
         }
+
+
+        // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+        [AllowAnonymous]
+        [Route("ExternalLogins")]
+        public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
+        {
+            IEnumerable<AuthenticationDescription> descriptions = Authentication.GetExternalAuthenticationTypes();
+            List<ExternalLoginViewModel> logins = new List<ExternalLoginViewModel>();
+
+            string state;
+
+            if (generateState)
+            {
+                const int strengthInBits = 256;
+                state = RandomOAuthStateGenerator.Generate(strengthInBits);
+            }
+            else
+            {
+                state = null;
+            }
+
+            foreach (AuthenticationDescription description in descriptions)
+            {
+                ExternalLoginViewModel login = new ExternalLoginViewModel
+                {
+                    Name = description.Caption,
+                    Url = Url.Route("ExternalLogin", new
+                    {
+                        provider = description.AuthenticationType,
+                        response_type = "token",
+                        client_id = Startup.PublicClientId,
+                        redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
+                        state = state
+                    }),
+                    State = state
+                };
+                logins.Add(login);
+            }
+
+            return logins;
+        }
+
 
         [AllowAnonymous]
         [Route("RegisterExternal")]
@@ -413,6 +477,57 @@ namespace RealEstate.Api.Controllers
 
             return Ok(accessTokenResponse);
         }
+
+
+        [Route("AddExternalLogin")]
+        public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            this.Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+
+            AuthenticationTicket ticket = this.AccessTokenFormat.Unprotect(model.ExternalAccessToken);
+
+            if (ticket == null || ticket.Identity == null || (ticket.Properties != null
+                && ticket.Properties.ExpiresUtc.HasValue
+                && ticket.Properties.ExpiresUtc.Value < DateTimeOffset.UtcNow))
+            {
+                return this.BadRequest("External login failure.");
+            }
+
+            ExternalLoginData externalData = ExternalLoginData.FromIdentity(ticket.Identity);
+
+            if (externalData == null)
+            {
+                return this.BadRequest("The external login is already associated with an account.");
+            }
+
+            IdentityResult result = await this.UserManager.AddLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(externalData.LoginProvider, externalData.ProviderKey));
+
+            if (!result.Succeeded)
+            {
+                return this.GetErrorResult(result);
+            }
+
+            return this.Ok();
+        }
+        // GET api/Account/UserInfo
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        //[Route("UserInfo")]
+        //public UserInfoViewModel GetUserInfo()
+        //{
+        //    ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+
+        //    return new UserInfoViewModel
+        //    {
+        //        Email = User.Identity.GetUserName(),
+        //        HasRegistered = externalLogin == null,
+        //        LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+        //    };
+        //}
 
         [HttpPost]
         [Route("logout")]
@@ -484,24 +599,24 @@ namespace RealEstate.Api.Controllers
                 return "redirect_uri is invalid";
             }
 
-            var clientId = GetQueryString(Request, "client_id");
+            //var clientId = GetQueryString(Request, "client_id");
 
-            if (string.IsNullOrWhiteSpace(clientId))
-            {
-                return "client_Id is required";
-            }
+            //if (string.IsNullOrWhiteSpace(clientId))
+            //{
+            //    return "client_Id is required";
+            //}
 
-            var client = _authService.FindClient(clientId);
+            //var client = _authService.FindClient(clientId);
 
-            if (client == null)
-            {
-                return string.Format("Client_id '{0}' is not registered in the system.", clientId);
-            }
+            //if (client == null)
+            //{
+            //    return string.Format("Client_id '{0}' is not registered in the system.", clientId);
+            //}
 
-            if (!string.Equals(client.AllowedOrigin, redirectUri.GetLeftPart(UriPartial.Authority), StringComparison.OrdinalIgnoreCase))
-            {
-                return string.Format("The given URL is not allowed by Client_id '{0}' configuration.", clientId);
-            }
+            //if (!string.Equals(client.AllowedOrigin, redirectUri.GetLeftPart(UriPartial.Authority), StringComparison.OrdinalIgnoreCase))
+            //{
+            //    return string.Format("The given URL is not allowed by Client_id '{0}' configuration.", clientId);
+            //}
 
             redirectUriOutput = redirectUri.AbsoluteUri;
 
@@ -532,7 +647,7 @@ namespace RealEstate.Api.Controllers
             {
                 //You can get it from here: https://developers.facebook.com/tools/accesstoken/
                 //More about debug_tokn here: http://stackoverflow.com/questions/16641083/how-does-one-get-the-app-access-token-for-debug-token-inspection-on-facebook
-                var appToken = "xxxxxx";
+                var appToken = "1974624196135004|B28bNJDT2gB3LPbQcevcVqn-_NE";
                 verifyTokenEndPoint = string.Format("https://graph.facebook.com/debug_token?input_token={0}&access_token={1}", accessToken, appToken);
             }
             else if (provider == "Google")
@@ -621,6 +736,20 @@ namespace RealEstate.Api.Controllers
             public string ProviderKey { get; set; }
             public string UserName { get; set; }
             public string ExternalAccessToken { get; set; }
+
+
+            public IList<Claim> GetClaims()
+            {
+                IList<Claim> claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, ProviderKey, null, LoginProvider));
+
+                if (UserName != null)
+                {
+                    claims.Add(new Claim(ClaimTypes.Name, UserName, null, LoginProvider));
+                }
+
+                return claims;
+            }
 
             public static ExternalLoginData FromIdentity(ClaimsIdentity identity)
             {
