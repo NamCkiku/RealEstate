@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dropbox.Api, Version=4.0.0.0, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dropbox.Api.4.7.0\lib\net45\Dropbox.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +54,7 @@
     <Compile Include="IService\ICountryService.cs" />
     <Compile Include="IService\IDistrictService.cs" />
     <Compile Include="IService\IErrorService.cs" />
+    <Compile Include="IService\IImagesService.cs" />
     <Compile Include="IService\IMoreInfomationService.cs" />
     <Compile Include="IService\IProvinceService.cs" />
     <Compile Include="IService\IRoomService.cs" />
@@ -64,6 +71,7 @@
     <Compile Include="Service\CountryService.cs" />
     <Compile Include="Service\DistrictService.cs" />
     <Compile Include="Service\ErrorService.cs" />
+    <Compile Include="Service\ImagesService.cs" />
     <Compile Include="Service\MoreInfomationService.cs" />
     <Compile Include="Service\ProvinceService.cs" />
     <Compile Include="Service\RoomService.cs" />
@@ -88,7 +96,10 @@
       <Name>RealEstate.Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

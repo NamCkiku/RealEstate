@@ -18,6 +18,8 @@ using RealEstate.Repository.Repositories;
 using RealEstate.Service.Service;
 using System.Web.Mvc;
 using Autofac.Integration.Mvc;
+using Dropbox.Api;
+using RealEstate.Common.Constants;
 
 [assembly: OwinStartup(typeof(RealEstate.Api.Startup))]
 
@@ -48,6 +50,10 @@ namespace RealEstate.Api
             builder.RegisterType<ApplicationRoleManager>().AsSelf().InstancePerRequest();
             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
             builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
+
+            //Đăng ký Dropbox
+            builder.Register(c => new DropboxClient(CommonConstants.DropboxAuthKey)).As<DropboxClient>().InstancePerDependency();
+
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)

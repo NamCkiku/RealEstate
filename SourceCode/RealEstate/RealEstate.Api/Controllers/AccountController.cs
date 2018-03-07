@@ -279,6 +279,24 @@ namespace RealEstate.Api.Controllers
                 RankStar = 0,
             };
             var result = await UserManager.CreateAsync(user, model.Password);
+
+            #region Added Code for Send Email
+
+            //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            //code = HttpUtility.UrlEncode(code);
+            //try
+            //{
+            //    string callbackUrl = Url.Link("DefaultApi", new { controller = "Account/ConfirmEmail", userId = user.Id, code = code });
+
+            //    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Common.Logs.LogCommon.WriteLogError(ex.Message);
+            //}
+
+            #endregion
+
             var auditlog = new AuditLog();
             auditlog.CreatedDate = DateTime.Now;
             auditlog.CreatedBy = model.Email;
@@ -538,6 +556,25 @@ namespace RealEstate.Api.Controllers
             return request.CreateResponse(HttpStatusCode.OK, new { success = true });
         }
 
+        // POST api/Account/SetPassword
+        [Route("setpassword")]
+        public async Task<IHttpActionResult> SetPassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            IdentityResult result = await this.UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+
+            if (!result.Succeeded)
+            {
+                return this.GetErrorResult(result);
+            }
+
+            return this.Ok();
+        }
+
 
         protected override void Dispose(bool disposing)
         {
@@ -548,6 +585,59 @@ namespace RealEstate.Api.Controllers
 
             base.Dispose(disposing);
         }
+
+
+
+        #region Confirm Email 
+
+        //
+        // GET: /Account/ConfirmEmail
+        [Route("ConfirmEmail")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return NotFound();
+            }
+
+            code = HttpUtility.UrlDecode(code);
+
+            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            return Ok(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+
+        #region Reset Password
+
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("ResetPassword")]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return RedirectToRoute("Default", new { controller = "User" });
+            }
+            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            return InternalServerError();
+        }
+
+        #endregion
+
+        #endregion
 
         #region Helpers
 
