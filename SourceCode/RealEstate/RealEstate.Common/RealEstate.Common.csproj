@@ -88,6 +88,7 @@
     <Compile Include="Helper\Converter\Converter.cs" />
     <Compile Include="Helper\Converter\TConverter.cs" />
     <Compile Include="Helper\DateTimeHelper.cs" />
+    <Compile Include="Helper\Dropbox\DropBoxImageModel.cs" />
     <Compile Include="Helper\EscapeName.cs" />
     <Compile Include="Helper\ExcelHelper.cs" />
     <Compile Include="Helper\FileHelper.cs" />
