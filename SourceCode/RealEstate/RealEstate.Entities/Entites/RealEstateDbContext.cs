@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealEstate.Entities.Entites
 {
@@ -37,6 +32,9 @@ namespace RealEstate.Entities.Entites
         public DbSet<UserWallet> UserWallets { set; get; }
         public DbSet<WalletTransactionTypes> WalletTransactionTypes { set; get; }
         public DbSet<UserTransactionHistory> UserTransactionHistory { set; get; }
+
+        public DbSet<SystemSetting> SystemSettings { get; set; }
+
         public static RealEstateDbContext Create()
         {
             return new RealEstateDbContext();

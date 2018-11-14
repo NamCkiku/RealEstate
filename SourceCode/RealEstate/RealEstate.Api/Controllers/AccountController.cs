@@ -42,8 +42,7 @@ namespace RealEstate.Api.Controllers
             IAuthService authService,
             IUserWalletService userWalletService,
             ApplicationUserManager userManager,
-            ApplicationSignInManager signInManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat) : base(errorService)
+            ApplicationSignInManager signInManager) : base(errorService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -347,10 +346,10 @@ namespace RealEstate.Api.Controllers
                 return BadRequest(Uri.EscapeDataString(error));
             }
 
-            //if (!User.Identity.IsAuthenticated)
-            //{
-            //    return new ChallengeResult(provider, this);
-            //}
+            if (!User.Identity.IsAuthenticated)
+            {
+                return new ChallengeResult(provider, this);
+            }
 
             var redirectUriValidationResult = ValidateClientAndRedirectUri(this.Request, ref redirectUri);
 

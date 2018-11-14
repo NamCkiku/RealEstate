@@ -37,7 +37,7 @@ namespace RealEstate.Service.Service
             List<Room> lstroom = new List<Room>();
             try
             {
-                lstroom = _roomRepository.GetMulti(x => x.isDelete == false && x.Status == true).Take(top).ToList();
+                lstroom = _roomRepository.GetMulti(x => x.IsDelete == false && x.Status == true).Take(top).ToList();
             }
             catch (Exception ex)
             {
@@ -150,7 +150,7 @@ namespace RealEstate.Service.Service
             List<Room> lstroom = new List<Room>();
             try
             {
-                lstroom = _roomRepository.GetMulti(x => x.isDelete == false
+                lstroom = _roomRepository.GetMulti(x => x.IsDelete == false
                 && x.Status == true && x.VipID == vipID).Take(top).ToList();
             }
             catch (Exception ex)

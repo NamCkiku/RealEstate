@@ -399,3 +399,14 @@ Logging Start2018-03-05 16:43:18,051 [18] ERROR RealEstate.Common.Logs.LogCommon
 Logging Start2018-03-05 16:50:51,700 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
 Logging Start2018-03-05 16:53:54,950 [20] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
 2018-03-05 16:53:54,975 [19] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-07 09:40:52,742 [6] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-07 09:40:52,795 [8] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-07 09:42:29,520 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-07 09:42:50,960 [8] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+Logging Start2018-03-07 09:53:48,989 [6] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-03-07 09:53:49,042 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-07 09:54:24,486 [7] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetInfomationUserById'.GetInfomationUserById
+Logging Start2018-03-07 09:56:37,450 [20] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
+2018-03-07 09:56:37,595 [21] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+Logging Start2018-08-31 09:19:37,056 [19] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllProvince'.GetAllProvince
+2018-08-31 09:19:37,056 [17] ERROR RealEstate.Common.Logs.LogCommon - Could not find stored procedure 'sp_GetAllRoomHot'.GetAllRoomHot
