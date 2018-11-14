@@ -2,6 +2,7 @@
 using RealEstate.Api.Quartz;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -33,6 +34,10 @@ namespace RealEstate.Api
             Response.Headers.Remove("X-AspNet-Version"); //Remove X-AspNet-Version Header
 
         }
-
+        //private void UpdateMigration()
+        //{
+        //    Database.SetInitializer(new MigrateDatabaseToLatestVersion<RealEstate.Entities.Entites.RealEstateDbContext,
+        //        RealEstate.Entities.Migrations.Configuration>());
+        //}
     }
 }

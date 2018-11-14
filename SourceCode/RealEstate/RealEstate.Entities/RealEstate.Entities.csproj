@@ -102,6 +102,7 @@
     <Compile Include="Entites\Room.cs" />
     <Compile Include="Entites\RoomTag.cs" />
     <Compile Include="Entites\RoomType.cs" />
+    <Compile Include="Entites\SystemSetting.cs" />
     <Compile Include="Entites\Tag.cs" />
     <Compile Include="Entites\UserTransactionHistory.cs" />
     <Compile Include="Entites\UserWallet.cs" />
@@ -171,6 +172,18 @@
     <Compile Include="Migrations\201710220244134_editwallettransationType.Designer.cs">
       <DependentUpon>201710220244134_editwallettransationType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811140747532_addtablenew.cs" />
+    <Compile Include="Migrations\201811140747532_addtablenew.Designer.cs">
+      <DependentUpon>201811140747532_addtablenew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811140755413_fixtableRoom.cs" />
+    <Compile Include="Migrations\201811140755413_fixtableRoom.Designer.cs">
+      <DependentUpon>201811140755413_fixtableRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811140757365_fixtableSetting.cs" />
+    <Compile Include="Migrations\201811140757365_fixtableSetting.Designer.cs">
+      <DependentUpon>201811140757365_fixtableSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelView\AppUserEntity.cs" />
     <Compile Include="ModelView\AuditlogEntity.cs" />
@@ -237,6 +250,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710220244134_editwallettransationType.resx">
       <DependentUpon>201710220244134_editwallettransationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811140747532_addtablenew.resx">
+      <DependentUpon>201811140747532_addtablenew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811140755413_fixtableRoom.resx">
+      <DependentUpon>201811140755413_fixtableRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811140757365_fixtableSetting.resx">
+      <DependentUpon>201811140757365_fixtableSetting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

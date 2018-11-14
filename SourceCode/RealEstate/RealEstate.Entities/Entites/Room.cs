@@ -112,7 +112,9 @@ namespace RealEstate.Entities.Entites
         [StringLength(256)]
         public string UpdatedBy { get; set; }
 
-        public bool isDelete { get; set; }
+        public bool IsDelete { get; set; }
+
+        public bool IsActive { get; set; }
 
         public bool Status { get; set; }
     }

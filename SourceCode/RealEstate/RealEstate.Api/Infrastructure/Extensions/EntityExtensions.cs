@@ -35,7 +35,8 @@ namespace RealEstate.Api.Infrastructure.Extensions
             room.Address = roomVM.Address;
             room.Phone = roomVM.Phone;
             room.Content = roomVM.Content;
-            room.isDelete = false;
+            room.IsDelete = false;
+            room.IsActive = false;
             room.Address = roomVM.Address;
             room.DisplayOrder = roomVM.DisplayOrder;
             room.ThumbnailImage = roomVM.ThumbnailImage;
